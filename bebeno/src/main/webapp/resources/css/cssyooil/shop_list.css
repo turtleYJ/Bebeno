@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+.before-login {
+  position: absolute;
+  left: 80%;
+  display: inline-block;
+}
+
+.menu-container {
+  width:150px;
+  height:150px;
+  background: white;
+  box-shadow: 0 1px 15px rgba(0,0,0,.8);
+  left: 80%;
+  /* 추가된 부분 */
+  position:absolute;
+}
+
+/* 추가된 부분 */
+#line-wrapper {
+  cursor:pointer;
+  width:56px;
+  height:35px;
+  position:relative;
+  top:52.5px;
+  left:47px;
+}
+
+/* 추가된 부분 */
+.line {
+  background:black;
+  margin-top:6px;
+  margin-bottom:6px;
+  width:56px;
+  height:7px; 
+  border-radius:20px;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
+  position:relative;
+}
+
+.head-container {
+  margin-top: 30px;
+}
+
+.filter-container {
+  display: inline-block;
+  left: 55%;
+  position: relative;
+}
+
+.search-tb {
+  display: inline-block;
+}
+
+/*  list image */
+.img-thumb {
+  width: 35%;
+  height: 120px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: auto;
+  float: left;
+}
+li .txt-area {
+	overflow: hidden;
+}
+.line02 {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 2.8em;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.shop-list .write-info, .shop-list .write-info a {
+    color: #999;
+    font-weight: 400;
+    margin-top: 5px;
+}
+.board-badge.badge-white {
+    color: #999;
+    border: 1px solid #ccc;
+}
+.board-badge {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin: -4px 8px 0 0;
+    padding: 0 9px 1px;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+.shop-list {
+  text-align: center;
+}
+
+#storeListMoreBtn {
+  width: ;
+}
+
+.pagination-box {
+  min-width:88px;
+  text-align: center;
+}
+
+.button.button-large{
+  margin: 30px;
+  width:30%;
+  font-size:20px;
+  font-weight:500;
+  line-height:60px;
+  border-radius:4px;
+}
+
+.button-white-gray{color:black;border:1px solid #b3b3b3;background:#fff}
+
+
+
+.board-top{position:relative;border-bottom:1px solid #262626; margin: 10px 0px 10px}
+.board-top-sch{position:absolute;right:0;top:0;}
+.board-top-sch .cate-filter{height:32px;border-radius:4px;font-weight:400;}
+.board-top-sch .page-top-sch{display:inline-block;width:200px;height:32px;margin:0;vertical-align:top}
+.board-top-sch .page-top-sch input[type=text]{height:28px; width: 150px;}
+.board-top-sch .page-top-sch .btn-sch{height:30px;}
+.board-top-sch .wrap-filter {display: inline-block;}
+
+.page-top-sch{height:40px;margin:0 0 49px;padding:2px 0 2px 5px;border-radius:4px;background-color:#f4f4f4;}
+.page-top-sch input[type=text]{height:36px;width:calc(100% - 34px);padding-left:5px;border:#f4f4f4;background-color:#f4f4f4;border-radius:0}
+.page-top-sch .btn-sch{
+  cursor: pointer;
+  border: transparent;
+  width:30px;
+  height:40px;
+  text-indent:-999em;
+  background:url('http://localhost:8088/bebeno/resources/images/search_img.png') 50% no-repeat;
+  outline:none;
+}
+
+#member_post, #member_addr {
+	cursor: auto;
+}
+
+.shop-list ul {
+	list-style: none;
+}
+
