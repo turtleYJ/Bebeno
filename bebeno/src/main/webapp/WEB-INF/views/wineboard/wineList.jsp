@@ -17,14 +17,10 @@
     <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
 
 </head>
 <body>
