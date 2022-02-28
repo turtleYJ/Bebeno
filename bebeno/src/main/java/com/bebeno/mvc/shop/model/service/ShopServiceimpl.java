@@ -21,7 +21,15 @@ public class ShopServiceimpl implements ShopService {
 
 	@Override
 	public int save(Shop shop) {
-		return 0;
+		int result = 0;
+		
+		if(shop.getNo() != 0) {
+//			result = mapper.updateBoard(shop);
+		} else {
+			result = mapper.insertShop(shop);
+		}
+		
+		return result;
 	}
 
 }

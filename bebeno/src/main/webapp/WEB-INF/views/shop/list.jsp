@@ -58,7 +58,7 @@
 						<button class='btn-sch'>검색</button>
 					</div>
 					
-					<c:if test="${ loginMember.role == ROLE_MANAGER }">
+					<c:if test="${ loginMember.role eq 'ROLE_MANAGER' }">
 						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
 					</c:if>
 				
@@ -103,18 +103,18 @@
         							<div class="form-row">
 			          					<div class="form-group col-sm-12">
             								<label>가게 전화번호</label>
-											<input type="text" name="phone" class="form-control" maxlength="20" placeholder="전화번호(-없이 입력)">
+											<input type="text" name="phone" class="form-control" oninput="autoHyphen(this)" maxlength="20" placeholder="전화번호(-없이 입력)">
           								</div>
         							</div>
         							<div class="form-row">
 			          					<div class="form-group col-sm-6">
 											<label>대문 파일 업로드</label>
-    										<input type="file" name="upfile">   
+    										<input type="file" name="upfileFront">   
     										<p class="help-block">가게 로고 사진파일을 첨부하세요</p>       								
    										</div>
 			          					<div class="form-group col-sm-6">
 											<label>사진 업로드</label>
-    										<input type="file">          								
+    										<input type="file" name="upfileContent">          								
     										<p class="help-block">가게 전경 사진파일을 첨부하세요</p>       								
    										</div>
         							</div>
@@ -265,6 +265,12 @@
 	            }
 	        }
 	    }).open();
+	}
+	
+	const autoHyphen = (target) => {
+		target.value = target.value
+		   					 .replace(/[^0-9]/, '')
+		   					 .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 	}
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

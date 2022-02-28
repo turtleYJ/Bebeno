@@ -19,7 +19,7 @@
    
    <!-- 
       p:configLocation="classpath:mybatis-config.xml"
-      p:configuration-ref=""
+      p:configuration-ref="mybatisConfig"
    -->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
       p:configuration-ref="mybatisConfig"

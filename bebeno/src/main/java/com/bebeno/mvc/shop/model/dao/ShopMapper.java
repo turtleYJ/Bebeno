@@ -10,4 +10,6 @@ import com.bebeno.mvc.shop.model.vo.Shop;
 public interface ShopMapper {
 
 	List<Shop> findAll();
+
+	int insertShop(Shop shop);
 }
