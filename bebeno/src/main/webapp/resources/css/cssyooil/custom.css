@@ -1,2 +1,10 @@
+@charset "UTF-8";
+
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+a {
+    border: 0;
+    color: #262626;
+    text-decoration: none;
+}

@@ -13,7 +13,7 @@
 	<title>shop_list</title>
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
-	<link rel="stylesheet" href="${path}/resources/css/cssyooil/costom.css">
+	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
 	
 </head>
 <body>
@@ -23,31 +23,31 @@
 			<h2 class="cate-tit">와인샵&amp;레스토랑</h2>
 			
 			<div class="board-top-sch">
-				<form action="./home.jsp" class="form-inline mt-3">
+				<form action="${ pageContext.request.contextPath }/shop/list" method="get" class="form-inline mt-3">
 					<select class="cate-filter" id="shCate" name="shCate">
-						<option value="0">전체</option>
-						<option value="1">와인샵</option>
-						<option value="2">레스토랑</option>
+						<option value="">전체</option>
+						<option value="와인샵">와인샵</option>
+						<option value="레스토랑">레스토랑</option>
 					</select>		
 					<select class="cate-filter" id="shRegionD1" name="shRegionD1">
 						<option value="">전체 시도</option>
-						<option value="R01000">서울특별시</option>
-						<option value="R02000">부산광역시</option>
-						<option value="R03000">대구광역시</option>
-						<option value="R04000">인천광역시</option>
-						<option value="R05000">광주광역시</option>
-						<option value="R06000">대전광역시</option>
-						<option value="R07000">울산광역시</option>
-						<option value="R08000">세종특별자치시</option>
-						<option value="R09000">경기도</option>
-						<option value="R10000">강원도</option>
-						<option value="R11000">충청북도</option>
-						<option value="R12000">충청남도</option>
-						<option value="R13000">전라북도</option>
-						<option value="R14000">전라남도</option>
-						<option value="R15000">경상북도</option>
-						<option value="R16000">경상남도</option>
-						<option value="R17000">제주특별자치도</option>
+						<option value="서울">서울특별시</option>
+						<option value="부산">부산광역시</option>
+						<option value="대구">대구광역시</option>
+						<option value="인천">인천광역시</option>
+						<option value="광주">광주광역시</option>
+						<option value="대전">대전광역시</option>
+						<option value="울산">울산광역시</option>
+						<option value="세종">세종특별자치시</option>
+						<option value="경기">경기도</option>
+						<option value="강원">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="제주">제주특별자치도</option>
 					</select>
 					<select class="cate-filter" id="shRegionD2" name="shRegioD2">
 						<option value="">전체 시군구</option>
@@ -55,7 +55,7 @@
 		
 					<div class='page-top-sch'>
 						<input type='text' id='shKeyword' name='shKeyword' placeholder='결과 내 검색' maxlength='30' value=''>
-						<button class='btn-sch'>검색</button>
+						<button type="summit" class='btn-sch' >검색</button>
 					</div>
 					
 					<c:if test="${ loginMember.role eq 'ROLE_MANAGER' }">
@@ -180,26 +180,22 @@
 					<li>
 						<div class="img-thumb">
 							<a href="#">
-								<img src="${ store.imgUrl }" alt="" class="img-thumbnail">
+								<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
 							</a>
 						</div>
 						<div class="txt-area">
 				            <div class="cnt-header">
-				                <h3><a href="#" class="btnView">와인컬렉터 &nbsp; <span class="name-en">Wine Collector</span></a>&nbsp;<span class="name-en">(50)</span></h3>
+				                <h3><a href="#" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
 				            </div>
 				            <div class="txt">
 				                <a href="#" class="btnView line02">
-				                    명품와인, 고가와인, 맛있는 가성비 와인들로 와인리스트가 좋은 와인컬렉터입니다.
-				                    소장용 및 명품와인은 소장할 가치가 있는 와인들을
-				                    가성비 와인들은, 저렴하지만 맛있는 와인들을 소개해드리고 있습니다.
-				                    르 꼬르동 와인마스터 출신 소믈리에가 고객의 입장에서 생각하고, 친절하게 추천 드리고 있습니다.
+				                    ${ store.content }
 				                </a>
 				            </div>
 				            <div class="write-info">
-				                <em class="board-badge badge-white">와인샵</em>
-				                <span class="store-addr">서울 강남구</span>
-				                <span class="store-tel">02-561-4220</span>
-				                <span class="store-link"><a href="http://https://cafe.naver.com/winecollector" target="_blank">https://cafe.naver.com/winecollector</a></span>
+				                <em class="board-badge badge-white">${ store.type }</em>
+				                <span class="store-addr">${ store.address }</span>
+				                <span class="store-tel">${ store.phone }</span> 
 				            </div>
 			        	</div>
 					</li>

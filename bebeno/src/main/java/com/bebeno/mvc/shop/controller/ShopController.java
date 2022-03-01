@@ -33,10 +33,12 @@ public class ShopController {
 	private ResourceLoader resourceLoader;
 	
 	@GetMapping("/list")
-	public ModelAndView list(ModelAndView model) {
+	public ModelAndView list(ModelAndView model, String shCate, String shRegionD1, String shKeyword) {
 		List<Shop> shopList = null;
 		
-		shopList = service.getShopList();
+		System.out.println(shCate + " " + shRegionD1 + " " + shKeyword);
+		
+		shopList = service.getShopList(shCate, shRegionD1, shKeyword);
 		
 		System.out.println(shopList);
 		
@@ -50,12 +52,6 @@ public class ShopController {
 	public String view() {
 		
 		return "shop/view";
-	}
-	
-	@GetMapping("/address")
-	public String address() {
-		
-		return "shop/address";
 	}
 	
 	@PostMapping("/registration") 

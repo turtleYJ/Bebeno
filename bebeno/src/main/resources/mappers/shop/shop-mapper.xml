@@ -15,6 +15,9 @@
 		        STORE_TYPE, 
 		        STORE_IMGURL,
 		        STORE_STATUS,
+		        STORE_CONTENT,
+		        ORIGINAL_FILENAME,
+				RENAMED_FILENAME,
 		        ENROLL_DATE,
 		        MODIFY_DATE
 		FROM BBN_STORE
@@ -32,12 +35,28 @@
 		<result property="type" column="STORE_TYPE"/>
 		<result property="imgUrl" column="STORE_IMGURL"/>
 		<result property="status" column="STORE_STATUS"/>
+		<result property="content" column="STORE_CONTENT"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
 	
 	<select id="findAll" parameterType="map" resultMap="shopListResultMap">
 		<include refid="shopListSql"/>	
+		<choose>
+			<when test="shCate != null">
+				AND STORE_TYPE = #{shCate}
+			</when>
+			<when test="shRegionD1 != null">
+				AND STORE_ADDRESS LIKE '%' || #{shRegionD1} || '%'
+			</when>
+			<when test="shKeyword != null">
+				AND STORE_KORNAME LIKE '%' || #{shKeyword} || '%'
+				OR STORE_ENGNAME LIKE '%' || #{shKeyword} || '%'
+			</when>
+		</choose>
+		ORDER BY STORE_NO DESC
 	</select>
 	
 	<insert id="insertShop" parameterType="Shop"
