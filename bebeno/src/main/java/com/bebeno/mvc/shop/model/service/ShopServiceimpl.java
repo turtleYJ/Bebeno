@@ -14,9 +14,9 @@ public class ShopServiceimpl implements ShopService {
 	private ShopMapper mapper;
 	
 	@Override
-	public List<Shop> getShopList() {
+	public List<Shop> getShopList(String shCate, String shRegionD1, String shKeyword) {
 				
-		return mapper.findAll();
+		return mapper.findAll(shCate, shRegionD1, shKeyword);
 	}
 
 	@Override
