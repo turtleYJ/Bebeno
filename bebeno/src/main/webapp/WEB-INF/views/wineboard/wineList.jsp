@@ -41,7 +41,8 @@
 					</div>
 				</div>
 				<div class='board-top'>
-					<h2 class='cate-tit'>전체와인<span class='cate-tit-total' id="lblTotalCount">(0)</span></h2>
+					<h2 class='cate-tit'>전체와인
+					<span class='cate-tit-total' id="lblTotalCount"></span></h2>
 					<div class='board-top-sch'>
 						<select class='cate-filter' id='shOrder1' name='shOrder1' onchange="sortWine(this)">
 							<option value='a.CREATE_DATE|DESC'  selected  >최신등록순</option>
@@ -51,38 +52,39 @@
 						</select>
 					</div><!--.board-top-sch -->
 				</div><!--.board-top -->
-				<div class='board-list board-list-wine'><!-- 목록 10개 -->
+				<div class="board-list board-list-wine">
 				<c:forEach var="board" items="${list}">
-					<ul id='wine_list'>
+					<ul id='wine_list' style="display: block;">
 					<li>
 					<div class="thumb">
-					<a>
-					<img src="${path}/resources/upload/wineimg/${board.renamedFileName}" width="180px" height="220px" > 
-					</a>
+					<a href="${path}/wineboard/wineView?wineBno=${board.wineBno}" ><img src="${path}/resources/upload/wineimg/${board.renamedFileName}" width="100px" height="130px" ></a>
 					</div>
 					<div class="txt-area">
 					<div class="cnt-header">
 					<p class="winery">
-					<a> ${board.wineName} </a>
+					<a href="${path}/wineboard/wineView?wineBno=${board.wineBno}"> ${board.wineName}
+					</a>
+					</p>
 					<h3>
 					<a href="${path}/wineboard/wineView?wineBno=${board.wineBno}" class="btnView">
-					<p class="wine-name-en">${board.wineEng}</p></a>
+					<p class="wine-name-en">${board.wineEng}</p>
+					</a>
 					</h3>
 					</div>
-					<div class="write-info wine-info wine-info-01">
+					<a href="${path}/wineboard/wineView?wineBno=${board.wineBno}"><div class="write-info wine-info wine-info-01">
 						<span class="country"> ${board.wineMf}</span>
 						<span class="nation"> ${board.wineNational}</span>
-					</div>
+					</a></div>
 					<div class="write-info wine-info wine-info-02">
 						<em class=""> ${board.wineType} </em>
 						<span class="score-star">
 						<em style="width:0%"></em>
 						</span>
 					</div>
-					</div>
-					</li>
-					</ul>			
-				</c:forEach>
+				</div>
+			</li>
+		</ul>			
+	</c:forEach>
 				</div><!--.board-list -->
 				
 				<div class='pagination-box'><button id='wineListMoreBtn' class='button button-large button-white-gray' style="display:none;" onclick="searchWineMore();">더보기</button></div>

@@ -41,8 +41,8 @@ public class WineBoardServiceImpl implements WineBoardService {
 	}
 
 	@Override
-	public WineBoard findBoardByNo(Integer winebno) {
-		return wineboardmapper.selectWineBoardByNo(winebno);
+	public WineBoard findBoardByNo(Integer wineBno) {
+		return wineboardmapper.selectWineBoardByNo(wineBno);
 	}
 
 

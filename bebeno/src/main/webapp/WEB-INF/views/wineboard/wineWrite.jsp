@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-    <form action="${ pageContext.request.contextPath }/wineboard/wineWrite" method="post" enctype="multipart/form-data" >
+    <form action="${path}/wineboard/wineWrite" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
             <div class="board_title">
                 <strong>상품 등록</strong>
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="bt_wrap">
-                    <a href="${path}/wineboard/wineView" class="on" id="register">등록</a>
+                 <a href="${path}/wineboard/wineView" class="on" id="register"><input type="submit" value="등록"/></a>
                     <a href="${path}/wineboard/wineList">취소</a>
     
                 </div>
@@ -176,9 +176,7 @@
         </div>  
     </form>
         <!-- js영역 -->
-        <script>
-         $("#re")
-        </script>
+
     <script src="${ path }/js/jquery.min.js"></script>
 	<script src="${ path }/js/browser.min.js"></script>
 	<script src="${ path }/js/breakpoints.min.js"></script>

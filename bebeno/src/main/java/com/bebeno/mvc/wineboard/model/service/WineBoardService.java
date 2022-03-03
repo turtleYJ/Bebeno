@@ -13,7 +13,7 @@ public interface WineBoardService {
 
 	List<WineBoard> wineBoardList();
 
-	WineBoard findBoardByNo(Integer winebno);
+	WineBoard findBoardByNo(Integer wineBno);
 
 	
 

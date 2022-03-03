@@ -14,21 +14,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-<p>
-   <a href="${ path }/wineboard/wineList">
-     wine list 조회
-   </a>
-</p>
-<p>
-    <a href="${ path }/wineboard/wineWrite">
-     글쓰기
-	</a>
-</p>
-<p>
-    <a href="${ path }/wineboard/wineView">
-    상세보기
-	</a>
-</p>
+
 
 	<!-- scripts  -->
 
