@@ -1,6 +1,6 @@
 -- WEB 계정 생성
-CREATE USER FINALWEB IDENTIFIED BY FINALWEB;
-GRANT RESOURCE, CONNECT TO FINALWEB;
+CREATE USER BEBENO IDENTIFIED BY BEBENO;
+GRANT RESOURCE, CONNECT TO BEBENO;
 
 ------------------------------------------------
 --------------- BBN_STORE 관련 테이블 ---------------

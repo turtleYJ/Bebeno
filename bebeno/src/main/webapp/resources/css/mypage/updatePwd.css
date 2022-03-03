@@ -1,0 +1,120 @@
+/* 
+*/
+.hidden{
+    display: none;
+} 
+
+
+.title-mypage {
+    margin-bottom: 40px;
+    font-size: 34px;
+    font-weight: 500;
+    color: #262626;
+    text-align: center;
+}
+
+.my-tab{
+    text-align: center;
+    background-color: #f4f4f4;
+    /* border: 1px blue solid; */
+}
+.list-nav{
+    list-style: none;
+}
+.list-nav>li{
+    display: inline-block;
+    font-size: 16px;
+    /* border: 1px blue solid; */
+}
+/* a + b : a 선택자 뒤에 있는 b 요소 한 개 선택 */
+.my-tab li + li {
+    margin-left: 40px;
+}
+.my-tab li a {
+    display: block;
+    padding: 10px 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.inner-list {
+    position: relative;
+    line-height: 1.6;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px;
+    /* border: 1px red solid; */
+}
+
+.wrap-board-wide {
+    padding: 40px 0 0;
+}
+
+.inner-list-nav {
+    margin-bottom: 25px;
+    text-align: center;
+    list-style: none;
+}
+.inner-list-nav li {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+}
+.inner-list-nav li a {
+    display: block;
+    color: #404040;
+    margin: 0 10px;
+    padding: 3px 15px;
+    text-decoration: none;
+    border-radius: 99px;
+}
+
+.mypage-input-box {
+    max-width: 780px;
+    margin: auto;
+    padding: 60px 60px 60px 61px;
+    border-radius: 10px;
+    box-shadow: 2.4px 6.6px 10px 0 rgb(0 0 0 / 10%);
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+
+.updatepwd-box {
+    width: 540px;
+    margin: 0 auto;
+    padding: 50px 46px;
+    border-radius: 10px;
+}
+
+.w100 {
+    width: 100%;
+}
+.input-box input {
+    height: 48px;
+    padding: 0 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-box + .input-box {
+    margin-top: 15px;
+}
+
+
+.save-update-button {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+}
+.save-update-button button {
+    width: 240px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #fff;
+    background: #c70039;
+    border: 0;
+    border-radius: 4px;
+}
