@@ -71,7 +71,7 @@
                     <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="resources/image/로렌조.png" width="60" height="60"></div>
+                            <div class="img"><img src="../resources/image/로렌조.png" width="60" height="60"></div>
                             <div class="pname">
                                 <span>로렌조 데 아그렐로, 로벤디토 말벡</span>
                             </div>
@@ -101,7 +101,7 @@
                     <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="261" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="resources/image/레드헤즈.png" width="60" height="60"></div>
+                            <div class="img"><img src="../resources/image/레드헤즈.png" width="60" height="60"></div>
                             <div class="pname">
                                 <span>레드헤즈 스튜디오, 문라이터스 레드 블렌드</span>
                             </div>
@@ -127,7 +127,7 @@
                     <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="262" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="resources/image/맥라렌.png" width="60" height="60"></div>
+                            <div class="img"><img src="../resources/image/맥라렌.png" width="60" height="60"></div>
                             <div class="pname">
                                 <span>맥라렌 베일 잉크 쉬라즈</span>
                             </div>
