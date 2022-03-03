@@ -22,7 +22,7 @@
 
 <section class="mypage">
 
-    <h2 class="title-mypage">MyPage3333</h2>
+    <h2 class="title-mypage">MyPage</h2>
 
     <div class="my-tab">
         <ul class="list-nav">
