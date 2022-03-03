@@ -13,4 +13,6 @@ public interface ShopMapper {
 	List<Shop> findAll(@Param("shCate") String shCate, @Param("shRegionD1") String shRegionD1, @Param("shKeyword") String shKeyword);
 
 	int insertShop(Shop shop);
+
+	Shop selectShopByNo(@Param("no") int no);
 }

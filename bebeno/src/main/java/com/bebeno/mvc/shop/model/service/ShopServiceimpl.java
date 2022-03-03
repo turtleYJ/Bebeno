@@ -32,4 +32,10 @@ public class ShopServiceimpl implements ShopService {
 		return result;
 	}
 
+	@Override
+	public Shop findShopByNo(int no) {
+		
+		return mapper.selectShopByNo(no);
+	}
+
 }

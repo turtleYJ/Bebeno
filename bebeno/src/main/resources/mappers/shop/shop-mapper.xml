@@ -59,6 +59,11 @@
 		ORDER BY STORE_NO DESC
 	</select>
 	
+	<select id="selectShopByNo" parameterType="_int" resultMap="shopListResultMap">
+		<include refid="shopListSql"/>
+		AND STORE_NO = #{no}
+	</select>
+	
 	<insert id="insertShop" parameterType="Shop"
 			useGeneratedKeys="true" keyProperty="no" keyColumn="STORE_NO">
 		INSERT INTO BBN_STORE (

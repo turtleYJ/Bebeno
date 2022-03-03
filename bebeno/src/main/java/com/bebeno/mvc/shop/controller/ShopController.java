@@ -49,9 +49,17 @@ public class ShopController {
 	}
 	
 	@GetMapping("/view")
-	public String view() {
+	public ModelAndView view(ModelAndView model, @RequestParam("no") int no) {	
+
+		Shop shop = service.findShopByNo(no);
 		
-		return "shop/view";
+		model.addObject("shop", shop);
+		model.setViewName("shop/view");
+		
+		System.out.println(shop);
+		System.out.println(shop.getContent());
+		
+		return model;
 	}
 	
 	@PostMapping("/registration") 
@@ -72,6 +80,7 @@ public class ShopController {
 		if(upfileFront != null && !upfileFront.isEmpty()) {
 			// 파일을 저장하는 로직 작성
 			String location = null;
+			String location2 = null;
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/shop");
 

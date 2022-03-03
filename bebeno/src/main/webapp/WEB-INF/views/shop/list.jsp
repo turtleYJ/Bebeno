@@ -110,18 +110,31 @@
 			          					<div class="form-group col-sm-6">
 											<label>대문 파일 업로드</label>
     										<input type="file" name="upfileFront">   
-    										<p class="help-block">가게 로고 사진파일을 첨부하세요</p>       								
+    										<p class="help-block">가게 전경 사진파일을 첨부하세요</p>       								
    										</div>
 			          					<div class="form-group col-sm-6">
 											<label>사진 업로드</label>
-    										<input type="file" name="upfileContent">          								
+    										<input type="file" name="upfileContent1">          								
+    										<input type="file" name="upfileContent2">          								
+    										<input type="file" name="upfileContent3">          								
     										<p class="help-block">가게 전경 사진파일을 첨부하세요</p>       								
    										</div>
         							</div>
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
-	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
+	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;">
+[소개글]
+
+
+[이메일]
+
+[영업일시]
+
+[주소]
+
+[오시는 길]
+	          								</textarea>
 										</div>
       							    </div>
 									<div class="modal-footer">
@@ -179,7 +192,7 @@
 				<c:forEach var="store" items="${ shopList }" begin="0" end="10">
 					<li>
 						<div class="img-thumb">
-							<a href="#">
+							<a href="${ path }/shop/view?no=${ store.no }">
 								<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
 							</a>
 						</div>

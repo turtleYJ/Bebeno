@@ -10,4 +10,6 @@ public interface ShopService {
 
 	int save(Shop shop);
 
+	Shop findShopByNo(int no);
+
 }
