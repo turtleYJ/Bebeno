@@ -33,7 +33,7 @@
                     <ul id="menubar">
                         <li id="inlinemenu"><a href="">ABOUT</a></li>
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
-                        <li id="inlinemenu"><a href="">WINE SHOP</a></li>
+                        <li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
                         <li id="inlinemenu"><a href="">COMMUNITY</a></li>
                         <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
                     </ul>
