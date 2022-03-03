@@ -15,6 +15,9 @@
 		        STORE_TYPE, 
 		        STORE_IMGURL,
 		        STORE_STATUS,
+		        STORE_CONTENT,
+		        ORIGINAL_FILENAME,
+				RENAMED_FILENAME,
 		        ENROLL_DATE,
 		        MODIFY_DATE
 		FROM BBN_STORE
@@ -26,17 +29,75 @@
 		<result property="writerNo" column="STORE_WRITERNO"/>
 		<result property="korBname" column="STORE_KORNAME"/>
 		<result property="engBname" column="STORE_ENGNAME"/>
-		<result property="adrress" column="STORE_ADDRESS"/>
+		<result property="address" column="STORE_ADDRESS"/>
 		<result property="phone" column="STORE_PHONE"/>
 		<result property="bnsHour" column="STORE_TIME"/>
 		<result property="type" column="STORE_TYPE"/>
 		<result property="imgUrl" column="STORE_IMGURL"/>
 		<result property="status" column="STORE_STATUS"/>
+		<result property="content" column="STORE_CONTENT"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
 	
 	<select id="findAll" parameterType="map" resultMap="shopListResultMap">
 		<include refid="shopListSql"/>	
+		<choose>
+			<when test="shCate != null">
+				AND STORE_TYPE = #{shCate}
+			</when>
+			<when test="shRegionD1 != null">
+				AND STORE_ADDRESS LIKE '%' || #{shRegionD1} || '%'
+			</when>
+			<when test="shKeyword != null">
+				AND STORE_KORNAME LIKE '%' || #{shKeyword} || '%'
+				OR STORE_ENGNAME LIKE '%' || #{shKeyword} || '%'
+			</when>
+		</choose>
+		ORDER BY STORE_NO DESC
 	</select>
+	
+	<select id="selectShopByNo" parameterType="_int" resultMap="shopListResultMap">
+		<include refid="shopListSql"/>
+		AND STORE_NO = #{no}
+	</select>
+	
+	<insert id="insertShop" parameterType="Shop"
+			useGeneratedKeys="true" keyProperty="no" keyColumn="STORE_NO">
+		INSERT INTO BBN_STORE (
+			STORE_NO,
+			STORE_WRITERNO,
+			STORE_KORNAME,
+			STORE_ENGNAME,
+			STORE_ADDRESS,
+			STORE_PHONE,
+			STORE_TIME,
+			STORE_TYPE,
+			STORE_IMGURL,
+			STORE_STATUS,
+			STORE_CONTENT,
+			ORIGINAL_FILENAME,
+			RENAMED_FILENAME,
+			ENROLL_DATE,
+			MODIFY_DATE
+		) VALUES (
+			SEQ_STORE_NO.NEXTVAL,
+			#{writerNo},
+			#{korBname},
+			#{engBname},
+			#{address},
+			#{phone},
+			#{bnsHour},
+			#{type},
+			#{imgUrl},
+			DEFAULT,
+			#{content},
+			#{originalFileName},
+			#{renamedFileName},
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
 </mapper>

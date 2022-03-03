@@ -33,10 +33,12 @@ public class ShopController {
 	private ResourceLoader resourceLoader;
 	
 	@GetMapping("/list")
-	public ModelAndView list(ModelAndView model) {
+	public ModelAndView list(ModelAndView model, String shCate, String shRegionD1, String shKeyword) {
 		List<Shop> shopList = null;
 		
-		shopList = service.getShopList();
+		System.out.println(shCate + " " + shRegionD1 + " " + shKeyword);
+		
+		shopList = service.getShopList(shCate, shRegionD1, shKeyword);
 		
 		System.out.println(shopList);
 		
@@ -47,47 +49,50 @@ public class ShopController {
 	}
 	
 	@GetMapping("/view")
-	public String view() {
+	public ModelAndView view(ModelAndView model, @RequestParam("no") int no) {	
+
+		Shop shop = service.findShopByNo(no);
 		
-		return "shop/view";
-	}
-	
-	@GetMapping("/address")
-	public String address() {
+		model.addObject("shop", shop);
+		model.setViewName("shop/view");
 		
-		return "shop/address";
+		System.out.println(shop);
+		System.out.println(shop.getContent());
+		
+		return model;
 	}
 	
 	@PostMapping("/registration") 
 	public ModelAndView registration(
 			ModelAndView model, 
 			@SessionAttribute(name = "loginMember") Member loginMember,
-			@ModelAttribute Shop shop, @RequestParam("upfile") MultipartFile upfile,  @RequestParam("KorBname") String KorBname, 
-			@RequestParam("EngBname") String EngBname, @RequestParam("address1") String address1, @RequestParam("address1") String address2,
-			@RequestParam("phone") String phone) {
+			@ModelAttribute Shop shop, @RequestParam("upfileFront") MultipartFile upfileFront,  @RequestParam("KorBname") String KorBname, 
+			@RequestParam("EngBname") String EngBname, @RequestParam("address1") String address1, @RequestParam("address2") String address2,
+			@RequestParam("phone") String phone, @RequestParam("Content") String Content) {
 		int result = 0;
 
 		// 파일을 업로드하지 않으면 "", 파일을 업로드하면 "파일명"
-		log.info("Upfile Name : {}", upfile.getOriginalFilename());
+		log.info("upfileFront Name : {}", upfileFront.getOriginalFilename());
 		// 파일을 업로드하지 않으면 true, 파일을 업로드하면 false 
-		log.info("Upfile is Empty : {}", upfile.isEmpty());
+		log.info("upfileFront is Empty : {}", upfileFront.isEmpty());
 		
 //		 1. 파일을 업로드 했는지 확인 후 파일을 저장
-		if(upfile != null && !upfile.isEmpty()) {
+		if(upfileFront != null && !upfileFront.isEmpty()) {
 			// 파일을 저장하는 로직 작성
 			String location = null;
+			String location2 = null;
 			String renamedFileName = null;
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/board");
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/shop");
 
 			try {
-				location = resourceLoader.getResource("resources/upload/board").getFile().getPath();
-				renamedFileName = FileProcess.save(upfile, location);
+				location = resourceLoader.getResource("resources/upload/shop").getFile().getPath();
+				renamedFileName = FileProcess.save(upfileFront, location);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
 			if(renamedFileName != null) {
-				shop.setOriginalFileName(upfile.getOriginalFilename());
+				shop.setOriginalFileName(upfileFront.getOriginalFilename());
 				shop.setRenamedFileName(renamedFileName);
 			}
 		}
@@ -96,14 +101,17 @@ public class ShopController {
 		shop.setWriterNo(loginMember.getNo());
 		shop.setKorBname(KorBname);
 		shop.setEngBname(EngBname);
-		shop.setAdrress(address1 + " " + address2);
-		shop.setPhone(phone);
+		shop.setAddress(address1 + " " + address2);
+		shop.setPhone(phone);	
+		shop.setContent(Content);
+		
+		System.out.println(shop);
 		
 		result = service.save(shop);
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 등록되었습니다.");
-			model.addObject("location", "/board/view?no=" + shop.getNo());
+			model.addObject("location", "/shop/list");
 		} else {
 			model.addObject("msg", "게시글 등록을 실패하였습니다.");
 			model.addObject("location", "/shop/list");

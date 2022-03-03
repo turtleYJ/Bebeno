@@ -10,39 +10,42 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WineBoard {
-	private int wineCode;
+	private int wineBno; // 게시글 번호 
 
-	private int writerNo;
+	private int wineCode; // 와인코드
 	
-	private String wineName;
-	
-	private String wineEng;
+	private String wineName; // 와인명 
 
-	private String writerId;
+	private String wineEng; // 영문명 
+ 
+	private String wineType; // 와인종류
 	
-	private String wineType;
+	private String wineMf; // 제조국 
 	
-	private String wineMf;
+	private String wineNational; // 지역 
 	
-	private String wineNational;
-	
-	private String wineSl;
+	private String wineSl; // 당도 
 
-	private String wineAc;
+	private String wineAc; // 산도
 	
-	private String wineBody;
+	private String wineBody; //바디
 	
-	private String wineTn;
+	private String wineTn; //타닌 
 	
-	private String wineInfo;
+	private String wineInfo; // 상세정보 
 	
-	private String originalFileName;
+	private String originalFileName; // 첨부파일원본명 
 	
-	private String renamedFileName;
+	private String renamedFileName; // 첨부파일변경명
 	
-	private int readCount;
+	private int readCount; // 조회수 
 	
-	private String status;
+	private String status; // 상태값 
 	
-	private Date createDate;
+	private Date createDate; // 게시물 작성일자 
+	
+	private Date modifyDate; // 게시물 수정일자 
+	
+	private String winePrice; // 와인가격 
+	
 }

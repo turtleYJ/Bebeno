@@ -1,4 +1,4 @@
-package com.kh.bebeno.common.util;
+package com.bebeno.mvc.common.util;
 
 import lombok.Getter;
 
@@ -122,4 +122,7 @@ public class PageInfo {
 		
 		return endList > this.listCount ? this.listCount : endList;
 	}
+
 }
+
+

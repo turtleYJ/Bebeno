@@ -18,103 +18,14 @@
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
-
 </head>
 <body>
-<script type="text/javascript">
-
-	var sendData = {};
-	sendData.rIdx = '';
-	sendData.rPage = '1';
-	sendData.rPageSize = '10';
-	sendData.shKeyword = '';
-	sendData.shCate = '';
-	sendData.shOrder = 'a.CREATE_DATE|DESC';
-
-	function getDataList(){
-
-		$.ajax({
-			type	: "POST", dataType:"json", async:"true", cache:"false", contentType:"application/x-www-form-urlencoded;charset=UTF-8",
-			url		: "/13_search/proc/proc_wine_list_more.php",
-			data	:  sendData,
-			beforeSend: function (jqXHR) { },                           // 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
-			success: function (jqXHR) {
-
-				// console.log(jqXHR);
-
-				if (jqXHR.status === 'OK'){
-					// 총숫자 표시
-					$('.cate-tit-total').html('(' + jqXHR.totalCnt + ')');
-
-					if (jqXHR.listData.length !== 0){
-						var html_div = '';
-						$.each($(jqXHR.listData),function(key,value){
-							html_div = "<li> \
-											<div class='thumb'> \
-												<a href='#'><img src='https://wine21.speedgabia.com" + value.strIMAGE_PATH + "' alt='" + value.strWINE_KNAME + "'></a> \
-											</div> \
-											<div class='txt-area'> \
-												<div class='cnt-header'> \
-													<p class='winery'><a href='#'>" + value.strWINERY_KNAME + " &nbsp; " + value.strWINERY_ENAME + "</a></p> \
-													<h3> \
-														<a href='#' class='btnView'> \
-															" + value.strWINE_KNAME + " \
-															<p class='wine-name-en'>" + value.strWINE_ENAME + "</p> \
-														</a> \
-													</h3> \
-												</div> \
-												<div class='write-info wine-info wine-info-01'> \
-													<span class='country'>" + value.strNATION_DISPLAY + "</span> \
-													<span class='nation'>" + value.strAREA_KNAME + "</span> \
-												</div> \
-												<div class='write-info wine-info wine-info-02'> \
-													<em class='board-badge badge-" + value.strWINE_TYPE_CSS + "'>" + value.strWINE_TYPE_NAME + "</em> \
-													<span class='price'><em>&#8361;</em> " + value.strPRICE + " (" + value.dCAPACITY + "ml)</span> \
-													<span class='score-num'>95점</span> \
-													<span class='score-star'><span class='star-rating'><em style='width:20%'></em></span>3.8</span> \
-												</div> \
-											</div> \
-										</li>";
-
-							if (html_div !== '')
-								$('#wine_list').append(html_div);
-						});
-
-						$('#wine_list_no').hide();
-					}
-					else {
-						$('#wine_list_no').show();
-					}
-
-					if (jqXHR.moreFlag === 'false')
-						$('#wineListMoreBtn').hide();
-					else
-						$('#wineListMoreBtn').show();
-
-					// 더보기 버튼 활성화
-					$('#wineListMoreBtn').attr('disabled', false);
-				}
-			},
-			error: function (jqXHR) { },                                // 요청 실패.
-			complete: function (jqXHR) { }                              // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
-		});
-	}
-
-</script>
-	<form method='post' name='frmAllListView' id='frmAllListView'>
-		<input type='hidden' name='shCate' id='shCate' value=''>
-		<input type='hidden' name='shKeyword' id='shKeyword' value=''>
-		<input type='hidden' name='shOrder' id='shOrder' value='a.CREATE_DATE|DESC'>
-		<input type='hidden' name='Idx' id='Idx'>
-		<input type='hidden' name='rPage' id='rPage' value='1'>
-		<input type='hidden' name='rPageSize' id='rPageSize' value='10'>
-		<input type='hidden' name='rMainFilter' id='rMainFilter' value='eyJXSU5FX1RZUEUiOltdLCJXSU5FX05BVElPTiI6W10sIldJTkVfUFJJQ0UiOltdLCJXSU5FX0ZPT0QiOltdLCJXSU5FX1RBU1RFX1NXRUVUIjowLCJXSU5FX1RBU1RFX0FDSURJVFkiOjAsIldJTkVfVEFTVEVfQk9EWSI6MCwiV0lORV9UQVNURV9UQU5OSU4iOjB9'>
-		<input type='hidden' name='rListQuery' id='rListQuery' value=''>
-	</form>
-
+<form action="regist" method="get">
 	<!-- contents 시작 -->
 	<section class='sub-contents wrap-news clear'>
 		<div class='inner'>
@@ -126,6 +37,7 @@
 					</div><!--.page-top-sch -->
 					<div class="r-filter">
 						<button type="button" class="btn-rmenu" id="btnRfilter" aria-label="와인 검색필터"><i class="ir icon-filter"></i></button>
+						<a href="${path}/wineboard/wineWrite">글쓰기</a>
 					</div>
 				</div>
 				<div class='board-top'>
@@ -139,19 +51,44 @@
 						</select>
 					</div><!--.board-top-sch -->
 				</div><!--.board-top -->
-
 				<div class='board-list board-list-wine'><!-- 목록 10개 -->
-					<ul id='wine_list_no' style='display: none;'>
-						<li class='no-list'>해당 상품이 없습니다.</li>
-					</ul>
+				<c:forEach var="board" items="${list}">
 					<ul id='wine_list'>
-					</ul>
+					<li>
+					<div class="thumb">
+					<a>
+					<img src="${path}/resources/upload/wineimg/${board.renamedFileName}" width="180px" height="220px" > 
+					</a>
+					</div>
+					<div class="txt-area">
+					<div class="cnt-header">
+					<p class="winery">
+					<a> ${board.wineName} </a>
+					<h3>
+					<a href="${path}/wineboard/wineView?wineBno=${board.wineBno}" class="btnView">
+					<p class="wine-name-en">${board.wineEng}</p></a>
+					</h3>
+					</div>
+					<div class="write-info wine-info wine-info-01">
+						<span class="country"> ${board.wineMf}</span>
+						<span class="nation"> ${board.wineNational}</span>
+					</div>
+					<div class="write-info wine-info wine-info-02">
+						<em class=""> ${board.wineType} </em>
+						<span class="score-star">
+						<em style="width:0%"></em>
+						</span>
+					</div>
+					</div>
+					</li>
+					</ul>			
+				</c:forEach>
 				</div><!--.board-list -->
+				
 				<div class='pagination-box'><button id='wineListMoreBtn' class='button button-large button-white-gray' style="display:none;" onclick="searchWineMore();">더보기</button></div>
 			</div><!--.wrap-board-left -->
 
 			<div class='wrap-board-right wrap-menu-right'>
-					<!-- 필터 검색 > 마이페이지 > 나의셀러만 적용!!! -->
 					<div class="sch-wine-side sch-wine-side-top">
 						<span><i class='ir icon-filter'></i>필터</span>
 						<a href='javascript:ClearAll();'><i class='ir icon-reset'></i>전체초기화</a>
@@ -161,7 +98,6 @@
 							<button type="button" class="mob close">닫기</button>
 						</div>
 					</div>
-					<!-- 필터 검색 > 마이페이지 > 나의셀러만 적용 -->
 
 					<div class="wine-filter wine-filter-box">
 					<ul id="uiSelectedList">
@@ -173,6 +109,7 @@
 					<h3>종류</h3>
 					<ul class="box-view" id="filterListWineType">
 						<li>
+
 							<div class="winetype">
 								<input id="fwt-01" type="checkbox" value="W01004" onclick="onCheckFilter('WINE_TYPE', this, 'W01004', '레드');"><label for="fwt-01">레드</label>
 							</div>
@@ -453,11 +390,11 @@
 					<ul class="box-view box-view-style" id="filterAreaSearch" style="display:none;"></ul>
 				</div><!--.wine-filter-box -->
 			</div><!--.wrap-board-right -->
-
+			</div>
+			</section>
+			
+			
 			<!-- script -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
-			<link rel='stylesheet' href='/01_include/css/ion.rangeSlider.css' />
-			<script type='text/javascript' src='/01_include/js/ion.rangeSlider.min.js'></script>
 			<script type="text/javascript">
 				var m_searchOption = new Object();
 				m_searchOption.page = 1;
@@ -841,8 +778,8 @@
 				// Taste
 				function onClickTaste(ctrl, type, desc, val) {
 					// UI
-					$(ctrl).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */
-					$(ctrl).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+					$(ctrl).parent().children("a").removeClass("on");  
+					$(ctrl).addClass("on").prevAll("a").addClass("on"); 
 			
 					var elementID = 'TASTE' + type;
 					var ctrlElement = document.getElementById(elementID);
@@ -874,8 +811,7 @@
 					ctrlElement.parentNode.removeChild(ctrlElement);
 			
 					var ctrlInput = document.getElementById(inputCtrlParentID);
-					$(ctrlInput).children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */
-			
+					$(ctrlInput).children("a").removeClass("on"); 
 					// Data
 					if(type in m_dicFilterType) {
 						delete m_dicFilterType[type];
@@ -1043,12 +979,8 @@
 						skin: "round",
 						type: "double",
 						min: 0,
-						//max: 200000,
-						//from: 0,
-						//to: 140000,
 						prettify_separator: ",",
 						prettify_enabled: true,
-						//prefix: "₩",
 						step: 1000,
 						onStart: updateInputs,
 						onChange: updateInputs,
@@ -1677,6 +1609,7 @@
 					m_searchOption.pageSize = 10;
 				});
 			</script>
+			</form>
 		
 		    <!-- scripts  -->
 		    <script src="${ path }/js/jquery.min.js"></script>

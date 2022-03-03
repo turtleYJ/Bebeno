@@ -27,7 +27,7 @@ public class Member {
 	
 	private String address;
 	
-	private String hobby;
+	private String birth;
 	
 	private String status;
 	

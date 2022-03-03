@@ -14,7 +14,7 @@
 		       PHONE, 
 		       EMAIL, 
 		       ADDRESS, 
-		       HOBBY, 
+		       BIRTH, 
 		       STATUS, 
 		       ENROLL_DATE,
 		       MODIFY_DATE
@@ -30,7 +30,7 @@
 		<result property="phone" column="PHONE"/>
 		<result property="email" column="EMAIL"/>
 		<result property="address" column="ADDRESS"/>
-		<result property="hobby" column="HOBBY"/>
+		<result property="birth" column="BIRTH"/>
 		<result property="status" column="STATUS"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
@@ -61,7 +61,7 @@
 	       	PHONE, 
        		EMAIL, 
 	       	ADDRESS, 
-	       	HOBBY, 
+	       	BIRTH, 
 	       	STATUS, 
 	       	ENROLL_DATE,
 	       	MODIFY_DATE
@@ -74,7 +74,7 @@
 			#{phone},
 			#{email},
 			#{address},
-			#{hobby},
+			#{birth},
 			DEFAULT,
 			DEFAULT,
 			DEFAULT
@@ -88,7 +88,7 @@
 			PHONE = #{phone},
 			EMAIL = #{email},
 			ADDRESS = #{address},
-			HOBBY = #{hobby},
+			BIRTH = #{birth},
 			MODIFY_DATE = SYSDATE 
 		WHERE NO = #{no}
 	</update>

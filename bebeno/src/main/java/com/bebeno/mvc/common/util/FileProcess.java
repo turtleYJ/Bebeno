@@ -1,4 +1,4 @@
-package com.kh.bebeno.common.util;
+package com.bebeno.mvc.common.util;
 
 import java.io.File;
 import java.io.IOException;

@@ -216,6 +216,14 @@ a {
     border-radius: 2px 2px 2px 2px;
 }
 
+#directBox2 {
+    border-width: 1px;
+    padding: 10px;
+    width: 400px;
+    margin-left: 10px;
+    border-radius: 2px 2px 2px 2px;
+}
+
 .board_view .info dl dd {
     margin-left: 10px;
     color: #777;

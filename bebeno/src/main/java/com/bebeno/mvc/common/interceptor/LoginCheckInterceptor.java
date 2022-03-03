@@ -1,4 +1,4 @@
-package com.kh.bebeno.common.interceptor;
+package com.bebeno.mvc.common.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.kh.mvc.member.model.vo.Member;
+import com.bebeno.mvc.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-    <form action="${ pageContext.request.contextPath }/wineboard/wineWrite" enctype="multipart/form-data" method="post">
+    <form action="${ pageContext.request.contextPath }/wineboard/wineWrite" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
             <div class="board_title">
                 <strong>상품 등록</strong>
@@ -28,90 +28,96 @@
                 <div class="board_write">
                     <div class="title">
                         <dl>
+                            <dt>게시글번호</dt>
+                            <dd><input type="text" name="wineBno"></dd>
+                        </dl>
+                    </div>
+                    <div class="title">
+                        <dl>
                             <dt>와인코드</dt>
-                            <dd><input type="text"></dd>
+                            <dd><input type="text" name="wineCode"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>와인명</dt>
-                            <dd><input type="text"></dd>
+                            <dd><input type="text" name="wineName"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>영문명</dt>
-                            <dd><input type="text"></dd>
+                            <dd><input type="text" name="wineEng"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>종류</dt>
-                            <select id="selbox" name="selbox" style="width: 150px; height: 35px;">
+                            <select id="selbox" name="wineType" style="width: 150px; height: 35px;">
                                 <option value="" selected>종류 선택</option>
-                                <option value="Red">레드</option>
-                                <option value="White">화이트</option>
-                                <option value="Rose">로제</option>
-                                <option value="Natural">네추럴</option>
-                                <option value="Sparkling">스파클링</option>
-                                <option value="etc">기타</option><input type="text" id="directBox" name="directBox" />
+                                <option value="레드">레드</option>
+                                <option value="화이트">화이트</option>
+                                <option value="로제">로제</option>
+                                <option value="네추럴">네추럴</option>
+                                <option value="스파클링">스파클링</option>
+                                <option value="1">기타</option><input type="text" id="directBox" name="directBox" />
                             </select>
                         </dl>
-                        
                     </div>
                     <div class="title">
                         <dl>
                             
                             <dt>제조국</dt>
-                            <select id="selbox1" name="selbox1" style="width: 150px; height: 35px;">
+                            <select id="selbox1" name="wineNational" style="width: 150px; height: 35px;">
                                 <option value="" selected>제조국 선택</option>
-                                <option value="France">프랑스</option>
-                                <option value="Italia">이탈리아</option>
-                                <option value="Spain">스페인</option>
-                                <option value="Portuga">포르투칼</option>
-                                <option value="American">미국</option>
-                                <option value="NewZealand">뉴질랜드</option>
-                                <option value="Australie">호주</option>
-                                <option value="Chile">칠레</option>
-                                <option value="Argentina">아르헨티나</option>
-                                <option value="SouthAfrica">남아프리카 공화국</option>
-                                <option value="otherCountries">기타 국가</option><input type="text" id="directBox1" name="directBox1" />
+                                <option value="프랑스">프랑스</option>
+                                <option value="이탈리아">이탈리아</option>
+                                <option value="스페인">스페인</option>
+                                <option value="포르투칼">포르투칼</option>
+                                <option value="미국">미국</option>
+                                <option value="뉴질랜드">뉴질랜드</option>
+                                <option value="호주">호주</option>
+                                <option value="칠레">칠레</option>
+                                <option value="아르헨티나">아르헨티나</option>
+                                <option value="남아프리카 공화국">남아프리카 공화국</option>
+                                <option value="1">기타 국가</option><input type="text" id="directBox1" name="directBox1" />
                             </select>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>지역</dt>
-                            <select id="selbox2" name="selbox2" style="width: 150px; height: 35px;">
+                            <select id="selbox2" name="wineMf" style="width: 150px; height: 35px;">
                                 <option value="" selected>지역 선택</option>
-                                <option value="France">보르도</option>
-                                <option value="Italia">부르고뉴</option>
-                                <option value="Spain">상파뉴</option>
-                                <option value="Portuga">론</option>
-                                <option value="American">피에몬테</option>
-                                <option value="NewZealand">토스카나</option>
-                                <option value="Australie">나파밸리</option>
-                                <option value="Chile">리오하</option>
-                                <option value="Argentina">바로사 밸리</option>
+                                <option value="보르도">보르도</option>
+                                <option value="부르고뉴">부르고뉴</option>
+                                <option value="상파뉴">상파뉴</option>
+                                <option value="론">론</option>
+                                <option value="피에몬테">피에몬테</option>
+                                <option value="토스카나">토스카나</option>
+                                <option value="나파밸리">나파밸리</option>
+                                <option value="리오하">리오하</option>
+                                <option value="바로사 밸리">바로사 밸리</option>
+                                <option value="1">기타 지역</option><input type="text" id="directBox2" name="directBox2" />
                             </select>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <di>
                             <dt>상품 이미지</dt>
-                            <dd><input type="file"></dd>
+                            <dd><input type="file" name="upfile"></dd>
                         </di>
                     </div>
                     <div class="info">
                         <dl>
                             <dt>당도</dt>
-                            <select name="">
+                            <select name="wineSl">
                                 <option value="" selected>당도 선택</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -123,7 +129,7 @@
                         </dl>
                         <dl>
                             <dt>산도</dt>
-                            <select name="">
+                            <select name="wineAc">
                                 <option value="" selected>산도 선택</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -134,7 +140,7 @@
                         </dl>
                         <dl>
                             <dt>바디</dt>
-                            <select name="">
+                            <select name="wineBody">
                                 <option value="" selected>바디 선택</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -145,7 +151,7 @@
                         </dl>
                         <dl>
                             <dt>타닌</dt>
-                            <select name="">
+                            <select name="wineTn">
                                 <option value="" selected>타닌 선택</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -155,19 +161,24 @@
                             </select>
                         </dl>
                     </div>
-                    <div class="cont">
-                        <textarea placeholder="와인 상세 정보"></textarea>
+                    <div class="cont" name="wineInfo">
+              <!--           <textarea id="wineinfo" placeholder="와인 상세 정보"></textarea> -->
+              			<input type="text" id="wineinfo" style="width:1250px; height:200px;" >
+              	
                     </div>
                 </div>
                 <div class="bt_wrap">
-                    <a href="view.html" class="on">등록</a>
-                    <a href="list.html">취소</a>
+                    <a href="${path}/wineboard/wineView" class="on" id="register">등록</a>
+                    <a href="${path}/wineboard/wineList">취소</a>
+    
                 </div>
             </div>
         </div>  
     </form>
         <!-- js영역 -->
-        
+        <script>
+         $("#re")
+        </script>
     <script src="${ path }/js/jquery.min.js"></script>
 	<script src="${ path }/js/browser.min.js"></script>
 	<script src="${ path }/js/breakpoints.min.js"></script>

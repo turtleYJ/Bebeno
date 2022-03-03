@@ -16,7 +16,7 @@ public class Shop {
 	
 	private String engBname;
 	
-	private String adrress;
+	private String address;
 	
 	private String phone;
 	
