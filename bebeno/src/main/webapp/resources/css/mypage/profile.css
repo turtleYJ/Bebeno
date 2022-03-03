@@ -1,0 +1,158 @@
+/* 
+.hidden{
+    display: none;
+} 
+*/
+
+
+.title-mypage {
+    margin-bottom: 40px;
+    font-size: 34px;
+    font-weight: 500;
+    color: #262626;
+    text-align: center;
+}
+
+.my-tab{
+    text-align: center;
+    background-color: #f4f4f4;
+    /* border: 1px blue solid; */
+}
+.list-nav{
+    list-style: none;
+}
+.list-nav>li{
+    display: inline-block;
+    font-size: 16px;
+    /* border: 1px blue solid; */
+}
+/* a + b : a 선택자 뒤에 있는 b 요소 한 개 선택 */
+.my-tab li + li {
+    margin-left: 40px;
+}
+.my-tab li a {
+    display: block;
+    padding: 10px 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.inner-list {
+    position: relative;
+    line-height: 1.6;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px;
+    /* border: 1px red solid; */
+}
+
+.wrap-board-wide {
+    padding: 40px 0 0;
+}
+
+.inner-list-nav {
+    margin-bottom: 25px;
+    text-align: center;
+    list-style: none;
+}
+.inner-list-nav li {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+}
+.inner-list-nav li a {
+    display: block;
+    color: #404040;
+    margin: 0 10px;
+    padding: 3px 15px;
+    text-decoration: none;
+    border-radius: 99px;
+}
+
+.mypage-input-box {
+    max-width: 780px;
+    margin: auto;
+    padding: 60px 60px 60px 61px;
+    border-radius: 10px;
+    box-shadow: 2.4px 6.6px 10px 0 rgb(0 0 0 / 10%);
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+.update-profile {
+    position: relative;
+    margin: auto;
+    width: 120px;
+    height: 120px;
+}
+.update-profile img {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+    vertical-align: middle;
+    max-width: 100%;
+}
+.profile-button {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    width: 38px;
+    height: 38px;
+    box-shadow: 0.3px 0.9px 5px 0 rgb(0 0 0 / 20%);
+    background: #fff url(../resources/image/profile_camera.png) 50% / 60% no-repeat;
+    /* 
+        text-indent 
+            들여쓰기, 내어쓰기에 사용하는 속성
+            값이 양수이면 들여쓰기, 값이 음수이면 내어쓰기
+            내어쓰기를 할 때는 왼쪽에 여백을 적절히 줍니다.
+    */
+    text-indent: -9999em;
+    border-radius: 50%;
+}
+.update-etc {
+    margin: 20px 0;
+    /* border: 1px orchid solid; */
+}
+.update-etc table {
+    width: 100%;
+    border-collapse:collapse;
+    border: 1px orchid solid;
+}
+
+.update-etc th {
+    width: 20%;
+    padding: 8px 5px 8px 0;
+    /* font-weight: 500; */
+    /* border: 1px orchid solid; */
+}
+
+.update-etc span {
+    border: 1px orchid solid;
+}
+
+.update-etc td {
+    padding: 8px 20px 8px 40px;
+    margin: 20px 0;
+    height: 48px;
+    line-height: 48px;
+}
+
+
+
+.save-update-button {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+}
+.save-update-button button {
+    width: 240px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #fff;
+    background: #c70039;
+    border: 0;
+    border-radius: 4px;
+}
