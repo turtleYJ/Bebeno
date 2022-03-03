@@ -19,7 +19,7 @@
    
    <!-- 
       p:configLocation="classpath:mybatis-config.xml"
-      p:configuration-ref=""
+      p:configuration-ref="mybatisConfig"
    -->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
       p:configuration-ref="mybatisConfig"
@@ -35,7 +35,6 @@
    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
       p:basePackage="com.bebeno.mvc.*.model.dao"
    />
-   
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
        p:dataSource-ref="dataSource"/>

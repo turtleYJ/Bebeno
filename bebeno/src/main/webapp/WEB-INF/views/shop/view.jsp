@@ -4,15 +4,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<% 
+	pageContext.setAttribute("br", "<br/>");
+	pageContext.setAttribute("cn", "\n"); 
+%>
+
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/shop_view.css">
+<title>Bebeno_shop_view</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link>
 </head>
 <body>
 	<div class="wrap-board container">
@@ -20,42 +26,38 @@
             <div class="detail-header">
                 <div class="tit-area">
                     <p><em class="board-badge badge-red-line">와인샵 &amp; 아울렛 </em></p>
-                    <h1>꺄브 일산  <span class="name-en"></span></h1>
+                    <h1>${ shop.korBname }  <span class="name-en"></span></h1>
                 </div><!-- .tit-area -->
             </div><!-- .detail-header -->
 
             <div class="detail-area dictionary">
                 <div class="detail-event-place">
                     <table width="100%">
-                                                    <tbody><tr>
-                            <th>주소</th>
-                            <td><a href="javascript:funMapOpen('꺄브 일산', '경기 고양시 일산동구 장항로 165 (장항동) ');" class="link">경기 고양시 일산동구 장항로 165 (장항동)<br></a></td>
-                            <td rowspan="2" class="text-center">
-                                <img src="https://wine21.speedgabia.com/COMPANY_MST/LOGO/0035582.jpg" alt="" class="img-clogo">
-                            </td>
-                        </tr>
-                                                    <tr>
-                            <th>전화번호</th>
-                            <td>031-908-9632</td>
-                        </tr>
-                                                </tbody></table>
+                    	<tbody>
+	                        <tr>
+	                            <th>주소</th>
+	                            <td><a href="javascript:funMapOpen('${ shop.korBname }', '${ shop.address } ');" class="link">${ shop.address }<br></a></td>
+	                            <td rowspan="2" class="text-center">
+	                                <img src="https://wine21.speedgabia.com/COMPANY_MST/LOGO/0035582.jpg" alt="" class="img-clogo">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <th>전화번호</th>
+	                            <td>${ shop.phone }</td>
+	                        </tr>
+	                       	<!-- 홈페이지 관련 코드 추가할 것 -->               
+                        </tbody>
+               		</table>
                 </div><!-- .detail-event-place -->
                 <div class="detail-txt">
                     <!-- 에디터 영역 -->
                     <p>
                         
                     </p>
-                    <p>세심한 와인정보와 착한 가격의 환상적인 콜라보!</p>
+                    <p>${ fn:replace(shop.content, cn, br)}</p>
 
                     <p><br></p>
                         
-                    <p>와인 수입사가 직접 운영하며 아주 합리적인 가격으로 좋은 품질의 와인을 판매하는 일산 와인의 메카!</p>
-                    <p><br></p>
-                    <p>프랑스 보르도 1등급 와인을 비롯해 &nbsp;유기농 와인, 가성비 와인등 다양하게 구비되어 있으며 매주 다른 컨셉의 와인을 추천, 꺄브만의 특별가로 구매하실 수 있습니다.</p>
-                    <p><br></p>
-                    <p>와인뿐 아니라 담기는 용기까지 환경을 생각해 준비하는 꺄브! 정직하고 건강한 와인들을 만나보세요!</p>
-                    <p><br></p>
-
                     <p><img class="shop_detailImg" src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135124866844.jpg"></p>
 
                     <p><img class="shop_detailImg" src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135136385899.jpg"></p>
@@ -127,5 +129,12 @@
         </div><!--.board-related-list -->
 
     </div>
+    <script type="text/javascript">
+		// Naver Map
+	funMapOpen = function(Tit, Addr) {
+		var PageUrl = "https://www.wine21.com/01_include/function/Lib_NaverMap.php?Title="+ encodeURIComponent(Tit) +"&Address="+ encodeURIComponent(Addr);
+		window.open(PageUrl, "_blank", "width=1000, height=600");
+	}
+    </script>
 </body>
 </html>

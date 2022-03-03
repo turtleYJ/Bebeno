@@ -19,8 +19,8 @@
 	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
-<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
 
 </head>
 <body>

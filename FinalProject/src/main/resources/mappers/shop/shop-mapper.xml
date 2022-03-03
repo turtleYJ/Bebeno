@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.bebeno.shop.model.dao.ShopMapper">
+	<sql id="shopListSql">
+		SELECT  STORE_NO, 
+		        STORE_KORNAME,
+		        STORE_ENGNAME, 
+		        STORE_ADDRESS, 
+		        STORE_PHONE, 
+		        STORE_TIME, 
+		        STORE_TYPE, 
+		        STORE_IMGURL,
+		        STORE_STATUS,
+		        ENROLL_DATE, 
+		        MODIFY_DATE
+		FROM BBN_STORE
+		WHERE STORE_STATUS = 'Y' 
+	</sql>
+	
+	<resultMap type="Shop" id="shopListResultMap">
+		<id property="no" column="STORE_NO"/>
+		<result property="name" column="STORE_NAME"/>
+		<result property="adrress" column="STORE_ADDRESS"/>
+		<result property="phone" column="STORE_PHONE"/>
+		<result property="bnsHour" column="STORE_TIME"/>
+		<result property="type" column="STORE_TYPE"/>
+		<result property="imgUrl" column="STORE_IMGURL"/>
+		<result property="status" column="STORE_STATUS"/>
+		<result property="enrollDate" column="ENROLL_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+	</resultMap>
+	
+	<select id="findAll" parameterType="map" resultMap="shopListResultMap">
+		<include refid="shopListSql"/>	
+	</select>
+</mapper>

@@ -14,14 +14,28 @@ public class ShopServiceimpl implements ShopService {
 	private ShopMapper mapper;
 	
 	@Override
-	public List<Shop> getShopList() {
+	public List<Shop> getShopList(String shCate, String shRegionD1, String shKeyword) {
 				
-		return mapper.findAll();
+		return mapper.findAll(shCate, shRegionD1, shKeyword);
 	}
 
 	@Override
 	public int save(Shop shop) {
-		return 0;
+		int result = 0;
+		
+		if(shop.getNo() != 0) {
+//			result = mapper.updateBoard(shop);
+		} else {
+			result = mapper.insertShop(shop);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public Shop findShopByNo(int no) {
+		
+		return mapper.selectShopByNo(no);
 	}
 
 }
