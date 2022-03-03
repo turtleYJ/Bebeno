@@ -55,7 +55,7 @@
                     <li><a href="">HOME</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    <li><a href="${ path }/mypage/profile">MYPAGE</a></li>
                     <li><a href=""></a></li>
                 </ul>
             </nav>

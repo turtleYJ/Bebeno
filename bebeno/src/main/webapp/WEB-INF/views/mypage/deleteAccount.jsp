@@ -41,13 +41,13 @@
             <div class="wrab-board-wide">
                 <ul class="inner-list-nav">
                     <li>
-                        <a href="">프로필</a>
+                        <a href="${ path }/mypage/profile">프로필</a>
                     </li>
                     <li>
-                        <a href="">비밀번호 재설정</a>
+                        <a href="${ path }/mypage/updatePwd">비밀번호 재설정</a>
                     </li>
                     <li>
-                        <a href="">탈퇴</a>
+                        <a href="${ path }/mypage/deleteAccount">탈퇴</a>
                     </li>
                 </ul>
             </div>
