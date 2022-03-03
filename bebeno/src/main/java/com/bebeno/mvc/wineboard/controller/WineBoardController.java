@@ -47,9 +47,9 @@ public class WineBoardController {
 	
 
 	@GetMapping("wineView")
-	public ModelAndView wineview(ModelAndView model, @RequestParam(value = "winebno", required = false) Integer winebno) {
+	public ModelAndView wineview(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
 		
-		WineBoard wineboard = wineboardservice.findBoardByNo(winebno);
+		WineBoard wineboard = wineboardservice.findBoardByNo(wineBno);
 		
 		model.addObject("wineboard", wineboard);
 		model.setViewName("wineboard/wineView");
@@ -98,10 +98,11 @@ public class WineBoardController {
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 등록되었습니다.");
-			model.addObject("location", "/wineBoard/wineList?wine_bno=" + wineboard.getWineBno());
+			model.addObject("location", "/wineboard/wineList?wineBno=" + wineboard.getWineBno());
+			
 		}else {
 			model.addObject("msg", "게시글 등록을 실패하였습니다.");
-			model.addObject("location", "/wineBoard/wineList");
+			model.addObject("location", "/wineboard/wineList");
 		}
 		model.setViewName("/common/msg");
 		

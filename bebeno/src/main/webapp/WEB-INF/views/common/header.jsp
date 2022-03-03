@@ -17,7 +17,6 @@
     <title>header</title>
 </head>
 <style>
-	@import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 </style>
 <body class="preload">

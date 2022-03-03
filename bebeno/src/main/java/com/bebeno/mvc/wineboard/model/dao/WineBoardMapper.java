@@ -18,12 +18,8 @@ public interface WineBoardMapper {
 	// 게시글 작성
 	int insertWineBoard(WineBoard wineboard);
 
-
-//	WineBoard selectWineBoardByNo(@Param("winebno") int winebno);
-
-
 	// 게시물 상세조회 
-	WineBoard selectWineBoardByNo(@Param("winebno") Integer winebno);
+	WineBoard selectWineBoardByNo(@Param("wineBno") Integer wineBno);
 	
 	
 	
