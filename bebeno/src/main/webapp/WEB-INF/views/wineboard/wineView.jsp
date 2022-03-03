@@ -28,40 +28,33 @@
 <section class="sub-contents wrap-wine-view clear">
     <div class="inner">
         <div class="btn_list">
-            <a href="" class="button btn_list_small">목록</a>
+            <a href="${path}/wineboard/wineList" class="button btn_list_small">목록</a>
         </div>
         <div class="clear">
             <div class="wine-top-left">
                 <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper" >
-                        <div class='swiper-slide'><img src="image/W0150630.jpeg"  alt=""/></div>
-                        <div class="wine_code">CODE <strong>${ wineboard.wineCode }</strong></div><div class='swiper-slide'><img src="image/W0150630.jpeg" alt=""></div>
+						<c:if test="${ !empty wineboard.renamedFileName }">
+                        <div class='swiper-slide'><img src="${path}/resources/upload/wineimg/${wineboard.renamedFileName}" width="400px" height="550px"/></div>
                         <div class="wine-pagination"></div>
+                        </c:if>
                     </div>
-                    
-                    <div class="swiper-container gallery-thumbs">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="image/W0150630.jpeg" alt=""/></div><div class='swiper-slide'><img src="image/W0150630.jpeg" alt=""></div>
-                            <div class="swiper-button-prev swiper-btn-black"></div>
-                            <div class="swiper-button-next swiper-btn-black"></div>
-                        </div>
                     </div>
                 </div>
-            </div> <!-- wine-top-left end -->
-            
+            </div>      
             <div class="wine-top-right">
                 <div class='bagde-box'>
                     <p class="dib">
-                        <span class="bagde-item bagde-blue-fill">${ wineboard.wineType }</span>
-                        <span>${ wineboard.wineMf}</span>
-                        <span>${ wineboard.wineNational }</span>                 </p>
+                        <span class="bagde-item bagde-blue-fill">${wineboard.wineType}</span>
+                        <span>${wineboard.wineMf}</span>
+                        <span>${wineboard.wineNational}</span>                 </p>
                     </div>
                     <dl>
-                        <dt class="wine-name">${ wineboard.wineName }</dt>
-                        <dd class="wine-name-en">${ wineboard.wineEng }</dd>
+                        <dt class="wine-name">${wineboard.wineName}</dt>
+                        <dd class="wine-name-en">${wineboard.wineEng}</dd>
                     </dl>
                     <p class="wine-price">
-                        <strong>${ wineboard.winePrice }</strong>    
+                        <strong>${wineboard.winePrice}</strong>    
                         <button type="button" onclick="" class="btn-wine-wish btn-pop-wine-01 btn_open">구매하기</button>                    
 
                     </p>
@@ -92,15 +85,16 @@
                                         </ul>
                                     </div>
                                     <div class="wine-top-right-inner">
+                                    <span>${wineboard.wineInfo}</span>
+                                    <span>${wineboard.readCount}</span>
                                     </div>
                                 </div>
                                 
                                 
                             </div>
-                            
-                        </div>
                     </section>
                         <!-- js영역 -->
+     
                         
                         <script src="${ path }/js/jquery.min.js"></script>
                         <script src="${ path }/js/swiper.min.js"></script>

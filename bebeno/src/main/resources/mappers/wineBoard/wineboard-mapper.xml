@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.bebeno.mvc.wineboard.model.dao.WineBoardMapper">
+ <sql id="wineBoardListSql">
+	SELECT  W.WINE_BNO,
+			W.WINE_CODE,
+			W.WINE_NAME,
+			W.WINE_ENG,
+			W.WINE_TYPE,
+			W.WINE_MF,
+			W.WINE_NATIONAL,
+			W.WINE_PRICE,
+			W.ORIGINAL_FILENAME,
+			W.RENAMED_FILENAME,
+			W.WINE_SL,
+			W.WINE_AC,
+			W.WINE_BODY,
+			W.WINE_TN,
+			W.WINE_INFO,
+			W.READCOUNT,
+			W.CREATE_DATE,	
+			W.MODIFY_DATE
+	FROM BEBENO_WINEBOARD W
+	WHERE W.STATUS = 'Y'
+	</sql>
+	      
+<resultMap type="WineBoard" id="wineBoardListResultMap">	
+	<result property="wineBno" column="WINE_BNO"/>
+	<result property="wineCode" column="WINE_CODE"/>
+	<result property="wineName" column="WINE_NAME"/>
+	<result property="wineEng" column="WINE_ENG"/>
+	<result property="wineType" column="WINE_TYPE"/>
+	<result property="wineMf" column="WINE_MF"/>
+	<result property="winePrice" column="WINE_PRICE"/>
+	<result property="wineNational" column="WINE_NATIONAL"/>
+	<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+	<result property="renamedFileName" column="RENAMED_FILENAME"/>
+	<result property="wineSl" column="WINE_SL"/>
+	<result property="wineAc" column="WINE_AC"/>
+	<result property="wineBody" column="WINE_BODY"/>
+	<result property="wineTn" column="WINE_TN"/>
+	<result property="wineInfo" column="WINE_INFO"/>
+	<result property="readCount" column="READCOUNT"/>
+	<result property="createDate" column="CREATE_DATE"/>
+	<result property="modifyDate" column="MODIFY_DATE"/>
+	</resultMap>
+
+
+<resultMap type="WineBoard" id="wineBoardDetailResultMap">	
+	<result property="wineBno" column="WINE_BNO"/>
+	<result property="wineCode" column="WINE_CODE"/>
+	<result property="wineName" column="WINE_NAME"/>
+	<result property="wineEng" column="WINE_ENG"/>
+	<result property="wineType" column="WINE_TYPE"/>
+	<result property="wineMf" column="WINE_MF"/>
+	<result property="winePrice" column="WINE_PRICE"/>
+	<result property="wineNational" column="WINE_NATIONAL"/>
+	<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+	<result property="renamedFileName" column="RENAMED_FILENAME"/>
+	<result property="wineSl" column="WINE_SL"/>
+	<result property="wineAc" column="WINE_AC"/>
+	<result property="wineBody" column="WINE_BODY"/>
+	<result property="wineTn" column="WINE_TN"/>
+	<result property="wineInfo" column="WINE_INFO"/>
+	<result property="readCount" column="READCOUNT"/>
+	</resultMap>
+
+<insert id="insertWineBoard" parameterType="WineBoard">
+	INSERT INTO BEBENO_WINEBOARD (
+    WINE_BNO,
+    WINE_CODE,
+    WINE_NAME,
+    WINE_ENG,
+    WINE_TYPE,
+    WINE_MF,
+    WINE_NATIONAL,
+    WINE_PRICE,
+    ORIGINAL_FILENAME,
+    RENAMED_FILENAME,
+    WINE_SL,
+    WINE_AC,
+    WINE_BODY, 
+    WINE_TN, 
+    WINE_INFO, 
+    READCOUNT,
+    STATUS, 
+    CREATE_DATE,
+    MODIFY_DATE 
+   ) VALUES (
+    SEQ_WINE_NO.NEXTVAL,
+    #{wineCode},
+    #{wineName},
+    #{wineEng},
+    #{wineType},
+    #{wineMf},
+    #{wineNational},
+    #{winePrice},
+    #{originalFileName},
+    #{renamedFileName},
+    #{wineSl},
+    #{wineAc},
+    #{wineBody},
+    #{wineTn},
+    #{wineInfo},
+   	DEFAULT,
+    DEFAULT,
+	DEFAULT,
+	DEFAULT
+)
+</insert>
+		
+		<select id="getWineBoardCount" parameterType="map" resultType="_int">
+		SELECT COUNT(*) 
+		FROM BEBENO_WINEBOARD
+		WHERE STATUS = 'Y'
+
+	</select>
+	
+	<select id="selectWineBoardByNo"  parameterType="_int" resultMap="wineBoardDetailResultMap">
+		SELECT W.WINE_BNO,
+			   W.WINE_CODE,
+		       W.WINE_NAME,
+		       W.WINE_ENG,
+			   W.WINE_TYPE,
+			   W.WINE_MF,
+			   W.WINE_NATIONAL,
+			   W.WINE_PRICE,
+			   W.ORIGINAL_FILENAME,
+		       W.RENAMED_FILENAME,
+		       W.WINE_SL,
+			   W.WINE_AC,
+			   W.WINE_BODY,
+			   W.WINE_TN,
+			   W.WINE_INFO,
+			   W.READCOUNT
+		FROM BEBENO_WINEBOARD W
+		WHERE W.WINE_BNO = #{wineBno}
+	</select>
+	
+	<select id="wineBoardList" parameterType="map" resultMap="wineBoardListResultMap">
+	SELECT	W.WINE_BNO,
+			W.WINE_CODE,
+			W.WINE_NAME,
+			W.WINE_ENG,
+			W.WINE_TYPE,
+			W.WINE_MF,
+			W.WINE_NATIONAL,
+			W.WINE_PRICE,
+			W.ORIGINAL_FILENAME,
+			W.RENAMED_FILENAME,
+			W.WINE_SL,
+			W.WINE_AC,
+			W.WINE_BODY,
+			W.WINE_TN,
+			W.WINE_INFO,
+			W.READCOUNT,
+			W.CREATE_DATE,	
+			W.MODIFY_DATE
+	FROM BEBENO_WINEBOARD W
+	WHERE W.STATUS = 'Y'
+	ORDER BY WINE_BNO DESC
+	</select>
+ 	
+ 	
+ 	<select id="findAll" parameterType="map" resultMap="wineBoardListResultMap">
+		<include refid="wineBoardListSql"/>
+		<choose>
+			<when test="wineCode != null">
+				AND W.WINE_CODE LIKE '%' || #{wineCode} || '%'
+			</when>
+			<when test="wineName != null">
+				AND W.WINE_NAME LIKE '%' || #{wineName} || '%'
+			</when>
+			<when test="wineEng != null">
+				AND W.WINE_ENG LIKE '%' || #{wineEng} || '%'
+			</when>
+			<when test="wineType != null">
+				AND W.WINE_TYPE LIKE '%' || #{wineType} || '%'
+			</when>
+			<when test="wineMf != null">
+				AND W.WINE_MF LIKE '%' || #{wineMf} || '%'
+			</when>
+			<when test="wineNational != null">
+				AND W.WINE_NATIONAL LIKE '%' || #{wineNational} || '%'
+			</when>
+			<when test="winePrice != null">
+				AND W.WINE_PRICE LIKE '%' || #{winePrice} || '%'
+			</when>
+			<when test="wineSl != null">
+				AND W.WINE_SL LIKE '%' || #{wineSl} || '%'
+			</when>
+			<when test="wineAc != null">
+				AND W.WINE_AC LIKE '%' || #{wineAc} || '%'
+			</when>
+			<when test="wineBody != null">
+				AND W.WINE_BODY LIKE '%' || #{wineBody} || '%'
+			</when>
+			<when test="wineTn != null">
+				AND W.WINE_TN LIKE '%' || #{wineTn} || '%'
+			</when>
+			<when test="wineInfo != null">
+				AND W.WINE_INFO LIKE '%' || #{wineInfo} || '%'
+			</when>
+		</choose>
+		ORDER BY W.BNO DESC
+	</select>
+	
+	<update id="updateWineBoard" parameterType="WineBoard">
+       	UPDATE BEBENO_WINEBOARD
+       	<trim prefix="SET" suffixOverrides=",">
+    	    <if test="wineCode != null">
+		 		WINE_CODE = #{wineCode},
+	 		</if>
+	 		<if test="wineName != null">
+		 		WINE_NAME = #{wineName},
+	 		</if>
+	 		<if test="originalFileName != null">
+		 		ORIGINAL_FILENAME = #{originalFileName},
+	 		</if>
+	 		<if test="renamedFileName != null">
+		 		RENAMED_FILENAME = #{renamedFileName},
+	 		</if>
+		 	MODIFY_DATE = SYSDATE 
+       	</trim>
+	 	WHERE 
+	 		WINE_BNO = #{wineBno}
+	</update>
+ 	
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
