@@ -21,6 +21,7 @@
       p:configLocation="classpath:mybatis-config.xml"
       p:configuration-ref=""
    -->
+   
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
       p:configuration-ref="mybatisConfig"
       p:mapperLocations="classpath:mappers/**/*.xml"
@@ -32,9 +33,9 @@
       c:sqlSessionFactory-ref="sqlSessionFactory"
    />
    
-<!--    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
       p:basePackage="com.bebeno.mvc.*.model.dao"
-   /> -->
+  />
    
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
