@@ -9,22 +9,17 @@
     <head>
         <title>로그인 / 회원가입 폼 템플릿</title>  
         <link rel="stylesheet" href="${path}/resources/css/style.css">
-      </head>
-     
+     </head>
     <body>
-    
         <div class="wrap">
-        
-                 <img src="${path}/resources/images/background0.jpg">
             <div class="form-wrap">
-            
                 <div class="button-wrap">
                     <div id="btn"></div>
                     <button type="button" class="togglebtn" onclick="login()">LOGIN</button>
                     <button type="button" class="togglebtn" onclick="register()">REGISTER</button>
                 </div>
                 <div class="social-icons">
-                    <img src="${path}/resources/images/kakao.jpg" alt="kakao">
+                    <img src="resources/images/kakao.jpg" alt="kakao">
                 </div>
                 <c:if test="${ empty loginMember }">
                 <form id="login" action="${ path }/login" class="input-group" method="post">
@@ -35,7 +30,7 @@
                 </form>
                 </c:if>
                 
-                 <c:if test="${ !empty loginMember }">
+                <c:if test="${ !empty loginMember }">
                 ${ loginMember.name }님, 안녕하세요.
                 <form action="${ path }/logout" method="post">
                 <button>로그아웃</button>
@@ -43,16 +38,61 @@
                 </c:if>
                 
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
-            	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
-   					<input type="password" name="password" class="input-field" placeholder="User Password" required>
-   					<input type="password" name="password" class="input-field" placeholder="User Password check" required>
-                    <input type="text" name="name" class="input-field" placeholder="Username" required>
-                    <input type="tel" name="phone" class="input-field" placeholder="Your phone" required>
-                    <input type="email" name="email" class="input-field" placeholder="abc@abc.com" required>
-                    <input type="text" name="address" class="input-field" placeholder="your address" required>
-                    <input type="text" name="birth" class="input-field" placeholder="2022-03-01" required>
-                     <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
-                    <button class="submit">REGISTER</button>
+            
+   <table>
+ 			<tr>
+				<th>아이디</th>
+				<td>
+					<input type="text" name="id" id="newId" placeholder="아이디(4글자이상)" required>
+					<input type="button" id="checkDuplicate" value="중복검사" >
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>패스워드</th>
+				<td>
+					<input type="password" name="password" id="pass1" required>
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>패스워드확인</th>
+				<td>
+					<input type="password" id="pass2">
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>이름</th>
+				<td>
+					<input type="text" name="name" id="userName" required>				
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>휴대폰</th>
+				<td>
+					<input type="tel" placeholder="(-없이)01012345678" name="phone" id="phone" maxlength="11">								
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>이메일</th>
+				<td>
+					<input type="email" placeholder="abc@abc.com" name="email" id="email">												
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>주소</th>
+				<td>
+					<input type="text" name="address" id="address">
+				</td> 			
+ 			</tr>
+ 			<tr>
+				<th>생일</th>
+				<td>
+				<input type="text" placeholder="2022-03-01" name="birth" id="birth">												
+				
+				</td> 			
+ 			</tr> 		
+ 		</table> 
+ 		<input type="submit" id="enrollSubmit" value="가입">	
+ 		<input type="reset" value="취소">	
                 </form>
             </div>
         </div>

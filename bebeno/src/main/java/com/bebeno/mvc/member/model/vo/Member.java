@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -26,7 +27,7 @@ public class Member {
 	
 	private String address;
 	
-	private String hobby;
+	private String birth;
 	
 	private String status;
 	
