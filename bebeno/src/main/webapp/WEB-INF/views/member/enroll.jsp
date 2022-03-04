@@ -45,7 +45,7 @@
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
             	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
    					<input type="password" name="password" class="input-field" placeholder="User Password" required>
-   					<input type="password" name="password" class="input-field" placeholder="User Password check" required>
+   					<input type="password" class="input-field" placeholder="User Password check" required>
                     <input type="text" name="name" class="input-field" placeholder="Username" required>
                     <input type="tel" name="phone" class="input-field" placeholder="Your phone" required>
                     <input type="email" name="email" class="input-field" placeholder="abc@abc.com" required>

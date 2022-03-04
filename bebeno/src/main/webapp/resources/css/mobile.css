@@ -121,7 +121,25 @@
   .cate-filter.m100 { width: 100%; }
   .pagination-num { margin-top: 20px; }
   .btn-col-3 > a, .pagination-box.btn-col-3 .button.button-large { width: 28%; }
+ 
+@media only screen and (max-width: 1280px)
+.board-list li .txt-area .write-info {
+    font-size: 13px;
+}
   
+@media only screen and (max-width: 1280px)
+.board-list.board-list-wine li .thumb {
+    width: 34%;
+    max-width: 120px;
+    margin-right: 12px;
+}
+
+@media only screen and (max-width: 1280px)
+.board-list li .thumb {
+    width: 34%;
+    max-width: 120px;
+    margin-right: 12px;
+}  
   
   
 @media only screen and (max-width: 375px) { .only-xs { display: initial; }

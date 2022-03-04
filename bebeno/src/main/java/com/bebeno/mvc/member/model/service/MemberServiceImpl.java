@@ -44,6 +44,8 @@ public class MemberServiceImpl implements MemberService {
 //			return null;
 //		}
 		
+		System.out.println("here:  " + member);
+		
 		return member != null && 
 				passwordEncoder.matches(password, member.getPassword()) ? member : null;
 	}
