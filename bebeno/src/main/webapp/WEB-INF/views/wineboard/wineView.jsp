@@ -55,7 +55,7 @@
                     </dl>
                     <p class="wine-price">
                         <strong>${wineboard.winePrice}</strong>    
-                        <button type="button" onclick="" class="btn-wine-wish btn-pop-wine-01 btn_open">구매하기</button>                    
+                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open"><a href="${path}/payment/paymentPage">구매하기</a></button>                    
 
                     </p>
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
