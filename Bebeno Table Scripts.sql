@@ -51,6 +51,9 @@ INSERT INTO BBN_STORE VALUES(SEQ_STORE_NO.NEXTVAL, 1, '비스트로네모', '', 
 --------------- MEMBER 관련 테이블 ---------------
 ------------------------------------------------
 
+DROP TABLE MEMBER;
+DROP SEQUENCE SEQ_UNO;
+
 CREATE TABLE MEMBER (
     NO NUMBER PRIMARY KEY,
     ID VARCHAR2(30) NOT NULL UNIQUE,

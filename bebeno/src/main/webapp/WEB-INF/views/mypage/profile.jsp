@@ -69,7 +69,7 @@
                                 <span>계정</span>
                             </th>
                             <td class="input-item">
-                                <div>회원 아이디</div>
+                                <div>${ loginMember.id }</div>
                             </td>
                         </tr>
                         <tr>
@@ -77,7 +77,7 @@
                                 <span>이메일</span>
                             </th>
                             <td class="input-item">
-                                <div>회원 이메일</div>
+                                <div>${ loginMember.email }</div>
                             </td>
                         </tr>
                         <tr>
@@ -101,7 +101,7 @@
                                 <span>주소</span>
                             </th>
                             <td class="input-item">
-                                <div>회원 주소</div>
+                                <div>${ loginMember.address }</div>
                             </td>
                         </tr>
                         <tr>
@@ -109,7 +109,7 @@
                                 <span>연락처</span>
                             </th>
                             <td class="input-item">
-                                <div>회원 전화번호</div>
+                                <div>${ loginMember.phone }</div>
                             </td>
                         </tr>
                     </tbody>
