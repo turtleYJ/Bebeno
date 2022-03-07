@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>
 <body>
-    <form action="${path}/wineboard/wineWrite" name="write" method="post" enctype="multipart/form-data" >
+    <form action="${path}/wineboard/wineUpdate" name="update" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
             <div class="board_title">
                 <strong>상품 수정</strong>
@@ -29,32 +29,32 @@
                     <div class="title">
                         <dl>
                             <dt>게시글번호</dt>
-                            <dd><input type="text" name="wineBno"></dd>
+                            <dd><input type="hidden" name="wineBno" value="${board.wineBno}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>와인코드</dt>
-                            <dd><input type="text" name="wineCode"></dd>
+                            <dd><input type="text" name="wineCode" value="${board.wineCode}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>와인명</dt>
-                            <dd><input type="text" name="wineName"></dd>
+                            <dd><input type="text" name="wineName"  value="${board.wineName}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>영문명</dt>
-                            <dd><input type="text" name="wineEng"></dd>
+                            <dd><input type="text" name="wineEng" value="${board.wineEng}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>종류</dt>
                             <select id="selbox" name="wineType" style="width: 150px; height: 35px;">
-                                <option value="" selected>종류 선택</option>
+                                <option value="${board.wineType}" selected>종류 선택</option>
                                 <option value="레드">레드</option>
                                 <option value="화이트">화이트</option>
                                 <option value="로제">로제</option>
@@ -68,7 +68,7 @@
                         <dl>
                             <dt>제조국</dt>
                             <select id="selbox1" name="wineNational" style="width: 150px; height: 35px;">
-                                <option value="" selected>제조국 선택</option>
+                                <option value="${board.wineNational}" selected>제조국 선택</option>
                                 <option value="프랑스">프랑스</option>
                                 <option value="이탈리아">이탈리아</option>
                                 <option value="스페인">스페인</option>
@@ -87,7 +87,7 @@
                         <dl>
                             <dt>지역</dt>
                             <select id="selbox2" name="wineMf" style="width: 150px; height: 35px;">
-                                <option value="" selected>지역 선택</option>
+                                <option value="${board.wineMf}" selected>지역 선택</option>
                                 <option value="보르도">보르도</option>
                                 <option value="부르고뉴">부르고뉴</option>
                                 <option value="상파뉴">상파뉴</option>
@@ -104,7 +104,7 @@
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="${board.winePrice}" required="required" onkeyup="inputNumberFormat(this)"></dd>
                         </dl>
                     </div>
                     <div class="title">
@@ -161,14 +161,14 @@
                         </dl>
                     </div>
                     <div class="cont" name="wineInfo">
-     					 <textarea id="wineInfo" name="wineInfo" placeholder="와인 상세 정보"></textarea>
+     					 <textarea id="wineInfo" name="wineInfo" placeholder="와인 상세 정보">${ board.wineInfo }</textarea>
               			<!-- <input type="text" id="wineinfo" placeholder="와인 상세 정보" style="width:1250px; height:200px;"  > -->
               	
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 	<a class="on" id="register"><input type="submit" value="등록"/></a>
-                    <a href="${path}/wineboard/wineList">취소</a>
+                 	<input class="on" type="submit" value="수정"/></a>
+                    <a href="${path}/wineboard/wineList">목록으로</a>
     
                 </div>
             </div>

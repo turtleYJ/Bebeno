@@ -85,12 +85,14 @@
                                         </ul>
                                     </div>
                                     <div class="wine-top-right-inner">
-                                    <span>${wineboard.wineInfo}</span>
                                     <span>${wineboard.readCount}</span>
+                                    <span>${wineboard.wineInfo}</span>
                                     </div>
                                 </div>
-                                
-                                
+								<div class="wineviewright">
+                                    <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
+                                    <button type="button" class="button btn_list_del" id="btnDelete">삭제</button>
+                                </div>
                             </div>
                     </section>
                         <!-- js영역 -->
