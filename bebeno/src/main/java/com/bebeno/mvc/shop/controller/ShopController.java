@@ -66,9 +66,8 @@ public class ShopController {
 	public ModelAndView registration(
 			ModelAndView model, 
 			@SessionAttribute(name = "loginMember") Member loginMember,
-			@ModelAttribute Shop shop, @RequestParam("upfileFront") MultipartFile upfileFront,  @RequestParam("KorBname") String KorBname, 
-			@RequestParam("EngBname") String EngBname, @RequestParam("address1") String address1, @RequestParam("address2") String address2,
-			@RequestParam("phone") String phone, @RequestParam("Content") String Content) {
+			@ModelAttribute Shop shop, @RequestParam("upfileFront") MultipartFile upfileFront, @RequestParam("address1") String address1, @RequestParam("address2") String address2
+			) {
 		int result = 0;
 
 		// 파일을 업로드하지 않으면 "", 파일을 업로드하면 "파일명"
@@ -99,11 +98,11 @@ public class ShopController {
 		
 		// 2. 작성한 게시글 데이터를 데이터 베이스에 저장
 		shop.setWriterNo(loginMember.getNo());
-		shop.setKorBname(KorBname);
-		shop.setEngBname(EngBname);
+//		shop.setKorBname(KorBname);
+//		shop.setEngBname(EngBname);
 		shop.setAddress(address1 + " " + address2);
-		shop.setPhone(phone);	
-		shop.setContent(Content);
+//		shop.setPhone(phone);	
+//		shop.setContent(Content);
 		
 		System.out.println(shop);
 		
@@ -122,4 +121,9 @@ public class ShopController {
 		return model;
 	}
 	
+	
+	@GetMapping("/moreList")
+	public String moreList() {
+		return "shop/moreList";
+	}
 }

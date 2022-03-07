@@ -43,7 +43,7 @@
 	</resultMap>
 	
 	<select id="findAll" parameterType="map" resultMap="shopListResultMap">
-		<include refid="shopListSql"/>	
+		<include refid="shopListSql"/>
 		<choose>
 			<when test="shCate != null">
 				AND STORE_TYPE = #{shCate}
@@ -53,7 +53,6 @@
 			</when>
 			<when test="shKeyword != null">
 				AND STORE_KORNAME LIKE '%' || #{shKeyword} || '%'
-				OR STORE_ENGNAME LIKE '%' || #{shKeyword} || '%'
 			</when>
 		</choose>
 		ORDER BY STORE_NO DESC
