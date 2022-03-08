@@ -24,7 +24,7 @@ public class WineBoardServiceImpl implements WineBoardService {
 	@Override
 	@Transactional
 	public int save(WineBoard wineboard) {
-		int result = 0;
+		Integer result = 0;
 		
 		if(wineboard.getWineBno() != 0) {
 			result = wineboardmapper.updateWineBoard(wineboard);

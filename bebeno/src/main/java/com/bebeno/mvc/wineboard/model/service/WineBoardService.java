@@ -15,11 +15,5 @@ public interface WineBoardService {
 
 	WineBoard findBoardByNo(Integer wineBno);
 
-	
 
-
-
-
-
-	
 }
