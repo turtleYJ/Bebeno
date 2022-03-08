@@ -34,16 +34,8 @@
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
                         <li id="inlinemenu"><a href="${path}/shop/list">WINE SHOP</a></li>
                         <li id="inlinemenu"><a href="">COMMUNITY</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <li id="inlinemenu"><a href="${ path }/member/loginform">login</a></li>
-                        <li id="inlinemenu"><a href="${ path }/member/terms">join</a></li>
-=======
-                        <li id="inlinemenu"><a href="${path}/member/enroll">login</a></li>
->>>>>>> main
-=======
-                        <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
->>>>>>> parent of 7d08a80 (로그인 페이지 수정 완료 + 회원가입 약관 페이지 추가)
+                        <li id="inlinemenu"><a href="${path}/member/loginform">login</a></li>
+                        <li id="inlinemenu"><a href="${path}/member/terms">join</a></li>
                     </ul>
                 <!-- Nav 영역 -->
                 <nav>
