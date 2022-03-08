@@ -42,7 +42,7 @@ public class MemberController {
 		
 		Member loginMember = service.login(id, password);
 		
-		System.out.println(loginMember);
+		System.out.println("loginmember" + loginMember);
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);

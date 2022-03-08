@@ -52,6 +52,31 @@ select {
     padding: 40px 39px 100px 0;
 }
 
+.board-list li .thumb {
+    float: left;
+    width: 160px;
+    margin-right: 30px;
+}
+
+.board-list.board-list-wine .write-info, .board-list .write-info a {
+    color: #999;
+    font-weight: 400;
+}
+.board-list .write-info, .board-list .write-info a {
+    color: #999;
+    font-weight: 400;
+}
+
+.board-list.board-list-wine li .thumb {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 148px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
+}
 .board-list ul li {
     overflow: hidden;
     padding: 25px 0;

@@ -9,6 +9,7 @@
     <head>
         <title>로그인 / 회원가입 폼 템플릿</title>  
         
+<<<<<<< HEAD
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
         <link rel="stylesheet" href="${path}/resources/css/style.css">
 
@@ -18,6 +19,10 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
 	
+=======
+        <link rel="stylesheet" href="${path}/resources/css/style.css">
+     
+>>>>>>> main
       </head>
     <body>
     
@@ -50,8 +55,13 @@
                 
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
             	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
+<<<<<<< HEAD
                    	<input type="button" id="checkDuplicate" value="중복검사" >
    					<input type="password" name="password" class="input-field" placeholder="User Password" required>
+=======
+				   <input type="button" id="checkDuplicate" value="중복검사" >
+                   <input type="password" name="password" class="input-field" placeholder="User Password" required>
+>>>>>>> main
    					<input type="password" class="input-field" placeholder="User Password check" required>
                     <input type="text" name="name" class="input-field" placeholder="Username" required>
                     <input type="tel" name="phone" class="input-field" placeholder="Your phone" required>
@@ -84,6 +94,7 @@
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
+<<<<<<< HEAD
            </script>
            
           
@@ -119,5 +130,9 @@
         	
         </script>
         
+=======
+            
+</script>
+>>>>>>> main
     </body>
 </html>
