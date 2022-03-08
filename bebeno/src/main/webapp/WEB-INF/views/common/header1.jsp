@@ -28,7 +28,7 @@
             <div class="inner">
                 <!-- Logo영역 (글자로만 ? )-->
                 <a>
-                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;"></span>
+                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;">bebeno</span>
                 </a>
                     <ul id="menubar">
                         <li id="inlinemenu"><a href="">ABOUT</a></li>

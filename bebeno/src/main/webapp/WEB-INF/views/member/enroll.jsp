@@ -8,6 +8,7 @@
 <html>
     <head>
         <title>로그인 / 회원가입 폼 템플릿</title>  
+<<<<<<< HEAD
         
 <<<<<<< HEAD
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -23,12 +24,18 @@
         <link rel="stylesheet" href="${path}/resources/css/style.css">
      
 >>>>>>> main
+=======
+        <link rel="stylesheet" href="${path}/resources/css/style.css">
+>>>>>>> parent of 7d08a80 (로그인 페이지 수정 완료 + 회원가입 약관 페이지 추가)
       </head>
+     
     <body>
     
         <div class="wrap">
+        
+                 <img src="${path}/resources/images/background0.jpg">
             <div class="form-wrap">
-           
+            
                 <div class="button-wrap">
                     <div id="btn"></div>
                     <button type="button" class="togglebtn" onclick="login()">LOGIN</button>
@@ -56,7 +63,10 @@
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
             	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
 <<<<<<< HEAD
+<<<<<<< HEAD
                    	<input type="button" id="checkDuplicate" value="중복검사" >
+=======
+>>>>>>> parent of 7d08a80 (로그인 페이지 수정 완료 + 회원가입 약관 페이지 추가)
    					<input type="password" name="password" class="input-field" placeholder="User Password" required>
 =======
 				   <input type="button" id="checkDuplicate" value="중복검사" >
@@ -70,13 +80,9 @@
                     <input type="text" name="birth" class="input-field" placeholder="2022-03-01" required>
                      <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
                     <button class="submit">REGISTER</button>
-                    
                 </form>
-                <form name="checkIdForm">
-                <input type="hidden" name="user Id"></form>
             </div>
         </div>
-        
         <script>
             var x = document.getElementById("login");
             var y = document.getElementById("register");
@@ -94,6 +100,7 @@
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
            </script>
            
@@ -134,5 +141,8 @@
             
 </script>
 >>>>>>> main
+=======
+        </script>
+>>>>>>> parent of 7d08a80 (로그인 페이지 수정 완료 + 회원가입 약관 페이지 추가)
     </body>
 </html>
