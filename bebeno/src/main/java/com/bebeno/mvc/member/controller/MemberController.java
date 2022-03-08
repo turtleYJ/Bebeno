@@ -70,11 +70,18 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/member/enroll")
+	@GetMapping("/member/terms")
+	public String terms() {
+		log.info("회원 가입 페이지 요청");
+		
+		return "member/terms";
+	}
+	
+	@GetMapping("/member/loginform")
 	public String enroll() {
 		log.info("회원 가입 페이지 요청");
 		
-		return "member/enroll";
+		return "member/loginform";
 	}
 	
 	@PostMapping("/member/enroll")
@@ -123,16 +130,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/idCheck")
-//	@ResponseBody
+	@ResponseBody
 //	@ResponseBody를 사용하지 않고 ResponseEntity를 사용하는 방법 (jackson 라이브러리 추가하고 사용하자)
-	public ResponseEntity<Map<String, Boolean>> idCheck(@RequestParam("userId") String userId) {
+	public Object idCheck(@RequestParam("userId") String userId) {
 		Map<String, Boolean> map = new HashMap<>();
 		
 		log.info("{}", userId);
 		
 		map.put("duplicate", service.isDuplicateID(userId));
 		
-		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
+		return map;
 	}
 	
 	@GetMapping("/member/myPage")

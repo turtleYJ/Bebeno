@@ -35,7 +35,8 @@
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
                          <li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
                         <li id="inlinemenu"><a href="">COMMUNITY</a></li>
-                        <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
+                        <li id="inlinemenu"><a href="${ path }/member/loginform">login</a></li>
+                        <li id="inlinemenu"><a href="${ path }/member/terms">join</a></li>
                     </ul>
                 <!-- Nav 영역 -->
                 <nav>

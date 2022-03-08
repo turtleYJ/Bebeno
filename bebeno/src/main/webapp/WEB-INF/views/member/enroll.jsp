@@ -8,16 +8,22 @@
 <html>
     <head>
         <title>로그인 / 회원가입 폼 템플릿</title>  
+        
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
         <link rel="stylesheet" href="${path}/resources/css/style.css">
+
+		<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+       <link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header.css" />
+	
       </head>
-     
     <body>
     
         <div class="wrap">
-        
-                 <img src="${path}/resources/images/background0.jpg">
             <div class="form-wrap">
-            
+           
                 <div class="button-wrap">
                     <div id="btn"></div>
                     <button type="button" class="togglebtn" onclick="login()">LOGIN</button>
@@ -44,6 +50,7 @@
                 
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
             	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
+                   	<input type="button" id="checkDuplicate" value="중복검사" >
    					<input type="password" name="password" class="input-field" placeholder="User Password" required>
    					<input type="password" class="input-field" placeholder="User Password check" required>
                     <input type="text" name="name" class="input-field" placeholder="Username" required>
@@ -53,9 +60,13 @@
                     <input type="text" name="birth" class="input-field" placeholder="2022-03-01" required>
                      <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
                     <button class="submit">REGISTER</button>
+                    
                 </form>
+                <form name="checkIdForm">
+                <input type="hidden" name="user Id"></form>
             </div>
         </div>
+        
         <script>
             var x = document.getElementById("login");
             var y = document.getElementById("register");
@@ -73,6 +84,40 @@
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
+           </script>
+           
+          
+           <script>
+         // 아이디 중복 확인
+        	$(document).ready(() => {
+        		$("#checkDuplicate").on("click", () => {
+        			let userId = $("#newId").val().trim();
+        			
+        			$.ajax({
+        				type: "post",
+        				url: "${ pageContext.request.contextPath }/member/idCheck",
+        				dataType: "json",
+        				data: {
+        					userId
+        				},
+        				success: (data) => {
+        					console.log(data);
+        					
+        					if(data.duplicate === true) {
+        						alert("이미 사용중인 아이디 입니다.");
+        					} else {
+        						alert("사용 가능한 아이디 입니다.");						
+        					}
+        				},
+        				error: (error) => {
+        					console.log(error);
+        				}
+        			});
+        		});		
+        	});
+        	
+        	
         </script>
+        
     </body>
 </html>
