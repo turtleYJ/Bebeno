@@ -97,11 +97,11 @@ function checkInput(sel) {
   }
 }
  
-function write(form) {
- 
-  form.elements['directBox2'].value = (form.elements['selbox2'].value == "1") ? form.elements['directBox2'].value : form.elements['write'].value;
- 
-}
+
+
+$("#directBox2").on("input", function() {
+	console.log("a");
+});
 
 
 

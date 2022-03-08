@@ -97,7 +97,7 @@
                                 <option value="나파밸리">나파밸리</option>
                                 <option value="리오하">리오하</option>
                                 <option value="바로사 밸리">바로사 밸리</option>
-                                <option>기타 지역</option><input type="text" id="directBox2" name="directBox2"></input>
+                                <option value="1">기타 지역</option><input type="text" id="directBox2" name="directBox2"></input>
                             </select>
                         </dl>
                     </div>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 	<a class="on" id="register"><input type="submit" value="등록"/></a>
+                 	<a class="on" id="register"><input type="submit" value="등록"></a>
                     <a href="${path}/wineboard/wineList">취소</a>
     
                 </div>

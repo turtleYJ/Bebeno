@@ -45,6 +45,12 @@ public class WineBoardServiceImpl implements WineBoardService {
 		return wineboardmapper.selectWineBoardByNo(wineBno);
 	}
 
+	@Override
+	@Transactional
+	public int delete(int wineBno) {
+
+		return wineboardmapper.deleteWineBoard();
+	}
 
 
 
