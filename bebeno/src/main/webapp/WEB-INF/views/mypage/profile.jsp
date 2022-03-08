@@ -9,12 +9,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>마이페이지_프로파일 수정</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/profile.css">
 
+<link rel="stylesheet"
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+ src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
 </head>
+
 <body>
 
 <section class="mypage">
@@ -118,9 +129,79 @@
                 <div class="save-update-button">
                     <button type="button" class="button">정보 수정</button>
                 </div>
-
             </div>
         </div>
+        <div class="container">
+		
+				<div class="form-group">
+					<div class="row" style="text-align: center;">
+						<h1 class="page-header" style="margin-bottom: 50px;">나의 주문 내역</h1>
+						<table class="table table-hover"
+							style="margin: auto; border-bottom: 1px solid #D5D5D5;">
+							<thead>
+								<tr>
+									<th colspan="2" style="text-align: center;">상품명</th>
+									<th>가격</th>
+									<th>수량</th>
+									<th>옵션</th>
+									<th>결제금액</th>
+									<th>결제일</th>
+									<th>주문현황</th>
+								</tr>
+							</thead>
+							<tbody style="text-align: left;">
+<%-- 								<c:choose>
+									<c:when test="${orderList == null}"> --%>
+										<tr style="text-align: center;"><td colspan="8"><h3>주문 내역이 없습니다.</h3></td></tr>
+<%-- 									</c:when>
+									<c:otherwise>
+										<c:forEach items="${orderList}" var="dto "> --%>
+											<tr>
+												<td style="text-align: center;"><img alt="thumbnail"
+													src="/resources/upload${dto.fullname}" width="40%"> <input
+													type="hidden" value="${dto.productId}" name="productId"
+													id="productId"></td>
+												<td>${dto.productName}<br>${dto.productInfo}</td>
+												<td><fmt:formatNumber type="number"
+														value="${dto.price}" />&nbsp;원</td>
+												<td>${dto.order_Qty}</td>
+												<td>${dto.selected_Opt}</td>
+												<td><fmt:formatNumber type="number"
+														value="${dto.totalAmount}" />&nbsp;원</td>
+												<td><fmt:formatDate value="${dto.billingDate}"
+														type="date" pattern="yyyy-MM-dd" /></td>
+												<%-- <td>${dto.deliver_situ == 0 ? "배송준비중" : 
+															dto.deliver_situ == 1 ? "배송중" : "배송완료"}</td> --%>
+												<%-- <c:choose>
+													<c:when test="${dto.deliver_situ != 0}"> --%>
+														<td>
+															<button class="btn btn-default disable"
+																disabled="disabled">주문취소</button>
+															<br>
+															<button class="btn btn-default disable"
+																disabled="disabled">주문변경</button>
+															<br>
+														</td>
+												<%-- 	</c:when> --%>
+													<%-- <c:otherwise>
+														<td>
+															<button class="btn btn-default order_cancel"
+																onclick="location.href='/order/cancel/'+ ${dto.orderId}">주문취소</button>
+															<br>
+															<button class="btn btn-default">주문변경</button>
+														</td>
+													</c:otherwise> --%>
+								<%-- 				</c:choose>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose> --%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+        
 
     </form>
 </section>

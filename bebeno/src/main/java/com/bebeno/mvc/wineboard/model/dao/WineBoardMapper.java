@@ -13,6 +13,7 @@ public interface WineBoardMapper {
 	// 게시글 목록조회 
 	List<WineBoard> wineBoardList();
 
+	// 게시글 수정
 	int updateWineBoard(WineBoard wineboard);
 
 	// 게시글 작성
