@@ -57,10 +57,22 @@ public class WineBoardController {
 		return model;
 	}
 	
+	
+//	@GetMapping("/wineUpdate")
+//	public ModelAndView wineBoardUpdate(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
+//		
+//		WineBoard wineboard = wineboardservice.findBoardByNo(wineBno);
+//		
+//				  model.addObject("wineboard", wineboard);
+//				  model.setViewName("wineboard/wineUpdate");
+//		
+//				  return model;	
+//	}
+	
 	@RequestMapping(value="/wineUpdate", method = RequestMethod.GET)
 	public String getupdate(Integer wineBno, Model model) throws Exception {
-			WineBoard board = wineboardservice.findBoardByNo(wineBno);
-			model.addAttribute("board", board);
+			WineBoard data = wineboardservice.findBoardByNo(wineBno);
+			model.addAttribute("data", data);
 		
 		return "/wineboard/wineUpdate";
 	}
@@ -70,7 +82,7 @@ public class WineBoardController {
 		
 		int result;
 		result = wineboardservice.save(wineboard);
-		System.out.println(result);
+		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
 			model.addObject("location", "/wineboard/wineList?wineBno=" + wineboard.getWineBno());
@@ -78,32 +90,10 @@ public class WineBoardController {
 			model.addObject("msg", "게시글 수정을 실패하였습니다.");
 			model.addObject("location", "/wineboard/wineUpdate?wineBno=" + wineboard.getWineBno());
 		}
-		model.setViewName("/common/msg");
-		
 	  return model;
 		
 	}
 	
-	@GetMapping("/delete")
-	public ModelAndView delete(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
-		
-		int result = 0;		
-		WineBoard board = wineboardservice.findBoardByNo(wineBno);
-		
-		result = wineboardservice.delete(board.getWineBno());
-		
-		if(result > 0) {
-			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
-			model.addObject("location", "/wineboard/wineList");
-		} else {
-			model.addObject("msg", "게시글 삭제를 실패하였습니다.");
-			model.addObject("location", "/wineboard/wineList");
-		}
-			model.setViewName("common/msg");
-		
-		return model;
-	}
-		
 	
 	@GetMapping("/wineWrite")
 	public String winewrite() {
@@ -138,7 +128,6 @@ public class WineBoardController {
 			}
 		}
 		
-		
 		wineboard.setWineBno(result);
 		result = wineboardservice.save(wineboard);
 		
@@ -157,6 +146,10 @@ public class WineBoardController {
 	}
 		
 	
+//	@GetMapping("/delete")
+//	public ModelAndView delete(ModelAndView model,  @RequestParam(value = "wineBno", required = false) Integer wineBno) {
+//		
+//	}
 }
 
 

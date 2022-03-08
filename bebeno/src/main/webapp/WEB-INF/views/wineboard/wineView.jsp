@@ -95,9 +95,9 @@
                                 </div>
                             </div>
                     </section>
-                    
                         <!-- js영역 -->
-
+     
+                        
                         <script src="${ path }/js/jquery.min.js"></script>
                         <script src="${ path }/js/swiper.min.js"></script>
                         <script src="${ path }/js/swiper.js"></script>
@@ -105,17 +105,6 @@
 						<script src="${ path }/js/breakpoints.min.js"></script>
 						<script src="${ path }/js/util.js"></script>
 						<script src="${ path }/js/menubar.js"></script>
-						
-						<script>
-						$(document).ready(() => {
-							$("#btnDelete").on("click", () => {
-								if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-									location.replace("${ pageContext.request.contextPath }/board/delete?no=${ board.no }");
-								}
-							})
-						});
-
-</script>
 
 </body>
  </html>
