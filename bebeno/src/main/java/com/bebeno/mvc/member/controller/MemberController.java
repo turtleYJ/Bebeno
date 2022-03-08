@@ -70,11 +70,18 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/member/enroll")
+	@GetMapping("/member/loginform")
+	public String login() {
+		log.info("로그인 페이지 요청");
+		
+		return "member/loginform";
+	}
+	
+	@GetMapping("/member/terms")
 	public String enroll() {
 		log.info("회원 가입 페이지 요청");
 		
-		return "member/enroll";
+		return "member/terms";
 	}
 	
 	@PostMapping("/member/enroll")
