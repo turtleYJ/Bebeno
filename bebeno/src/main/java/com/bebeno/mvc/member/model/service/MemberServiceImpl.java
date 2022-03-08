@@ -73,7 +73,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Boolean isDuplicateID(String id) {
 		
-		return mapper.findMemberById(id) != null;
+		return this.findMemberById(id) != null;
 	}
 
 	@Override
