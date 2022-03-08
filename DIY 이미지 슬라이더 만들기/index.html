@@ -9,18 +9,38 @@
 </head>
 <body style ="margin: 0">
     
-    <div class="container">
-        <div class="inner">
-            <img src="./images/placeimg_640_480_any (1).jpg">
-        </div>
-        <div class="inner">
-            <img src="./images/placeimg_640_480_any (2).jpg">
-        </div>
-        <div class="inner">
-            <img src="./images/placeimg_640_480_any.jpg">
+    <div style="overflow: hidden;">
+        <div class="container">
+            <div class="inner">
+                <img src="./images/placeimg_640_480_any (1).jpg">
+            </div>
+            <div class="inner">
+                <img src="./images/placeimg_640_480_any (2).jpg">
+            </div>
+            <div class="inner">
+                <img src="./images/placeimg_640_480_any.jpg">
+            </div>
         </div>
     </div>
+        
+    <button class="버튼1">1</button>
+    <button class="버튼2">2</button>
+    <button class="버튼3">3</button>
 
+    <script>
+        // 버튼을 누르면
+        // transform: translate(-100vw)
 
+        document.querySelector('.버튼1').addEventListener('click', function() {
+            document.querySelector('.container').style.transform = 'translate(0vw)';
+        })
+        document.querySelector('.버튼2').addEventListener('click', function() {
+            document.querySelector('.container').style.transform = 'translate(-100vw)';
+        })
+
+        document.querySelector('.버튼3').addEventListener('click', function() {
+            document.querySelector('.container').style.transform = 'translate(-200vw)';
+        })
+    </script>
 </body>
 </html>

@@ -24,8 +24,6 @@ public class Shop {
 	
 	private String type;
 	
-	private String imgUrl;
-	
 	private String status;
 	
 	private String content;
