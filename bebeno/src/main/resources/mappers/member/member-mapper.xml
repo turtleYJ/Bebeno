@@ -8,6 +8,7 @@
 	<sql id="selectMemberSql">
 		SELECT NO, 
 		       ID, 
+		       NICKNAME,
 		       PASSWORD, 
 		       ROLE,
 		       NAME, 
@@ -24,6 +25,7 @@
 	<resultMap type="Member" id="memberResultMap">
 		<id property="no" column="NO"/>
 		<result property="id" column="ID"/>
+		<result property="nickname" column="NICKNAME"/>
 		<result property="password" column="PASSWORD"/>
 		<result property="role" column="ROLE"/>
 		<result property="name" column="NAME"/>
@@ -55,6 +57,7 @@
 		INSERT INTO MEMBER (
 			NO, 
 	       	ID, 
+	       	NICKNAME,
 	       	PASSWORD, 
 	       	ROLE,
 	       	NAME, 
@@ -68,6 +71,7 @@
 		) VALUES (
 			SEQ_UNO.NEXTVAL,
 			#{id},
+			#{nickname},
 			#{password},
 			DEFAULT,
 			#{name},
@@ -85,6 +89,7 @@
 		UPDATE MEMBER 
 		SET 
 			NAME = #{name},
+			NICKNAME = #{nickname},
 			PHONE = #{phone},
 			EMAIL = #{email},
 			ADDRESS = #{address},
