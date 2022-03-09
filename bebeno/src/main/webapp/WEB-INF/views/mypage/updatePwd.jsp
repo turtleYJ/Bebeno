@@ -60,7 +60,8 @@
                 <div class="input-box">
                     <p>
                         <label class="hidden">현재비밀번호</label>
-                        <input type="password" id="CurrentPwd" name="CurrentPwd" class="w100" 
+                        <!-- ModelAttribute를 통해 set(주입)해주기 위해 name값을 vo 필드값과 동일하게 변경 -->
+                        <input type="password" id="CurrentPwd" name="password" class="w100" 
                         placeholder="현재비밀번호">
                     </p>                        
                 </div>
@@ -112,7 +113,7 @@
 		
 		$("#updatePwd").on("click", () => {
 			
-			const url = "${ pageContext.request.contextPath }/member/updatePwd";
+			const url = "${ pageContext.request.contextPath }/mypage/updatePwd/set";
 			const status = "left=500px, top=200px, width=400px, height=200px";
 			
 			
