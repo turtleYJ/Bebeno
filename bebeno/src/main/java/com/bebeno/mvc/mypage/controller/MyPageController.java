@@ -1,45 +1,54 @@
 package com.bebeno.mvc.mypage.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
 	
-	@RequestMapping("/profile")
+	@GetMapping("/profile")
 	public String profile() {
 		
 		
 		return "/mypage/profile";
 	}
 	
-	@RequestMapping("/updatePwd")
+	// ---------------------------------
+	
+	// 비밀번호 수정 페이지 클릭 시 해당 뷰로 이동
+	@GetMapping("/updatePwd")
 	public String updatePwd() {
 		
 		
 		return "/mypage/updatePwd";
 	}
 	
-	@RequestMapping("/deleteAccount")
+	// 비밀번호 수정 버튼 클릭 시 작동하는 메소드
+	
+	
+	// ---------------------------------
+	
+	@GetMapping("/deleteAccount")
 	public String deleteAccount() {
 		
 		
 		return "/mypage/deleteAccount";
 	}
 	
-	// -------------------------------------------
+	// ===========================================
 	
-	@RequestMapping("/scrap")
+	@GetMapping("/scrap")
 	public String scrap() {
 		
 		
 		return "/mypage/scrap";
 	}
 	
-	// -------------------------------------------
+	// ===========================================
 	
-	@RequestMapping("/cart")
+	@GetMapping("/cart")
 	public String cart() {
 		
 		

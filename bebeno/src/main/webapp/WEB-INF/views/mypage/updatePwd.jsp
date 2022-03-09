@@ -106,6 +106,19 @@
 			return false;
 		}
 	}
+	
+	// id가 updatePwd인 버튼을 눌렀을 시 비밀번호수정을 위한 위치 및 크기 조절을 한 팝업창을 띄우는 스크립트
+	$(document).ready(() => {
+		
+		$("#updatePwd").on("click", () => {
+			
+			const url = "${ pageContext.request.contextPath }/member/updatePwd";
+			const status = "left=500px, top=200px, width=400px, height=200px";
+			
+			
+			open(url, "", status);
+		});
+	});
 
 </script>
 
