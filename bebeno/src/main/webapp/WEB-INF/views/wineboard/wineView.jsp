@@ -22,7 +22,7 @@
   
 
     <title>상품 상세 페이지</title>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
 <section class="sub-contents wrap-wine-view clear">
@@ -55,7 +55,15 @@
                     </dl>
                     <p class="wine-price">
                         <strong>${wineboard.winePrice}</strong>    
-                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open"><a href="${path}/payment/paymentPage">구매하기</a></button>                    
+                        <label>수량</label>
+                        <select>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        </select>               
+                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open"><a href="${path}/mypage/cart">장바구니 담기</a></button>     
 
                     </p>
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
@@ -110,7 +118,7 @@
 						$(document).ready(() => {
 							$("#btnDelete").on("click", () => {
 								if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-									location.replace("${ pageContext.request.contextPath }/board/delete?no=${ board.no }");
+									location.replace("${path}/wineboard/wineList");
 								}
 							})
 						});

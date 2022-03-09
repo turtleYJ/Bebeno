@@ -85,19 +85,22 @@ public class WineBoardController {
 	}
 	
 	@GetMapping("/delete")
-	public ModelAndView delete(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
+	public ModelAndView delete(ModelAndView model, 
+							@RequestParam(value = "wineBno", required = false) Integer wineBno) {
 		
-		int result = 0;		
+		int result = 0;
 		WineBoard board = wineboardservice.findBoardByNo(wineBno);
 		
 		result = wineboardservice.delete(board.getWineBno());
+		
+		System.out.println(board);
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
 			model.addObject("location", "/wineboard/wineList");
 		} else {
 			model.addObject("msg", "게시글 삭제를 실패하였습니다.");
-			model.addObject("location", "/wineboard/wineList");
+			model.addObject("location", "/wineboard/wineView?wineBno=" + board.getWineBno());
 		}
 			model.setViewName("common/msg");
 		

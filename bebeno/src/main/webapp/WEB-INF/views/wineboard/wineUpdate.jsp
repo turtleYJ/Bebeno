@@ -16,7 +16,7 @@
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
     <form action="${path}/wineboard/wineUpdate" name="update" method="post" enctype="multipart/form-data" >
@@ -29,7 +29,7 @@
                     <div class="title">
                         <dl>
                             <dt>게시글번호</dt>
-                            <dd><input type="hidden" name="wineBno" value="${board.wineBno}"></dd>
+                            <dd><input type="text" name="wineBno" value="${board.wineBno}" readonly></dd>
                         </dl>
                     </div>
                     <div class="title">
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 	<input class="on" type="submit" value="수정"/></a>
+                 	<a class="on"><input type="submit" value="수정"/></a>
                     <a href="${path}/wineboard/wineList">목록으로</a>
     
                 </div>
