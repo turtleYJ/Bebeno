@@ -1,13 +1,22 @@
 package com.bebeno.mvc.mypage.controller;
 
+import java.lang.System.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.bebeno.mvc.member.model.service.MemberService;
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.mypage.model.service.MyPageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 @SessionAttributes("loginMember")
 @RequestMapping("/mypage")
 public class MyPageController {
+	
+	@Autowired
+	private MyPageService service;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	// =================================================
 	
 	@GetMapping("/profile")
 	public String profile() {
@@ -33,13 +50,30 @@ public class MyPageController {
 		return "/mypage/updatePwd";
 	}
 	
+	// ---------------------------------
+	
 	// 비밀번호 수정 버튼 클릭 시 작동하는 메소드(member의 vo 사용)
 	@PostMapping("/updatePwd/set")
-	public String updatePwdSet(@ModelAttribute Member member) {
+	public ModelAndView updatePwdSet(
+			@RequestParam("password") String password,
+			ModelAndView model,
+			// @SessionAttribute : 세션영역의 어트리뷰트를 가져오는 어노테이션
+			@SessionAttribute(name="loginMember") Member loginMember,
+			@ModelAttribute Member member) {
 		
-		log.info(member.toString()); // jsp에서 input의 name값과 vo 필드명의 값이 같아야 한다.
+		log.info("입력받은 password(현재비밀번호) : {}", password);
 		
-		return "/mypage/updatePwd";
+		
+		
+		
+		
+		
+		model.addObject("msg", "비밀번호 수정");
+		model.addObject("location", "/mypage/updatePwd");
+		
+		model.setViewName("common/msg");
+		
+		return model;
 	}
 	
 	

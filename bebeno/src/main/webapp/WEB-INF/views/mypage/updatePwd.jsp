@@ -13,6 +13,7 @@
 <title>비밀번호 수정</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/updatePwd.css">
+<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 
 </head>
 <body>
@@ -35,7 +36,6 @@
 	    </ul>
 	</div>
 	
-	<form id="update-profile">
 	
 	    <div class="inner-list">
 	        <div class="wrab-board-wide">
@@ -53,7 +53,13 @@
 	        </div>
 	    </div>
 	
+	<form id="update-profile">
 	<!-- ================================================================================================ -->
+	
+		<!-- 
+			회원의 no값을 넘겨주기 위한 태그(방법 1.) 
+		<input type="hidden" name="no" value="${loginMember.no}">
+		-->
 	
         <div class="mypage-input-box">
             <div class="updatepwd-box">
@@ -113,11 +119,9 @@
 		
 		$("#updatePwd").on("click", () => {
 			
-			const url = "${ pageContext.request.contextPath }/mypage/updatePwd/set";
-			const status = "left=500px, top=200px, width=400px, height=200px";
+			const url = "${ pageContext.request.contextPath }/mypage/updatePwd/set";			
 			
-			
-			open(url, "", status);
+			open(url, "", "");
 		});
 	});
 
