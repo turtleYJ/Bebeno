@@ -79,7 +79,7 @@
                     </p>                        
                 </div>
                 <div class="save-update-button">
-                    <button type="button" class="button">정보 수정</button>
+                    <button type="button" id="updatePwd" class="button">비밀번호 변경</button>
                 </div>
             </div>
             
@@ -87,6 +87,27 @@
 
     </form>
 </section>	
+
+
+<!-- 비밀번호 변경 script -->
+<script>
+
+	/* 비밀번호와 비밀번호확인 값이 같은지 체크하는 스크립트 */
+	function validate() {
+		let pass1 = $("#NewPwd").val();
+		let pass2 = $("#NewPwd_2").val();
+		
+		if(pass1.trim() != pass2.trim()){
+			alert("비밀번호가 일치하지 않습니다.");
+			$("#NewPwd").val("");
+			$("#NewPwd_2").val("");
+			$("#NewPwd").focus();
+			
+			return false;
+		}
+	}
+
+</script>
 
 </body>
 </html>

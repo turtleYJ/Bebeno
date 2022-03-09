@@ -56,8 +56,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		
 		if(member.getNo() != 0) {
+			// update
 			result = mapper.updateMember(member);
 		} else {
+			// insert
+			
+			// 패스워드 암호화
 			member.setPassword(passwordEncoder.encode(member.getPassword()));
 			
 			result = mapper.insertMember(member);
