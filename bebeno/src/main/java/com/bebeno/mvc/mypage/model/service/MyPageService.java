@@ -1,6 +1,5 @@
 package com.bebeno.mvc.mypage.model.service;
 
-import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.vo.MyPage;
 
 public interface MyPageService {

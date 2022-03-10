@@ -100,7 +100,7 @@
 <script>
 
 	/* 비밀번호와 비밀번호확인 값이 같은지 체크하는 스크립트 */
-	function validate() {
+	/* function validate() {
 		let pass1 = $("#NewPwd").val();
 		let pass2 = $("#NewPwd_2").val();
 		
@@ -112,10 +112,10 @@
 			
 			return false;
 		}
-	}
+	} */
 	
 	// id가 updatePwd인 버튼을 눌렀을 시 비밀번호수정을 위한 위치 및 크기 조절을 한 팝업창을 띄우는 스크립트
-	$(document).ready(() => {
+	/* $(document).ready(() => {
 		
 		$("#updatePwd").on("click", () => {
 			
@@ -123,7 +123,7 @@
 			
 			open(url, "", "");
 		});
-	});
+	}); */
 
 </script>
 

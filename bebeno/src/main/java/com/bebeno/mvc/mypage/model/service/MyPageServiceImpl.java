@@ -18,6 +18,8 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+// ==================================================================
+	
 	// id값으로 회원정보 조회하기
 	@Override
 	public MyPage getMemberById(String id) {		
@@ -25,7 +27,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.getMemberById(id);
 	}
 
-	// ========================= 비밀번호 변경 ==============================
+// ========================= 비밀번호 변경 ==============================
 	@Override
 	@Transactional
 	public int modifyPwd(String id, String newPwd) {

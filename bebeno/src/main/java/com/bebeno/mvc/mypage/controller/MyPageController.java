@@ -1,11 +1,6 @@
 package com.bebeno.mvc.mypage.controller;
 
-import java.lang.System.Logger;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bebeno.mvc.member.model.service.MemberService;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.service.MyPageService;
 import com.bebeno.mvc.mypage.model.vo.MyPage;
@@ -58,14 +51,13 @@ public class MyPageController {
 	// ---------------------------------
 	
 	// 비밀번호 수정 버튼 클릭 시 작동하는 메소드(member의 vo 사용)
-	@PostMapping("/updatePwd/set")
+	@PostMapping("/updatePwd")
 	public ModelAndView updatePwdSet(
 			ModelAndView model,
 			@RequestParam("password") String password,
 			@RequestParam("newPwd") String newPwd,
 			@RequestParam("newPwdConfirm") String newPwdConfirm,
-			@SessionAttribute(name = "loginMember") Member loginMember,
-			@ModelAttribute Member member) {
+			@SessionAttribute(name = "loginMember") Member loginMember) {
 		
 		// 1. 현재 비밀번호 맞는지 체크
 		String id = loginMember.getId();
