@@ -60,6 +60,7 @@ DROP SEQUENCE SEQ_UNO;
 CREATE TABLE MEMBER (
     NO NUMBER PRIMARY KEY,
     ID VARCHAR2(30) NOT NULL UNIQUE,
+    NICKNAME VARCHAR2(100) NOT NULL UNIQUE,
     PASSWORD VARCHAR2(100) NOT NULL,
     ROLE VARCHAR2(20) DEFAULT 'ROLE_USER',
     NAME VARCHAR2(15) NOT NULL,
@@ -74,6 +75,7 @@ CREATE TABLE MEMBER (
 
 COMMENT ON COLUMN MEMBER.NO IS '회원번호';
 COMMENT ON COLUMN MEMBER.ID IS '회원아이디';
+COMMENT ON COLUMN MEMBER.NICKNAME IS '닉네임';
 COMMENT ON COLUMN MEMBER.PASSWORD IS '회원비밀번호';
 COMMENT ON COLUMN MEMBER.ROLE IS '회원타입';
 COMMENT ON COLUMN MEMBER.NAME IS '회원명';
@@ -87,33 +89,33 @@ COMMENT ON COLUMN MEMBER.MODIFY_DATE IS '정보수정일';
 
 CREATE SEQUENCE SEQ_UNO;
 
-INSERT INTO MEMBER (
-    NO, 
-    ID, 
-    PASSWORD, 
-    ROLE,
-    NAME, 
-    PHONE, 
-    EMAIL, 
-    ADDRESS, 
-    BIRTH, 
-    STATUS, 
-    ENROLL_DATE, 
-    MODIFY_DATE
-) VALUES(
-    SEQ_UNO.NEXTVAL, 
-    'admin2', 
-    '1234', 
-    'ROLE_USER', 
-    '수민서', 
-    '010-1234-5742', 
-    'admin@iei.or.kr', 
-    '서울시 강남구 역삼동',
-    '1999-04-28',
-    DEFAULT,
-    DEFAULT,
-    DEFAULT
-);
+--INSERT INTO MEMBER (
+--    NO, 
+--    ID,
+--    PASSWORD, 
+--    ROLE,
+--    NAME, 
+--    PHONE, 
+--    EMAIL, 
+--    ADDRESS, 
+--    BIRTH, 
+--    STATUS, 
+--    ENROLL_DATE, 
+--    MODIFY_DATE
+--) VALUES(
+--    SEQ_UNO.NEXTVAL, 
+--    'admin2', 
+--    '1234', 
+--    'ROLE_USER', 
+--    '수민서', 
+--    '010-1234-5742', 
+--    'admin@iei.or.kr', 
+--    '서울시 강남구 역삼동',
+--    '1999-04-28',
+--    DEFAULT,
+--    DEFAULT,
+--    DEFAULT
+--);
 
 -- 멤버 조회
 -- SELECT * FROM MEMBER WHERE ID=? AND STATUS='Y'
