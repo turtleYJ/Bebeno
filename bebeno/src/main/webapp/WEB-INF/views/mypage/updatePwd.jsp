@@ -12,7 +12,8 @@
 <meta charset="UTF-8">
 <title>비밀번호 수정</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/updatePwd.css">
+<link rel="stylesheet" href="${ path }/resources/css/mypage/updatePwd.css">
+<script src="${ path }/js/jquery-3.6.0.js"></script>
 
 </head>
 <body>
@@ -79,14 +80,27 @@
                     </p>                        
                 </div>
                 <div class="save-update-button">
-                    <button type="button" class="button">정보 수정</button>
+                    <button type="button" id="updatePwdBtn" class="button">정보 수정</button>
                 </div>
             </div>
-            
+            	<button id="test">Test</button>
         </div>
 
     </form>
 </section>	
+
+<script>
+
+	$(document).ready(() => {
+		
+		$("#updatePwdBtn").on("click", () => {
+			if(confirm("정말로 비밀번호를 변경하시겠습니까?")) {
+				location.replace("${ pageContext.request.contextPath }/mypage/profile");
+			}
+		});
+	});
+
+</script>
 
 </body>
 </html>
