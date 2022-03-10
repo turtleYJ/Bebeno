@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
 
 @Mapper
@@ -15,4 +16,6 @@ public interface ShopMapper {
 	int insertShop(Shop shop);
 
 	Shop selectShopByNo(@Param("no") int no);
+
+	void savefile(ContentFiles file);
 }

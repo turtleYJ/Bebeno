@@ -49,6 +49,23 @@ INSERT INTO BBN_STORE VALUES(SEQ_STORE_NO.NEXTVAL, 1, '바틀샵 송도캠퍼스
 INSERT INTO BBN_STORE VALUES(SEQ_STORE_NO.NEXTVAL, 1, '비스트로네모', '', '인천 연수구 송도과학로27번길 55 c동 118호',  '0507-1394-3123', '17:00 - 00:00', '레스토랑', 'Y', '', '', '', SYSDATE, SYSDATE);
 
 ------------------------------------------------
+-------------- STORE_FILE 관련 테이블 ------------
+------------------------------------------------
+CREATE TABLE STORE_FILE (
+    S_FILE_NO NUMBER PRIMARY KEY,
+    STORE_NO NUMBER,
+    ORIGINAL_FILENAME VARCHAR2(100),
+	RENAMED_FILENAME VARCHAR2(100),
+    FOREIGN KEY (STORE_NO) REFERENCES BBN_STORE (STORE_NO)
+);
+
+CREATE SEQUENCE SEQ_S_FILE_NO;
+
+COMMENT ON COLUMN STORE_FILE.S_FILE_NO IS '파일고유번호';
+COMMENT ON COLUMN STORE_FILE.ORIGINAL_FILENAME IS '첨부파일원래이름';
+COMMENT ON COLUMN STORE_FILE.RENAMED_FILENAME IS '첨부파일변경이름';
+COMMENT ON COLUMN STORE_FILE.STORE_NO IS '상점고유번호';
+------------------------------------------------
 --------------- MEMBER 관련 테이블 ---------------
 ------------------------------------------------
 

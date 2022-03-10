@@ -131,9 +131,7 @@
    										</div>
 			          					<div class="form-group col-sm-6">
 											<label>사진 업로드</label>
-    										<input type="file" name="upfileContent1">          								
-    										<input type="file" name="upfileContent2">          								
-    										<input type="file" name="upfileContent3">          								
+    										<input multiple="multiple" type="file" name="upfileContent">    								
     										<p class="help-block">가게 전경 사진파일을 첨부하세요</p>       								
    										</div>
         							</div>

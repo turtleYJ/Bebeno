@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bebeno.mvc.shop.model.dao.ShopMapper;
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
 
 @Service
@@ -22,6 +24,7 @@ public class ShopServiceimpl implements ShopService {
 	}
 
 	@Override
+	@Transactional
 	public int save(Shop shop) {
 		int result = 0;
 		
@@ -38,6 +41,14 @@ public class ShopServiceimpl implements ShopService {
 	public Shop findShopByNo(int no) {
 		
 		return mapper.selectShopByNo(no);
+	}
+
+	@Override
+	@Transactional
+	public void fileSave(ContentFiles file) {
+		
+		mapper.savefile(file);
+		
 	}
 
 }
