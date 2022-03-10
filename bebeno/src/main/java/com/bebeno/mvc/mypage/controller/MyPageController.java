@@ -1,27 +1,28 @@
 package com.bebeno.mvc.mypage.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
 	
-	@RequestMapping("/profile")
+	@GetMapping("/profile")
 	public String profile() {
 		
 		
 		return "/mypage/profile";
 	}
 	
-	@RequestMapping("/updatePwd")
+	@GetMapping("/updatePwd")
 	public String updatePwd() {
 		
 		
 		return "/mypage/updatePwd";
 	}
 	
-	@RequestMapping("/deleteAccount")
+	@GetMapping("/deleteAccount")
 	public String deleteAccount() {
 		
 		
@@ -30,7 +31,7 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
-	@RequestMapping("/scrap")
+	@GetMapping("/scrap")
 	public String scrap() {
 		
 		
@@ -39,7 +40,7 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
-	@RequestMapping("/cart")
+	@GetMapping("/cart")
 	public String cart() {
 		
 		
