@@ -53,7 +53,7 @@
 	        </div>
 	    </div>
 	
-	<form id="update-profile">
+	<form  action="/mypage/updatePwd/set" method="post" id="update-profile">
 	<!-- ================================================================================================ -->
 	
 		<!-- 
@@ -74,14 +74,14 @@
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호</label>
-                        <input type="password" id="NewPwd" name="NewPwd" class="w100" 
+                        <input type="password" id="NewPwd" name="newPwd" class="w100" 
                         placeholder="새 비밀번호(8~30자)">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호확인</label>
-                        <input type="password" id="NewPwd_2" name="NewPwd_2" class="w100" 
+                        <input type="password" id="NewPwd_2" name="newPwdConfirm" class="w100" 
                         placeholder="새 비밀번호 확인">
                     </p>                        
                 </div>
