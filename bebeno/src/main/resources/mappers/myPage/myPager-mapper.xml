@@ -3,8 +3,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
+<!-- namespace 속성 : 외부에서 mapper에 접근할 수 있는 이름 -->
 <mapper namespace="com.bebeno.mvc.mypage.model.dao.MyPageMapper">
+
+	<!-- 
+  		중복되는 쿼리 내용을 재사용하기 위한 SQL 조각으로
+  		사용하려는 태그보다 항상 위에 있어야한다.
+  	 -->
 	<sql id="selectMemberSql">
 		SELECT NO, 
 		       ID, 
@@ -22,8 +28,20 @@
 		FROM MEMBER
 	</sql>
 
+
+	<!-- 
+		resultMap은 DB의 조회 결과와 자바 클래스(객체)를 명시적으로 매핑해줄 때 사용한다.(JDBC 코드를 줄여주는 역할을 한다.)
+			ex) DB의 컬럼명에 _가 들어가 있으면(ENROLL_DATE) 자동으로 인식하지 못하기 때문에 vo의 필드값과 DB의 컬럼명을 매칭시켜준다.
+		
+		  - type 속성 : java 폴더를 기준으로 ResultSet의 결과를 담을 자바 객체(vo)의 타입(클래스명)의 경로를 기술한다.
+		  			  (또는 alias 사용 : mybatis-config에서 설정) 
+		  - id 속성 : resultMap의 고유 아이디로 select 문에서 resultMap 속성에 사용하게 된다.
+	 -->
+	 <!-- alias 사용(mybatis-config에서 설정) -->
 	<resultMap type="Member" id="memberResultMap">
+		<!-- id : 테이블에서 기본 키를 의미 -->
 		<id property="no" column="NO"/>
+		<!-- result : 테이블에서 일반 컬럼들을 의미 -->
 		<result property="id" column="ID"/>
 		<result property="nickname" column="NICKNAME"/>
 		<result property="password" column="PASSWORD"/>
@@ -37,7 +55,15 @@
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
-
+	
+	<!--  					 
+  		SELECT 구문
+  		
+  			id 속성 : 쿼리문의 고유 아이디(외부에서 사용할 때 참조 값)  			
+	  		resultType : 쿼리 실행 후 조회 된 결과값의 자료형
+	  					 Mybatis의 타입의 내장 별칭은 _를 붙여줘야 하는 것이 있다.
+	  		* 세미콜론(;) 빼줘야 한다.
+  	-->
 	<select id="selectCount" resultType="_int">
 		SELECT COUNT(*) FROM MEMBER
 	</select>
@@ -47,11 +73,22 @@
 		WHERE STATUS = 'Y'
 	</select>
 
+	<!--
+  		외부에서 매개변수로 받는 값이 있으면 해당하는 매개변수의 타입을 지정해야 한다.(parameterType="string") 
+  		외부에서 매개변수로 받은 값은 #{변수명} 으로 설정해서 값을 가져와야 한다.
+  	 -->
 	<select id="findMemberById" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql" />
 		WHERE ID = #{id} AND STATUS = 'Y'
 	</select>
 	
+	<!-- 
+  		데이터를 insert한 후 리턴값에 해당하는 파라미터에 PK 값을 받아오기 위해서 useGeneratedKeys, keyColumn, keyProperty 속성을 추가한다.
+  		
+  			- useGeneratedKeys : insert 후에 PK 값을 받아올 수 있도록 허용하는 속성
+  			- keyColumn : 실제 PK에 해당하는 DB의 컬럼을 지정하는 속성
+  			- keyProperty : PK값이 담길 파라미터 객체(member)의 필드명을 지정하는 속성
+  	 -->
 	<insert id="insertMember" parameterType="Member"
 			useGeneratedKeys="true" keyColumn="NO" keyProperty="no">
 		INSERT INTO MEMBER (
