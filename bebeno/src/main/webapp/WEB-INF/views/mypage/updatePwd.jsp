@@ -13,7 +13,6 @@
 <title>비밀번호 수정</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/updatePwd.css">
-<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 
 </head>
 <body>
@@ -36,6 +35,7 @@
 	    </ul>
 	</div>
 	
+	<form id="update-profile">
 	
 	    <div class="inner-list">
 	        <div class="wrab-board-wide">
@@ -53,40 +53,33 @@
 	        </div>
 	    </div>
 	
-	<form  action="/mypage/updatePwd/set" method="post" id="update-profile">
 	<!-- ================================================================================================ -->
-	
-		<!-- 
-			회원의 no값을 넘겨주기 위한 태그(방법 1.) 
-		<input type="hidden" name="no" value="${loginMember.no}">
-		-->
 	
         <div class="mypage-input-box">
             <div class="updatepwd-box">
                 <div class="input-box">
                     <p>
                         <label class="hidden">현재비밀번호</label>
-                        <!-- ModelAttribute를 통해 set(주입)해주기 위해 name값을 vo 필드값과 동일하게 변경 -->
-                        <input type="password" id="CurrentPwd" name="password" class="w100" 
+                        <input type="password" id="CurrentPwd" name="CurrentPwd" class="w100" 
                         placeholder="현재비밀번호">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호</label>
-                        <input type="password" id="NewPwd" name="newPwd" class="w100" 
+                        <input type="password" id="NewPwd" name="NewPwd" class="w100" 
                         placeholder="새 비밀번호(8~30자)">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호확인</label>
-                        <input type="password" id="NewPwd_2" name="newPwdConfirm" class="w100" 
+                        <input type="password" id="NewPwd_2" name="NewPwd_2" class="w100" 
                         placeholder="새 비밀번호 확인">
                     </p>                        
                 </div>
                 <div class="save-update-button">
-                    <button type="button" id="updatePwd" class="button">비밀번호 변경</button>
+                    <button type="button" class="button">정보 수정</button>
                 </div>
             </div>
             
@@ -94,38 +87,6 @@
 
     </form>
 </section>	
-
-
-<!-- 비밀번호 변경 script -->
-<script>
-
-	/* 비밀번호와 비밀번호확인 값이 같은지 체크하는 스크립트 */
-	/* function validate() {
-		let pass1 = $("#NewPwd").val();
-		let pass2 = $("#NewPwd_2").val();
-		
-		if(pass1.trim() != pass2.trim()){
-			alert("비밀번호가 일치하지 않습니다.");
-			$("#NewPwd").val("");
-			$("#NewPwd_2").val("");
-			$("#NewPwd").focus();
-			
-			return false;
-		}
-	} */
-	
-	// id가 updatePwd인 버튼을 눌렀을 시 비밀번호수정을 위한 위치 및 크기 조절을 한 팝업창을 띄우는 스크립트
-	/* $(document).ready(() => {
-		
-		$("#updatePwd").on("click", () => {
-			
-			const url = "${ pageContext.request.contextPath }/mypage/updatePwd/set";			
-			
-			open(url, "", "");
-		});
-	}); */
-
-</script>
 
 </body>
 </html>

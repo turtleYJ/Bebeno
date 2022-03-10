@@ -7,9 +7,9 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${ path }/resources/css/css.css" /> 
+	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet"
-	href="${ path }/resources/css/header.css" />
+	href="<%=request.getContextPath()%>/resources/css/header.css" />
 	<title>Home</title>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 </head>

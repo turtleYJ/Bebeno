@@ -77,7 +77,7 @@
                     <tbody>
                         <tr>
                             <th>
-                                <span>계정</span>
+                                <span>회원 아이디</span>
                             </th>
                             <td class="input-item">
                                 <div>${ loginMember.id }</div>
@@ -100,7 +100,7 @@
                                     <p>
                                         <label class="hidden" style="display: none;">닉네임</label>
                                         <input type="text" class="" id="nickname" name="nickname" 
-                                        placeholder="닉네임" value="회원 닉네임">
+                                        placeholder="닉네임" value="${ loginMember.nickname }">
                                         <button type="button" class="button">중복확인</button>
                                     </p>
                                     <input type="hidden" id="nickname_origin" name="nickname_origin" value="회원 닉네임">

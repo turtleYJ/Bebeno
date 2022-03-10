@@ -28,8 +28,5 @@
 	
 	<context:component-scan base-package="com.bebeno.mvc" />
 	
-	<!-- 어노테이션 기반으로 트랜잭션(오토커밋 : 오류 시 오류 시 커밋이 아닌 롤백이 되도록 하는 설정)을 처리하겠다는 설정 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-	</beans:beans>
-	
-
+</beans:beans>
