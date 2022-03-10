@@ -79,11 +79,10 @@
                         placeholder="새 비밀번호 확인">
                     </p>                        
                 </div>
-                <div class="save-update-button">
-                    <button type="button" id="updatePwdBtn" class="button">정보 수정</button>
+                <div class="save-update-button">          
+                    <button type="button" id="updatePwdBtn" class="button" style='cursor:pointer;'>정보 수정</button>
                 </div>
             </div>
-            	<button id="test">Test</button>
         </div>
 
     </form>

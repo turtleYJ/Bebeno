@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/profile.css">
 
+<script src="${ path }/js/jquery-3.6.0.js"></script>
+
 <link rel="stylesheet"
  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
