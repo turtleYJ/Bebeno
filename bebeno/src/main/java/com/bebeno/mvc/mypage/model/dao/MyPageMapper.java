@@ -12,7 +12,9 @@ public interface MyPageMapper {
 	MyPage getMemberById(@Param("id") String id);
 	
 	// 비밀번호 업데이트
-	int modifyPwd(Member member);
-
+	int modifyPwd(
+			@Param("id") String id, 
+//			@Param("newPwd") String newPwd);
+			@Param("encodeNewPwd") String newPwd);
 	
 }

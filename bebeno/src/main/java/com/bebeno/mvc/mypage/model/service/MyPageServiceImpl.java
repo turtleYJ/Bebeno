@@ -1,6 +1,7 @@
 package com.bebeno.mvc.mypage.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,9 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Autowired
 	private MyPageMapper mapper;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	// id값으로 회원정보 조회하기
 	@Override
@@ -24,13 +28,16 @@ public class MyPageServiceImpl implements MyPageService {
 	// ========================= 비밀번호 변경 ==============================
 	@Override
 	@Transactional
-	public int modifyPwd(Member member) {
+	public int modifyPwd(String id, String newPwd) {
 		
 		int result = 0;
 		
-		if(member.getNo() != 0) {
-			result = mapper.modifyPwd(member);
-		}
+		String encodeNewPwd = null;
+		
+		encodeNewPwd = passwordEncoder.encode(newPwd); // 비밀번호 암호화
+				
+//		result = mapper.modifyPwd(id, newPwd);
+		result = mapper.modifyPwd(id, encodeNewPwd);
 		
 		return result;
 	}

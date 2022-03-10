@@ -135,7 +135,7 @@
 		WHERE NO = #{no}
 	</update>
 	
-	<!-- 비밀번호 변경 -->
+	<!-- 비밀번호 변경 : MyPageController => updatePwdSet() -->
 	<update id="modifyPwd" parameterType="Member">
 		UPDATE MEMBER
 		SET
@@ -144,7 +144,7 @@
 	</update>
 	
 	
-	<delete id="deleteMember" parameterType="_int">
+	<delete id="deleteMember" parameterType="string">
 		UPDATE MEMBER
 		SET
 			STATUS = 'N'

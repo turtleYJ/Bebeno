@@ -8,6 +8,6 @@ public interface MyPageService {
 	MyPage getMemberById(String id);
 
 	// 비밀번호 변경
-	int modifyPwd(Member member);
+	int modifyPwd(String id, String newPwd);
 
 }

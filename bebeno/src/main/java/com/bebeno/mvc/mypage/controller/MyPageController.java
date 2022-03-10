@@ -92,9 +92,11 @@ public class MyPageController {
 		}
 		
 		// 3. DB 비밀번호 변경
+		
+		// 3-1 새로 입력한 비밀번호 암호화...? 배운것과 달라서 일단 패스 => ServiceImpl에서 암호화 시도
 		int result = 0;
 		
-		result = service.modifyPwd(member);
+		result = service.modifyPwd(loginMember.getId(), newPwd);
 		
 		// 4. 비밀번호 완료 메세지 띄우고 로그아웃 처리
 		if(result > 0) {
