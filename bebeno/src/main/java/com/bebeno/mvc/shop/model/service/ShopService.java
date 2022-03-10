@@ -15,4 +15,6 @@ public interface ShopService {
 
 	void fileSave(ContentFiles file);
 
+	List<ContentFiles> findfilesByNo(int no);
+
 }

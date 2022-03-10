@@ -55,6 +55,9 @@ public class ShopController {
 	public ModelAndView view(ModelAndView model, @RequestParam("no") int no) {	
 
 		Shop shop = service.findShopByNo(no);
+		List<ContentFiles> fileList = service.findfilesByNo(no);
+		
+		shop.setFiles(fileList);
 		
 		model.addObject("shop", shop);
 		model.setViewName("shop/view");
@@ -123,7 +126,21 @@ public class ShopController {
 //			log.info("file : {}", files);
 //		}
 		
-		 for (MultipartFile mf : fileList) {
+		 
+		
+		// 2. 작성한 게시글 데이터를 데이터 베이스에 저장
+		shop.setWriterNo(loginMember.getNo());
+//		shop.setKorBname(KorBname);
+//		shop.setEngBname(EngBname);
+		shop.setAddress(address1 + " " + address2);
+//		shop.setPhone(phone);	
+//		shop.setContent(Content);
+		
+		System.out.println(shop);
+		
+		result = service.save(shop);
+		
+		for (MultipartFile mf : fileList) {
 			 if(mf != null && !mf.isEmpty()) {
 					// 파일을 저장하는 로직 작성
 					String location = null;
@@ -143,23 +160,9 @@ public class ShopController {
 						file.setFile_renamedFileName(renamedFileName);
 					}
 					
-					log.info("file : {}", file);
-					
 					service.fileSave(file);
 			 }
-        }
-		
-		// 2. 작성한 게시글 데이터를 데이터 베이스에 저장
-		shop.setWriterNo(loginMember.getNo());
-//		shop.setKorBname(KorBname);
-//		shop.setEngBname(EngBname);
-		shop.setAddress(address1 + " " + address2);
-//		shop.setPhone(phone);	
-//		shop.setContent(Content);
-		
-		System.out.println(shop);
-		
-		result = service.save(shop);
+       }
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 등록되었습니다.");

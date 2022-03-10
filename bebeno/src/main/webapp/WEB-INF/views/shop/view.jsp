@@ -60,21 +60,19 @@
                     
                     <div style="overflow: hidden;">
 				        <div class="img_container">
-				            <div class="inner">
-				                <img src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135124866844.jpg">
-				            </div>
-				            <div class="inner">
-				                <img src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135136385899.jpg">
-				            </div>
-				            <div class="inner">
-				                <img src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135515750112.png">
-				            </div>
+				        	<c:forEach var="file" items="${ shop.files }">
+		        		    	<div class="inner">
+				                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }">
+				            	</div>
+				        	</c:forEach>				            
 				        </div>
 				    </div>
 				    
-				    <button class="버튼1">1</button>
-				    <button class="버튼2">2</button>
-				    <button class="버튼3">3</button>
+				    <div class="img_btn">
+					    <button class="버튼1">1</button>
+					    <button class="버튼2">2</button>
+					    <button class="버튼3">3</button>
+				    </div>
     
                     <p><br></p>
                     <p><strong>[와인문의]</strong></p>

@@ -51,4 +51,10 @@ public class ShopServiceimpl implements ShopService {
 		
 	}
 
+	@Override
+	public List<ContentFiles> findfilesByNo(int no) {
+		
+		return mapper.selectfilesByNo(no);
+	}
+
 }

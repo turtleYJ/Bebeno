@@ -40,6 +40,13 @@
 		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
 	
+	<resultMap type="ContentFiles" id="fileListResultMap">
+		<id property="file_no" column="S_FILE_NO"/>
+		<result property="shopNo" column="STORE_NO"/>
+		<result property="file_originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="file_renamedFileName" column="RENAMED_FILENAME"/>		
+	</resultMap>
+	
 	<select id="findAll" parameterType="map" resultMap="shopListResultMap">
 		<include refid="shopListSql"/>
 		<choose>
@@ -59,6 +66,15 @@
 	<select id="selectShopByNo" parameterType="_int" resultMap="shopListResultMap">
 		<include refid="shopListSql"/>
 		AND STORE_NO = #{no}
+	</select>
+	
+	<select id="selectfilesByNo" parameterType="_int" resultMap="fileListResultMap">
+		SELECT  S_FILE_NO, 
+				STORE_NO,					
+		        ORIGINAL_FILENAME,
+		        RENAMED_FILENAME
+		FROM STORE_FILE
+		WHERE STORE_NO = #{no}
 	</select>
 	
 	<insert id="insertShop" parameterType="Shop"
@@ -93,6 +109,21 @@
 			#{renamedFileName},
 			DEFAULT,
 			DEFAULT
+		)
+	</insert>
+	
+	<insert id="savefile" parameterType="ContentFiles"
+			useGeneratedKeys="true" keyProperty="file_no" keyColumn="S_FILE_NO">
+		INSERT INTO STORE_FILE (
+			S_FILE_NO,
+			STORE_NO,
+			ORIGINAL_FILENAME,
+			RENAMED_FILENAME
+		) VALUES (
+			SEQ_S_FILE_NO.NEXTVAL,
+			#{shopNo},
+			#{file_originalFileName},
+			#{file_renamedFileName}
 		)
 	</insert>
 </mapper>

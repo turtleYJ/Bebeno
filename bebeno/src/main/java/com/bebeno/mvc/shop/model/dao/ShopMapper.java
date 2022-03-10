@@ -18,4 +18,6 @@ public interface ShopMapper {
 	Shop selectShopByNo(@Param("no") int no);
 
 	void savefile(ContentFiles file);
+
+	List<ContentFiles> selectfilesByNo(int no);
 }
