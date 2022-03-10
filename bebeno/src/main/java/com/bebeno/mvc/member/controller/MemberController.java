@@ -79,9 +79,16 @@ public class MemberController {
 	
 	@GetMapping("/member/terms")
 	public String enroll() {
-		log.info("회원 가입 페이지 요청");
+		log.info("회원 약관 페이지 요청");
 		
 		return "member/terms";
+	}
+	
+	@GetMapping("/member/enroll")
+	public String join() {
+		log.info("회원 가입 페이지 요청");
+		
+		return "member/enroll";
 	}
 	
 	@PostMapping("/member/enroll")
