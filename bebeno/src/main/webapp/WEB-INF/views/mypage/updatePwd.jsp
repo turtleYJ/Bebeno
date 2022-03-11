@@ -60,21 +60,21 @@
             <div class="updatepwd-box">
                 <div class="input-box">
                     <p>
-                        <label class="hidden">현재비밀번호</label>
+                        <label class="hidden">현재 비밀번호</label>
                         <input type="password" id="CurrentPwd" name="password" class="w100" 
                         placeholder="현재비밀번호">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
-                        <label class="hidden">새비밀번호</label>
+                        <label class="hidden">새 비밀번호</label>
                         <input type="password" id="NewPwd" name="newPwd" class="w100" 
                         placeholder="새 비밀번호(8~30자)">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
-                        <label class="hidden">새비밀번호확인</label>
+                        <label class="hidden">새 비밀번호 확인</label>
                         <input type="password" id="NewPwd_2" name="newPwdConfirm" class="w100" 
                         placeholder="새 비밀번호 확인">
                     </p>                        
