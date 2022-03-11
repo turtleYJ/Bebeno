@@ -70,7 +70,9 @@
                     <p>
                         <label class="hidden">새 비밀번호</label>
                         <input type="password" id="NewPwd" name="newPwd" class="w100" 
-                        placeholder="새 비밀번호(8~30자)">
+                        placeholder="새 비밀번호(8~30자)" onchange="pwdLength()">
+                        <br>
+                        <span id="pwdLength"></span>
                     </p>                        
                 </div>
                 <div class="input-box">
@@ -92,29 +94,50 @@
 </section>	
 
 <script>
-
-	// 1. 새 비밀번호와 새 비밀번호 확인값이 같거나 다를 경우 표시되는 스크립트
+		
+	// 1. '새 비밀번호'의 길이가 8~30이 아닌 경우 표시되는 스크립트	
+	function pwdLength() {
+		let newPwd = document.getElementById("NewPwd").value;
+		let newPwdConfirm = document.getElementById("NewPwd_2").value;
+			
+		let pwdLength = document.getElementById("pwdLength");
+		
+		
+		if(newPwd.length < 8 || newPwd.length > 30) {
+			pwdLength.innerHTML="새 비밀번호의 입력값은 8~30 사이여야 합니다. "
+			pwdLength.style.color="red"
+		} else {
+			pwdLength.innerHTML=""
+		}
+		
+	}
+	
+	// ----------------------------------------------------------
+	
+	// 2. '새 비밀번호'와 '새 비밀번호 확인'값이 같거나 다를 경우 표시되는 스크립트
 	function sameCheck() {
 		
 		let newPwd = document.getElementById("NewPwd").value;
 		let newPwdConfirm = document.getElementById("NewPwd_2").value;
-		
+			
 		let sameCheck = document.getElementById("sameCheck");
 		
 		if(newPwd != "" && newPwdConfirm != "") {
 			if(newPwd == newPwdConfirm) {
-				sameCheck.innerHTML="비밀번호가 일치합니다."
+				sameCheck.innerHTML="새 비밀번호와 일치합니다."
 				sameCheck.style.color="blue"				
 			} else {
-				sameCheck.innerHTML="비밀번호가 일치하지 않습니다."
+				sameCheck.innerHTML="새 비밀번호와 일치하지 않습니다."
 				sameCheck.style.color="red"
 			}
 		}
+		
 	}
+	
 
 // ===========================================================================
 	
-	// 2. 정보 수정 버튼을 눌렀을 시 발생하는 이벤트
+	// 3. '정보 수정 버튼'을 눌렀을 시 발생하는 이벤트
 	$(document).ready(() => {		
 		
 		$("#updatePwdBtn").on("click", () => {			
@@ -130,7 +153,7 @@
 				
 		// 2-1) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
 		if(newPwd != newPwdConfirm) {
-			alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.")
+			alert("새 비밀번호와 새 비밀번호 확인 값이 일치하지 않습니다.")
 			return false;
 		} else {
 			

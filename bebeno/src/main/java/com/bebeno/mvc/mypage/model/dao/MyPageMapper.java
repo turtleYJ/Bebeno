@@ -9,6 +9,7 @@ import com.bebeno.mvc.mypage.model.vo.MyPage;
 @Mapper
 public interface MyPageMapper {
 
+	// 회원의 현재 비밀번호를 id를 통해서 가져오는 매퍼
 	MyPage getMemberById(@Param("id") String id);
 	
 	// 비밀번호 업데이트
