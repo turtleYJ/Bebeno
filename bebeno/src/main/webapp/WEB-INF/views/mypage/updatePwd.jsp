@@ -61,21 +61,21 @@
                 <div class="input-box">
                     <p>
                         <label class="hidden">현재비밀번호</label>
-                        <input type="password" id="CurrentPwd" name="CurrentPwd" class="w100" 
+                        <input type="password" id="CurrentPwd" name="password" class="w100" 
                         placeholder="현재비밀번호">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호</label>
-                        <input type="password" id="NewPwd" name="NewPwd" class="w100" 
+                        <input type="password" id="NewPwd" name="newPwd" class="w100" 
                         placeholder="새 비밀번호(8~30자)">
                     </p>                        
                 </div>
                 <div class="input-box">
                     <p>
                         <label class="hidden">새비밀번호확인</label>
-                        <input type="password" id="NewPwd_2" name="NewPwd_2" class="w100" 
+                        <input type="password" id="NewPwd_2" name="newPwdConfirm" class="w100" 
                         placeholder="새 비밀번호 확인">
                     </p>                        
                 </div>
@@ -92,10 +92,29 @@
 
 	$(document).ready(() => {
 		
-		$("#updatePwdBtn").on("click", () => {
+		
+		$("#updatePwdBtn").on("click", () => {			
+			
+		let newPwd = document.getElementById("NewPwd").value;
+		let newPwdConfirm = document.getElementById("NewPwd_2").value;
+		
+		if(newPwd.length < 8 || newPwd.length > 30) {
+			alert("새 비밀번호는 8~30자로 입력해 주세요")
+			return false;
+		}
+		
+		if(newPwd != newPwdConfirm) {
+			alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.")
+			return false;
+		} else {
+			
 			if(confirm("정말로 비밀번호를 변경하시겠습니까?")) {
 				location.replace("${ pageContext.request.contextPath }/mypage/profile");
+				
 			}
+			
+		}
+			
 		});
 	});
 
