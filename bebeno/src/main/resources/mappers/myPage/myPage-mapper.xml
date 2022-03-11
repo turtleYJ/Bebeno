@@ -136,10 +136,10 @@
 	</update>
 	
 	<!-- 비밀번호 변경 : MyPageController => updatePwdSet() -->
-	<update id="modifyPwd" parameterType="Member">
+	<update id="modifyPwd" parameterType="string">
 		UPDATE MEMBER
 		SET
-			PASSWORD = #{newPwd}
+			PASSWORD = #{encodeNewPwd}
 		WHERE ID = #{id}
 	</update>
 	

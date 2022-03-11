@@ -55,7 +55,7 @@
 	
 	<!-- ================================================================================================ -->
 	
-	<form id="updatePwdFrm" action="${ path }/mypage/updatePwd" method="get"
+	<form id="updatePwdFrm" action="${ path }/mypage/updatePwd" method="post"
 			onsubmit="return confirm('정말로 비밀번호를 변경하시겠습니까?');">
 	
         <div class="mypage-input-box">
@@ -153,13 +153,15 @@
 			let newPwd = document.getElementById("NewPwd").value;
 			let newPwdConfirm = document.getElementById("NewPwd_2").value;		
 			
-			// 1) 비밀번호 길이 제한(8 ~ 30)
+			// 1) 비밀번호 길이 제한(8 ~ 30) -- 테스트를 위해 주석처리
+		/* 
 			if(newPwd.length < 8 || newPwd.length > 30) {
 				alert("새 비밀번호는 8~30자로 입력해 주세요")
 				return false;
 			}
+		*/
 					
-			// 2-1) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
+			// 2) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
 			if(newPwd != newPwdConfirm) {
 				alert("새 비밀번호와 새 비밀번호 확인 값이 일치하지 않습니다.")
 				return false;

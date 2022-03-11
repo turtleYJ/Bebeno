@@ -9,6 +9,9 @@ import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.dao.MyPageMapper;
 import com.bebeno.mvc.mypage.model.vo.MyPage;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MyPageServiceImpl implements MyPageService {
 
@@ -20,12 +23,6 @@ public class MyPageServiceImpl implements MyPageService {
 
 // ==================================================================
 	
-	// id값으로 회원정보 조회하기
-	@Override
-	public MyPage getMemberById(String id) {		
-		
-		return mapper.getMemberById(id);
-	}
 
 // ========================= 비밀번호 변경 ==============================
 	@Override
@@ -38,6 +35,9 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		encodeNewPwd = passwordEncoder.encode(newPwd); // 비밀번호 암호화
 				
+		log.info("암호화 되기 전 새 비밀번호 : {}", newPwd);
+		log.info("암호화 된 새 비밀번호 : {}", encodeNewPwd);
+		
 //		result = mapper.modifyPwd(id, newPwd);
 		result = mapper.modifyPwd(id, encodeNewPwd);
 		
