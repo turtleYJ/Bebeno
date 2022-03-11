@@ -36,7 +36,6 @@
 	    </ul>
 	</div>
 	
-	<form id="update-profile">
 	
 	    <div class="inner-list">
 	        <div class="wrab-board-wide">
@@ -55,6 +54,8 @@
 	    </div>
 	
 	<!-- ================================================================================================ -->
+	
+	<form id="updatePwdFrm" action="${ path }/member/update" method="post">
 	
         <div class="mypage-input-box">
             <div class="updatepwd-box">
