@@ -26,13 +26,14 @@
 </head>
 <body>
 <section class="sub-contents wrap-wine-view clear">
+    <form method="post" action="${path}/mypage/cart">
     <div class="inner">
         <div class="btn_list">
             <a href="${path}/wineboard/wineList" class="button btn_list_small">목록</a>
         </div>
         <div class="clear">
             <div class="wine-top-left">
-                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">>
                     <div class="swiper-wrapper" >
 						<c:if test="${ !empty wineboard.renamedFileName }">
                         <div class='swiper-slide'><img src="${path}/resources/upload/wineimg/${wineboard.renamedFileName}" width="400px" height="550px"/></div>
@@ -54,18 +55,17 @@
                         <dd class="wine-name-en">${wineboard.wineEng}</dd>
                     </dl>
                     <p class="wine-price">
-                        <strong>${wineboard.winePrice}</strong>    
-                        <label>수량</label>
-                        <select>
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        </select>               
-                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open"><a href="${path}/mypage/cart">장바구니 담기</a></button>     
-
+                        <strong>${wineboard.winePrice}</strong>      
                     </p>
+                    <p>
+                                            <label>수량</label>
+                        <select name="amount">
+                        	<c:forEach begin="1" end="5" var="i">
+                        		<option value="${i}">${i}</option>
+                        	</c:forEach>
+                        </select>&nbsp;개   
+                        <a href="${path}/mypage/cart"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart">장바구니 담기</button></a>  
+                    </p> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
 
                     <div class="wine-components">
@@ -102,10 +102,11 @@
                                     <button type="button" class="button btn_list_del" id="btnDelete">삭제</button>
                                 </div>
                             </div>
+                          </form>
                     </section>
                     
                         <!-- js영역 -->
-
+                      
                         <script src="${ path }/js/jquery.min.js"></script>
                         <script src="${ path }/js/swiper.min.js"></script>
                         <script src="${ path }/js/swiper.js"></script>
@@ -122,6 +123,17 @@
 								}
 							})
 						});
+						
+             
+                        
+                        $(".btn-cart").click(function() {
+                			var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
+                			if (check) {
+                				location.assign("${path}/mypage/cart");
+                			} 
+                		});
+      
+
 
 </script>
 

@@ -21,9 +21,7 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<%--  <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
- <jsp:include page="/WEB-INF/views/common/header.jsp" /> --%>
+<%-- 		<jsp:include page="/WEB-INF/views/common/header1.jsp" /> --%>
 </head>
 <body>
 	<div class="container">

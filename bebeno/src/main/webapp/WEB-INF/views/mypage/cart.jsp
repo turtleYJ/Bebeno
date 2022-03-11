@@ -38,10 +38,8 @@
         </ul>
     </div>
 
-<!-- ============================================================================================================================================================= -->
-
     <div class="container">
-        <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
+        <form name="orderform" id="orderform" method="post" class="orderform" action="${path}/payment/paymentPage" onsubmit="return false;">
         
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
@@ -63,10 +61,14 @@
         
                             <div class="basketcmd">삭제</div>
                         </div>
+                        <c:choose>
+                        	<c:when test="${map.count == 0 }">
+                        		장바구니가 비어있습니다.
+                        	</c:when>
+                        	</c:choose>
                         
                         <div class="split"></div>
                     </div>
-            <!-- ============================================================================================================================================= -->
 
                     <div class="row data">
                         <div class="subdiv">
@@ -95,64 +97,6 @@
                             <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
                         </div>
                     </div>
-    
-    <!-- =================================================================================================================================================== -->
-    
-                    <div class="row data">
-                        <div class="subdiv">
-                            <div class="check"><input type="checkbox" name="buy" value="261" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="../resources/image/레드헤즈.png" width="60" height="60"></div>
-                            <div class="pname">
-                                <span>레드헤즈 스튜디오, 문라이터스 레드 블렌드</span>
-                            </div>
-                        </div>
-                        <div class="subdiv">
-                            <div class="basketprice"><input type="hidden" name="p_price" id="p_price2" class="p_price" value="19000">19,000원</div>
-                            <div class="num">
-                                <div class="updown">
-                                    <input type="text" name="p_num2" id="p_num2" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(2);">
-                                    <span onclick="javascript:basket.changePNum(2);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                    <span onclick="javascript:basket.changePNum(2);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                                </div>
-                            </div>
-                            <div class="sum">19,000원</div>
-                        </div>
-                        <div class="subdiv">
-                            <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
-                        </div>
-                    </div>
-    
-    <!-- =================================================================================================================================================== -->
-    
-                    <div class="row data">
-                        <div class="subdiv">
-                            <div class="check"><input type="checkbox" name="buy" value="262" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="../resources/image/맥라렌.png" width="60" height="60"></div>
-                            <div class="pname">
-                                <span>맥라렌 베일 잉크 쉬라즈</span>
-                            </div>
-                        </div>
-                        <div class="subdiv">
-                            <div class="basketprice"><input type="hidden" name="p_price" id="p_price3" class="p_price" value="15200">15,200원</div>
-                            <div class="num">
-                                <div class="updown">
-                                    <input type="text" name="p_num3" id="p_num3" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(3);">
-                                    <span onclick="javascript:basket.changePNum(3);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                    <span onclick="javascript:basket.changePNum(3);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                                </div>
-                            </div>
-                            <div class="sum">15,200원</div>
-                        </div>
-                        <div class="subdiv">
-                            <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
-                        </div>
-                    </div>
-            
-    <!-- =================================================================================================================================================== -->
-                
-                </div>
-        
-            <!-- =================================================================================================================================================== -->
     
                 <div class="right-align basketrowcmd">
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
