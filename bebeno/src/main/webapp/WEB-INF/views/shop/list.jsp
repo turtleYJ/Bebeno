@@ -148,9 +148,15 @@
       							    	<div class="form-group">
 	          								<label>내용</label>
 	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;">
-[소개글]
-
-
+	          								</textarea>
+										</div>
+      							    </div>
+      							    <div class="form-row">
+      							    	<div class="form-group">
+	          								<label>상세 정보</label>
+	          								<textarea type="text" name="Content2" class="form-control" maxlength="2048" style="height: 180px;">
+[와인문의]	          								
+	          								
 [이메일]
 
 [영업일시]

@@ -58,6 +58,7 @@
 
                     <p><br></p>
                     
+                    <!-- 
                     <div style="overflow: hidden;">
 				        <div class="img_container">
 				        	<c:forEach var="file" items="${ shop.files }">
@@ -73,6 +74,12 @@
 					    <button class="버튼2">2</button>
 					    <button class="버튼3">3</button>
 				    </div>
+                    -->
+                    <c:forEach var="file" items="${ shop.files }">
+	       		    	<div class="center-block">
+		                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }" class="img-responsive center-block">
+		            	</div>
+		        	</c:forEach>		
     
                     <p><br></p>
                     <p><strong>[와인문의]</strong></p>

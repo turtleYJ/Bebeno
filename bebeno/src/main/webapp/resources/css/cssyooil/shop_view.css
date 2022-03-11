@@ -44,3 +44,21 @@ img.img-clogo {max-width: 200px; max-height:110px;}
 .img_btn {
 	text-align: center;
 }
+
+.button-wine {
+    color: #fff;
+    border: 1px solid #c70039;
+    background: #c70039;
+}
+
+.button {
+    display: inline-block;
+    padding: 0 12px;
+    line-height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    word-break: keep-all;
+    vertical-align: middle;
+    box-sizing: border-box;
+    text-align: center;
+}

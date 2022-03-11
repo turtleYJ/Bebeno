@@ -30,6 +30,8 @@ public class Shop {
 	
 	private String content;
 	
+	private String content2;
+	
 	private String originalFileName;
 	
 	private String renamedFileName;

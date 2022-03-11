@@ -15,6 +15,7 @@
 		        STORE_TYPE, 
 		        STORE_STATUS,
 		        STORE_CONTENT,
+		        STORE_CONTENT2,
 		        ORIGINAL_FILENAME,
 				RENAMED_FILENAME,
 		        ENROLL_DATE,
@@ -34,6 +35,7 @@
 		<result property="type" column="STORE_TYPE"/>
 		<result property="status" column="STORE_STATUS"/>
 		<result property="content" column="STORE_CONTENT"/>
+		<result property="content2" column="STORE_CONTENT2"/>
 		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
 		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
