@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/mypage")
 public class MyPageController {
 	
+// ==================================================================
+	
 	@GetMapping("/profile")
 	public String profile() {
 		
@@ -20,12 +22,16 @@ public class MyPageController {
 		return "/mypage/profile";
 	}
 	
+// ==================================================================	
+	
 	@GetMapping("/updatePwd")
 	public String updatePwd() {
 		
 		
 		return "/mypage/updatePwd";
 	}
+	
+// ==================================================================
 	
 	@GetMapping("/deleteAccount")
 	public String deleteAccount() {
@@ -36,6 +42,10 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
+	
+// ==================================================================
+	
+	
 	@GetMapping("/scrap")
 	public String scrap() {
 		
@@ -45,10 +55,16 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
+	
+	
+// ==================================================================
+	
 	@GetMapping("/cart")
 	public String cart() {
 		
 		
 		return "/mypage/cart";
 	}
+	
+	// -------------------------------------------
 }
