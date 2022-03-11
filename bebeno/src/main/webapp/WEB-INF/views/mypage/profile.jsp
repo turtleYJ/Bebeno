@@ -129,7 +129,7 @@
                 </table>
 
                 <div class="save-update-button">
-                    <button type="button" class="button">정보 수정</button>
+                    <button type="submit" class="button">정보 수정</button>
                 </div>
             </div>
         </div>

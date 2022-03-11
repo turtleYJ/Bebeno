@@ -55,7 +55,8 @@
 	
 	<!-- ================================================================================================ -->
 	
-	<form id="updatePwdFrm" action="${ path }/member/update" method="post">
+	<form id="updatePwdFrm" action="${ path }/mypage/updatePwd" method="get"
+			onsubmit="return confirm('정말로 비밀번호를 변경하시겠습니까?');">
 	
         <div class="mypage-input-box">
             <div class="updatepwd-box">
@@ -85,13 +86,15 @@
                     </p>                        
                 </div>
                 <div class="save-update-button">          
-                    <button type="button" id="updatePwdBtn" class="button" style='cursor:pointer;'>정보 수정</button>
+                    <button type="submit" id="updatePwdBtn" class="button" style='cursor:pointer;'>정보 수정</button>
                 </div>
             </div>
         </div>
 
     </form>
 </section>	
+
+
 
 <script>
 		
@@ -137,31 +140,30 @@
 
 // ===========================================================================
 	
+	/* 
+			if(confirm("정말로 비밀번호를 변경하시겠습니까?")) {
+				location.replace("${ pageContext.request.contextPath }/mypage/updatePwd");			
+			}			
+	*/
 	// 3. '정보 수정 버튼'을 눌렀을 시 발생하는 이벤트
 	$(document).ready(() => {		
 		
 		$("#updatePwdBtn").on("click", () => {			
 			
-		let newPwd = document.getElementById("NewPwd").value;
-		let newPwdConfirm = document.getElementById("NewPwd_2").value;		
-		
-		// 1) 비밀번호 길이 제한(8 ~ 30)
-		if(newPwd.length < 8 || newPwd.length > 30) {
-			alert("새 비밀번호는 8~30자로 입력해 주세요")
-			return false;
-		}
-				
-		// 2-1) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
-		if(newPwd != newPwdConfirm) {
-			alert("새 비밀번호와 새 비밀번호 확인 값이 일치하지 않습니다.")
-			return false;
-		} else {
+			let newPwd = document.getElementById("NewPwd").value;
+			let newPwdConfirm = document.getElementById("NewPwd_2").value;		
 			
-		// 2-2) 새 비밀번호와 확인 비밀번호가 일치인 경우 처리할 수 있는 컨트롤러로 보냄 
-			if(confirm("정말로 비밀번호를 변경하시겠습니까?")) {
-				location.replace("${ pageContext.request.contextPath }/mypage/profile");				
-			}			
-		}
+			// 1) 비밀번호 길이 제한(8 ~ 30)
+			if(newPwd.length < 8 || newPwd.length > 30) {
+				alert("새 비밀번호는 8~30자로 입력해 주세요")
+				return false;
+			}
+					
+			// 2-1) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
+			if(newPwd != newPwdConfirm) {
+				alert("새 비밀번호와 새 비밀번호 확인 값이 일치하지 않습니다.")
+				return false;
+			} 
 			
 		});
 	});
