@@ -76,8 +76,8 @@
 				    </div>
                     -->
                     <c:forEach var="file" items="${ shop.files }">
-	       		    	<div class="center-block">
-		                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }" class="img-responsive center-block">
+	       		    	<div>
+		                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }" class="img-responsive center-block" style="width: 100vw; height: 35vw;">
 		            	</div>
 		        	</c:forEach>		
     
@@ -117,7 +117,7 @@
             </div><!--.detail-area -->
         </div><!--.board-view -->
         <div class="pagination-box">
-            <button id="storeListBtn" class="button button-small button-wine">목록</button>
+            <button type="button" onclick="location.href='${ path }/shop/list'" id="storeListBtn" class="button button-small button-wine">목록</button>
         </div>
         <!-- 관련상품 -->
         <div class="board-related-list">
