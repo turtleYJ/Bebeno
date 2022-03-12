@@ -13,57 +13,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글쓰기</title>
+
+    <link rel="stylesheet" href="%{ path }/resources/css_wagle/wagle_write.css">
+    
 </head>
 <body>
-    <table>
-        <th>작성자</th>
-        <td><input type="text" name="writer" th:value="${ board.writer }" readonly></td>
+    <section class="wagle_nav">
+        <div class="wagle_buttons">
+            <ul class="wagle_btn">
+                <li id="menu_btn">전체보기</li>
+                <li id="menu_btn">와인</li>
+                <li id="menu_btn">바틀샵</li>
+                <li id="menu_btn">와인바</li>
+            </ul>
+        </div>
+        <div class="wagle_my_write_box">
+            <ul class="wagle_write">
+                <li><a href="${ path }/wagle_write.jsp">글쓰기</a></li>
+                <li><a href="${ path }/wagle_write_manage.jsp">내 글 관리</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="wine-filter-box">
+        <div class="wine-components">
+            <ul>
+                <li>
+                    <p class="wine-c-txt">당도</p>
+                    <div id="" class="filter-grade">
+                    <a class='on'></a><a class='on'></a><a class='on'></a><a class='on'></a><a class='on'></a>								</div>
+                </li>
+                <li>
+                    <p class="wine-c-txt">산도</p>
+                    <div id="" class="filter-grade">
+                    <a class='on'></a><a class='on'></a><a ></a><a ></a><a ></a></div>
+                </li>
+                <li>
+                    <p class="wine-c-txt">바디</p>
+                    <div id="" class="filter-grade">
+                    <a class='on'></a><a class='on'></a><a class='on'></a><a class='on'></a><a class='on'></a>								</div>
+                </li>
+                <li>
+                    <p class="wine-c-txt">타닌</p>
+                    <div id="" class="filter-grade">
+                    <a class='on'></a><a class='on'></a><a ></a><a ></a><a ></a>								</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <h2>글 작성하기</h2>
+    <input type="hidden" name="no" th:value="${ wagle_board.no }">
+    <table class="tbl_wagle_board">
+        <th class="th_box">작성자</th>
+            <td><input type="text" name="writer" th:value="${ wagle_board.writer }" readonly></td>
         <tr>
-            <th>타입</th>
+            <th class="th_box">타입</th>
             <td>
-                <div>
-                    <label type="radio">와인</label>
+                <strong>
+                <div class="wagle_cate_box">
+                    <input type="checkbox" class="check_cate"><span>와인</span></input>
+                    <input type="checkbox" class="check_cate"><span>바틀샵</span></label>
+                    <input type="checkbox" class="check_cate"><span>와인바</span></label>
                 </div>
-                <div>
-                    <label type="radio">바틀샵</label>
-                </div>
-                <div>
-                    <label type="radio">와인바</label>
-                </div>
+            </strong>
             </td>
         </tr>
         <tr>
-            <th>와인명</th>
+            <th class="th_box">와인명</th>
             <td>
-                <tr></tr>
+                <input class="search_wine"> <input type="button" value="search">
             </td>
         </tr>
         <tr>
-            <th>위치추가</th>
+            <th class="th_box">장소</th>
             <td>
-                <tr></tr>
+                <input class="search_place"> <input type="button" value="search">
             </td>
         </tr>
         <tr>
-            <th>제목</th>
+            <th class="th_box">제목</th>
             <td>
-                <input type="text" name="title" id="title" th:value="${ board.title }">
+                <input type="text" name="title" id="title" th:value="${ wagle_board.title }">
             </td>
         </tr>
         <tr>
-            <th>사진추가</th>
+            <th class="th_box">사진변경</th>
             <td>
                 <input type="file" name="upfile" id="" />
             </td>
         </tr>
         <tr>
-            <th>내용</th>
-            <td><textarea name="content" cols="50" rows="15" th:text="${ board.content }"></textarea></td>
+            <th class="th_box">내용</th>
+            <td><textarea name="content" cols="40" rows="15" th:text="${ board.content }"></textarea></td>
         </tr>
     </table>
-    <div id="btns">
-        <input type="button" value="뒤로가기">
-        <input type="submit" value="등록하기">
+    <div class="wagle_update_button">
+        <input class="wagle_udt_btn" type="button" value="뒤로가기">
+        <input class="wagle_udt_btn" type="submit" value="등록하기">
     </div>
+    <script type="text/javascript" src="./wagle_write.js"></script>
 </body>
 </html>
