@@ -13,5 +13,8 @@ public interface MyPageMapper {
 	int modifyPwd(
 			@Param("id") String id, 
 			@Param("encodeNewPwd") String encodeNewPwd);
+
+	// 회원 탈퇴(status 값 : Y -> N 변경) 
+	int deleteAccount(String id);
 	
 }

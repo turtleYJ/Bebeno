@@ -144,11 +144,10 @@
 	</update>
 	
 	
-	<delete id="deleteMember" parameterType="string">
+	<delete id="deleteAccount" parameterType="string">
 		UPDATE MEMBER
 		SET
 			STATUS = 'N'
-		WHERE 
-			NO = #{no}
+		WHERE ID = #{id}
 	</delete>
 </mapper>

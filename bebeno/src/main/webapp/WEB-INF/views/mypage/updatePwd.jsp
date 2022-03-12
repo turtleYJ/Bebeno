@@ -153,7 +153,7 @@
 			let newPwd = document.getElementById("NewPwd").value;
 			let newPwdConfirm = document.getElementById("NewPwd_2").value;		
 			
-			// 1) 비밀번호 길이 제한(8 ~ 30) -- 테스트를 위해 주석처리
+			// 1) 비밀번호 길이 제한(8 ~ 30) <------------------- 테스트를 위해 주석처리
 		/* 
 			if(newPwd.length < 8 || newPwd.length > 30) {
 				alert("새 비밀번호는 8~30자로 입력해 주세요")

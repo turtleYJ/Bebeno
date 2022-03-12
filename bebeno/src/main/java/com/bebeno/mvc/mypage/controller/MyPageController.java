@@ -51,7 +51,7 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
-	// 비밀번호 변경을 위한 컨트롤러 메소드
+	// <<< 비밀번호 변경을 위한 메소드 >>>
 	@PostMapping("/updatePwd")
 	public ModelAndView updatePwd(
 			ModelAndView model,
@@ -104,6 +104,31 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
+	// <<< 로그인 된 회원의 세션(loginMember)을 이용해 Id값을 사용하여 회원 탈퇴 >>>
+	@PostMapping("/deleteAccount")
+	public ModelAndView deleteAccount(
+			ModelAndView model,
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		
+		int result = 0;
+		
+		log.info("로그인 된 회원의 Id값 : {}", loginMember.getId()); // 로그인 된 회원의 Id값이 잘 들어오는지 확인
+		
+		result = service.deleteAccount(loginMember.getId());
+		
+		if(result > 0) {
+			model.addObject("msg", "정상적으로 탈퇴 되었습니다.");
+			model.addObject("location", "/mypage/profile"); // <-------- 로그아웃 되도록 수정 필요
+		} else {
+			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
+			model.addObject("location", "/mypage/profile");
+		}
+		
+		model.setViewName("common/msg");
+		
+		
+		return model;
+	}
 	
 // ==================================================================
 	

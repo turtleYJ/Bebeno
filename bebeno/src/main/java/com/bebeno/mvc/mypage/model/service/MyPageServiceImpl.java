@@ -43,5 +43,14 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return result;
 	}
+
+// ==================================================================
+	
+	// 회원 탈퇴(status 값 : Y -> N 변경) 
+	@Override
+	public int deleteAccount(String id) {
+		
+		return mapper.deleteAccount(id);
+	}
 	
 }
