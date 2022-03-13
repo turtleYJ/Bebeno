@@ -26,6 +26,8 @@
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 
 <body>
@@ -48,37 +50,38 @@
         </ul>
     </div>
 
-    <form id="update-profile">
-
-        <div class="inner-list">
-            <div class="wrab-board-wide">
-                <ul class="inner-list-nav">
-                    <li>
-                        <a href="${ path }/mypage/profile">프로필</a>
-                    </li>
-                    <li>
-                        <a href="${ path }/mypage/updatePwd">비밀번호 재설정</a>
-                    </li>
-                    <li>
-                        <a href="${ path }/mypage/deleteAccount">탈퇴</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="inner-list">
+        <div class="wrab-board-wide">
+            <ul class="inner-list-nav">
+                <li>
+                    <a href="${ path }/mypage/profile">프로필</a>
+                </li>
+                <li>
+                    <a href="${ path }/mypage/updatePwd">비밀번호 재설정</a>
+                </li>
+                <li>
+                    <a href="${ path }/mypage/deleteAccount">탈퇴</a>
+                </li>
+            </ul>
         </div>
+    </div>
+    
+    <form id="update-profile" >
 
         <div class="mypage-input-box">
 
             <div class="update-profile">
             
-            	<a href="${ path }/mypage/updatePwd" class="imgTest">
-            		<img alt="" src="../resources/image/profile.png">
-            	</a>
-            
             <!-- 
              -->
+            	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
+            	<label for="profileImgUpdate">이미지 업로드</label>            
+            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+            <!-- 
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">
                 <a href="${ path }/mypage/updatePwd" class="profile-button" >프로필 변경</a>
                 <input type="file" id="inputProfileImg" style="display: none;">
+             -->
             </div>
 
             <div class="update-etc">
@@ -214,6 +217,31 @@
 
     </form>
 </section>
+
+<script type="text/javascript">
+
+// << 프로파일 이미지 업로드 시 변경된 이미지를 바로 볼 수 있도록 하는 스크립트 >>
+
+	// 프로필 사진을 넣었을 때 바로 보일 수 있도록 미리보기 하는 기능
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+	  	var reader = new FileReader();
+	  
+	  	reader.onload = function (e) {
+	   		$('#profileimg').attr('src', e.target.result);  
+	  	}
+	  
+	  	reader.readAsDataURL(input.files[0]);
+	  	}
+	}
+	 
+	// Id가 profileImgUpdate인 input태그에 변화가 있을 때 매개값을 readURL(input)메소드로 전달하며 실행
+	// 이벤트를 바인딩해서 input에 파일이 올라올때 (input에 change를 트리거할때) 위의 함수를 this context로 실행합니다.
+	$("#profileImgUpdate").change(function(){
+	   readURL(this);
+	});
+
+</script>
 
 </body>
 </html>

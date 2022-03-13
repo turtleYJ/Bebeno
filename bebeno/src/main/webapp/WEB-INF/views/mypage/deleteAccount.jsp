@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/deleteAccount.css">
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
 
