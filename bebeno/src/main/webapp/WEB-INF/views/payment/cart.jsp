@@ -109,15 +109,23 @@
                 <div id="goorder" class="">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <a href="${path}/payment/paymentPage">선택한 상품 주문</a>
+                        <button class="btn btn-default">주문하기</button>
+                        <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
             </form>
     </div>
 </section>
 
+    <script src="${ path }/js/jquery.min.js"></script>
+	<script src="${ path }/js/cart.js"></script>
+	
+	<script type="text/javascript">
+		$(".btn-back_to_shop").click(function() {
+			history.back();
+		});
+	</script>
 
-<script src="${ path }/js/cart.js"></script>
 
 </body>
 </html>

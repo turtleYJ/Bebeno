@@ -175,8 +175,7 @@
         </div>  
     </form>
         <!-- js영역 -->
-   
-
+        
     <script src="${ path }/js/jquery.min.js"></script>
 	<script src="${ path }/js/browser.min.js"></script>
 	<script src="${ path }/js/breakpoints.min.js"></script>
@@ -184,5 +183,15 @@
 	<script src="${ path }/js/menubar.js"></script>
     <script src="${ path }/js/textselbox.js"></script>
         
+    <script>
+    function selectTest(){
+        var testA = $("#selbox2 > option:selected").val(); 
+        console.log(testA);
+
+        var testB = $( "#selbox2 option:selected" ).text(); 
+        console.log(testB);
+     }
+    
+    </script>    
     </body>
     </html>

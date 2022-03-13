@@ -87,21 +87,11 @@ $(document).on("focus", "input:text[koreanCurrency]", function()	{
 });
 
 
-// 옵션 기타 input 입력 값 읽어오기 
-
-function checkInput(sel) {
-  if (sel.value == "1") {
-    sel.nextElementSibling.style.display = "inline-block";
-  } else {
-    sel.nextElementSibling.style.display = "none";
-  }
-}
- 
 
 
-$("#directBox2").on("input", function() {
-	console.log("a");
-});
+
+
+
 
 
 

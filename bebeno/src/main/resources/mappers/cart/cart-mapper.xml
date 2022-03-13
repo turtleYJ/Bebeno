@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.bebeno.mvc.payment.model.dao.paymentMapper">
+  
+   	<select id="cartList" resultType="com.bebeno.mvc.payment.model.vo.Cart">
+   	
+		select c.cart_id, c.wine_bno, c.id, w.wine_name, w.RENAMED_FILENAME, w.wine_price 
+		from cart c left join bebeno_wineboard w on c.wine_bno = w.wine_bno
+		where c.id= #{id};
+ 
+	</select>
+
+	<insert id="addCart" parameterType="Cart">
+	
+		insert into cart (cart_id, id, wine_bno, cart_qty)
+			   values (SEQ_CART_NO.nextval, #{id}, #{wine_bno}, #{cart_qty})
+	
+	</insert>
+  </mapper>
+	

@@ -73,7 +73,7 @@ public class WineBoardController {
 		System.out.println(result);
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
-			model.addObject("location", "/wineboard/wineList?wineBno=" + wineboard.getWineBno());
+			model.addObject("location", "/wineboard/wineView?wineBno=" + wineboard.getWineBno());
 		} else {
 			model.addObject("msg", "게시글 수정을 실패하였습니다.");
 			model.addObject("location", "/wineboard/wineUpdate?wineBno=" + wineboard.getWineBno());
@@ -92,8 +92,6 @@ public class WineBoardController {
 		WineBoard board = wineboardservice.findBoardByNo(wineBno);
 		
 		result = wineboardservice.delete(board.getWineBno());
-		
-		System.out.println(board);
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");

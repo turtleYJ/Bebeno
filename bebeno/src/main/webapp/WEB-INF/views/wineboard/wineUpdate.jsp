@@ -54,13 +54,14 @@
                         <dl>
                             <dt>종류</dt>
                             <select id="selbox" name="wineType" style="width: 150px; height: 35px;">
-                                <option value="${board.wineType}" selected>종류 선택</option>
-                                <option value="레드">레드</option>
+                                <option value="" selected>종류 선택</option>
+	                            <option value="레드">레드</option>
                                 <option value="화이트">화이트</option>
                                 <option value="로제">로제</option>
                                 <option value="네추럴">네추럴</option>
                                 <option value="스파클링">스파클링</option>
                                 <option value="1">기타</option><input type="text" id="directBox" name="directBox" />
+
                             </select>
                         </dl>
                     </div>
@@ -87,7 +88,7 @@
                         <dl>
                             <dt>지역</dt>
                             <select id="selbox2" name="wineMf" style="width: 150px; height: 35px;">
-                                <option value="${board.wineMf}" selected>지역 선택</option>
+                                <option value="" selected>지역 선택</option>
                                 <option value="보르도">보르도</option>
                                 <option value="부르고뉴">부르고뉴</option>
                                 <option value="상파뉴">상파뉴</option>

@@ -17,7 +17,6 @@ public class WineBoardServiceImpl implements WineBoardService {
 
 	@Override
 	public int getWineBoardCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
