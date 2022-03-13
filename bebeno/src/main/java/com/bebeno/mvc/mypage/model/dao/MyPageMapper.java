@@ -16,5 +16,7 @@ public interface MyPageMapper {
 
 	// 회원 탈퇴(status 값 : Y -> N 변경) 
 	int deleteAccount(String id);
+
+	int insertProfileImgName(Member loginMember);
 	
 }

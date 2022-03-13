@@ -5,29 +5,40 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.bebeno.mvc.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
 
-// 업로드 한 파일을 저장하는 클래스
+// 업로드 한 파일을 저장/삭제하는 클래스
 @Slf4j
-public class FileProcess {
-	public static String save(MultipartFile upfile, String location) {
+public class ProfileImgSave {
+	
+	
+	// 업로드 한 파일을 저장하는 메소드
+	public static String save(MultipartFile upfile, 
+								String location, 
+								Member loginMember) {
+		
 		String renamedFileName = null;
 		String originalFileName = upfile.getOriginalFilename();
 		
-		log.info("Upfile Name : {}", originalFileName);
+		log.info("UpProfileImg Name : {}", originalFileName);
 		log.info("location : {}", location);
+		log.info(loginMember.toString());
 		
 		// location이 실제로 존재하지 않으면 폴더를 생성하는 로직
 		File folder = new File(location);
 		
 		if(!folder.exists()) {
 			folder.mkdirs(); // mkdirs() : 실제 경로에 폴더를 만드는 메소드
-		}
+		}		
 		
 		renamedFileName = 
-				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS")) + 
+				loginMember.getId() + 
 				originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일의 확장자만 가져오는 것 
 		
 		try {
@@ -42,6 +53,8 @@ public class FileProcess {
 		return renamedFileName;
 	}
 
+// ==============================================================================	
+	
 	public static void delete(String location) {
 		log.info("location : {}", location);
 		

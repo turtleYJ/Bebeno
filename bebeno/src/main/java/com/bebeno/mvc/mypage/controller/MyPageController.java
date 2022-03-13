@@ -1,17 +1,22 @@
 package com.bebeno.mvc.mypage.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bebeno.mvc.common.util.ProfileImgSave;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.service.MyPageService;
 import com.bebeno.mvc.mypage.model.vo.MyPage;
@@ -30,6 +35,9 @@ public class MyPageController {
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;
 	
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
 // ==================================================================
 	
 	@GetMapping("/profile")
@@ -37,6 +45,73 @@ public class MyPageController {
 		
 		
 		return "/mypage/profile";
+	}
+	
+	// -------------------------------------------
+	
+	// 회원정보(프로필 이미지, 닉네임) 변경 메소드
+	@PostMapping("/profile")
+	public ModelAndView profileUpdate(
+			ModelAndView model,
+			@RequestParam("profileImgUpdate") MultipartFile profileImg,
+			@RequestParam("nickname") String nickname,
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		
+		int result = 0;
+		
+		log.info(loginMember.toString());
+		
+		log.info("회원의 닉네임 : {}", nickname);
+		
+		// getOriginalFilename() : 파일을 업로드 하지 않으면 ""(빈 문자열), 파일을 업로드하면 "파일명"
+//		log.info("업로드한 프로필 이미지 파일의 이름 : {}", profileImg.getOriginalFilename());
+		// isEmpty() : 파일을 업로드 하지 않으면 true, 파일을 업로드하면 false가 찍힘
+		log.info("프로필 이미지 업로드 여부(false가 업로드 된 것) : {}", profileImg.isEmpty());
+		
+	// 1. 파일을 업로드 했는지 확인 후 파일 저장
+		if(profileImg != null && !profileImg.isEmpty() ) {
+			
+			String location = null;
+			String renamedFileName = null;
+			
+			// webapp을 기준으로 해서 실제 저장되는 물리적인 경로를 가져오는 방법
+			// (메소드 변수에 HttpServletRequest request 추가 필요)
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/board");
+//			System.out.println(location);
+			
+			try {
+				location = resourceLoader.getResource("resources/upload/profileImg").getFile().getPath();
+				log.info("실제 로컬저장소에 저장될 경로 : {}", location);
+				// ProfileImgSave.save(파일, "webapp기준 저장할 경로") 
+				// 	- 파일을 실제 폴더에 저장하는 로직을 담고있는 클래스
+				renamedFileName = ProfileImgSave.save(profileImg, location, loginMember);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
+			
+			if(renamedFileName != null) {
+				loginMember.setProfileImgNameO(profileImg.getOriginalFilename());
+				loginMember.setProfileImgNameR(renamedFileName);
+			}
+		}
+		
+	// 2. 저장한 프로필 이미지의 원래이름과 변경된 이름을 DB에 저장
+		
+		result = service.profileImgSave(loginMember);
+		
+		if(result > 0) {
+			model.addObject("msg", "프로필 정보가 변경되었습니다.");
+			model.addObject("location", "/mypage/profile");
+		} else {
+			model.addObject("msg", "프로필 정보 변경을 실패하였습니다.");
+			model.addObject("location", "/mypage/profile");
+		}
+	
+		
+		
+		model.setViewName("/mypage/profile");
+		
+		return model;
 	}
 	
 // ==================================================================	

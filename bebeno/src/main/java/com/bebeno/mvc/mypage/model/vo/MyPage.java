@@ -38,4 +38,8 @@ public class MyPage {
 	
 	private Date modifyDate;
 	
+	private String profileImgNameO;
+	
+	private String profileImgNameR;
+	
 }

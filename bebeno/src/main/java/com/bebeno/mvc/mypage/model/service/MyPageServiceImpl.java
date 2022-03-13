@@ -52,5 +52,20 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return mapper.deleteAccount(id);
 	}
+
+// ==================================================================
+	
+	// 프로필 이미지 변경 
+	@Override
+	@Transactional
+	public int profileImgSave(Member loginMember) {
+		
+		int result = 0;
+		
+		// update 사용
+		result = mapper.insertProfileImgName(loginMember);
+		
+		return result;
+	}
 	
 }

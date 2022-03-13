@@ -66,7 +66,8 @@
         </div>
     </div>
     
-    <form id="update-profile" >
+    <form action="${ path }/mypage/profile" method="post" id="update-profile"
+    		enctype="multipart/form-data">
 
         <div class="mypage-input-box">
 
@@ -74,9 +75,16 @@
             
             <!-- 
              -->
+             <c:if test="${ empty loginMember.profileImgNameO }">
             	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
             	<label for="profileImgUpdate">이미지 업로드</label>            
+            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
+			</c:if>
+			<c:if test="${ !empty loginMember.profileImgNameO }">
+				<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
+            	<label for="profileImgUpdate">이미지 업로드</label>            
             	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+			</c:if>
             <!-- 
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">
                 <a href="${ path }/mypage/updatePwd" class="profile-button" >프로필 변경</a>
@@ -221,6 +229,7 @@
 <script type="text/javascript">
 
 // << 프로파일 이미지 업로드 시 변경된 이미지를 바로 볼 수 있도록 하는 스크립트 >>
+// 참고 사이트 : https://dongyeopblog.wordpress.com/2017/09/02/javascript-이미지-미리보여주기-preview-image-upload/
 
 	// 프로필 사진을 넣었을 때 바로 보일 수 있도록 미리보기 하는 기능
 	function readURL(input) {
