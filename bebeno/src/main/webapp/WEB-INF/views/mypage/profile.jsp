@@ -69,8 +69,15 @@
         <div class="mypage-input-box">
 
             <div class="update-profile">
+            
+            	<a href="${ path }/mypage/updatePwd" class="imgTest">
+            		<img alt="" src="../resources/image/profile.png">
+            	</a>
+            
+            <!-- 
+             -->
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">
-                <a href="" class="profile-button">프로필 변경</a>
+                <a href="${ path }/mypage/updatePwd" class="profile-button" >프로필 변경</a>
                 <input type="file" id="inputProfileImg" style="display: none;">
             </div>
 
