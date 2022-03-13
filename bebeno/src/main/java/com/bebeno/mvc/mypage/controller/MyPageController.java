@@ -32,9 +32,11 @@ public class MyPageController {
 	@Autowired
 	private MyPageService service;
 	
+	// 비밀번호 암호화 관련 코드 - 입력값이 현재 비밀번호와 맞는지 체크하기 위해 사용
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;
 	
+	// 로컬저장소 경로 설정 관련 코드 - 파일 업로드 시 사용
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
@@ -74,11 +76,6 @@ public class MyPageController {
 			String location = null;
 			String renamedFileName = null;
 			
-			// webapp을 기준으로 해서 실제 저장되는 물리적인 경로를 가져오는 방법
-			// (메소드 변수에 HttpServletRequest request 추가 필요)
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/board");
-//			System.out.println(location);
-			
 			try {
 				location = resourceLoader.getResource("resources/upload/profileImg").getFile().getPath();
 				log.info("실제 로컬저장소에 저장될 경로 : {}", location);
@@ -97,7 +94,10 @@ public class MyPageController {
 		
 	// 2. 저장한 프로필 이미지의 원래이름과 변경된 이름을 DB에 저장
 		
+		loginMember.setNickname(nickname); // 덤으로 닉네임 값도 변경
+		
 		result = service.profileImgSave(loginMember);
+		
 		
 		if(result > 0) {
 			model.addObject("msg", "프로필 정보가 변경되었습니다.");
@@ -109,7 +109,7 @@ public class MyPageController {
 	
 		
 		
-		model.setViewName("/mypage/profile");
+		model.setViewName("common/msg");
 		
 		return model;
 	}

@@ -24,7 +24,9 @@
 		       BIRTH, 
 		       STATUS, 
 		       ENROLL_DATE,
-		       MODIFY_DATE
+		       MODIFY_DATE,
+		       O_PROFILEIMGNAME,
+		       R_PROFILEIMGNAME
 		FROM MEMBER
 	</sql>
 
@@ -54,6 +56,8 @@
 		<result property="status" column="STATUS"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="profileImgNameO" column="O_PROFILEIMGNAME"/>
+		<result property="profileImgNameR" column="R_PROFILEIMGNAME"/>
 	</resultMap>
 	
 	<!--  					 
@@ -138,6 +142,7 @@
 	<update id="insertProfileImgName" parameterType="Member">
 		UPDATE MEMBER 
 		SET 
+			NICKNAME = #{nickname},
 			O_PROFILEIMGNAME = #{profileImgNameO},
 			R_PROFILEIMGNAME = #{profileImgNameR} 
 		WHERE NO = #{no}

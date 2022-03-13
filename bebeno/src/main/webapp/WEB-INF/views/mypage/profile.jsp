@@ -73,7 +73,10 @@
 
             <div class="update-profile">
             
-            <!-- 
+            <!--
+            	프로필 이미지 변경
+            		회원 가입 시 프로필 이미지 이름 값을 null값으로 받게 하고 default이미지로 프로필 이미지 설정
+            		이미지 변경 시 해당 프로필 사진이름을 DB에 저장 후 경로와 연결해 보여줌  
              -->
              <c:if test="${ empty loginMember.profileImgNameO }">
             	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
