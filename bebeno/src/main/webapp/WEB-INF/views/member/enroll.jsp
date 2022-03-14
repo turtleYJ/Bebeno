@@ -8,6 +8,15 @@
 <html>
     <head>
         <title>로그인 / 회원가입 폼 템플릿</title>  
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <link rel="stylesheet" href="${path}/resources/css/style.css">
+
+		<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+       <link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header.css" />
+        <link rel="stylesheet" href="${path}/resources/css/style.css">
         <link rel="stylesheet" href="${path}/resources/css/style.css">
       </head>
      
@@ -44,6 +53,8 @@
                 
                 <form id="register" action="${ path }/member/enroll" class="input-group" method="post">
             	  <input type="text" name="id" class="input-field" placeholder="User ID" required>
+            	  <input type="text" name="nickname" class="input-field" placeholder="User nickname" required>
+                   	<input type="button" id="checkDuplicate" value="중복검사" >
    					<input type="password" name="password" class="input-field" placeholder="User Password" required>
    					<input type="password" class="input-field" placeholder="User Password check" required>
                     <input type="text" name="name" class="input-field" placeholder="Username" required>
@@ -73,6 +84,47 @@
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
+           </script>
+           
+          
+           <script>
+         // 아이디 중복 확인
+        	$(document).ready(() => {
+        		$("#checkDuplicate").on("click", () => {
+        			let userId = $("#newId").val().trim();
+        			
+        			$.ajax({
+        				type: "post",
+        				url: "${ pageContext.request.contextPath }/member/idCheck",
+        				dataType: "json",
+        				data: {
+        					userId
+        				},
+        				success: (data) => {
+        					console.log(data);
+        					
+        					if(data.duplicate === true) {
+        						alert("이미 사용중인 아이디 입니다.");
+        					} else {
+        						alert("사용 가능한 아이디 입니다.");						
+        					}
+        				},
+        				error: (error) => {
+        					console.log(error);
+        				}
+        			});
+        		});		
+        	});
+        	
+        	
         </script>
+        
+=======
+            
+</script>
+>>>>>>> main
+=======
+        </script>
+>>>>>>> parent of 7d08a80 (로그인 페이지 수정 완료 + 회원가입 약관 페이지 추가)
     </body>
 </html>

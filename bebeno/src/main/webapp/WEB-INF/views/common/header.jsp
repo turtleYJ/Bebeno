@@ -17,7 +17,6 @@
     <title>header</title>
 </head>
 <style>
-	@import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 </style>
 <body class="preload">
@@ -28,14 +27,15 @@
             <div class="inner">
                 <!-- Logo영역 (글자로만 ? )-->
                 <a>
-                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;">bebeno</span>
+                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;"></span>
                 </a>
                     <ul id="menubar">
                         <li id="inlinemenu"><a href="">ABOUT</a></li>
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
-                        <li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
-                        <li id="inlinemenu"><a href="${ path }/wagle/list">COMMUNITY</a></li>
-                        <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
+                        <li id="inlinemenu"><a href="${path}/shop/list">WINE SHOP</a></li>
+                        <li id="inlinemenu"><a href="">COMMUNITY</a></li>
+                        <li id="inlinemenu"><a href="${path}/member/loginform">login</a></li>
+                        <li id="inlinemenu"><a href="${path}/member/terms">join</a></li>
                     </ul>
                 <!-- Nav 영역 -->
                 <nav>

@@ -55,7 +55,7 @@
                     </dl>
                     <p class="wine-price">
                         <strong>${wineboard.winePrice}</strong>    
-                        <button type="button" onclick="" class="btn-wine-wish btn-pop-wine-01 btn_open">구매하기</button>                    
+                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open"><a href="${path}/payment/paymentPage">구매하기</a></button>                    
 
                     </p>
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
@@ -85,12 +85,14 @@
                                         </ul>
                                     </div>
                                     <div class="wine-top-right-inner">
-                                    <span>${wineboard.wineInfo}</span>
                                     <span>${wineboard.readCount}</span>
+                                    <span>${wineboard.wineInfo}</span>
                                     </div>
                                 </div>
-                                
-                                
+								<div class="wineviewright">
+                                    <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
+                                    <button type="button" class="button btn_list_del" id="btnDelete">삭제</button>
+                                </div>
                             </div>
                     </section>
                         <!-- js영역 -->

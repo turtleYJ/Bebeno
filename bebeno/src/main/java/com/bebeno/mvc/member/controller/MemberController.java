@@ -42,11 +42,11 @@ public class MemberController {
 		
 		Member loginMember = service.login(id, password);
 		
-		System.out.println(loginMember);
+		System.out.println("loginmember" + loginMember);
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);
-			model.setViewName("redirect:/");
+			model.setViewName("member/loginsuccess");
 		} else {
 			model.addObject("msg", "아이디나 비밀번호가 일치하지 않습니다.");
 			model.addObject("location", "/");
@@ -70,14 +70,28 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/member/enroll")
-	public String enroll() {
-		log.info("회원 가입 페이지 요청");
+	@GetMapping("/member/loginform")
+	public String login() {
+		log.info("로그인 페이지 요청");
 		
-		return "member/enroll";
+		return "member/loginform";
 	}
 	
-	@PostMapping("/member/enroll")
+	@GetMapping("/member/terms")
+	public String enroll() {
+		log.info("회원 약관 페이지 요청");
+		
+		return "member/terms";
+	}
+	
+	@GetMapping("/member/join")
+	public String join() {
+		log.info("회원 가입 페이지 요청");
+		
+		return "member/join";
+	}
+	
+	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
 		log.info(member.toString());
@@ -89,7 +103,7 @@ public class MemberController {
 			model.addObject("location", "/");
 		} else {
 			model.addObject("msg", "회원가입을 실패하였습니다.");
-			model.addObject("location", "/member/enroll");			
+			model.addObject("location", "/member/join");			
 		}
 		
 		model.setViewName("common/msg");
