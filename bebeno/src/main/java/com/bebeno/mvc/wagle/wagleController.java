@@ -18,4 +18,16 @@ public class wagleController {
 		
 		return "/wagle_board/wagle_list";
 	}
+	
+	@GetMapping("/wagle_write")
+	public String write() {
+		
+		return "/wagle_board/wagle_write";
+
+	}
+	@GetMapping("/wagle_manage")
+	public String manage() {
+		
+		return "/wagle_board/wagle_write_manage";
+	}
 }
