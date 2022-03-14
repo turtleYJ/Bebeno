@@ -7,7 +7,7 @@
     <input type="hidden" name="no" th:value="${ wagle_board.no }">
     <table class="tbl_wagle_board">
         <th class="th_box">작성자</th>
-            <td><input type="text" name="writer" th:value="${ wagle_board.writer }" readonly></td>
+            <td><input type="text" name="writer" th:value="${ wagle_board.writer }" readonly>${ loginMember.nickname }</td>
         <tr>
             <th class="th_box">타입</th>
             <td>
