@@ -103,9 +103,8 @@
                             </div>
                           </form>
                     </section>
-                    
                         <!-- js영역 -->
-                      
+
                         <script src="${ path }/js/jquery.min.js"></script>
                         <script src="${ path }/js/swiper.min.js"></script>
                         <script src="${ path }/js/swiper.js"></script>
@@ -113,6 +112,7 @@
 						<script src="${ path }/js/breakpoints.min.js"></script>
 						<script src="${ path }/js/util.js"></script>
 						<script src="${ path }/js/menubar.js"></script>
+
 						
 						<script>
 						$(document).ready(() => {
@@ -171,7 +171,6 @@
 
 
 </script>
-
 </body>
  </html>
                     

@@ -14,6 +14,8 @@ public class Member {
 	private int no;
 	
 	private String id;
+
+	private String nickname;
 	
 	private String password;
 	
@@ -34,6 +36,11 @@ public class Member {
 	private Date enrollDate;
 	
 	private Date modifyDate;
+	
+	private String profileImgNameO;
+	
+	private String profileImgNameR;
+	
 
 	public Member(String id, String password, String name) {
 		this.id = id;

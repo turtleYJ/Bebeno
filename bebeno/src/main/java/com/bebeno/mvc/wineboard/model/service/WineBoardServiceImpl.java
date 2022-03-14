@@ -45,11 +45,11 @@ public class WineBoardServiceImpl implements WineBoardService {
 	}
 
 	@Override
-	@Transactional
 	public int delete(int wineBno) {
-
+		
 		return wineboardmapper.deleteWineBoard();
 	}
+
 
 
 
