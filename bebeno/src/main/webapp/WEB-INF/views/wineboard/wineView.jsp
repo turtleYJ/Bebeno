@@ -26,7 +26,7 @@
 </head>
 <body>
 <section class="sub-contents wrap-wine-view clear">
-    <form method="post" action="${path}/mypage/cart">
+    <form method="post" action="${path}/payment/cart">
     <div class="inner">
         <div class="btn_list">
             <a href="${path}/wineboard/wineList" class="button btn_list_small">목록</a>

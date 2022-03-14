@@ -11,5 +11,7 @@ public interface CartService {
 		return null;
 	}
 
+	Object addCart(Cart cart);
+
 
 }

@@ -1,6 +1,5 @@
 package com.bebeno.mvc.payment.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.payment.model.service.CartService;
 import com.bebeno.mvc.payment.model.vo.Cart;
 
@@ -50,11 +46,28 @@ public class CartController {
 		model.addAttribute("cartList", cartList);
 		
 		
-		return "/cart";
-		
+		return "/payment/cart";
  
 }
-  
+	
+	// 장바구니 담기
+	@RequestMapping(value="/cart", method = RequestMethod.POST)
+	public String addCart (HttpSession session, Cart cart, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		List<Cart> cartList = CartService.getCartList();
+		
+		
+		model.addAttribute("cartList",cartList);
+		model.addAttribute("cart", cart);
+		cartList.add(cart);
+		
+		cartService.addCart(cart);
+		
+		return "redirect:cart";
+		
+	}
+	
   
   
   

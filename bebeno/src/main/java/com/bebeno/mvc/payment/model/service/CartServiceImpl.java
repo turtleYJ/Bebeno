@@ -19,6 +19,13 @@ public class CartServiceImpl implements CartService {
 		return cartmapper.cartList();
 	}
 
+	@Override
+	public Object addCart(Cart cart) {
+		
+		return cartmapper.addCart();
+		
+	}
+
 	
 
 

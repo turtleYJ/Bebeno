@@ -232,7 +232,7 @@
  		WHERE WINE_BNO = #{wineBno}
  	</delete>
  </mapper>
- 
+
  
  
  
