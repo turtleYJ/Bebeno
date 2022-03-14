@@ -10,14 +10,22 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+<<<<<<< HEAD
 @RequestMapping("/wagle_board")
 public class wagleController {
 
 	@GetMapping("/wagle_list")
+=======
+@RequestMapping("/wagle")
+public class wagleController {
+
+	@GetMapping("/list")
+>>>>>>> feature/test
 	public String list() {
 		
 		return "/wagle_board/wagle_list";
 	}
+<<<<<<< HEAD
 	
 	@GetMapping("/wagle_write")
 	public String write() {
@@ -30,4 +38,6 @@ public class wagleController {
 		
 		return "/wagle_board/wagle_write_manage";
 	}
+=======
+>>>>>>> feature/test
 }

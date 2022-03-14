@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/scrap.css">
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
 
@@ -58,7 +60,7 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -67,7 +69,7 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -76,7 +78,7 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -85,7 +87,17 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -94,7 +106,7 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -103,7 +115,7 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>
@@ -112,7 +124,56 @@
                     <li>
                         <a href="">
                             <div class="img-thumb">
-                                <img src="./resources/image/city1.PNG" alt="">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    
+                    <!-- 이미지 틀이 어긋남..? -->
+                    <!-- 
+                     -->
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
+                            </div>
+                            <Strong>게시글 제목</Strong>
+                            <p>내용</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="img-thumb">
+                                <img src="../resources/image/city1.PNG" alt="">
                             </div>
                             <Strong>게시글 제목</Strong>
                             <p>내용</p>

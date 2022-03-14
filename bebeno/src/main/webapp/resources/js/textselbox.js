@@ -87,3 +87,25 @@ $(document).on("focus", "input:text[koreanCurrency]", function()	{
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

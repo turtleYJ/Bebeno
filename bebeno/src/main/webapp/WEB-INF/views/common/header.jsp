@@ -27,15 +27,16 @@
             <div class="inner">
                 <!-- Logo영역 (글자로만 ? )-->
                 <a>
-                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;">bebeno</span>
+                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;"></span>
                 </a>
                     <ul id="menubar">
                         <li id="inlinemenu"><a href="">ABOUT</a></li>
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
-                         <li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
+<li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
                         <li id="inlinemenu"><a href="${ path }/wagle_board/wagle_list">COMMUNITY</a></li>
                         <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
-                    </ul>
+                        <li id="inlinemenu"><a href="${path}/member/terms">join</a></li>
+</ul>
                 <!-- Nav 영역 -->
                 <nav>
                     <ul>

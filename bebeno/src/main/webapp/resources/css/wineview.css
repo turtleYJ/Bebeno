@@ -7,9 +7,26 @@
     background: #999;
 }
 
+.btn_list_ch {
+    color: #fff !important;
+    border: 1px solid rgb(102, 100, 100);
+    background: rgb(102, 100, 100);
+}
+
+.btn_list_del {
+    color: #fff !important;
+    border: 1px solid rgba(201, 54, 54, 0.795);
+    background: rgba(201, 54, 54, 0.795);
+}
+
+.wineviewright {
+    display: inline-block;
+    float: right;
+}
+
 .button {
     display: inline-block;
-    padding: 0 12px;
+    padding: 0 20px;
     line-height: 30px;
     border-radius: 4px;
     cursor: pointer;
@@ -20,6 +37,7 @@
     margin-bottom: 10px;
 }
 
+
 a {
     border: 0;
     color: #262626;
@@ -27,12 +45,9 @@ a {
 }
 
 .btn-wine-wish {
-    width: 100px;
-    height: 30px;
+    width: 135px;
+    height: 35px;
     margin-left: 15px;
-    /* margin-right: 10px; */
-    margin-top: 7px;
-    /* line-height: 35px; */
     border-radius: 3px;
     background-color: #c70039;
     text-align: center;
@@ -88,7 +103,7 @@ a {
 }
 
 .wrap-wine-view .inner {
-    padding-top: 15px;
+    padding-top: 100px;
 }
 
 .wine-top-right .wine-price-etc {

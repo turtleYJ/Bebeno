@@ -210,28 +210,29 @@
 	</select>
 	
 	<update id="updateWineBoard" parameterType="WineBoard">
-       	UPDATE BEBENO_WINEBOARD
-       	<trim prefix="SET" suffixOverrides=",">
-    	    <if test="wineCode != null">
-		 		WINE_CODE = #{wineCode},
-	 		</if>
-	 		<if test="wineName != null">
+       		UPDATE 
+       			BEBENO_WINEBOARD
+     		SET WINE_CODE = #{wineCode},
 		 		WINE_NAME = #{wineName},
-	 		</if>
-	 		<if test="originalFileName != null">
-		 		ORIGINAL_FILENAME = #{originalFileName},
-	 		</if>
-	 		<if test="renamedFileName != null">
-		 		RENAMED_FILENAME = #{renamedFileName},
-	 		</if>
-		 	MODIFY_DATE = SYSDATE 
-       	</trim>
-	 	WHERE 
-	 		WINE_BNO = #{wineBno}
+		 		WINE_ENG = #{wineEng},
+		 		WINE_TYPE = #{wineType},
+		 		WINE_MF = #{wineMf},
+		 		WINE_NATIONAL = #{wineNational},
+		 		WINE_PRICE = #{winePrice},
+		 		WINE_SL = #{wineSl},
+		 		WINE_AC = #{wineAc},
+		 		WINE_BODY = #{wineBody},
+ 		 		WINE_TN = #{wineTn} 
+		  WHERE WINE_BNO = #{wineBno}
 	</update>
  	
+ 	<delete id="deleteWineBoard" parameterType="_int">
+ 		DELETE
+ 		 FROM BEBENO_BOARD
+ 		WHERE WINE_BNO = #{wineBno}
+ 	</delete>
  </mapper>
- 
+
  
  
  

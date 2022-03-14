@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/deleteAccount.css">
 
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
 </head>
 <body>
 
@@ -35,7 +37,8 @@
         </ul>
     </div>
 
-    <form id="update-profile">
+    <form id="deleteAccount" action="${ path }/mypage/deleteAccount" method="post"
+    		onsubmit="return confirm('정말로 회원탈퇴를 하시겠습니까?');">
 
         <div class="inner-list">
             <div class="wrab-board-wide">
@@ -115,7 +118,7 @@
         </div>
 
         <div class="deleteAccount-button">
-            <button type="button" class="button">상기 내용 숙지 & 동의하고 탈퇴합니다.</button>
+            <button type="submit" class="button" style='cursor:pointer;'>상기 내용 숙지 & 동의하고 탈퇴합니다.</button>
         </div>
 
     </form>

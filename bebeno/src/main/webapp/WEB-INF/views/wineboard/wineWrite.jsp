@@ -16,10 +16,10 @@
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
-    <form action="${path}/wineboard/wineWrite" method="post" enctype="multipart/form-data" >
+    <form action="${path}/wineboard/wineWrite" name="write" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
             <div class="board_title">
                 <strong>상품 등록</strong>
@@ -66,7 +66,6 @@
                     </div>
                     <div class="title">
                         <dl>
-                            
                             <dt>제조국</dt>
                             <select id="selbox1" name="wineNational" style="width: 150px; height: 35px;">
                                 <option value="" selected>제조국 선택</option>
@@ -98,7 +97,7 @@
                                 <option value="나파밸리">나파밸리</option>
                                 <option value="리오하">리오하</option>
                                 <option value="바로사 밸리">바로사 밸리</option>
-                                <option value="1">기타 지역</option><input type="text" id="directBox2" name="directBox2" />
+                                <option>기타 지역</option><input type="text" id="directBox2" name="directBox2"></input>
                             </select>
                         </dl>
                     </div>
@@ -162,13 +161,13 @@
                         </dl>
                     </div>
                     <div class="cont" name="wineInfo">
-              <!--           <textarea id="wineinfo" placeholder="와인 상세 정보"></textarea> -->
-              			<input type="text" id="wineinfo" style="width:1250px; height:200px;" >
+     					 <textarea id="wineInfo" name="wineInfo" placeholder="와인 상세 정보"></textarea>
+              			<!-- <input type="text" id="wineinfo" placeholder="와인 상세 정보" style="width:1250px; height:200px;"  > -->
               	
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 <a href="${path}/wineboard/wineView" class="on" id="register"><input type="submit" value="등록"/></a>
+                 	<a class="on" id="register"><input type="submit" value="등록"/></a>
                     <a href="${path}/wineboard/wineList">취소</a>
     
                 </div>
@@ -176,7 +175,7 @@
         </div>  
     </form>
         <!-- js영역 -->
-
+        
     <script src="${ path }/js/jquery.min.js"></script>
 	<script src="${ path }/js/browser.min.js"></script>
 	<script src="${ path }/js/breakpoints.min.js"></script>
@@ -184,6 +183,15 @@
 	<script src="${ path }/js/menubar.js"></script>
     <script src="${ path }/js/textselbox.js"></script>
         
-        
+    <script>
+    function selectTest(){
+        var testA = $("#selbox2 > option:selected").val(); 
+        console.log(testA);
+
+        var testB = $( "#selbox2 option:selected" ).text(); 
+        console.log(testB);
+     }
+    
+    </script>    
     </body>
     </html>

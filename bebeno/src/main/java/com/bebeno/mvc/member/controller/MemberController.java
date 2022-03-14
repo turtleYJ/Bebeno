@@ -42,11 +42,11 @@ public class MemberController {
 		
 		Member loginMember = service.login(id, password);
 		
-		System.out.println("loginmember" + loginMember);
+		System.out.println("loginmember : " + loginMember);
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);
-			model.setViewName("member/loginsuccess");
+			model.setViewName("home");
 		} else {
 			model.addObject("msg", "아이디나 비밀번호가 일치하지 않습니다.");
 			model.addObject("location", "/");
@@ -67,17 +67,31 @@ public class MemberController {
 		
 		log.info("status.isComplete() : {}", status.isComplete());
 		
-		return "redirect:/";
+		return "home";
 	}
 	
-	@GetMapping("/member/enroll")
+	@GetMapping("/member/loginform")
+	public String login() {
+		log.info("로그인 페이지 요청");
+		
+		return "member/loginform";
+	}
+	
+	@GetMapping("/member/terms")
 	public String enroll() {
+		log.info("회원 약관 페이지 요청");
+		
+		return "member/terms";
+	}
+	
+	@GetMapping("/member/join")
+	public String join() {
 		log.info("회원 가입 페이지 요청");
 		
-		return "member/enroll";
+		return "member/join";
 	}
 	
-	@PostMapping("/member/enroll")
+	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
 		log.info(member.toString());
@@ -89,7 +103,7 @@ public class MemberController {
 			model.addObject("location", "/");
 		} else {
 			model.addObject("msg", "회원가입을 실패하였습니다.");
-			model.addObject("location", "/member/enroll");			
+			model.addObject("location", "/member/join");			
 		}
 		
 		model.setViewName("common/msg");
@@ -165,32 +179,6 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	@GetMapping("/member/delete")
-	public ModelAndView delete(ModelAndView model, 
-			@SessionAttribute(name="loginMember") Member loginMember) {
-		int result = 0;
-		
-		result = service.delete(loginMember.getNo());
-		
-		if(result > 0) {
-			model.addObject("msg", "정상적으로 탈퇴되었습니다.");
-			model.addObject("location", "/logout");
-		} else {
-			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
-			model.addObject("location", "/member/myPage");			
-		}
-		
-		model.setViewName("common/msg");
-		
-		return model;
-	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

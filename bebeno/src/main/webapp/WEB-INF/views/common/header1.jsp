@@ -1,66 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-    
-<c:set var="path" value ="${ pageContext.request.contextPath }"/>   
+
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-    <title>header</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="free template, bootstrap, bootstrap4" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/animate.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/owl.theme.default.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/jquery.fancybox.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/aos.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/owl.carousel.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/main/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/fonts/icomoon/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
+<title>header</title>
+
 </head>
-<style>
-	@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
-</style>
-<body class="preload">
-    <div id="wrapper"> 
-        
-        <!-- header 영역 -->
-        <header id="header"> 
-            <div class="inner">
-                <!-- Logo영역 (글자로만 ? )-->
-                <a>
-                    <span class="title" style="font: italic bold 3em/1em Georgia, serif ; color: #900000;">bebeno</span>
-                </a>
-                    <ul id="menubar">
-                        <li id="inlinemenu"><a href="">ABOUT</a></li>
-                        <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
-                        <li id="inlinemenu"><a href="">WINE SHOP</a></li>
-                        <li id="inlinemenu"><a href="">COMMUNITY</a></li>
-                        <li id="inlinemenu"><a href="${ path }/"></a> 
-                        <form action="${ path }/logout" method="post">
-               			 <button>logout</button></li>
-                    </ul> 
-                <!-- Nav 영역 -->
-                <nav>
-                    <ul>
-                        <li><a href="#menu">Menu</a></li>
-                    </ul>
-                </nav>
+<body>
 
-            </div>
-        </header>
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
 
-        <!-- Menu 영역 -->
-            <nav id="menu">
-                <h2>Menu</h2>
-                <ul>
-                    <li><a href="">HOME</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href="${ path }/mypage/profile">MYPAGE</a></li>
-                    <li><a href=""></a></li>
-                </ul>
-            </nav>
-        </div>
 
+  <nav class="site-nav">
+    <div class="container">
+      <div class="site-navigation">
+        <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+
+        <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="#">Pages</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+
+    </div>
+    </div>
+</nav>
+
+  <script src="${ path }/js/jquery-3.5.1.min.js"></script>
+  <script src="${ path }/js/jquery-migrate-3.0.0.min.js"></script>
+  <script src="${ path }/js/popper.min.js"></script>
+  <script src="${ path }/js/bootstrap.min.js"></script>
+  <script src="${ path }/js/owl.carousel.min.js"></script>
+  <script src="${ path }/js/aos.js"></script>
+  <script src="${ path }/js/imagesloaded.pkgd.js"></script>
+  <script src="${ path }/js/isotope.pkgd.min.js"></script>
+  <script src="${ path }/js/jquery.animateNumber.min.js"></script>
+  <script src="${ path }/js/jquery.stellar.min.js"></script>
+  <script src="${ path }/js/jarallax.min.js"></script>
+  <script src="${ path }/js/jarallax-element.min.js"></script>
+  <script src="${ path }/js/jquery.waypoints.min.js"></script>
+  <script src="${ path }/js/jquery.fancybox.min.js"></script>
+  
+  <script src="${ path }/js/jquery.lettering.js"></script>
+  
+  
+  <script src="${ path }/js/TweenMax.min.js"></script>
+  <script src="${ path }/js/ScrollMagic.min.js"></script>
+  <script src="${ path }/js/scrollmagic.animation.gsap.min.js"></script>
+  <script src="${ path }/js/debug.addIndicators.min.js"></script>
+  
+  
+  <script src="${ path }/js/custom.js"></script>
+
+  
 </body>
 </html>
