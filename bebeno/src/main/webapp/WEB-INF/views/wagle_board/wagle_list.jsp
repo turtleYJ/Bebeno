@@ -13,13 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>와글와글</title>
-<link rel="stylesheet" href="%{ path }/resources/css_wagle/wagle_list.css">
-
-<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
-
-<!-- infinite, pinterest way -->
-<script type="text/javascript" src="./masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="./infinite-scroll.pkgd.min.js"></script>
+	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_list.css">
 
 </head>
 <body>
@@ -183,6 +177,10 @@
         </div>
     </section>
     <footer></footer>
+    <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+    <!-- infinite, pinterest way -->
+	<script type="text/javascript" src="${ path }/js/masonry.pkgd.min.js"></script>
+	<script type="text/javascript" src="${ path }/js/infinite-scroll.pkgd.min.js"></script>
     <script>
         var elem = document.querySelector('.wagle_contains');
         var msnry = new Masonry( elem, {
@@ -207,5 +205,6 @@
         outlayer: msnry
         });
     </script>
+    
 </body>
 </html>
