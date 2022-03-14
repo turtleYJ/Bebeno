@@ -193,7 +193,7 @@ public class MyPageController {
 		
 		if(result > 0) {
 			model.addObject("msg", "정상적으로 탈퇴 되었습니다.");
-			model.addObject("location", "/mypage/profile"); // <-------- 로그아웃 되도록 수정 필요
+			model.addObject("location", "/logout"); // <-------- 로그아웃 되도록 수정 필요
 		} else {
 			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
 			model.addObject("location", "/mypage/profile");
@@ -221,12 +221,12 @@ public class MyPageController {
 	
 // ==================================================================
 	
-	@GetMapping("/cart")
-	public String cart() {
-		
-		
-		return "/mypage/cart";
-	}
+//	@GetMapping("/cart")
+//	public String cart() {
+//		
+//		
+//		return "/mypage/cart";
+//	}
 	
 	// -------------------------------------------
 }
