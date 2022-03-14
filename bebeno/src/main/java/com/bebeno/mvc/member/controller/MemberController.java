@@ -84,14 +84,14 @@ public class MemberController {
 		return "member/terms";
 	}
 	
-	@GetMapping("/member/enroll")
+	@GetMapping("/member/join")
 	public String join() {
 		log.info("회원 가입 페이지 요청");
 		
-		return "member/enroll";
+		return "member/join";
 	}
 	
-	@PostMapping("/member/enroll")
+	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
 		log.info(member.toString());
@@ -103,7 +103,7 @@ public class MemberController {
 			model.addObject("location", "/");
 		} else {
 			model.addObject("msg", "회원가입을 실패하였습니다.");
-			model.addObject("location", "/member/enroll");			
+			model.addObject("location", "/member/join");			
 		}
 		
 		model.setViewName("common/msg");

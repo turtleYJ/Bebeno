@@ -13,8 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>와글와글</title>
-<link rel="stylesheet" href="./wagle_main.css">
-<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_list.css">
+	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
     <header>
@@ -44,7 +44,7 @@
                             <li>
                                 <a href="a">
                                     <span>
-                                        <img class="wagle_thumb_img" src="./img/1.jpg" alt="">
+                                        <img class="wagle_thumb_img" src="${ path }/resources/image/flower1.PNG" alt="">
                                     </span>
                                     <p><strong>닉네임</strong></p>
                                     <strong>글제목</strong>

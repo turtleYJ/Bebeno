@@ -57,11 +57,30 @@
                     <p>${ fn:replace(shop.content, cn, br)}</p>
 
                     <p><br></p>
-                        
-                    <p><img class="shop_detailImg" src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135124866844.jpg"></p>
-
-                    <p><img class="shop_detailImg" src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135136385899.jpg"></p>
-                    <p><img class="shop_detailImg" src="https://wine21.speedgabia.com/COMPANY_MST/smarteditor/202202/20220204135515750112.png"></p>
+                    
+                    <!-- 
+                    <div style="overflow: hidden;">
+				        <div class="img_container">
+				        	<c:forEach var="file" items="${ shop.files }">
+		        		    	<div class="inner">
+				                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }">
+				            	</div>
+				        	</c:forEach>				            
+				        </div>
+				    </div>
+				    
+				    <div class="img_btn">
+					    <button class="버튼1">1</button>
+					    <button class="버튼2">2</button>
+					    <button class="버튼3">3</button>
+				    </div>
+                    -->
+                    <c:forEach var="file" items="${ shop.files }">
+	       		    	<div>
+		                	<img src="${ path }/resources/upload/shop/${ file.file_renamedFileName }" class="img-responsive center-block" style="width: 100vw; height: 35vw;">
+		            	</div>
+		        	</c:forEach>		
+    
                     <p><br></p>
                     <p><strong>[와인문의]</strong></p>
                     <p>전화번호 ) 031. 908. 9632</p>
@@ -98,7 +117,7 @@
             </div><!--.detail-area -->
         </div><!--.board-view -->
         <div class="pagination-box">
-            <button id="storeListBtn" class="button button-small button-wine">목록</button>
+            <button type="button" onclick="location.href='${ path }/shop/list'" id="storeListBtn" class="button button-small button-wine">목록</button>
         </div>
         <!-- 관련상품 -->
         <div class="board-related-list">
@@ -131,10 +150,26 @@
     </div>
     <script type="text/javascript">
 		// Naver Map
-	funMapOpen = function(Tit, Addr) {
-		var PageUrl = "https://www.wine21.com/01_include/function/Lib_NaverMap.php?Title="+ encodeURIComponent(Tit) +"&Address="+ encodeURIComponent(Addr);
-		window.open(PageUrl, "_blank", "width=1000, height=600");
-	}
+		funMapOpen = function(Tit, Addr) {
+			var PageUrl = "https://www.wine21.com/01_include/function/Lib_NaverMap.php?Title="+ encodeURIComponent(Tit) +"&Address="+ encodeURIComponent(Addr);
+			window.open(PageUrl, "_blank", "width=1000, height=600");
+		}
+		
+		
+		// 버튼을 누르면
+        // transform: translate(-100vw)
+
+        document.querySelector('.버튼1').addEventListener('click', function() {
+            document.querySelector('.img_container').style.transform = 'translate(0vw)';
+        })
+        document.querySelector('.버튼2').addEventListener('click', function() {
+            document.querySelector('.img_container').style.transform = 'translate(-100vw)';
+        })
+
+        document.querySelector('.버튼3').addEventListener('click', function() {
+            document.querySelector('.img_container').style.transform = 'translate(-200vw)';
+        })
+		
     </script>
 </body>
 </html>

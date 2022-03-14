@@ -61,7 +61,8 @@
                 </li>   
             </ul>
             <ul class="footBtwrap clearfix">
-                <a href="${path}/member/enroll" class="button button-large button-bg-basic mt0">동의 
+                <a href="${path}/member/join" class="button button-large button-bg-basic mt0">동의 
+          	</a>
             </ul>
         </form>
         </div>
