@@ -39,11 +39,15 @@ public class ShopController {
 	public ModelAndView list(ModelAndView model, String shCate, String shRegionD1, String shKeyword) {
 		List<Shop> shopList = null;
 		
+		
+			shCate = null;
+			shRegionD1 = null;
+			shKeyword = null;
+		
 		System.out.println(shCate + " " + shRegionD1 + " " + shKeyword);
+
 		
 		shopList = service.getShopList(shCate, shRegionD1, shKeyword);
-		
-		System.out.println(shopList);
 		
 		model.addObject("shopList", shopList);
 		model.setViewName("shop/list");
