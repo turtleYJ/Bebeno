@@ -6,6 +6,33 @@ table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h1, h2, 
 img {border:0; }
 h1 { float:left; padding:0 0 0 0px;}
 h2 {padding:0 0 0 0px;}
+*{margin: 0;padding: 0;box-sizing: border-box}
+.sub-contents{/*padding-top:134px;*/min-height:calc(100vh - 335px);/*word-break:keep-all;word-wrap:break-word;*/}
+.sub-contents .inner{position:relative;line-height:1.6}
+.wrap-tit{
+	margin-bottom:40px;
+	font-size:34px;
+	font-weight:500;
+	color:#262626;
+	text-align:center;
+}
+.wrap-login {
+    padding: 90px 0;
+    background-color: #f4f4f4;
+}
+.login-box {
+	display: flex;
+    flex-direction: column;
+    width: 540px;
+    margin: 0 auto;
+    margin-top: 0px;
+    padding: 50px 46px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.box-shadow {
+    box-shadow: 2.4px 6.6px 10px 0 rgb(0 0 0 / 10%);
+}
 ul, li { list-style:none;}
 ul{list-style:none; }
 .red_txt{color:#ee7272;}
@@ -103,6 +130,49 @@ ul{list-style:none; }
   .popWrap{right: auto; max-width: 80vw; margin: 30px auto 0; left: 50%; transform: translateX(-50%);}
   .join_form table td a.btn_confirm{width: 100px; height: 35px;line-height: 35px; font-size: 12px;margin:5px 0 0 ;}
   .join_form table input.send_number + a{margin:0 0 0 5px;}
+  .join_form form input[type="submit"] {
+    position: relative;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+    background: #c70039;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.joinform form input[type="submit"] {
+    position: relative;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+    background: #c70039;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.joinform form input[type="submit"]:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+/* 로그인, 회원가입 */
+.wrap-login{padding:90px 0;background-color:#f4f4f4;}
+.login-box{width:540px;margin:0 auto;padding:50px 46px;border-radius:10px;background-color:#fff;}
+.input-box{}
+.input-box + .input-box{margin-top:15px}
+.input-box-cell{content:"";display:block;clear:both}
+.input-box-cell button{float:right;width:96px;height:48px;padding:0 10px;font-size:16px;color:#595959;border:1px solid #e6e6e6;border-radius:4px;background:#f5f5f5;}
+.input-box-cell input{width:calc(100% - 100px)}
+.login-box-link{padding:30px 0 0}
+.login-box-link a{color:#737373;}
+.input-box label{margin-right:10px}
+
+.login-box .button.button-large {margin-top:20px}
+
 }
 
 
