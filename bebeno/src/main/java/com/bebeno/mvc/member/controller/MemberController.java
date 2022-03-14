@@ -46,10 +46,10 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);
-			model.setViewName("home");
+			model.setViewName("redirect:/");
 		} else {
 			model.addObject("msg", "아이디나 비밀번호가 일치하지 않습니다.");
-			model.addObject("location", "/");
+			model.addObject("location", "/member/loginform");
 			model.setViewName("common/msg");
 		}		
 		
@@ -57,7 +57,8 @@ public class MemberController {
 	}
 	
 	// 로그아웃 처리 (SessionStatus 사용)
-	@PostMapping("/logout")
+//	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
+	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
 		
 		log.info("status.isComplete() : {}", status.isComplete());
@@ -67,7 +68,7 @@ public class MemberController {
 		
 		log.info("status.isComplete() : {}", status.isComplete());
 		
-		return "home";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/member/loginform")
