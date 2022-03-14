@@ -15,5 +15,7 @@ public interface WineBoardService {
 
 	WineBoard findBoardByNo(Integer wineBno);
 
+	int delete(int wineBno);
+
 
 }

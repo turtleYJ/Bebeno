@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
 
+// 업로드 한 파일을 저장하는 클래스
 @Slf4j
 public class FileProcess {
 	public static String save(MultipartFile upfile, String location) {
@@ -22,15 +23,15 @@ public class FileProcess {
 		File folder = new File(location);
 		
 		if(!folder.exists()) {
-			folder.mkdirs();
+			folder.mkdirs(); // mkdirs() : 실제 경로에 폴더를 만드는 메소드
 		}
 		
 		renamedFileName = 
 				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS")) + 
-				originalFileName.substring(originalFileName.lastIndexOf("."));
+				originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일의 확장자만 가져오는 것 
 		
 		try {
-			// 업로드한 파일 데이터를 지정한 파일에 저장한다.
+			// 업로드한 파일 데이터를 새로 지정한 파일에 저장한다.
 			upfile.transferTo(new File(location + "/" + renamedFileName));
 			
 		} catch (IllegalStateException | IOException e) {

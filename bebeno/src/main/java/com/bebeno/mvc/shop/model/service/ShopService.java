@@ -2,6 +2,7 @@ package com.bebeno.mvc.shop.model.service;
 
 import java.util.List;
 
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
 
 public interface ShopService {
@@ -11,5 +12,9 @@ public interface ShopService {
 	int save(Shop shop);
 
 	Shop findShopByNo(int no);
+
+	void fileSave(ContentFiles file);
+
+	List<ContentFiles> findfilesByNo(int no);
 
 }

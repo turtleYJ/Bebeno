@@ -1,5 +1,7 @@
 package com.bebeno.mvc.shop.model.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,16 +26,18 @@ public class Shop {
 	
 	private String type;
 	
-	private String imgUrl;
-	
 	private String status;
 	
 	private String content;
+	
+	private String content2;
 	
 	private String originalFileName;
 	
 	private String renamedFileName;
 	
+	private List<ContentFiles> files;
+
 	private String enrollDate;
 	
 	private String modifyDate;

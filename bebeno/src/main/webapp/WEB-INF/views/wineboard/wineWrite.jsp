@@ -16,13 +16,13 @@
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
     <form action="${path}/wineboard/wineWrite" name="write" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
             <div class="board_title">
-                <strong>상품 수정</strong>
+                <strong>상품 등록</strong>
             </div>
             <div class="board_write_wrap">
                 <div class="board_write">
@@ -175,8 +175,7 @@
         </div>  
     </form>
         <!-- js영역 -->
-   
-
+        
     <script src="${ path }/js/jquery.min.js"></script>
 	<script src="${ path }/js/browser.min.js"></script>
 	<script src="${ path }/js/breakpoints.min.js"></script>
@@ -184,5 +183,15 @@
 	<script src="${ path }/js/menubar.js"></script>
     <script src="${ path }/js/textselbox.js"></script>
         
+    <script>
+    function selectTest(){
+        var testA = $("#selbox2 > option:selected").val(); 
+        console.log(testA);
+
+        var testB = $( "#selbox2 option:selected" ).text(); 
+        console.log(testB);
+     }
+    
+    </script>    
     </body>
     </html>

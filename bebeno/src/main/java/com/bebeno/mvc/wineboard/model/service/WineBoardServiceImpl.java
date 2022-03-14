@@ -17,7 +17,6 @@ public class WineBoardServiceImpl implements WineBoardService {
 
 	@Override
 	public int getWineBoardCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -43,6 +42,12 @@ public class WineBoardServiceImpl implements WineBoardService {
 	@Override
 	public WineBoard findBoardByNo(Integer wineBno) {
 		return wineboardmapper.selectWineBoardByNo(wineBno);
+	}
+
+	@Override
+	public int delete(int wineBno) {
+		
+		return wineboardmapper.deleteWineBoard();
 	}
 
 

@@ -14,7 +14,23 @@
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
-	
+	<style type="text/css">
+		.js-load {
+	    	display: none;
+		}
+		.js-load.active {
+		    display: block;
+		}
+		.is_comp.js-load:after {
+		    display: none;
+		}
+		.btn-wrap, .lists, .main {
+		    display: block;
+		}		
+		.btn-wrap {
+		    text-align: center;
+		}
+	</style>
 </head>
 <body>
 	
@@ -115,19 +131,32 @@
    										</div>
 			          					<div class="form-group col-sm-6">
 											<label>사진 업로드</label>
-    										<input type="file" name="upfileContent1">          								
-    										<input type="file" name="upfileContent2">          								
-    										<input type="file" name="upfileContent3">          								
+    										<input multiple="multiple" type="file" name="upfileContent">    								
     										<p class="help-block">가게 전경 사진파일을 첨부하세요</p>       								
    										</div>
+        							</div>
+        							<div class="form-row">
+        								<div class="form-group col-sm-12">
+        									<label>업종</label><br>
+        									<input type="radio" id="rest" name="type" value="레스토랑">
+											<label for="rest">레스토랑</label>&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" id="wineshop" name="type" value="와인샵">
+											<label for="wineshop">와인샵</label>
+        								</div>
         							</div>
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
 	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;">
-[소개글]
-
-
+	          								</textarea>
+										</div>
+      							    </div>
+      							    <div class="form-row">
+      							    	<div class="form-group">
+	          								<label>상세 정보</label>
+	          								<textarea type="text" name="Content2" class="form-control" maxlength="2048" style="height: 180px;">
+[와인문의]	          								
+	          								
 [이메일]
 
 [영업일시]
@@ -188,21 +217,21 @@
 		</li>
 		-->
 
-		<div class="shop-list">
-			<ul>
-				<c:forEach var="store" items="${ shopList }" begin="0" end="10">
-					<li>
-						<div class="img-thumb">
+		<div id="js-load" class="main shop-list">
+			<ul class="lists">
+				<c:forEach var="store" items="${ shopList }">
+					<li class="lists__item js-load">
+						<div class="img-thumb" >
 							<a href="${ path }/shop/view?no=${ store.no }">
 								<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
 							</a>
 						</div>
 						<div class="txt-area">
 				            <div class="cnt-header">
-				                <h3><a href="#" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
+				                <h3><a href="${ path }/shop/view?no=${ store.no }" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
 				            </div>
 				            <div class="txt">
-				                <a href="#" class="btnView line02">
+				                <a href="${ path }/shop/view?no=${ store.no }" class="btnView line02">
 				                    ${ store.content }
 				                </a>
 				            </div>
@@ -237,12 +266,15 @@
 			<hr>
 			-->
 		</div>
-	
+		<!--  
 		<div class="pagination-box">
 			<button id="storeListMoreBtn" class='button button-large button-white-gray'>
 				더보기
 			</button>
 		</div>
+		-->
+		<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+		
 	</div>	
 	<!-- jquery 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/jquery-3.6.0.js"></script>	
@@ -281,7 +313,28 @@
 		target.value = target.value
 		   					 .replace(/[^0-9]/, '')
 		   					 .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+	}	
+	
+	$(window).on('load', function () {
+	    load('#js-load', '4');
+	    $("#js-btn-wrap .button").on("click", function () {
+	        load('#js-load', '4', '#js-btn-wrap');
+	    })
+	});
+	 
+	function load(id, cnt, btn) {
+	    var shops_list = id + " .js-load:not(.active)";
+	    var shops_length = $(shops_list).length;
+	    var shops_total_cnt;
+	    if (cnt < shops_length) {
+	        shops_total_cnt = cnt;
+	    } else {
+	        shops_total_cnt = shops_length;
+	        $('.button').hide()
+	    }
+	    $(shops_list + ":lt(" + shops_total_cnt + ")").addClass("active");
 	}
+	
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

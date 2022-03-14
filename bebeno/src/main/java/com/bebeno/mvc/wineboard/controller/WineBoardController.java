@@ -85,7 +85,7 @@ public class WineBoardController {
 		
 		if(result > 0) {
 			model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
-			model.addObject("location", "/wineboard/wineList?wineBno=" + wineboard.getWineBno());
+			model.addObject("location", "/wineboard/wineView?wineBno=" + wineboard.getWineBno());
 		} else {
 			model.addObject("msg", "게시글 수정을 실패하였습니다.");
 			model.addObject("location", "/wineboard/wineUpdate?wineBno=" + wineboard.getWineBno());
@@ -94,6 +94,28 @@ public class WineBoardController {
 		
 	}
 	
+
+	@GetMapping("/delete")
+	public ModelAndView delete(ModelAndView model, 
+							@RequestParam(value = "wineBno", required = false) Integer wineBno) {
+		
+		int result = 0;
+		WineBoard board = wineboardservice.findBoardByNo(wineBno);
+		
+		result = wineboardservice.delete(board.getWineBno());
+		
+		if(result > 0) {
+			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+			model.addObject("location", "/wineboard/wineList");
+		} else {
+			model.addObject("msg", "게시글 삭제를 실패하였습니다.");
+			model.addObject("location", "/wineboard/wineView?wineBno=" + board.getWineBno());
+		}
+			model.setViewName("common/msg");
+		
+		return model;
+	}
+
 	
 	@GetMapping("/wineWrite")
 	public String winewrite() {
