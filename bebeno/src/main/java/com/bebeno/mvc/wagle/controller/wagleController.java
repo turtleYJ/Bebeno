@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.vo.Member;
-import com.bebeno.mvc.wagle.model.service.WagleBoardService;
+//import com.bebeno.mvc.wagle.model.service.WagleBoardService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,11 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/wagle_board")
 public class wagleController {
-	@Autowired
-	private WagleBoardService service;
-	
-	@Autowired
-	private ResourceLoader resourceLoader;
+//	@Autowired
+//	private WagleBoardService service;
+//	
+//	@Autowired
+//	private ResourceLoader resourceLoader;
 	
 	
 	@GetMapping("/wagle_list")
@@ -51,5 +51,11 @@ public class wagleController {
 	public String view() {
 		
 		return "/wagle_board/wagle_view";
+	}
+	
+	@GetMapping("/wagle_update")
+	public String update() {
+		
+		return "/wagle_board/wagle_update";
 	}
 }
