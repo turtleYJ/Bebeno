@@ -6,7 +6,33 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-	<jsp:include page="/WEB-INF/views/common/header_yooil.jsp" />
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>shop_list</title>
+	<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
+	<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
+	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
+	<style type="text/css">
+		.js-load {
+	    	display: none;
+		}
+		.js-load.active {
+		    display: block;
+		}
+		.is_comp.js-load:after {
+		    display: none;
+		}
+		.btn-wrap, .lists, .main {
+		    display: block;
+		}		
+		.btn-wrap {
+		    text-align: center;
+		}
+	</style>
+</head>
+<body>
 	
 	<div class="container">
 		<div class="board-top mb-nl">
@@ -146,44 +172,82 @@
 							</div>
 						</div>
 					</div>
-				</div>				
-			</div><!--.board-top-sch -->
-		</div>
-	
-		<div id="js-load" class="main shop-list">
-				<ul class="lists">
-					<c:forEach var="store" items="${ shopList }">
-						<li class="lists__item js-load">
-							<div class="img-thumb" >
-								<a href="${ path }/shop/view?no=${ store.no }">
-									<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
-								</a>
-							</div>
-							<div class="txt-area">
-					            <div class="cnt-header">
-					                <h3><a href="${ path }/shop/view?no=${ store.no }" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
-					            </div>
-					            <div class="txt">
-					                <a href="${ path }/shop/view?no=${ store.no }" class="btnView line02">
-					                    ${ store.content }
-					                </a>
-					            </div>
-					            <div class="write-info">
-					                <em class="board-badge badge-white">${ store.type }</em>
-					                <span class="store-addr">${ store.address }</span>
-					                <span class="store-tel">${ store.phone }</span> 
-					            </div>
-				        	</div>
-						</li>
-						<hr>
-					</c:forEach>
-				</ul>
+				</div>
 				
+				<!-- 새로운 디자인의 검색 
+				<form class="page-top-sch form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0 ">검색</button>
+				</form>
+				-->
+				
+				<!-- <table class="search-tb">
+					<tr>
+						<td>
+							<input type="text" placeholder="Search" class="search">
+						</td>
+						<td>
+							<a href="#"><img src="./baseline_search_black_24dp.png" alt="">
+							</a>
+						</td>
+					</tr>
+				</table> -->
+			</div><!--.board-top-sch -->
+		</div><!-- .board-top mb-nl -->
+		
+		<!-- 
+		<li>
+			<div class="thumb"><a href="javascript:goStoreView(36002)" class="btnView"><img src="https://wine21.speedgabia.com/COMPANY_MST/TITLE/0036002.jpg" alt="봉쥬르와인샵"></a></div>
+			<div class="txt-area">
+				<div class="cnt-header">
+					<h3><a href="javascript:goStoreView(36002)" class="btnView">봉쥬르와인샵 &nbsp; <span class="name-en">Bonjour Wineshop</span></a>&nbsp;
+																<span class="name-en">(50)</span>
+															</h3>
+				</div>
+				<div class="txt"><a href="javascript:goStoreView(36002)" class="btnView line02"></a></div>
+				<div class="write-info">
+					<em class="board-badge badge-white">와인샵</em>
+					<span class="store-addr">서울 마포구</span><span class="store-tel">02-2135-2913</span>
+																<span class="store-link"><a href="http://www.instagram.com/bonjour_wine" target="_blank">www.instagram.com/bonjour_wine</a></span>
+													</div>
 			</div>
+		</li>
+		-->
+
+		<div id="js-load" class="main shop-list">
+			<ul class="lists">
+				<c:forEach var="store" items="${ shopList }">
+					<li class="lists__item js-load">
+						<div class="img-thumb" >
+							<a href="${ path }/shop/view?no=${ store.no }">
+								<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
+							</a>
+						</div>
+						<div class="txt-area">
+				            <div class="cnt-header">
+				                <h3><a href="${ path }/shop/view?no=${ store.no }" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
+				            </div>
+				            <div class="txt">
+				                <a href="${ path }/shop/view?no=${ store.no }" class="btnView line02">
+				                    ${ store.content }
+				                </a>
+				            </div>
+				            <div class="write-info">
+				                <em class="board-badge badge-white">${ store.type }</em>
+				                <span class="store-addr">${ store.address }</span>
+				                <span class="store-tel">${ store.phone }</span> 
+				            </div>
+			        	</div>
+					</li>
+					<hr>
+				</c:forEach>
+			</ul>
 			
-			<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
-	
-		</div>	<!-- .container -->
+		</div>
+		
+		<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+		
+	</div>	
 	<!-- jquery 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/jquery-3.6.0.js"></script>	
 	<!-- 파퍼 자바스크립트 추가하기 -->
