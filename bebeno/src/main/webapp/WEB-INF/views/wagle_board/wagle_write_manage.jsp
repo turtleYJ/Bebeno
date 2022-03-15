@@ -1,43 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:set var="path" value="${ pageContext.request.contextPath }"/>
+<jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 글 관리</title>
-</head>
-<body>
-    <section id="content">
+    <section id="my_write_manage">
+        <div class="limiter">
         <h2>내 글 관리</h2>
         <div>
-
         </div>
-        <table border="1" id="mywrite-board">
-            <tr>
-                <th>제목</th>
-                <th>작성일</th>
-                <th>조회수</th>
-                <th>스크랩</th>
-            </tr>
+        <table id="mywrite-board">
+            <thead>
+                <tr class="table100-head">
+                    <th class="column1">Date</th>
+                    <th class="column2">Title</th>
+                    <th class="column3">NickName</th>
+                    <th class="column4">View</th>
+                    <th class="column5">Scrap</th>
+                    <th class="column6">
+                        <!-- 로그인 멤버 시 수정 삭제 버튼 보일 수 있게?-->
+                    </th>
+                </tr>
+            </thead>
+            <c:forEach var="row" items="${wagle_board.list}">
+            <tbody>
+                <tr>
+                    <td class="column1" td:text="${ wagle_board.createDate }">ex.Date</td>
+                    <td class="column2" td:text="${ wagle_board.title }">Title</td>
+                    <td class="column3" td:text="${ wagle_board.writer_nickname }">NickName</td>
+                    <td class="column4" td:text="${ wagle_board.readCount }">0</td>
+                    <td class="column5" td:text="${ wagle_board.scrapBoard }">0</td>
+            </tbody>
+            </c:forEach>
         </table>
-        <c:forEach var="row" items="${board.list}">
-            <tr>
-                <td><a href="">
-                    ${ board.title }
-                </a></td>
-                <td>${ board.createDate }</td>
-                <td>${ board.readCount }</td>
-                <td>${ board.scrapBoard }</td>
-            </tr>
-        </c:forEach>
+
     </section>
 </body>
 </html>
