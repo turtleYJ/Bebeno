@@ -59,17 +59,26 @@
 }
 
 #menu_btn:hover {
+		margin:0px;
         background-color: #e7e7e7;
         color: white;
         cursor: pointer;
 }
 
-.a:hover, a:active, a:focus{
-        text-decoration: underline;
+a:hover, a:active, a:focus{
+	   margin:0px;
+       text-decoration: none;
+       cursor: pointer;
+       color: rgb(71, 71, 71);
+       opacity: 0.5;
+        
 }
-.a{
-        text-decoration: none;
+a{
+	margin:0px;
+	color: rgb(71, 71, 71);
+    text-decoration: none;
 }
+
 
 ul,li,ol{
         list-style: none;
@@ -118,6 +127,13 @@ body{
         text-overflow: ellipsis;
         overflow: hidden;
 }
+
+.wagle_item_contents:hover{
+	cursor: pointer;
+    text-decoration: none;
+    opacity: 0.5;
+}
+
 
 /* wine filter */
 .filter-grade a.on:nth-child(1) {

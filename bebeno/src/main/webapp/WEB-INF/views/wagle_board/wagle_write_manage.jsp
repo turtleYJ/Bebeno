@@ -5,9 +5,8 @@
 
     <section id="my_write_manage">
         <div class="limiter">
-        <h2>내 글 관리</h2>
-        <div>
-        </div>
+        	<h2 class="wagle_title">내 글 관리</h2>
+		</div>
         <table id="mywrite-board">
             <thead>
                 <tr class="table100-head">
@@ -28,7 +27,7 @@
                     <td class="column2" td:text="${ wagle_board.title }">Title</td>
                     <td class="column3" td:text="${ wagle_board.writer_nickname }">NickName</td>
                     <td class="column4" td:text="${ wagle_board.readCount }">0</td>
-                    <td class="column5" td:text="${ wagle_board.scrapBoard }">0</td>
+                    <td class="column5" td:text="${ wagle_board.scrapCount }">0</td>
             </tbody>
             </c:forEach>
         </table>
