@@ -45,6 +45,22 @@ public class MyPageController {
 	private ResourceLoader resourceLoader;
 	
 // ==================================================================
+
+	// profile.jsp에서 ajax스크립트를 사용한 닉네임 중복검사 메소드
+	@PostMapping("/nickCheck")
+	public ResponseEntity<Map<String, Boolean>> nickCheck(
+			@RequestParam("nickname") String nickname) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("입력받은 닉네임 : {}", nickname);
+		
+		map.put("duplicate", service.nickCheck(nickname));
+		
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}	
+	
+// ==================================================================
 	
 	@GetMapping("/profile")
 	public String profile() {
@@ -234,21 +250,7 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
-// ==================================================================
-	
-	// profile.jsp : 닉네임 중복검사 메소드
-	@PostMapping("/nickCheck")
-	public ResponseEntity<Map<String, Boolean>> nickCheck(
-			@RequestParam("nickname") String nickname) {
-		
-		Map<String, Boolean> map = new HashMap<>();
-		
-		log.info("입력받은 닉네임 : {}", nickname);
-		
-		map.put("duplicate", service.nickCheck(nickname));
-		
-		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
-	}
+
 	
 	
 	

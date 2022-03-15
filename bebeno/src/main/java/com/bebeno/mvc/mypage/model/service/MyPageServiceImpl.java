@@ -56,7 +56,7 @@ public class MyPageServiceImpl implements MyPageService {
 
 // ==================================================================
 	
-	// 닉네임 중복검사
+	// 닉네임 중복검사(profile.jsp에서 ajax 스크립트 사용 시 처리하는 메소드)
 	@Override
 	public Boolean nickCheck(String nickname) {
 		
@@ -77,6 +77,7 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		// update 사용
 		result = mapper.insertProfileImgName(loginMember);
+
 		
 		return result;
 	}
