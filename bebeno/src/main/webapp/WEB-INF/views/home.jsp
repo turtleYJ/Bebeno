@@ -63,7 +63,6 @@
 	          <li><a href="${path}/wineboard/wineList">WINE</a></li>
 	          <li><a href="${path}/shop/list">WINE SHOP</a></li>
 	          <li><a href="">COMMUNITY</a></li>
-	          <li><a href="">CART</a></li>
 	
 	          <c:if test="${ empty loginMember }">          	
 	          	<li><a href="${path}/member/loginform">LOGIN</a></li>
@@ -74,8 +73,9 @@
 	          		Post 전송용 logout경로_탈퇴 컨트롤러 연결 시 Post방식 logout쪽으로 연결법 몰라 Get방식으로 변경 
 	          	<li><a type="submit" onclick="document.getElementById('logoutForm').submit();">LOGOUT</a></li>
 	          	 -->
-	          	<li><a href="${path}/logout">LOGOUT</a></li>
+		        <li><a href="">CART</a></li>
 	          	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
+	          	<li><a href="${path}/logout">LOGOUT</a></li>
 	          </c:if>
 	        </ul>
        	</form>

@@ -81,9 +81,9 @@
   		외부에서 매개변수로 받는 값이 있으면 해당하는 매개변수의 타입을 지정해야 한다.(parameterType="string") 
   		외부에서 매개변수로 받은 값은 #{변수명} 으로 설정해서 값을 가져와야 한다.
   	 -->
-	<select id="getMemberById" parameterType="string" resultMap="memberResultMap">
+	<select id="getMemberByNick" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql" />
-		WHERE ID = #{id} AND STATUS = 'Y'
+		WHERE NICKNAME = #{nickname} AND STATUS = 'Y'
 	</select>
 	
 	<!-- 

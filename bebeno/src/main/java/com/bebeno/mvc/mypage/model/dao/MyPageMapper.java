@@ -17,6 +17,9 @@ public interface MyPageMapper {
 	// 회원 탈퇴(status 값 : Y -> N 변경) 
 	int deleteAccount(String id);
 
-	int insertProfileImgName(Member loginMember);
+	// 닉네임 중복체크
+	Member getMemberByNick(@Param("nickname") String nickname);
 	
+	// 프로필 이미지 + 닉네임 변경
+	int insertProfileImgName(Member loginMember);
 }

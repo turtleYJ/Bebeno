@@ -33,7 +33,8 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		String encodeNewPwd = null;
 		
-		encodeNewPwd = passwordEncoder.encode(newPwd); // 비밀번호 암호화
+		// 입력받은 새 비밀번호를 암호화
+		encodeNewPwd = passwordEncoder.encode(newPwd);
 				
 		log.info("암호화 되기 전 새 비밀번호 : {}", newPwd);
 		log.info("암호화 된 새 비밀번호 : {}", encodeNewPwd);
@@ -55,6 +56,18 @@ public class MyPageServiceImpl implements MyPageService {
 
 // ==================================================================
 	
+	// 닉네임 중복검사
+	@Override
+	public Boolean nickCheck(String nickname) {
+		
+		Member nowNickname = mapper.getMemberByNick(nickname);
+		
+		// 현재 닉네임이 존재하면 true/ 없으면 false
+		return nowNickname != null;
+	}
+	
+// ==================================================================
+	
 	// 프로필 이미지 변경 
 	@Override
 	@Transactional
@@ -67,5 +80,6 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return result;
 	}
+
 	
 }

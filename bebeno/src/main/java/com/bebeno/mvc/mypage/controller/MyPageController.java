@@ -1,9 +1,13 @@
 package com.bebeno.mvc.mypage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -229,4 +233,26 @@ public class MyPageController {
 //	}
 	
 	// -------------------------------------------
+	
+// ==================================================================
+	
+	// profile.jsp : 닉네임 중복검사 메소드
+	@PostMapping("/nickCheck")
+	public ResponseEntity<Map<String, Boolean>> nickCheck(
+			@RequestParam("nickname") String nickname) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("입력받은 닉네임 : {}", nickname);
+		
+		map.put("duplicate", service.nickCheck(nickname));
+		
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
 }
