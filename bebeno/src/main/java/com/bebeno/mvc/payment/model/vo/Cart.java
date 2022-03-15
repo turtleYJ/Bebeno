@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cart {
 
-	private String id;
-	
-	private int wine_bno;
-	
 	private int cart_id;
 	
 	private int cart_qty;
 	
+	private int wine_bno;
+	
+	private String id;
+	
 	private Date addDate;
+	
 }

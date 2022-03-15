@@ -21,11 +21,12 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<%-- 		<jsp:include page="/WEB-INF/views/common/header1.jsp" /> --%>
+ <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+ 
 </head>
 <body>
 	<div class="container">
-			<form action="${path}/payment/paymentPage" method="post">
+			<form action="${path}/payment/orderPage" method="post">
 		<c:set value="${productInfo}" var="dto"/>
 		<c:set value="2500" var="del_fee"/>
 		<div class="row no-gutters qnas" style="text-align: center;">
@@ -104,8 +105,6 @@
 			<h1 class="page-header">결제수단 확인</h1>
 			<div style="text-align: center;">
 				<label style="margin-right: 50px;"><input type="radio" name="cal_info" value="transfer">&nbsp;계좌이체</label>
-				<input type="radio" name="cal_info" value="no_bankingBook"><label style="margin-right: 50px;">&nbsp;무통장 입금</label>
-				<input type="radio" name="cal_info" value="tel_billing"><label style="margin-right: 50px;">&nbsp;핸드폰 결제</label>
 				<input type="radio" name="cal_info" value="card"><label>&nbsp;카드 결제</label>
 			</div>
 			<hr>
@@ -119,134 +118,67 @@
 				</label>
 			</div>
 			<div>
-				<button class="btn btn-default cal-btn" type="submit">결제하기</button>
-				<button class="btn btn-default back_btn"><a href="${path}/mypage/cart">돌아가기</a></button>
+				<a href="javascript:iamport"><button class="btn btn-default cal-btn" type="submit">결제하기</button></a>
+				<a href="${path}/mypage/cart"><button class="btn btn-default back_btn">돌아가기</button></a>
 			</div>
 		</div>
 		</form>
 	</div>
-
-<script type="text/javascript">
 	
-/* 	$(document).ready(function() {
-		
-		var userid = $("#login_userid").val();
-		var productId = $("#productId").val();
-		
-		$("input[name='cal_info']").click(function() {
-			
-			var qty = $(".order_Qty").val();
-			var price = "<c:out value='${dto.price}'/>";
-			var del_fee = "<c:out value='${del_fee}'/>";
-			
-			var amount = price * qty;
-			
-			if (amount < 30000) {	
-				totalAmount = Number(amount) + Number(del_fee);
-				$("#price").html(amount);
-				$("#del_fee").html(del_fee);
-				$("#totalprice").html(totalAmount);
-				$("#amount").val(totalAmount);
-			} else {
-				totalAmount = amount;
-				$("#price").html(totalAmount);
-				$("#del_fee").html(0);
-				$("#totalprice").html(totalAmount);
-				$("#amount").val(totalAmount);
-			}
-
-		});
-		
-		$(".back_btn").click(function(event) {
-			event.preventDefault();
-			location.assign("/product/show/" + productId);
-		});
-
-		$("#mycart_btn").click(function(event) {
-			event.preventDefault();
-			location.assign("/order/mycart/" + userid);
-			
-		});
-		
-		$("li").on('click', function() {
-			var productDist = $(this).attr("value");
-			location.assign("/product/" + productDist);
-		});
-		
-		$("#go_to_member_insert").click(function(event) {
-			event.preventDefault();
-			
-			location.assign("/member/insert");
-		});
-		
-		$("#mypage_btn").click(function(event) {
-			event.preventDefault();
-			var userid = $("#login_userid").val();
-			
-			location.assign("/member/read/" + userid);
-		})
-		
-		$("#logout_btn").click(function(event) {
-			event.preventDefault();
-			
-			var logout = confirm("로그아웃 하시겠습니까?");
-			
-			if (logout) {
-				location.assign("/member/logout");
-			}
-		});
-		
-		$("#go_to_adminPage").click(function(event) {
-			event.preventDefault();
-			
-			location.assign("/admin/main");
-		
-		});
-		
-		$("#searchAdd").click(function(event) {
-			event.preventDefault();
-			postcode();
-
-		});
-		 */
-		
-	    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-	    function postcode() {
-	        new daum.Postcode({
-	            oncomplete: function(data) {
-	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-	                var roadAddr = data.roadAddress; // 도로명 주소 변수
-	                var extraRoadAddr = ''; // 참고 항목 변수
-
-	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                    extraRoadAddr += data.bname;
-	                }
-	                // 건물명이 있고, 공동주택일 경우 추가한다.
-	                if(data.buildingName !== '' && data.apartment === 'Y'){
-	                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                }
-	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	                if(extraRoadAddr !== ''){
-	                    extraRoadAddr = ' (' + extraRoadAddr + ')';
-	                }
-
-	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	                document.getElementById('postcode').value = data.zonecode;
-	                document.getElementById("roadAddress").value = roadAddr;
-	                
-	            }
-
-	        }).open();
-	    }
+	<script>
 	
-	});
+	function iamport(){
+		//가맹점 식별코드
+		IMP.init('imp30146952');
+		IMP.request_pay({
+		    pg : 'kcp',
+		    pay_method : 'card',
+		    merchant_uid : 'merchant_' + new Date().getTime(),
+		    name : '상품1' , //결제창에서 보여질 이름
+		    amount : 100, //실제 결제되는 가격
+		    buyer_email : 'iamport@siot.do',
+		    buyer_name : '구매자이름',
+		    buyer_tel : '010-1234-5678',
+		    buyer_addr : '서울 강남구 도곡동',
+		    buyer_postcode : '123-456'
+		}, function(rsp) {
+			console.log(rsp);
+			// 결제 검증
+			$.ajax({
+        		type: "POST",
+        		url : "/music/verifyIamport/" + rsp.imp_uid
+        	}).done(function(data){
+        		console.log(data);
+        		//가격 비교한 후 로직 실행 (서버 검증)
+        		if(rsp.paid_amount == data.response.amount){
+        			$("input[name=user_no]").val('${userInfo.no}');
+        			$.ajax({
+        				type: "POST",
+        				data : {
+        					ticket_type : ticket_type,
+        					time : time,
+        					no : no
+        				},
+        				url : "/music/pay/payment.do",
+    	   				success:function(res){
+    	   					if(res.trim() =='true'){
+    	   						alert('결제가 성공하였습니다.');
+    	   						location.href='/music/pay/view.do';
+    	   					}else{
+    	   						alert('결제가 실패하였습니다.'); 
+    	   					}
+    	   				}
+        			})
+        		}else{
+        			alert('결제 오류.');
+        		}
+        	});
+        	
+    });
 	
-</script>
+};
 
+	
+	</script>
 </body>
 </html>

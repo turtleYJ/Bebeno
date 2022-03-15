@@ -26,7 +26,6 @@
 </head>
 <body>
 <section class="sub-contents wrap-wine-view clear">
-    <form method="post" action="${path}/payment/cart">
     <div class="inner">
         <div class="btn_list">
             <a href="${path}/wineboard/wineList" class="button btn_list_small">목록</a>
@@ -64,7 +63,8 @@
                         		<option class="numBox" value="${i}">${i}</option>
                         	</c:forEach>
                         </select>&nbsp;개   
-                        <a href="${path}/payment/cart"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart">장바구니 담기</button></a>  
+                        <a href="${path}/payment/cart"><button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart">장바구니 담기</button></a>  
+                        <a href="${path}/payment/orderPage"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order">구매하기</button></a>  
                     </p> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
 
@@ -101,7 +101,6 @@
                                     <button type="button" class="button btn_list_del" id="btnDelete">삭제</button>
                                 </div>
                             </div>
-                          </form>
                     </section>
                         <!-- js영역 -->
 
@@ -123,7 +122,7 @@
 							})
 						});
 						
-						/장바구니 담기
+						/* /장바구니 담기
 			            $(".btn-cart").click(function(){
 			                  
 			                  var cartid=${list2.cartid}+1;
@@ -158,13 +157,20 @@
 			                     });
 			                  
 			                  location.href = "wineView?wineName=" + ${wineboard.wineName};
-			                    });
+			                    }); */
 
                 		
                         $(".btn-cart").click(function() {
                 			var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
                 			if (check) {
                 				location.assign("${path}/payment/cart");
+                			} 
+                		});
+                		
+                        $(".btn-order").click(function() {
+                			var check = confirm("상품을 구매하시겠습니까?");
+                			if (check) {
+                				location.assign("${path}/payment/orderPage");
                 			} 
                 		});
       

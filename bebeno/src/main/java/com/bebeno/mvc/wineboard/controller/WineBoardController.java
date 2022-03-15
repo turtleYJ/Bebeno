@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,18 +56,6 @@ public class WineBoardController {
 		return model;
 	}
 	
-	
-//	@GetMapping("/wineUpdate")
-//	public ModelAndView wineBoardUpdate(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
-//		
-//		WineBoard wineboard = wineboardservice.findBoardByNo(wineBno);
-//		
-//				  model.addObject("wineboard", wineboard);
-//				  model.setViewName("wineboard/wineUpdate");
-//		
-//				  return model;	
-//	}
-	
 	@RequestMapping(value="/wineUpdate", method = RequestMethod.GET)
 	public String getupdate(Integer wineBno, Model model) throws Exception {
 			WineBoard data = wineboardservice.findBoardByNo(wineBno);
@@ -90,7 +77,10 @@ public class WineBoardController {
 			model.addObject("msg", "게시글 수정을 실패하였습니다.");
 			model.addObject("location", "/wineboard/wineUpdate?wineBno=" + wineboard.getWineBno());
 		}
-	  return model;
+		
+		model.setViewName("common/msg");
+	  
+		return model;
 		
 	}
 	

@@ -37,10 +37,8 @@
             </li>
         </ul>
     </div>
-
-    <div class="container">
-        <form name="orderform" id="orderform" method="post" class="orderform" action="${path}/payment/paymentPage" onsubmit="return false;">
-        
+ <c:forEach var="list" items="${list}">
+    <div class="container">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
                     <div class="row head">
@@ -61,26 +59,22 @@
         
                             <div class="basketcmd">삭제</div>
                         </div>
-                        <c:choose>
-                        	<c:when test="${map.count == 0 }">
-                        		장바구니가 비어있습니다.
-                        	</c:when>
-                        	</c:choose>
-                        
                         <div class="split"></div>
                     </div>
 
                     <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                            <div class="img"><img src="../resources/image/로렌조.png" width="60" height="60"></div>
+   
+                            <div class="img"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
+
                             <div class="pname">
-                                <span>로렌조 데 아그렐로, 로벤디토 말벡</span>
+                                <span>${list.wineName}</span>
                             </div>
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
-                            <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="20000">20,000원</div>
+                            <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price">${list.winePrice}</div>
                             <!-- 수량 조절 -->
                             <div class="num">
                                 <div class="updown">
@@ -113,8 +107,10 @@
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
-            </form>
-    </div>
+	    </div>
+	   </div>
+    </c:forEach>  
+ 
 </section>
 
     <script src="${ path }/js/jquery.min.js"></script>

@@ -6,27 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bebeno.mvc.payment.model.dao.CartMapper;
-import com.bebeno.mvc.payment.model.vo.Cart;
+import com.bebeno.mvc.payment.model.vo.CartList;
 
 @Service
 public class CartServiceImpl implements CartService {
 
 	@Autowired
-	public CartMapper cartmapper;
-
-	public List<Cart> getCartList() {
-		
-		return cartmapper.cartList();
-	}
+	public CartMapper mapper;
 
 	@Override
-	public Object addCart(Cart cart) {
-		
-		return cartmapper.addCart();
-		
+	public List<CartList> list() {
+	
+		return mapper.list();
 	}
 
-	
+
 
 
 
