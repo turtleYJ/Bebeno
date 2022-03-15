@@ -21,9 +21,7 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<%--  <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
- <jsp:include page="/WEB-INF/views/common/header.jsp" /> --%>
+<%-- 		<jsp:include page="/WEB-INF/views/common/header1.jsp" /> --%>
 </head>
 <body>
 	<div class="container">
@@ -122,7 +120,7 @@
 			</div>
 			<div>
 				<button class="btn btn-default cal-btn" type="submit">결제하기</button>
-				<button class="btn btn-default back_btn">돌아가기</button>
+				<button class="btn btn-default back_btn"><a href="${path}/mypage/cart">돌아가기</a></button>
 			</div>
 		</div>
 		</form>
@@ -130,7 +128,7 @@
 
 <script type="text/javascript">
 	
-	$(document).ready(function() {
+/* 	$(document).ready(function() {
 		
 		var userid = $("#login_userid").val();
 		var productId = $("#productId").val();
@@ -210,7 +208,7 @@
 			postcode();
 
 		});
-		
+		 */
 		
 	    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	    function postcode() {

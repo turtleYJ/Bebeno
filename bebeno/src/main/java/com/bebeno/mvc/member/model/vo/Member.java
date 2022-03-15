@@ -37,6 +37,10 @@ public class Member {
 	
 	private Date modifyDate;
 	
+	private String profileImgNameO;
+	
+	private String profileImgNameR;
+	
 
 	public Member(String id, String password, String name) {
 		this.id = id;

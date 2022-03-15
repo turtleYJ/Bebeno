@@ -42,14 +42,14 @@ public class MemberController {
 		
 		Member loginMember = service.login(id, password);
 		
-		System.out.println("loginmember" + loginMember);
+		System.out.println("loginmember : " + loginMember);
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);
-			model.setViewName("member/loginsuccess");
+			model.setViewName("redirect:/");
 		} else {
 			model.addObject("msg", "아이디나 비밀번호가 일치하지 않습니다.");
-			model.addObject("location", "/");
+			model.addObject("location", "/member/loginform");
 			model.setViewName("common/msg");
 		}		
 		
@@ -57,7 +57,8 @@ public class MemberController {
 	}
 	
 	// 로그아웃 처리 (SessionStatus 사용)
-	@PostMapping("/logout")
+//	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
+	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
 		
 		log.info("status.isComplete() : {}", status.isComplete());
@@ -179,32 +180,6 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	@GetMapping("/member/delete")
-	public ModelAndView delete(ModelAndView model, 
-			@SessionAttribute(name="loginMember") Member loginMember) {
-		int result = 0;
-		
-		result = service.delete(loginMember.getNo());
-		
-		if(result > 0) {
-			model.addObject("msg", "정상적으로 탈퇴되었습니다.");
-			model.addObject("location", "/logout");
-		} else {
-			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
-			model.addObject("location", "/member/myPage");			
-		}
-		
-		model.setViewName("common/msg");
-		
-		return model;
-	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

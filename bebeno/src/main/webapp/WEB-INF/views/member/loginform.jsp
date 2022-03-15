@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
 	<title>Home</title>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <section class="sub-contents wrap-login">
 	<h2 class="wrap-tit">LOGIN</h2>

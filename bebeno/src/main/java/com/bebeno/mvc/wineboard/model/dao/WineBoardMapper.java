@@ -21,6 +21,8 @@ public interface WineBoardMapper {
 
 	// 게시물 상세조회 
 	WineBoard selectWineBoardByNo(@Param("wineBno") Integer wineBno);
+
+	int deleteWineBoard();
 	
 	
 	

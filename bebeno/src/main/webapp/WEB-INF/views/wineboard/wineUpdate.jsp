@@ -16,7 +16,7 @@
 	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
     <form action="${path}/wineboard/wineUpdate" name="update" method="post" enctype="multipart/form-data" >
@@ -29,7 +29,7 @@
                     <div class="title">
                         <dl>
                             <dt>게시글번호</dt>
-                            <dd><input type="hidden" name="wineBno" value="${board.wineBno}"></dd>
+                            <dd><input type="text" name="wineBno" value="${board.wineBno}" readonly></dd>
                         </dl>
                     </div>
                     <div class="title">
@@ -54,13 +54,14 @@
                         <dl>
                             <dt>종류</dt>
                             <select id="selbox" name="wineType" style="width: 150px; height: 35px;">
-                                <option value="${board.wineType}" selected>종류 선택</option>
-                                <option value="레드">레드</option>
+                                <option value="" selected>종류 선택</option>
+	                            <option value="레드">레드</option>
                                 <option value="화이트">화이트</option>
                                 <option value="로제">로제</option>
                                 <option value="네추럴">네추럴</option>
                                 <option value="스파클링">스파클링</option>
                                 <option value="1">기타</option><input type="text" id="directBox" name="directBox" />
+
                             </select>
                         </dl>
                     </div>
@@ -87,7 +88,7 @@
                         <dl>
                             <dt>지역</dt>
                             <select id="selbox2" name="wineMf" style="width: 150px; height: 35px;">
-                                <option value="${board.wineMf}" selected>지역 선택</option>
+                                <option value="" selected>지역 선택</option>
                                 <option value="보르도">보르도</option>
                                 <option value="부르고뉴">부르고뉴</option>
                                 <option value="상파뉴">상파뉴</option>
@@ -167,7 +168,7 @@
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 	<input class="on" type="submit" value="수정"/></a>
+                 	<a class="on"><input type="submit" value="수정"/></a>
                     <a href="${path}/wineboard/wineList">목록으로</a>
     
                 </div>

@@ -45,12 +45,9 @@ a {
 }
 
 .btn-wine-wish {
-    width: 100px;
-    height: 30px;
+    width: 135px;
+    height: 35px;
     margin-left: 15px;
-    /* margin-right: 10px; */
-    margin-top: 7px;
-    /* line-height: 35px; */
     border-radius: 3px;
     background-color: #c70039;
     text-align: center;
@@ -106,7 +103,7 @@ a {
 }
 
 .wrap-wine-view .inner {
-    padding-top: 15px;
+    padding-top: 100px;
 }
 
 .wine-top-right .wine-price-etc {
