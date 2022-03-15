@@ -1,4 +1,4 @@
-package com.bebeno.mvc.wagle;
+package com.bebeno.mvc.wagle.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +25,6 @@ public class wagleController {
 	public ModelAndView write(ModelAndView model,
 			@SessionAttribute(name = "loginMember") Member loginMember
 			) {
-		
-		
 		
 		model.addObject("loginMember", loginMember);
 		model.setViewName("wagle_board/wagle_write");
