@@ -41,12 +41,12 @@
 			<div class="board-top-sch">
 				<form action="${ pageContext.request.contextPath }/shop/list" method="get" class="form-inline mt-3">
 					<select class="cate-filter" id="shCate" name="shCate">
-						<option value="전체">전체</option>
+						<option value="">전체</option>
 						<option value="와인샵">와인샵</option>
 						<option value="레스토랑">레스토랑</option>
 					</select>		
 					<select class="cate-filter" id="shRegionD1" name="shRegionD1">
-						<option value="전체">전체 시도</option>
+						<option value="">전체 시도</option>
 						<option value="서울">서울특별시</option>
 						<option value="부산">부산광역시</option>
 						<option value="대구">대구광역시</option>
@@ -64,9 +64,6 @@
 						<option value="경상북도">경상북도</option>
 						<option value="경상남도">경상남도</option>
 						<option value="제주">제주특별자치도</option>
-					</select>
-					<select class="cate-filter" id="shRegionD2" name="shRegioD2">
-						<option value="전체">전체 시군구</option>
 					</select>
 		
 					<div class='page-top-sch'>

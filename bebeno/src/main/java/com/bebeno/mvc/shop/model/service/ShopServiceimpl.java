@@ -18,8 +18,6 @@ public class ShopServiceimpl implements ShopService {
 	@Override
 	public List<Shop> getShopList(String shCate, String shRegionD1, String shKeyword) {
 		
-		System.out.println(shRegionD1);
-				
 		return mapper.findAll(shCate, shRegionD1, shKeyword);
 	}
 
