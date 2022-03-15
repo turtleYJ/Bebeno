@@ -1,5 +1,7 @@
 package com.bebeno.mvc.wagle.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.wagle.model.service.WagleBoardService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/wagle_board")
 public class wagleController {
-
+	@Autowired
+	private WagleBoardService service;
+	
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
+	
 	@GetMapping("/wagle_list")
 	public String list() {
 		
@@ -36,5 +45,11 @@ public class wagleController {
 	public String manage() {
 		
 		return "/wagle_board/wagle_write_manage";
+	}
+	
+	@GetMapping("/wagle_view")
+	public String view() {
+		
+		return "/wagle_board/wagle_view";
 	}
 }

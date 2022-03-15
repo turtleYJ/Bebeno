@@ -3,7 +3,7 @@
 
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 
-    <section id="my_write_manage">
+    <section class="my_write_manage">
         <div class="limiter">
         	<h2 class="wagle_title">내 글 관리</h2>
 		</div>

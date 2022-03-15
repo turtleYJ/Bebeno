@@ -1,5 +1,9 @@
 package com.bebeno.mvc.wagle.model.dao;
 
-public class WagleBoardMapper {
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
+public class WagleBoardMapper {
+	
+	
 }

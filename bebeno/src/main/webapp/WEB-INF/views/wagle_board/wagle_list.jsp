@@ -12,7 +12,7 @@
                         <div class="wagle_item_contents">
                             <a href="a">
                                 <span>
-                                    <img class="wagle_thumb_img" src="./img/1.jpg" alt="">
+                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle1.jpg" alt="">
                                 </span>
                                 <p><strong>닉네임ㄴ아머림넝리ㅓ마ㅣㄴ어리ㅏㄴ멍린ㅁ어리ㅏ</strong></p>
                                 <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
@@ -24,7 +24,7 @@
                         <div class="wagle_item_contents">
                             <a href="a">
                                 <span>
-                                    <img class="wagle_thumb_img" src="./img/3.jpg" alt="">
+                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle2.png" alt="">
                                 </span>
                                 <p><strong>닉네임</strong></p>
                                 <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
@@ -36,7 +36,7 @@
                         <div class="wagle_item_contents">
                             <a href="a">
                                 <span>
-                                    <img class="wagle_thumb_img" src="./img/2.jpg" alt="">
+                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle3.jpeg" alt="">
                                 </span>
                                 <p><strong>닉네임</strong></p>
                                 <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
