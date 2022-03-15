@@ -21,6 +21,8 @@ public class CartList {
 	
 	private String amount;
 	
+	private int cart_qty;
+	
 	private String renamedFileName;
 	
 }

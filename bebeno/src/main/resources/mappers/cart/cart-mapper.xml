@@ -24,10 +24,11 @@
 	<result property="id" column="ID"/>
 	<result property="winePrice" column="WINE_PRICE"/>
 	<result property="amount" column="AMOUNT"/>
+	<result property="cart_qty" column="CART_QTY"/>
 	<result property="renamedFileName" column="RENAMED_FILENAME"/>
   </resultMap>
   
-   	<select id="list" parameterType="String" resultMap="cartListResultMap">
+   	<select id="cartList" parameterType="String" resultMap="cartListResultMap">
    	
 		select c.cart_id, w.WINE_NAME, w.amount, w.WINE_PRICE, w.RENAMED_FILENAME, m.id
 		from cart c 
@@ -42,17 +43,20 @@
 	<insert id="addCart" parameterType="Cart">
 		insert into cart (
 				cart_id, 
-				id, 
+				id,
 				wine_bno, 
 				cart_qty,
-				addDate	
+				RENAMED_FILENAME
 				) values (
 				SEQ_CART_NO.NEXTVAL,
 				#{id},
 				#{wine_bno}, 
 				#{cart_qty},
-				DEFAULT
-				)
+				#{RENAMED_FILENAME}
+				)				
 	</insert>
+	
+	
+	
   </mapper>
 	

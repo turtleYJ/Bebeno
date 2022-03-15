@@ -37,7 +37,7 @@
             </li>
         </ul>
     </div>
- <c:forEach var="list" items="${list}">
+ <c:forEach var="list" items="${cartList}">
     <div class="container">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <!-- 가격 * 수량 -->
-                            <div class="sum">40,000원</div>
+                            <div class="sum">${list.winePrice}</div>
                         </div>
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
@@ -97,8 +97,8 @@
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
                 </div>
         
-                <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: 4개</div>
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: 74,200원</div>
+                <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.cart_qty}</div>
+                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.cart_qty * list.amount}원</div>
         
                 <div id="goorder" class="">
                     <div class="clear"></div>

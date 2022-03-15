@@ -63,8 +63,8 @@
                         		<option class="numBox" value="${i}">${i}</option>
                         	</c:forEach>
                         </select>&nbsp;개   
-                        <a href="${path}/payment/cart"><button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart">장바구니 담기</button></a>  
-                        <a href="${path}/payment/orderPage"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order">구매하기</button></a>  
+                        <a href="${path}/payment/cart"><button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button></a>  
+                        <a href="${path}/payment/orderPage"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2">구매하기</button></a>  
                     </p> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
 
@@ -122,45 +122,93 @@
 							})
 						});
 						
-						/* /장바구니 담기
-			            $(".btn-cart").click(function(){
-			                  
-			                  var cartid=${list2.cartid}+1;
-			                  var wineName = $("#wineName").val();
-			                  var renamedFileName= $("#image").attr("src");
-			                 
-			               if(cartid == 1){
-			                  cartid=1;
-			               }else{
-			                  cartid=${list2.cartid}+1;
-			               }
 
-			                 console.log(cartid);
-			                  var data = {
-			                  cartid : cartid,
-			                  wineName : wineName,
-			                  renamedFileName : renamedFileName
-			                    };
-			                  $.ajax({
-			                      url : "/wineView/addCart",
-			                      type : "post",
-			                      data : data,
-			                      success : function(result){
-			                       alert("카트 담기 성공");
-			                       $(".numBox").val("1");
-			                      },
-			                      error : function(){
-			                       alert("카트 담기 실패");
-			                       console.log(wineName);
-			                       console.log(renamedFileName);
-			                      }
-			                     });
-			                  
-			                  location.href = "wineView?wineName=" + ${wineboard.wineName};
-			                    }); */
+						//장바구니 담기
+				            $(".cart_btn").click(function(){
+				                  
+				                  var wineBno=${wineboard.wineBno}+1;
+				                  var wineName = $("#wineName").val();
+				                  var cartqty = $(".numBox").val();
+				                  var renamedFileName= $("#image").attr("src");
+				                 
+				               if(wineBno == 1){
+				            	   wineBno=1;
+				               }else{
+				            	   wineBno=${wineboard.wineBno}+1;
+				               }
+				               
+				                  
+				                  
+				                 console.log(wineBno);
+				                  var data = {
+				                	wineBno : wineBno,
+				                	wineName : wineName,
+				                	cartqty : cartqty,
+				                	renamedFileName : renamedFileName
+				                    };
+				                  $.ajax({
+				                      url : "/cateDetail/addCart",
+				                      type : "post",
+				                      data : data,
+				                      success : function(result){
+				                       alert("카트 담기 성공");
+				                       $(".numBox").val("1");
+				                      },
+				                      error : function(){
+				                       alert("카트 담기 실패");
+				                       console.log(wineBno);
+				                       console.log(cartqty);
+				                       console.log(renamedFileName);
+				                      }
+				                     });
+				                  
+				                  location.href = "/wineView?wineBno=" + ${wineboard.wineName};
+				                    });
+				                  
+						
+				            //즉시구매
+				               $(".cart_btn2").click(function(){
+				            	  	 
+				            	      var wineBno=${wineboard.wineBno}+1;
+					                  var wineName = $("#wineName").val();
+					                  var cartqty = $(".numBox").val();
+					                  var renamedFileName= $("#image").attr("src");  
+				                    
+				                  if(wineBno == 1){
+				                	  wineBno=1;
+				                  }else{
+				                	  wineBno=${wineboard.wineBno}+1;
+				                  }
+				                  
+				                    console.log(wineBno);
+				                     var data = {
+							               wineBno : wineBno,
+							               wineName : wineName,
+							               cartqty : cartqty,
+							               renamedFileName : renamedFileName
+				                       };
+				                     $.ajax({
+				                         url : "/wineView/addCart",
+				                         type : "post",
+				                         data : data,
+				                         success : function(result){
+				                         
+				                          $(".numBox").val("1");
+				                         },
+					                      error : function(){
+						                  alert("카트 담기 실패");
+						                  console.log(wineBno);
+						                  console.log(cartqty);
+						                  console.log(renamedFileName);
+						                      }
+				                        });
+				                     
+				                     location.href = "/payment/cart";
+				                 
+				                       });
+						
 
-                		
-                        $(".btn-cart").click(function() {
+                  	    $(".btn-cart").click(function() {
                 			var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
                 			if (check) {
                 				location.assign("${path}/payment/cart");
@@ -173,8 +221,7 @@
                 				location.assign("${path}/payment/orderPage");
                 			} 
                 		});
-      
-
+     
 
 </script>
 </body>
