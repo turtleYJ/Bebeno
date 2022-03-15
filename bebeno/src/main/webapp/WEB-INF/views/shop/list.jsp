@@ -278,7 +278,7 @@
 	<!-- 파퍼 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/pooper.js"></script>
 	<!-- 부트스트랩 자바스크립트 추가하기 -->
-	<script src="${path}/resources/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<!-- 다음(카카오) 주소찾기 API -->
 	
 </body>
