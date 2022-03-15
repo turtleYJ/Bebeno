@@ -92,8 +92,8 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="wine-top-right-inner">
-                                    <span>${wineboard.wineInfo}</span>
+                                    <div class="wine-top-right-inner" style="white-space:pre-line;">
+                                    <span><c:out value="${wineboard.wineInfo}"/></span>
                                     </div>
                                 </div>
 								<div class="wineviewright">

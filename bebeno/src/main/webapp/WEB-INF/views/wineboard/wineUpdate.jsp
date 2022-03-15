@@ -29,32 +29,32 @@
                     <div class="title">
                         <dl>
                             <dt>게시글번호</dt>
-                            <dd><input type="text" name="wineBno" value="${board.wineBno}" readonly></dd>
+                            <dd><input type="text" name="wineBno" value="${data.wineBno}" readonly></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>와인코드</dt>
-                            <dd><input type="text" name="wineCode" value="${board.wineCode}"></dd>
+                            <dd><input type="text" name="wineCode" value="${data.wineCode}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>와인명</dt>
-                            <dd><input type="text" name="wineName"  value="${board.wineName}"></dd>
+                            <dd><input type="text" name="wineName"  value="${data.wineName}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>영문명</dt>
-                            <dd><input type="text" name="wineEng" value="${board.wineEng}"></dd>
+                            <dd><input type="text" name="wineEng" value="${data.wineEng}"></dd>
                         </dl>
                     </div>
                     <div class="title">
                         <dl>
                             <dt>종류</dt>
                             <select id="selbox" name="wineType" style="width: 150px; height: 35px;">
-                                <option value="" selected>종류 선택</option>
+                                <option selected><c:out value="${data.wineType}"/>
 	                            <option value="레드">레드</option>
                                 <option value="화이트">화이트</option>
                                 <option value="로제">로제</option>
@@ -69,7 +69,7 @@
                         <dl>
                             <dt>제조국</dt>
                             <select id="selbox1" name="wineNational" style="width: 150px; height: 35px;">
-                                <option value="${board.wineNational}" selected>제조국 선택</option>
+                                <option selected><c:out value="${data.wineNational}"/>
                                 <option value="프랑스">프랑스</option>
                                 <option value="이탈리아">이탈리아</option>
                                 <option value="스페인">스페인</option>
@@ -88,7 +88,7 @@
                         <dl>
                             <dt>지역</dt>
                             <select id="selbox2" name="wineMf" style="width: 150px; height: 35px;">
-                                <option value="" selected>지역 선택</option>
+                                <option selected><c:out value="${data.wineMf}"/>
                                 <option value="보르도">보르도</option>
                                 <option value="부르고뉴">부르고뉴</option>
                                 <option value="상파뉴">상파뉴</option>
@@ -105,7 +105,7 @@
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="${board.winePrice}" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="${data.winePrice}" required="required" onkeyup="inputNumberFormat(this)"></dd>
                         </dl>
                     </div>
                     <div class="title">
@@ -118,7 +118,7 @@
                         <dl>
                             <dt>당도</dt>
                             <select name="wineSl">
-                                <option value="" selected>당도 선택</option>
+                             	<option selected><c:out value="${data.wineSl}"/>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -130,7 +130,7 @@
                         <dl>
                             <dt>산도</dt>
                             <select name="wineAc">
-                                <option value="" selected>산도 선택</option>
+                                <option selected><c:out value="${data.wineAc}"/>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -141,7 +141,7 @@
                         <dl>
                             <dt>바디</dt>
                             <select name="wineBody">
-                                <option value="" selected>바디 선택</option>
+                                <option selected><c:out value="${data.wineBody}"/>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -152,7 +152,7 @@
                         <dl>
                             <dt>타닌</dt>
                             <select name="wineTn">
-                                <option value="" selected>타닌 선택</option>
+                                <option selected><c:out value="${data.wineTn}"/>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -161,8 +161,8 @@
                             </select>
                         </dl>
                     </div>
-                    <div class="cont" name="wineInfo">
-     					 <textarea id="wineInfo" name="wineInfo" placeholder="와인 상세 정보">${ board.wineInfo }</textarea>
+                    <div class="cont" name="wineInfo" style="white-space:pre-line;">
+     					 <textarea id="wineInfo" name="wineInfo" placeholder="와인 상세 정보"><c:out value="${ data.wineInfo }"/></textarea>
               			<!-- <input type="text" id="wineinfo" placeholder="와인 상세 정보" style="width:1250px; height:200px;"  > -->
               	
                     </div>

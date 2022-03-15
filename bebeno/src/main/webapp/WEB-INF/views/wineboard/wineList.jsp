@@ -195,10 +195,6 @@
 				<!--wine grape variety -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>품종</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="품종 검색" oninput="onEditFilterGrapeVariety(this);" id="inputFilterGrapeVariety">
-					</div>
 					<ul class="box-view box-view-style" id="filterGrapeVarietyMaster">
 						<li>
 							<div class="">
@@ -267,10 +263,6 @@
 				<!--wine nation -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>국가</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="국가 검색" oninput="onEditFilterNation(this);" id="inputFilterNation">
-					</div>
 					<ul class="box-view" id="filterNationMaster">
 						<li>
 							<div class="">
@@ -339,10 +331,6 @@
 				<!--wine area -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>지역</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="지역 검색" oninput="onEditFilterArea(this);" id="inputFilterArea">
-					</div>
 					<ul class="box-view box-view-style" id="filterAreaMaster">
 						<li>
 							<div class="">
