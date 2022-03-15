@@ -25,15 +25,16 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
 </head>
 <body>
-<form action="regist" method="get">
 	<!-- contents 시작 -->
 	<section class='sub-contents wrap-news clear'>
 		<div class='inner'>
 			<div class='wrap-board-left'>
 				<div class="mb-filter">
 					<div class='page-top-sch'>
-						<button class='btn-sch' onclick="onSearchKeyword();">검색</button>
-						<input type='text' id='shKeyword1' name='shKeyword1' placeholder='와인 검색' maxlength='30' value='' onkeydown="onEditKeyword(event);">
+						<form action="${ path }/wineboard/wineList" method="get">
+							<input type='text' id='shKeyword1' name='shKeyword1' placeholder='와인 검색' maxlength='30' value='' onkeydown="onEditKeyword(event);">
+							<button type="summit" class='btn-sch' onclick="onSearchKeyword();">검색</button>
+						</form>
 					</div><!--.page-top-sch -->
 					<div class="r-filter">
 						<button type="button" class="btn-rmenu" id="btnRfilter" aria-label="와인 검색필터"><i class="ir icon-filter"></i></button>
@@ -1611,7 +1612,7 @@
 					m_searchOption.pageSize = 10;
 				});
 			</script>
-			</form>
+			
 		
 		    <!-- scripts  -->
 		    <script src="${ path }/js/jquery.min.js"></script>

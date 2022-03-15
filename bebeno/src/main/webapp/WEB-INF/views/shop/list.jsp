@@ -65,9 +65,6 @@
 						<option value="경상남도">경상남도</option>
 						<option value="제주">제주특별자치도</option>
 					</select>
-					<select class="cate-filter" id="shRegionD2" name="shRegioD2">
-						<option value="">전체 시군구</option>
-					</select>
 		
 					<div class='page-top-sch'>
 						<input type='text' id='shKeyword' name='shKeyword' placeholder='결과 내 검색' maxlength='30' value=''>
@@ -281,7 +278,7 @@
 	<!-- 파퍼 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/pooper.js"></script>
 	<!-- 부트스트랩 자바스크립트 추가하기 -->
-	<script src="${path}/resources/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<!-- 다음(카카오) 주소찾기 API -->
 	
 </body>

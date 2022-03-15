@@ -73,7 +73,6 @@
           	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
           </c:if>
         </ul>
-
         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
           <span></span>
         </a>

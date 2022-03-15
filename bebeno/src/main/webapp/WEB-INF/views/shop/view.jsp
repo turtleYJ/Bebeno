@@ -2,24 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
 
 <% 
 	pageContext.setAttribute("br", "<br/>");
 	pageContext.setAttribute("cn", "\n"); 
 %>
 
-<c:set var="path" value="${ pageContext.request.contextPath }"/>
+<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Bebeno_shop_view</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssyooil/shop_view.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link>
-</head>
 <body>
 	<div class="wrap-board container">
         <div class="board-view"><!-- 상세보기 -->

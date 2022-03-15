@@ -34,9 +34,9 @@ public class WineBoardServiceImpl implements WineBoardService {
 	}
 
 	@Override
-	public List<WineBoard> wineBoardList() {
+	public List<WineBoard> wineBoardList(String shKeyword1) {
 		
-		return wineboardmapper.wineBoardList();
+		return wineboardmapper.wineBoardList(shKeyword1);
 	}
 
 	@Override

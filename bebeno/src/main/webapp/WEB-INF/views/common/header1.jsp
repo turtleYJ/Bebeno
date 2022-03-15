@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
@@ -37,6 +41,10 @@
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
+	
+	<!-- shop css -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssyooil/shop_view.css">
+	
 <title>header</title>
 
 </head>
@@ -55,7 +63,7 @@
   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-        <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+        <a href="${ path }/" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
 
         <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
           <li class="active"><a href="index.html">Home</a></li>

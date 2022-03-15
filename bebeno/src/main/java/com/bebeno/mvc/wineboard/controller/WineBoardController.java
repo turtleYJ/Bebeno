@@ -35,9 +35,11 @@ public class WineBoardController {
 	@Autowired
 	private ResourceLoader resourceLoader;
 
-	@RequestMapping("/wineList")
-	public String wineBoardList(Model model) {
-		List<WineBoard> list = wineboardservice.wineBoardList();
+	@RequestMapping(value = "/wineList", method = RequestMethod.GET)
+	public String wineBoardList(Model model, String shKeyword1) {
+		List<WineBoard> list = wineboardservice.wineBoardList(shKeyword1);
+		
+		System.out.println(shKeyword1);
 		
 		model.addAttribute("list", list);
 	

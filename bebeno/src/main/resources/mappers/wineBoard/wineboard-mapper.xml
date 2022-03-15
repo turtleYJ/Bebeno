@@ -163,6 +163,15 @@
 			W.MODIFY_DATE
 	FROM BEBENO_WINEBOARD W
 	WHERE W.STATUS = 'Y'
+	<choose>
+		<when test="shKeyword1 != null">
+			AND W.WINE_NAME LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_ENG LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_TYPE LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_MF LIKE '%' || #{shKeyword1} || '%'
+		</when>
+	</choose>
+	
 	ORDER BY WINE_BNO DESC
 	</select>
  	
