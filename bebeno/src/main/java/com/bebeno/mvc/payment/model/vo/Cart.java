@@ -21,4 +21,5 @@ public class Cart {
 	
 	private Date addDate;
 	
+	private String renamedFileName;
 }

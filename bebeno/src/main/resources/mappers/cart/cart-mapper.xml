@@ -52,7 +52,7 @@
 				#{id},
 				#{wine_bno}, 
 				#{cart_qty},
-				#{RENAMED_FILENAME}
+				#{renamedFileName}
 				)				
 	</insert>
 	

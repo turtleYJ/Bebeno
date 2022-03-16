@@ -51,7 +51,7 @@
             <nav id="menu">
                 <h2>Menu</h2>
                 <ul>
-                    <li><a href="">HOME</a></li>
+                    <li><a href="${path}/">HOME</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                     <li><a href="${ path }/mypage/profile">MYPAGE</a></li>

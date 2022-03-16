@@ -7,7 +7,7 @@ import com.bebeno.mvc.payment.model.vo.CartList;
 
 public interface CartService {
 
-	public void addCart(Cart cart) throws Exception;
+	public int addCart(Cart cart) throws Exception;
 
 	public List<CartList> cartList(String id) throws Exception;
 

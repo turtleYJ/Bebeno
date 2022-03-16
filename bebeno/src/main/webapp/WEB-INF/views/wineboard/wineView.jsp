@@ -63,7 +63,7 @@
                         		<option class="numBox" value="${i}">${i}</option>
                         	</c:forEach>
                         </select>&nbsp;개   
-                        <a href="${path}/payment/cart"><button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button></a>  
+                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
                         <a href="${path}/payment/orderPage"><button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2">구매하기</button></a>  
                     </p> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
@@ -98,7 +98,7 @@
                                 </div>
 								<div class="wineviewright">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <button type="button" class="button btn_list_del" id="btnDelete">삭제</button>
+                                    <input type="button" class="button btn_list_del" id="btnDelete" value="삭제"/>
                                 </div>
                             </div>
                     </section>
@@ -147,7 +147,7 @@
 				                	renamedFileName : renamedFileName
 				                    };
 				                  $.ajax({
-				                      url : "/cateDetail/addCart",
+				                      url : "${path}/wineView/addCart",
 				                      type : "post",
 				                      data : data,
 				                      success : function(result){
@@ -162,7 +162,6 @@
 				                      }
 				                     });
 				                  
-				                  location.href = "/wineView?wineBno=" + ${wineboard.wineName};
 				                    });
 				                  
 						
@@ -201,20 +200,10 @@
 						                  console.log(cartqty);
 						                  console.log(renamedFileName);
 						                      }
-				                        });
-				                     
-				                     location.href = "/payment/cart";
+				                        });  
 				                 
 				                       });
-						
-
-                  	    $(".btn-cart").click(function() {
-                			var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
-                			if (check) {
-                				location.assign("${path}/payment/cart");
-                			} 
-                		});
-                		
+						   		
                         $(".btn-order").click(function() {
                 			var check = confirm("상품을 구매하시겠습니까?");
                 			if (check) {

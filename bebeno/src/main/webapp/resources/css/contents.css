@@ -52,6 +52,17 @@ select {
     padding: 40px 39px 100px 0;
 }
 
+.wrap-board-left:after {
+content: '';
+    position: absolute;
+    right: -1px;
+    top: 0;
+    bottom: 0;
+    display: block;
+    width: 1px;
+    background: url(/02_images/line-wing.gif) repeat-y;
+}
+
 .board-list li .thumb {
     float: left;
     width: 160px;
@@ -142,7 +153,7 @@ select {
     width: 30px;
     height: 40px;
     text-indent: -999em;
-    background: url(/02_images/ico-search-gray.png) 50% no-repeat;
+    background: url() 50% no-repeat;
     outline: none;
 }
 .wine-type ul {
@@ -170,11 +181,11 @@ select {
     border-bottom: 1px solid #ebebeb;
 }
 
-.ir {
+.ir {f
     display: inline-block;
     margin-top: -4px;
     vertical-align: middle;
-    background-image: url(/02_images/ir.png);
+    background-image: url(https://ifh.cc/g/m5MO0g.png);
     background-repeat: no-repeat;
 }
 

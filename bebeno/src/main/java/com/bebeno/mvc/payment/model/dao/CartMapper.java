@@ -11,7 +11,7 @@ import com.bebeno.mvc.payment.model.vo.CartList;
 @Mapper
 public interface CartMapper {
 
-	public void addCart(Cart cart);
+	public int addCart(Cart cart);
 
 	public List<CartList> cartList(@Param("id") String id);
 
