@@ -157,11 +157,12 @@ margin: 3px 30px 0px 30px;
 }
 
 .wagle_title {
+	background: white;
     text-align: center;
     padding: 30px;
 }
 
-#my_write_manage {
+.my_write_manage {
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
@@ -172,30 +173,20 @@ body, html {
 	font-family: sans-serif;
 }
 
-/* ------------------------------------ */
-h1,h2,h3,h4,h5,h6 {margin: 0px;}
-
-p {margin: 0px;}
-
-ul, li {
-	margin: 0px;
-	list-style-type: none;
-}
-
 
 /* ------------------------------------ */
-input {
+.my_write_manage input {
   display: block;
 	outline: none;
 	border: none !important;
 }
 
-textarea {
+.my_write_manage textarea {
   display: block;
   outline: none;
 }
 
-textarea:focus, input:focus {
+.my_write_manage textarea:focus, .my_write_manage input:focus {
   border-color: transparent !important;
 }
 
@@ -210,11 +201,11 @@ width: 100%;
 margin: 0 auto;
 }
 
-.wrap-table100 {
+#mywrite-board .wrap-table100 {
 width: 1170px;
 }
 
-table {
+#mywrite-board table{
 border-spacing: 1;
 border-collapse: collapse;
 background: white;
@@ -224,37 +215,38 @@ width: 100%;
 margin: 30px auto;
 position: relative;
 }
-table * {
+#mywrite-board table * {
 position: relative;
 }
-table td, table th {
+#mywrite-board table td, #mywrite-board table th {
 padding-left: 8px;
 }
-table thead tr {
+#mywrite-board table thead tr {
 height: 60px;
 background: #36304a;
 }
-table tbody tr {
+#mywrite-board table tbody tr {
 height: 50px;
 }
-table tbody tr:last-child {
+#mywrite-board table tbody tr:last-child {
 border: 0;
 }
-table td, table th {
+#mywrite-board table td, #mywrite-board table th {
 text-align: left;
 }
-table td.l, table th.l {
+#mywrite-board table td.l, #mywrite-board table th.l {
 text-align: right;
 }
-table td.c, table th.c {
+#mywrite-board table td.c, #mywrite-board table th.c {
 text-align: center;
 }
-table td.r, table th.r {
+#mywrite-board table td.r, #mywrite-board table th.r {
 text-align: center;
 }
 
 
-.table100-head th{
+#mywrite-board .table100-head th{
+margin: 0px;
 font-family: OpenSans-Regular;
 font-size: 18px;
 color: #fff;
@@ -262,11 +254,12 @@ line-height: 1.2;
 font-weight: unset;
 }
 
-tbody tr:nth-child(even) {
+#mywrite-board tbody tr:nth-child(even) {
 background-color: #f5f5f5;
 }
 
-tbody tr {
+#mywrite-board tbody tr {
+margin: 0px;
 font-family: OpenSans-Regular;
 font-size: 15px;
 color: #808080;
@@ -274,31 +267,32 @@ line-height: 1.2;
 font-weight: unset;
 }
 
-tbody tr:hover {
+#mywrite-board tbody tr:hover {
+margin: 0px;
 color: #555555;
 background-color: #f5f5f5;
 cursor: pointer;
 }
 
-.column1 {
+#mywrite-board .column1 {
 width: 25%;
 padding-left: 40px;
 }
 
-.column2 {
+#mywrite-board .column2 {
 width: 45%;
 }
 
-.column3 {
+#mywrite-board .column3 {
 width: 10%;
 }
 
-.column4 {
+#mywrite-board .column4 {
 width: 10%;
 text-align: right;
 }
 
-.column5 {
+#mywrite-board .column5 {
 width: 10%;
 text-align: right;
 }

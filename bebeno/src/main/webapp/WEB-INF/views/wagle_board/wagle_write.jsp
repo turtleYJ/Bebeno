@@ -3,13 +3,13 @@
 
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 	
-    <h2>글 작성하기</h2>
+    <h2 class="write_h2">글 작성하기</h2>
     <input type="hidden" name="no" th:value="${ wagle_board.no }">
     <table class="tbl_wagle_board">
-        <th class="th_box">작성자</th>
-            <td><input type="text" name="writer" th:value="${ wagle_board.writer }" readonly>${ loginMember.nickname }</td>
+        <th class="th_box">닉네임</th>
+            <td><input type="text" name="writer" value="${ loginMember.nickname }" style="border:none;" readonly></td>
         <tr>
-            <th class="th_box">타입</th>
+            <th class="th_box">카테고리</th>
             <td>
                 <strong>
                 <div class="wagle_cate_box">
@@ -39,14 +39,14 @@
             </td>
         </tr>
         <tr>
-            <th class="th_box">사진변경</th>
+            <th class="th_box">사진</th>
             <td>
                 <input type="file" name="upfile" id="" />
             </td>
         </tr>
         <tr>
             <th class="th_box">내용</th>
-            <td><textarea name="content" cols="40" rows="15" th:text="${ board.content }"></textarea></td>
+            <td><textarea name="content" cols="50" rows="15" th:text="${ board.content }"></textarea></td>
         </tr>
     </table>
     <div class="wagle_update_button">

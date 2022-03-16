@@ -1,5 +1,5 @@
-package com.bebeno.mvc.wagle.model.service;
-
-public class WagleBoardService {
-
-}
+//package com.bebeno.mvc.wagle.model.service;
+//
+//public class WagleBoardService {
+//
+//}
