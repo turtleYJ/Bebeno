@@ -71,7 +71,9 @@
 	       	BIRTH, 
 	       	STATUS, 
 	       	ENROLL_DATE,
-	       	MODIFY_DATE
+	       	MODIFY_DATE,
+		    O_PROFILEIMGNAME,
+		    R_PROFILEIMGNAME
 		) VALUES (
 			SEQ_UNO.NEXTVAL,
 			#{id},
@@ -85,7 +87,9 @@
 			#{birth},
 			DEFAULT,
 			DEFAULT,
-			DEFAULT
+			DEFAULT,
+			NULL,
+			NULL
 		)
 	</insert>
 	

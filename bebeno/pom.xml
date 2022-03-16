@@ -229,6 +229,13 @@
 		    <version>2.6.0</version>
 		</dependency>
 		
+		<!-- java mail -->
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4</version>
+    </dependency>
+
 		<!-- Test -->
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>

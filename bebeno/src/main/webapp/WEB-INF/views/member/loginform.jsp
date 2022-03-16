@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="${path}/resources/css/loginform.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<title>Home</title>
+	<title>LOGIN</title>
+	<script src="${ path }/js/jquery-3.6.0.js"></script>
 	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <section class="sub-contents wrap-login">
@@ -28,9 +29,11 @@
             </form>
             </c:if>
      <div class="login-box-link clear">
-				<a href="${ path }/member/terms">join</a>
-				
+    <a class="medium" href="${ path }/member/forgot-password">Forgot Password?</a>
 	</div>
+	<div class="login-box-link clear">
+    <a class="medium" href="${ path }/member/terms">Create an Account!</a>
+    </div>
 	
         <div class="forgot">
             <a href="#"></a>
@@ -38,5 +41,38 @@
             <a href="#"></a>
         </div>
     </div>
+        
 </section>
+  <script>
+ // 아이디 중복 확인
+	$(document).ready(() => {
+		$("#checkDuplicate").on("click", () => {
+			let userId = $("#newId").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${ pageContext.request.contextPath }/member/idCheck",
+				dataType: "json",
+				data: {
+					userId
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 아이디 입니다.");
+					} else {
+						alert("사용 가능한 아이디 입니다.");						
+					}
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});		
+	});
+	
+	
+</script>
+        
 </html>
