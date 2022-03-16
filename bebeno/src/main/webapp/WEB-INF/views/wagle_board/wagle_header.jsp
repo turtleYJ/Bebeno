@@ -32,7 +32,9 @@
     	<section class="wagle_nav">
 	        <div class="wagle_buttons">
 	            <ul class="wagle_btn">
-	                <li id="menu_btn">전체보기</li>
+	            	<a href="${ path }/wagle_board/wagle_list">
+		                <li id="menu_btn">전체보기</li>
+	            	</a>
 	                <li id="menu_btn">와인</li>
 	                <li id="menu_btn">바틀샵</li>
 	                <li id="menu_btn">와인바</li>
