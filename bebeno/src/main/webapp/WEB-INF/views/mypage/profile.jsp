@@ -26,7 +26,7 @@
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 
 </head>
 
@@ -153,7 +153,7 @@
                 </table>
 
                 <div class="save-update-button">
-                    <button type="submit" class="button">정보 수정</button>
+                    <button type="submit" class="button" id="submitBtn" disabled="disabled" >정보 수정</button>
                 </div>
             </div>
         </div>
@@ -281,7 +281,8 @@
 					if(data.duplicate === true) {
 						alert("이미 사용중인 닉네임 입니다.");
 					} else {
-						alert("사용 가능한 닉네임 입니다.");						
+						alert("사용 가능한 닉네임 입니다.");
+						$("#submitBtn").attr("disabled", false);
 					}
 					
 				},

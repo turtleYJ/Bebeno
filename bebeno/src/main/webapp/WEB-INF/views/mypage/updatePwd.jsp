@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="${ path }/resources/css/mypage/updatePwd.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 
 </head>
 <body>
