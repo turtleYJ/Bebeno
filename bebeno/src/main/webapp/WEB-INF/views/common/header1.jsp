@@ -42,9 +42,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 	
-	<!-- shop css -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssyooil/shop_view.css">
-	
 <title>header</title>
 
 </head>

@@ -111,7 +111,3 @@
 	  
 	  <script src="${ path }/js/custom.js"></script>
   </header>
-
-  
-</body>
-</html>
