@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Wagle {
 	private int no;
 	
-	private int writerNo;
+	private String nicname;
 	
 	private String wine_no;
 	
@@ -22,11 +22,17 @@ public class Wagle {
 	
 	private String content;
 	
+	private String originalFileName;
+	
+	private String renamedFileName;
+	
 	private String readcount;
 	
 	private String status;
 	
 	private List<WagleFile> files;
+	
+	private List<Reply> replies;
 
 	private String createDate;
 	

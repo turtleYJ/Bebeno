@@ -12,18 +12,23 @@
             <div>
                 <div class="wagle_item_box">
                     <!-- 출력 div -->
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle1.jpg" alt="">
-                                </span>
-                                <p><strong>닉네임ㄴ아머림넝리ㅓ마ㅣㄴ어리ㅏㄴ멍린ㅁ어리ㅏ</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기ㅁㄴ어ㅏ룀ㅈ덕미나어럊더갬ㅈ더ㅏㄱㅁ니ㅏㅇ러ㅣ나얾ㅇㄴ미ㅏ럼ㄴㅇㄹㅁㄴㅇㄹ</p>
-                            </a>
-                        </div>
-                    </div>
+                    <c:forEach var="wagle" items="${ wagleList }">
+	                    <div class="wagle_item">
+	                        <div class="wagle_item_contents">
+	                            <a href="a">
+	                                <span>
+	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/wineimg/${ wagle.renamedFileName }" alt="">
+	                                </span>
+	                                <p><strong>${ wagle.nicname }</strong></p>
+	                                <p><strong>${ wagle.title }</strong></p>
+	                                <p>${ wagle.content }</p>
+	                            </a>
+	                        </div>
+	                    </div>
+                    </c:forEach>
+                    
+                    <!-- 이 뒤에는 그냥 남겨뒀습니다. -->
+                    
                     <div class="wagle_item">
                         <div class="wagle_item_contents">
                             <a href="a">
@@ -42,7 +47,7 @@
                                 <span>
                                     <img class="wagle_thumb_img" src="${ path }/resources/image/wagle3.jpeg" alt="">
                                 </span>
-                                <p><strong>닉네임</strong></p>
+                                <p><strong>${ wagle.nicname }</strong></p>
                                 <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
                                 <p>글내용 미리보기</p>
                             </a>
