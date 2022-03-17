@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-	<jsp:include page="/WEB-INF/views/common/header_yooil.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
 	
-	<div class="container">
-		<div class="board-top mb-nl">
+	<div class="container" style="margin-top: 70px">
+		<div class="board-top mb-nl" style="padding-bottom: 20px">
 			<h2 class="cate-tit">와인샵&amp;레스토랑</h2>
 			
 			<div class="board-top-sch">
@@ -180,7 +180,7 @@
 				
 			</div>
 			
-			<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+			<div id="js-btn-wrap" class="button button-large button-white-gray center-block"> <a href="javascript:;" class="button">더보기</a> </div>
 	
 		</div>	<!-- .container -->
 	<!-- jquery 자바스크립트 추가하기 -->

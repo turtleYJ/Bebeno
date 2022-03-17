@@ -30,13 +30,11 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
 <!-- yooil css -->
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min.css" />
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">	
 
-
-	
 <title>header</title>
 
 </head>
@@ -81,7 +79,7 @@
 					</c:if>
 				</ul>
 				
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
+				<a href="#" class="glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#main-navbar">
 					<span></span>
 				</a>
 				

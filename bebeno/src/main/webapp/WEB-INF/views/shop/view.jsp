@@ -6,7 +6,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-	<jsp:include page="/WEB-INF/views/common/header_yooil.jsp" />
+<jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
 
 	<div class="wrap-board container">
         <div class="board-view"><!-- 상세보기 -->
