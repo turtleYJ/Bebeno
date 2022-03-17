@@ -1,4 +1,4 @@
-
+drop table cart;
 DROP TABLE MEMBER;
 DROP SEQUENCE SEQ_UNO;
 

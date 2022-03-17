@@ -48,4 +48,6 @@ public class WineBoard {
 	
 	private String winePrice; // 와인가격 
 	
+	private String amount; // 와인 수량
+	
 }
