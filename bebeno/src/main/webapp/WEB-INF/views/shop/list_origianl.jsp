@@ -118,7 +118,7 @@
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
-	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;">
+	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;">
 	          								</textarea>
 										</div>
       							    </div>
@@ -242,7 +242,6 @@
 	    $(shops_list + ":lt(" + shops_total_cnt + ")").addClass("active");
 	}
 	
-
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

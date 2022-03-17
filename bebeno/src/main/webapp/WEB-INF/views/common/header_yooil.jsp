@@ -18,7 +18,7 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  
+<!-- template관련 css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main/animate.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main/owl.theme.default.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main/jquery.fancybox.min.css" />
@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">	
+
+
 	
 <title>header</title>
 
@@ -62,6 +64,8 @@
 					<li><a href="#">WINE SHOP</a></li>
 					<li><a href="#">COMMUNITY</a></li>
 					<li><a href="#">CART</a></li>
+					
+					<!-- 햄버거바 + 네비게이션바 -->
 					
 					<c:if test="${ empty loginMember }">          	
 						<li><a href="${path}/member/loginform">LOGIN</a></li>
@@ -110,4 +114,7 @@
 	  
 	  
 	  <script src="${ path }/js/custom.js"></script>
+	  
+	  <!-- js -->
+	  <script type="text/javascript" src="${ path }/resources/smartEditor/js/service/HuskyEZCreator.js"></script>
   </header>
