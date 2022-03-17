@@ -40,8 +40,63 @@
 		<result property="category" column="CATEGORY"/>
 	</resultMap>
 	
+	<resultMap type="Content" id="fileListResultMap">
+		<id property="file_no" column="W_FILE_NO"/>
+		<result property="W_No" column="W_NO"/>
+		<result property="file_originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="file_renamedFileName" column="RENAMED_FILENAME"/>	
+	</resultMap>
+	
+	<resultMap type="WagleReply" id="wagleReplyResultMap">
+		<id property="no" column="NO" />
+		<result property="wagleNo" column="W_NO"/>
+		<result property="writerNo" column="WRITER_NO"/>
+		<result property="wrierId" column="WRITER_ID"/>
+		<result property="content" column="CONTENT"/>
+		<result property="createDate"  column="CREATE_DATE"/>
+		<result property="modifyDate"  column="MODIFY_DATE"/>
+	</resultMap>
+	
 	<select id="getWagleList" resultMap="wagleListResultMap">
 		<include refid="WagleListSql"/>
 		ORDER BY W.WAGLE_NO DESC	
 	</select>
+	
+	<select id="selectfilesByNo" parameterType="_int" resultMap="fileListResultMap">
+		SELECT  W_FILE_NO, 
+				W_NO,					
+		        ORIGINAL_FILENAME,
+		        RENAMED_FILENAME
+		FROM WAGLE_FILE
+		WHERE W_NO = #{no}
+	</select>
+	
+	<update id="updateWagleBoard" parameterType="WagleBoard">
+       	UPDATE WAGLE_BOARD
+       	<trim prefix="SET" suffixOverrides=",">
+    	    <if test="title != null">
+		 		W.TITLE = #{title},
+	 		</if>
+	 		<if test="content != null">
+		 		W.CONTENT = #{content},
+	 		</if>
+	 		<if test="originalFileName != null">
+		 		ORIGINAL_FILENAME = #{originalFileName},
+	 		</if>
+	 		<if test="renamedFileName != null">
+		 		RENAMED_FILENAME = #{renamedFileName},
+	 		</if>
+		 	MODIFY_DATE = SYSDATE 
+       	</trim>
+	 	WHERE 
+	 		NO = #{no}
+	</update>
+	
+	<update id="updateStatus" parameterType="map">
+		UPDATE WAGLE_BOARD 
+		SET STATUS = #{status} 
+		WHERE NO = #{no}
+	</update>
+	
+	
 </mapper>

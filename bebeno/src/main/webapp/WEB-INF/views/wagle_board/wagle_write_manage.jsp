@@ -20,14 +20,14 @@
                     </th>
                 </tr>
             </thead>
-            <c:forEach var="row" items="${wagle_board.list}">
+            <c:forEach var="row" items="${ wagle.list }">
             <tbody>
                 <tr>
-                    <td class="column1" td:text="${ wagle_board.createDate }">ex.Date</td>
-                    <td class="column2" td:text="${ wagle_board.title }">Title</td>
-                    <td class="column3" td:text="${ wagle_board.writer_nickname }">NickName</td>
-                    <td class="column4" td:text="${ wagle_board.readCount }">0</td>
-                    <td class="column5" td:text="${ wagle_board.scrapCount }">0</td>
+                    <td class="column1" td:text="${ wagle.createDate }">ex.Date</td>
+                    <td class="column2" td:text="${ wagle.title }">Title</td>
+                    <td class="column3" td:text="${ wagle.nicname }">NickName</td>
+                    <td class="column4" td:text="${ wagle.readCount }">0</td>
+                    <td class="column5" td:text="${ wagle.scrapCount }">0</td>
             </tbody>
             </c:forEach>
         </table>

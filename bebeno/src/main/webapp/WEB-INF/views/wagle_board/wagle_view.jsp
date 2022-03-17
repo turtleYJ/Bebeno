@@ -46,7 +46,7 @@
         <div id="wagle_img_box">
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
-                <c:forEach var="imageFileName" items="${ map.fileList}"  >
+                <c:forEach var="imageFileName" items="${ map.fileList }"  >
                     <img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }">
                     <br><br><br>
                 </c:forEach>
@@ -96,6 +96,7 @@
             <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
             <button class="th_btn" type="button" id="btnDelete">삭제</button>
             <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/list}')|" value="목록으로">
+            <button class="th_btn" type="button" th:onclick="">스크랩</button>
         </th>
         </table>
     </section>
@@ -148,5 +149,5 @@
                 });
             }); 
     </script>
-    <script src="./wagle_view.js"></script>
+    <script src="${ path }/wagle_view.js"></script>
 </html>

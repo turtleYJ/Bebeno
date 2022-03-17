@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 	
     <h2 class="write_h2">글 작성하기</h2>
-    <input type="hidden" name="no" th:value="${ wagle_board.no }">
+    <input type="hidden" name="no" th:value="${ wagle.no }">
     <table class="tbl_wagle_board">
         <th class="th_box">닉네임</th>
             <td><input type="text" name="writer" value="${ loginMember.nickname }" style="border:none;" readonly></td>
@@ -35,18 +35,18 @@
         <tr>
             <th class="th_box">제목</th>
             <td>
-                <input type="text" name="title" id="title" th:value="${ wagle_board.title }">
+                <input type="text" name="title" id="title" th:value="${ wagle.title }">
             </td>
         </tr>
         <tr>
             <th class="th_box">사진</th>
             <td>
-                <input type="file" name="upfile" id="" />
+                <input type="file" name="upfiles" class="" multiple="multiple" />
             </td>
         </tr>
         <tr>
             <th class="th_box">내용</th>
-            <td><textarea name="content" cols="50" rows="15" th:text="${ board.content }"></textarea></td>
+            <td><textarea name="content" cols="50" rows="15" th:text="${ wagle.content }"></textarea></td>
         </tr>
     </table>
     <div class="wagle_update_button">
