@@ -60,7 +60,7 @@
   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-       <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+       <a href="{path}" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
 
         <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
           <li class="active"><a href="">Home</a></li>

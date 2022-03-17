@@ -42,18 +42,18 @@
 
 	<insert id="addCart" parameterType="Cart">
 		insert into cart (
-				cart_id, 
-				id,
-				wine_bno, 
-				cart_qty,
-				RENAMED_FILENAME
-				) values (
-				SEQ_CART_NO.NEXTVAL,
-				#{id},
-				#{wine_bno}, 
-				#{cart_qty},
-				#{renamedFileName}
-				)				
+					ID,
+					WINE_BNO,
+					CART_ID,
+					CART_QTY
+					) values (
+					#{id},
+					#{wine_bno},
+					SEQ_CART_NO.NEXTVAL,
+					#{cart_qty}
+					)
+					
+							
 	</insert>
 	
 	

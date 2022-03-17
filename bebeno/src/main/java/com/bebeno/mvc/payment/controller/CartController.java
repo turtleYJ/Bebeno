@@ -46,7 +46,11 @@ public class CartController {
 		Member member = (Member)session.getAttribute("loginMember");
 		cart.setId(member.getId());
 		
+		
 		map.put("result", service.addCart(cart)) ;
+
+		System.out.println(cart);
+		
 		
 		return map;
 			
@@ -66,7 +70,7 @@ public class CartController {
 	}
 	
 
-	@GetMapping("/orderPage")
+	@GetMapping("/payment/orderPage")
 	public String orderPage() {
 		
 		return "/payment/orderPage";
