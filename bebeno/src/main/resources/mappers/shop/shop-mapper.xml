@@ -6,12 +6,14 @@
 <mapper namespace="com.bebeno.mvc.shop.model.dao.ShopMapper">
 	<sql id="shopListSql">
 		SELECT  STORE_NO, 
-				STORE_WRITERNO,					
+				STORE_WRITERNO,		
 		        STORE_KORNAME,
 		        STORE_ENGNAME, 
-		        STORE_ADDRESS, 
-		        STORE_PHONE, 
-		        STORE_TIME, 
+		        STORE_ZIPCODE,
+		        STORE_ADDRESS1, 
+		        STORE_ADDRESS2,
+		        STORE_PHONE,
+		        STORE_TIME,
 		        STORE_TYPE, 
 		        STORE_STATUS,
 		        STORE_CONTENT,
@@ -29,7 +31,9 @@
 		<result property="writerNo" column="STORE_WRITERNO"/>
 		<result property="korBname" column="STORE_KORNAME"/>
 		<result property="engBname" column="STORE_ENGNAME"/>
-		<result property="address" column="STORE_ADDRESS"/>
+		<result property="zipCode" column="STORE_ZIPCODE"/>
+		<result property="address1" column="STORE_ADDRESS1"/>
+		<result property="address2" column="STORE_ADDRESS2"/>
 		<result property="phone" column="STORE_PHONE"/>
 		<result property="bnsHour" column="STORE_TIME"/>
 		<result property="type" column="STORE_TYPE"/>
@@ -56,7 +60,7 @@
 				AND STORE_TYPE = #{shCate}
 			</when>
 			<when test="shRegionD1 != null">
-				AND STORE_ADDRESS LIKE '%' || #{shRegionD1} || '%'
+				AND STORE_ADDRESS1 LIKE '%' || #{shRegionD1} || '%'
 			</when>
 			<when test="shKeyword != null">
 				AND STORE_KORNAME LIKE '%' || #{shKeyword} || '%'
@@ -86,7 +90,9 @@
 			STORE_WRITERNO,
 			STORE_KORNAME,
 			STORE_ENGNAME,
-			STORE_ADDRESS,
+			STORE_ZIPCODE,
+			STORE_ADDRESS1,
+			STORE_ADDRESS2,
 			STORE_PHONE,
 			STORE_TIME,
 			STORE_TYPE,
@@ -101,7 +107,9 @@
 			#{writerNo},
 			#{korBname},
 			#{engBname},
-			#{address},
+			#{zipCode},
+			#{address1},
+			#{address2},
 			#{phone},
 			#{bnsHour},
 			#{type},

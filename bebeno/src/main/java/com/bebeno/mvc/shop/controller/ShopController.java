@@ -77,7 +77,7 @@ public class ShopController {
 	public ModelAndView registration(
 			ModelAndView model, 
 			@SessionAttribute(name = "loginMember") Member loginMember,
-			@ModelAttribute Shop shop, @ModelAttribute ContentFiles file,@RequestParam("upfileFront") MultipartFile upfileFront, MultipartHttpServletRequest mtfRequest, @RequestParam("address1") String address1, @RequestParam("address2") String address2
+			@ModelAttribute Shop shop, @ModelAttribute ContentFiles file,@RequestParam("upfileFront") MultipartFile upfileFront, int zipCode, MultipartHttpServletRequest mtfRequest
 			) {
 		List<MultipartFile> fileList = mtfRequest.getFiles("upfileContent");
 		int result = 0;
@@ -135,12 +135,8 @@ public class ShopController {
 		
 		// 2. 작성한 게시글 데이터를 데이터 베이스에 저장
 		shop.setWriterNo(loginMember.getNo());
-//		shop.setKorBname(KorBname);
-//		shop.setEngBname(EngBname);
-		shop.setAddress(address1 + " " + address2);
-//		shop.setPhone(phone);	
-//		shop.setContent(Content);
 		
+		System.out.println(zipCode);
 		System.out.println(shop);
 		
 		result = service.save(shop);
@@ -182,10 +178,80 @@ public class ShopController {
 		return model;
 	}
 	
-	@RequestMapping("/update")
-	public ModelAndView update(ModelAndView model) {
+	@GetMapping("/update")
+	public ModelAndView update(
+			@SessionAttribute("loginMember") Member loginMember,
+			ModelAndView model, @RequestParam("no") int no) {
 		
-		model.setViewName("shop/update");
+		Shop shop = service.findShopByNo(no);
+		
+		System.out.println(loginMember);
+		System.out.println(shop);
+		
+		if(shop.getType() == "와인샵") {
+			shop.setType("wineshop");
+		} else if (shop.getType() == "레스토랑") {
+			shop.setType("rest");
+		}
+		
+		if (loginMember.getNo() == shop.getWriterNo()) {			
+			model.addObject("shop", shop);
+			model.setViewName("shop/update");
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/shop/list");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
+	
+	@PostMapping("/update")
+	public ModelAndView update(ModelAndView model, 
+			@SessionAttribute("loginMember") Member loginMember,
+			@ModelAttribute Shop shop, @RequestParam("upfile") MultipartFile upfile) {
+		
+		int result;
+		
+		if (loginMember.getNo() == shop.getWriterNo()) {
+			if(upfile != null && !upfile.isEmpty()) {
+				String renamedFileName = null;
+				String location = null;
+				
+				try {
+					location = resourceLoader.getResource("resources/upload/board").getFile().getPath();
+					
+					if(shop.getRenamedFileName() != null) {
+						// 이전에 업로드된 첨부파일 삭제
+						FileProcess.delete(location + "/" + shop.getRenamedFileName());
+					}
+					
+					renamedFileName = FileProcess.save(upfile, location);
+					
+					if(renamedFileName != null) {
+						shop.setOriginalFileName(upfile.getOriginalFilename());
+						shop.setRenamedFileName(renamedFileName);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			result = service.save(shop);
+			
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
+				model.addObject("location", "/board/view?no=" + shop.getNo());
+			} else {
+				model.addObject("msg", "게시글 수정을 실패하였습니다.");
+				model.addObject("location", "/board/update?no=" + shop.getNo());
+			}
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/board/list");
+		}
+		
+		model.setViewName("common/msg");
 		
 		return model;
 	}

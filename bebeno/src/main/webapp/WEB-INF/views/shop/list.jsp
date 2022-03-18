@@ -79,7 +79,7 @@
             								<label>가게 주소</label>
           								</div>
           								<div class="form-group col-sm-3">
-            								<input id="member_post" type="text" class="form-control" maxlength="20" placeholder="우편번호" readonly onclick="findAddr()">
+            								<input id="member_post" type="number" name="zipCode" class="form-control" maxlength="20" placeholder="우편번호" readonly onclick="findAddr()">
           								</div>
           								<div class="form-group col-sm-9">
 											<input id="member_addr" type="text"  name="address1" class="form-control col-lg-8" maxlength="20" placeholder="주소" readonly> <br>
@@ -170,7 +170,7 @@
 					            </div>
 					            <div class="write-info">
 					                <em class="board-badge badge-white">${ store.type }</em>
-					                <span class="store-addr">${ store.address }</span>
+					                <span class="store-addr">${ store.address1 } ${ store.address2 }</span>
 					                <span class="store-tel">${ store.phone }</span> 
 					            </div>
 				        	</div>

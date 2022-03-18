@@ -4,6 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%
+	// 줄바꿈
+	pageContext.setAttribute("br", "<br/>");
+	pageContext.setAttribute("cn", "\n");
+%>
+
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
@@ -23,7 +29,7 @@
                     	<tbody>
 	                        <tr>
 	                            <th>주소</th>
-	                            <td><a href="javascript:funMapOpen('${ shop.korBname }', '${ shop.address } ');" class="link">${ shop.address }<br></a></td>
+	                            <td><a href="javascript:funMapOpen('${ shop.korBname }', '${ shop.address1 } ${ shop.address2 } ');" class="link">${ shop.address1 } ${ shop.address2 }<br></a></td>
 	                            <td rowspan="2" class="text-center">
 	                                <img src="https://wine21.speedgabia.com/COMPANY_MST/LOGO/0035582.jpg" alt="" class="img-clogo">
 	                            </td>
@@ -105,7 +111,7 @@
         </div><!--.board-view -->
         <div class="pagination-box">
             <button type="button" onclick="location.href='${ path }/shop/list'" id="storeListBtn" class="button button-small button-wine">목록</button>
-            <button type="button" onclick="location.href='${ path }/shop/update'" class="button button-small button-wine">수정</button>
+            <button type="button" onclick="location.href='${ path }/shop/update?no=${ shop.no }'" class="button button-small button-wine">수정</button>
             <button type="button" class="button button-small button-wine">삭제</button>
         </div>
         <!-- 관련상품 -->
