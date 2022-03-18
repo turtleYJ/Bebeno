@@ -46,7 +46,7 @@
         <div id="wagle_img_box">
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
-                <c:forEach var="imageFileName" items="${ map.fileList}"  >
+                <c:forEach var="imageFileName" items="${ map.fileList }"  >
                     <img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }">
                     <br><br><br>
                 </c:forEach>
@@ -149,5 +149,5 @@
                 });
             }); 
     </script>
-    <script src="./wagle_view.js"></script>
+    <script src="${ path }/wagle_view.js"></script>
 </html>
