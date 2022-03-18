@@ -8,7 +8,13 @@
   
    	<select id="cartList" resultType="com.bebeno.mvc.payment.model.vo.Cart">
    	
-		select c.cart_id, c.wine_bno, c.id, w.wine_name, w.RENAMED_FILENAME, w.wine_price 
+		select 
+			c.cart_id, 
+			c.wine_bno, 
+			c.id, 
+			w.wine_name, 
+			w.RENAMED_FILENAME, 
+			w.wine_price 
 		from cart c left join bebeno_wineboard w on c.wine_bno = w.wine_bno
 		where c.id= #{id};
  

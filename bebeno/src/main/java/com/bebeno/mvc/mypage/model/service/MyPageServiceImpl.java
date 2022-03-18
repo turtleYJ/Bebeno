@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.dao.MyPageMapper;
-import com.bebeno.mvc.mypage.model.vo.MyPage;
 
 import lombok.extern.slf4j.Slf4j;
 

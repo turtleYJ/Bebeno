@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bebeno.mvc.common.util.ProfileImgSave;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.service.MyPageService;
-import com.bebeno.mvc.mypage.model.vo.MyPage;
 
 import lombok.extern.slf4j.Slf4j;
 

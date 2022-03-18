@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.bebeno.mvc.member.model.vo.Member;
-import com.bebeno.mvc.mypage.model.vo.MyPage;
 
 @Mapper
 public interface MyPageMapper {
