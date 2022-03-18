@@ -26,7 +26,7 @@
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
-<jsp:include page="/WEB-INF/views/common/header1.jsp" />
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 </head>
 

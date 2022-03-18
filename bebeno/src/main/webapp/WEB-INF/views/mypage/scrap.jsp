@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/scrap.css">
 
-<jsp:include page="/WEB-INF/views/common/header1.jsp" />
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 </head>
 <body>
@@ -42,146 +42,65 @@
     <form id="update-profile">
 
         <div class="mypage-input-box">
-            <div class="scrap-list">
-                <ul>
+            
+            <div class="scraps">
                 <!-- 
-                    <c:forEach var="spot" items="${ spotList }" begin="0" end="3">
-                        <li>
-                        <a href="${ pageContext.request.contextPath }/spot/spotDetail?no=${ spot.no }">
-                            <div class="img-thumb">
-                                <img src="${ pageContext.request.contextPath }${ spot.imgPath }${ spot.no }.png" alt="">
-                            </div>
-                            <strong>${ spot.title }</strong>
-                            <p>${ spot.content }</p>
-                        </a>
-                        </li>
+                    <c:forEach var="scrap" items="${ scrapList }" begin="0" end="3">
+                        
+                        <div class="scrap">
+		            		<a href="${ pageContext.request.contextPath }/spot/spotDetail?no=${ spot.no }">
+		            			<img src="${ pageContext.request.contextPath }${ spot.imgPath }${ spot.no }.png" alt="스크랩이미지">
+		            		</a>
+		            		<div class="scrap-title">${ spot.content }</div>
+		            	</div>
+                        
                     </c:forEach> 
                 -->
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    
-                    <!-- 이미지 틀이 어긋남..? -->
-                    <!-- 
-                     -->
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <div class="img-thumb">
-                                <img src="../resources/image/city1.PNG" alt="">
-                            </div>
-                            <Strong>게시글 제목</Strong>
-                            <p>내용</p>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
+                
+                <c:forEach begin="0" end="3">
+                        
+                	<div class="scrap">
+	            		<a href="">
+	            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+	            		</a>
+	            		<div class="scrap-title">게시판 스크랩 제목 forEach</div>
+	            	</div>
+                       
+                </c:forEach>  
+            	
+            	<div class="scrap">
+            		<a>
+            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+            		</a>
+            		<div class="scrap-title">게시판 스크랩 제목 1</div>
+            	</div>
+            	<div class="scrap">
+            		<a>
+            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+            		</a>
+            		<div class="scrap-title">게시판 스크랩 제목 2</div>
+            	</div>
+            	<div class="scrap">
+            		<a>
+            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+            		</a>
+            		<div class="scrap-title">게시판 스크랩 제목 3</div>
+            	</div>
+            	<div class="scrap">
+            		<a>
+            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+            		</a>
+            		<div class="scrap-title">게시판 스크랩 제목 4</div>
+            	</div>
+            	
+            	<div class="scrap">
+            		<a>
+            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
+            		</a>
+            		<div class="scrap-title">게시판 스크랩 제목 5</div>
+            	</div>
+            	
+            	
             </div>
         </div>
 
