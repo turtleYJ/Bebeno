@@ -10,7 +10,13 @@ DROP SEQUENCE SEQ_CART_NO;
 
 -- ================================================
 
--- WAGLE_BOARD, MEMBER 테이블을 참조하므로 선행삭제 필요
+-- MEMBER, WAGLE_BOARD 테이블을 참조하므로 선행삭제 필요
+DROP TABLE SCRAP;
+DROP SEQUENCE SEQ_SCRAP_NO;
+
+-- ================================================
+
+-- MEMBER, WAGLE_BOARD 테이블을 참조하므로 선행삭제 필요
 DROP TABLE WAGLE_BOARD_REPLY;
 DROP SEQUENCE SEQ_WAGLE_REPLY_NO;
 
@@ -21,7 +27,6 @@ DROP SEQUENCE SEQ_W_FILE_NO;
 -- BBN_STORE, BEBENO_WINEBOARD, MEMBER테이블을 참조하므로 선행삭제 필요
 DROP TABLE WAGLE_BOARD;
 DROP SEQUENCE SEQ_WAGLE_BOARD_NO;
-
 
 -- ================================================
 
@@ -244,8 +249,8 @@ COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_INFO IS '상세정보';
 COMMENT ON COLUMN BEBENO_WINEBOARD.READCOUNT IS '조회수';
 COMMENT ON COLUMN BEBENO_WINEBOARD.STATUS IS '상태값(Y/N)';
 COMMENT ON COLUMN BEBENO_WINEBOARD.CREATE_DATE IS '게시글올린날짜';
-COMMENT ON COLUMN BEBENO_WINEBOARD.MODIFY_DATE IS '게시글수정날짜';
-COMMENT ON COLUMN BEBENO_WINEBOARD.amount IS '와인수량';
+COMMENT ON COLUMN BEBENO_WINEBOARD.MODIFY_DATE IS '게시글수정날짜'; 
+--COMMENT ON COLUMN BEBENO_WINEBOARD.amount IS '와인수량'; -- 컬럼 없음
 
 CREATE SEQUENCE SEQ_WINE_NO;
 
@@ -424,6 +429,27 @@ CREATE SEQUENCE SEQ_CART_NO;
  
  
 ------------------------------------------------
------------------ SCRAP 관련 테이블 --------------
+---------------- SCRAP 관련 테이블 ---------------
 ------------------------------------------------
+
+CREATE TABLE SCRAP (
+    SCRAP_NO NUMBER PRIMARY KEY,
+    ID VARCHAR2(30), 			    
+    WAGLE_NO NUMBER,			   
+
+    CONSTRAINT FK_MEMBER_ID FOREIGN KEY(ID) 
+        REFERENCES MEMBER(ID),
+    CONSTRAINT FK_WB_NO FOREIGN KEY(WAGLE_NO) 
+        REFERENCES WAGLE_BOARD(WAGLE_NO)
+);
+
+CREATE SEQUENCE SEQ_SCRAP_NO;
+
+COMMENT ON COLUMN SCRAP.SCRAP_NO IS '스크랩 번호';
+COMMENT ON COLUMN SCRAP.ID IS '스크랩 한 회원아이디';
+COMMENT ON COLUMN SCRAP.WAGLE_NO IS '스크랩 한 게시글번호';
+
+COMMIT;
+
+
 
