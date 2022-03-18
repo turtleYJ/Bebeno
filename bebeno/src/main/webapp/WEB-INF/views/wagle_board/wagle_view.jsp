@@ -95,7 +95,7 @@
         <th class="th_btn_box" colspan="2">
             <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
             <button class="th_btn" type="button" id="btnDelete">삭제</button>
-            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/list}')|" value="목록으로">
+            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
             <button class="th_btn" type="button" th:onclick="">스크랩</button>
         </th>
         </table>
