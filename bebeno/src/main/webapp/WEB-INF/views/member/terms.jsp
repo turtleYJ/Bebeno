@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
 	<title>Home</title>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 </head>
 <body>
 <script src="${ path }/js/checkBox.js"></script>

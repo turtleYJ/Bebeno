@@ -1,6 +1,7 @@
 
 .title-mypage {
     margin-bottom: 40px;
+    margin-top: 70px;
     font-size: 34px;
     font-weight: 500;
     color: #262626;
@@ -88,14 +89,14 @@
         padding: 12px 0;
     }
     .basketdiv .row.data > div > div {
-        height: 60px;
+        height: 70px;
         line-height: 60px;
     }
-    .basketdiv .data .num .updown {
-        color: #0075ff;
-        font-size: 2em;
-        letter-spacing: -5px;
-    }
+	.basketdiv .data .num .updown {
+    color: #0075ff;
+    font-size: 1.2em;
+    letter-spacing: -2px;
+	}
     .basketdiv .check {
         width: 10%;
     }
@@ -146,8 +147,8 @@
         width: 100%;
     }
     .basketdiv .data .pname {
-        text-align: left !important;
-      line-height: 1.2 !important;
+        text-align: center !important;
+     	line-height: 1.2 !important;
     }
     .basketdiv .data .price, .basketdiv .data .sum, .basketdiv .data .point {
         text-align: right;
