@@ -20,9 +20,11 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  
+ <!--  
+ --> 
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min.css" />
+	href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min2.css" />
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/main/animate.min.css" />
 <link rel="stylesheet"
@@ -41,6 +43,7 @@
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
+<!-- yooil css -->
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">

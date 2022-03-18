@@ -105,6 +105,8 @@
         </div><!--.board-view -->
         <div class="pagination-box">
             <button type="button" onclick="location.href='${ path }/shop/list'" id="storeListBtn" class="button button-small button-wine">목록</button>
+            <button type="button" onclick="location.href='${ path }/shop/update'" class="button button-small button-wine">수정</button>
+            <button type="button" class="button button-small button-wine">삭제</button>
         </div>
         <!-- 관련상품 -->
         <div class="board-related-list">

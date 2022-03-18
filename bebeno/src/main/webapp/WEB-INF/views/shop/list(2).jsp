@@ -6,33 +6,15 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html>
 <head>
 	<meta charset="UTF-8">
 	<title>shop_list</title>
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
 	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
-	<style type="text/css">
-		.js-load {
-	    	display: none;
-		}
-		.js-load.active {
-		    display: block;
-		}
-		.is_comp.js-load:after {
-		    display: none;
-		}
-		.btn-wrap, .lists, .main {
-		    display: block;
-		}		
-		.btn-wrap {
-		    text-align: center;
-		}
-	</style>
 </head>
-<body>
+
+<jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
 	
 	<div class="container">
 		<div class="board-top mb-nl">
@@ -239,7 +221,6 @@
 				            </div>
 			        	</div>
 					</li>
-					<hr>
 				</c:forEach>
 			</ul>
 			

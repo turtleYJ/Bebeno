@@ -182,4 +182,12 @@ public class ShopController {
 		return model;
 	}
 	
+	@RequestMapping("/update")
+	public ModelAndView update(ModelAndView model) {
+		
+		model.setViewName("shop/update");
+		
+		return model;
+	}
+	
 }
