@@ -44,7 +44,7 @@
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
                 <c:forEach var="imageFileName" items="${ map.fileList }"  >
-                    <img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }">
+                    <img src="${ path }/download?imageFileName=${imageFileName }">
                     <br><br><br>
                 </c:forEach>
                 <!-- db연결 후 삭제 / 사진 슬라이드 -->
@@ -56,7 +56,11 @@
             </div>
         </div>
         <div class="writer_info">
-            
+        
+        	<!-- 
+        		ajax사용을 위하여 wagle게시글 번호(no) 값 hidden으로 작성 
+            <input type="hidden" name="no" id="wagleNo" value="${wagleboard.no}">
+        	-->
             <div class="member_profile_img" th:src="${ member.profile_pic }">
                 <!-- 작성목록 -->
                 <a href="">
@@ -89,12 +93,15 @@
             </tr>    
         </table>
         <table>
-        <th class="th_btn_box" colspan="2">
-            <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
-            <button class="th_btn" type="button" id="btnDelete">삭제</button>
-            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
-            <button class="th_btn" type="button" th:onclick="">스크랩</button>
-        </th>
+	        <th class="th_btn_box" colspan="2">
+	            <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
+	            <button class="th_btn" type="button" id="btnDelete">삭제</button>
+	            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
+	            <form action="${ path }/mypage/scrap" method="post" >
+	            	<input type="hidden" name="wagleNo" id="wagleNo" value="${wagleboard.no}">
+		            <button class="th_btn" type="submit" id="scrapBtn" th:onclick="">스크랩</button>
+	            </form>
+	        </th>
         </table>
     </section>
     <section class="wagle_view_reply_box">
@@ -128,23 +135,58 @@
                 </c:forEach>
             </table>
         </div>
-        </section>
-        <script>
-            $(document).ready(() => {
-                $("#btnDelete").on("click", () => {
-                    if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-                        location.replace("${ pageContext.request.contextPath }/board/delete?no=${ board.no }");
-                    }
-                })
-                
-                $("#replyContent").on("focus", (e) => {
-                    if(${ empty loginMember }) {
-                        alert("로그인 후 이용해주세요!");
-                        
-                        $("#userId").focus();				
-                    }
-                });
-            }); 
-    </script>
-    <script src="${ path }/resources/js/wagle_view.js"></script>
+	</section>
+</body>
+	
+<script>
+	$(document).ready(() => {
+    	$("#btnDelete").on("click", () => {
+        	if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+            	location.replace("${ pageContext.request.contextPath }/board/delete?no=${ board.no }");
+            }
+        })
+            
+        $("#replyContent").on("focus", (e) => {
+        	if(${ empty loginMember }) {
+            	alert("로그인 후 이용해주세요!");
+                    
+                $("#userId").focus();				
+            }
+        });
+	});
+        
+    /* 
+    	스크랩 관련 ajax -- 스크랩 DB저장 방법 1(저장은 되나 응답 설정이 어려워 중지) 
+	
+    $(document).ready(() => {
+    		
+		$("#scrapBtn").on("click", () => {
+	    			
+			let wagleNo = $("#wagleNo").val().trim();
+		    			
+		    $.ajax({
+		    				
+		    	type: "post",
+		    	url: "${ pageContext.request.contextPath }/mypage/scrap",
+		    	dataType: "json",
+		    				
+		    	data: {
+		    		wagleNo	
+		    	},
+		    				
+		    	success: (data) => {
+		    		console.log(data)
+		    		alert("스크랩이 되었습니다")
+		    	},
+		    				
+		    	error: (error) => {
+		    		console.log(error);
+		    	}				
+		    });
+    	});		
+    });
+    
+    */
+</script>
+<script src="${ path }/resources/js/wagle_view.js"></script>
 </html>

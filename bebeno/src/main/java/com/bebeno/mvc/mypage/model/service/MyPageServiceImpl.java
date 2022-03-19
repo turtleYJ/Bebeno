@@ -95,6 +95,24 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return mapper.getScrapCount(id);
 	}
+
+	// 게시판 번호로 저장할 게시판 정보 가져오기
+	@Override
+	public Scrap getWagleBoardByNo(int no) {
+		
+		return mapper.getWagleBoardByNo(no);
+	}
+
+	// 스크랩 세이브 
+	@Override
+	public int saveScrap(Scrap scrapVo) {
+		
+		
+		return mapper.insertScrap(scrapVo);
+	}
+
+
+
 	
   // -----------------------------------------------------------
 	

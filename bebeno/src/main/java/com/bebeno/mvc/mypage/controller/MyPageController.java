@@ -232,28 +232,16 @@ public class MyPageController {
 	@GetMapping("/scrap")
 	public ModelAndView scrap(
 			ModelAndView model,
-			@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "16") int count,
 			@SessionAttribute(name="loginMember") Member loginMember) {
 		
-		int scrapListCount = 0;
-		PageInfo pageInfo = null;
 		List<Scrap> scrapList = null;
-		
-		log.info("현재 페이지 번호 : {}", page);
 		
 		log.info("로그인 아이디 : {}", loginMember.getId());
 		
 		// 회원의 id값으로 스크랩한 리스트의 개수 가져오기
-		scrapListCount = service.getScrapListCount(loginMember.getId());
 		
-		log.info("스크랩의 개수 : {}", scrapListCount);
 		
-		// PageInfo( 1. 현재 페이지, 2. 한 페이지에 보이는 페이징 수, 
-		//           3. 전체 스크랩의 개수, 4. 한 페이지에 표시될 스크랩의 리스트 수)
-//		pageInfo = new PageInfo(page, 5, scrapListCount, count);
-		
-//		scrapList = service.getScrapList(pageInfo, loginMember.getId());
+
 		
 		
 		// 1. 스크랩을 했을 때 -> 데이터 insert
@@ -273,6 +261,40 @@ public class MyPageController {
 	
 	// -------------------------------------------
 	
+	@PostMapping("/scrap")
+	public ModelAndView scrap(
+			ModelAndView model,			
+			@RequestParam("wagleNo") int no,
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		
+		log.info("게시글 번호 : {}", no);
+		
+		int result = 0;
+		
+		// 게시판 번호로 조회해 오기
+		Scrap scrapVo = service.getWagleBoardByNo(no);
+		// 로그인 회원의 id값을 scrapVo에 주입
+		scrapVo.setId(loginMember.getId());
+		
+		log.info("{}", scrapVo.toString());
+		
+		// DB(Scrap테이블)에 저장
+		result = service.saveScrap(scrapVo);
+		
+		// 
+		
+		if(result > 0) {
+			model.addObject("msg", "스크랩이 되었습니다.");
+			model.addObject("location", "/mypage/scrap");
+			model.setViewName("common/msg");
+		} else {
+			model.addObject("msg", "스크랩을 실패하였습니다.");
+			model.addObject("location", "/mypage/scrap");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
 	
 	
 	

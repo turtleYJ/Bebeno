@@ -171,7 +171,7 @@ INSERT INTO MEMBER (
     SEQ_UNO.NEXTVAL, 
     'admin2', 
     'Sumin',
-    '1234', 
+    '$2a$10$BmQe0.Mx2X0zPjjlpOwvveA3tMjIskbSVlQV4x3TszvgEaTuQkK9O', 
     'ROLE_USER', 
     '수민서', 
     '010-1234-5742', 
@@ -302,6 +302,9 @@ COMMENT ON COLUMN WAGLE_BOARD.MODIFY_DATE IS '게시글수정날짜';
 COMMENT ON COLUMN WAGLE_BOARD.CATEGORY IS '와글타입';
 
 INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 1',  '와인후기', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 2',  '와인후기', '원본파일명.txt', 'wagle1.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 3',  '와인후기', '원본파일명.txt', 'wagle2.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 4',  '와인후기', '원본파일명.txt', 'wagle3.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
 
 -- 총 게시글 갯수
 -- SELECT COUNT(*) FROM BOARD WHERE STATUS='Y'
@@ -414,7 +417,7 @@ COMMENT ON COLUMN SCRAP.SCRAP_NO IS '스크랩 번호';
 COMMENT ON COLUMN SCRAP.ID IS '스크랩 한 회원아이디';
 COMMENT ON COLUMN SCRAP.WAGLE_NO IS '스크랩 한 게시글번호';
 
-INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, 'admin', 1); -- 테스트용 
+INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, 'admin', 1); -- 테스트용
 
 COMMIT;
 

@@ -15,6 +15,8 @@ public class Scrap {
 
 	private int wagleBoardNo;	
 	
+	private int wagleWriterNo;
+	
 	private String wagleBoardTitle;
 	
 	private String WagleBoardRNameFile;

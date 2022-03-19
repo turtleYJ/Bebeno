@@ -78,6 +78,7 @@
 		<!-- result : 테이블에서 일반 컬럼들을 의미 -->
 		<result property="id" column="ID"/>
 		<result property="wagleBoardNo" column="WAGLE_NO"/>
+		<result property="wagleWriterNo" column="WRITER_NO"/>
 		<result property="wagleBoardTitle" column="WAGLE_TITLE"/>
 		<result property="WagleBoardRNameFile" column="RENAMED_FILENAME"/>
 	</resultMap>
@@ -169,5 +170,25 @@
 		WHERE ID = #{id}
 		ORDER BY S.SCRAP_NO DESC
 	</select>
+	
+	<select id="getWagleBoardByNo" parameterType="_int" resultMap="scrapResultMap">
+		SELECT 
+	    	WAGLE_NO, WRITER_NO, WAGLE_TITLE, RENAMED_FILENAME
+		FROM WAGLE_BOARD
+		WHERE WAGLE_NO = #{no}
+	</select>
+	
+	<insert id="insertScrap" parameterType="Scrap" 
+			useGeneratedKeys="true" keyColumn="SCRAP_NO" keyProperty="scrapNo">
+		INSERT INTO SCRAP (
+			SCRAP_NO,
+			ID,
+			WAGLE_NO
+		) VALUES (
+			SEQ_SCRAP_NO.NEXTVAL,
+			#{id},
+			#{wagleBoardNo}
+		)		
+	</insert>
 	
 </mapper>

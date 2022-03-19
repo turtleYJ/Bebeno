@@ -32,6 +32,14 @@ public interface MyPageMapper {
 	// 특정 회원이 스크랩 한 리스트의 개수(id값으로 가져오기)
 	int getScrapCount(@Param("id") String id);
 
+	// 게시판 번호로 저장할 게시판 정보 가져오기
+	Scrap getWagleBoardByNo(@Param("no") int no);
+
+	// 스크랩 DB에 저장
+	int insertScrap(Scrap scrapVo);
+
+
+
 	// 스크랩 페이징 관련 매퍼
 //	List<Scrap> scrapPaging(RowBounds rowBounds, @Param("id") String id);
 }
