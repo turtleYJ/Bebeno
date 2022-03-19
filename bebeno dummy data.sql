@@ -48,9 +48,9 @@ insert into bebeno_wineboard values(seq_wine_no.nextval,52,'블랜디스 알바�
 
 -- 파일경로를 resources/upload/wagle 로 주시면 사진파일 불러올 수 있습니다
 INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 1',  '와인후기', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 2',  '와인후기', '원본파일명.txt', 'wagle1.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 2',  '와인후기', '원본파일명.txt', 'wagle1.jpg', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'shop');
 INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 3',  '와인후기', '원본파일명.txt', 'wagle2.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 4',  '와인후기', '원본파일명.txt', 'wagle3.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 4',  '와인후기', '원본파일명.txt', 'wagle3.jpeg', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'shop');
 ------------------------------------------------
 ---------- WAGLE_BOARD_REPLY 관련 테이블 --------
 ------------------------------------------------
