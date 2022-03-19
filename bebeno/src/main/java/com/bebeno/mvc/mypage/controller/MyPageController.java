@@ -256,6 +256,10 @@ public class MyPageController {
 //		scrapList = service.getScrapList(pageInfo, loginMember.getId());
 		
 		
+		// 1. 스크랩을 했을 때 -> 데이터 insert
+		
+		
+		// 2. 스크랩을 취소 했을 때 -> 데이터 delete
 		
 //		model.addObject("pageInfo", pageInfo);
 //		model.addObject("scrapList", scrapList);
