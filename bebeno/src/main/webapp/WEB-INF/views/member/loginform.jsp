@@ -29,9 +29,7 @@
             </form>
             </c:if>
      <div class="login-box-link clear">
-    <a class="medium" href="${ path }/member/forgot-password">Forgot Password?</a>
-	</div>
-	<div class="login-box-link clear">
+    <a class="medium" href="${ path }/member/forgot-password">Forgot Password?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a class="medium" href="${ path }/member/terms">Create an Account!</a>
     </div>
 	
