@@ -59,22 +59,7 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	@RequestMapping(value="/cart", method = RequestMethod.GET)
-	public String showCart(HttpSession session, Model model) {
 		
-		String id = (String)session.getAttribute("id");
-		List<Cart> cartList = CartService.getCartList();
-		
-		model.addAttribute("cartList", cartList);
-		
-		
-		return "/payment/cart";
- 
-}
-
-
-	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
 	@GetMapping("/logout")
