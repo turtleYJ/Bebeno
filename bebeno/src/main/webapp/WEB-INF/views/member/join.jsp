@@ -48,7 +48,7 @@
 <td><input type="password" name="password" class="input-field" placeholder="비밀번호를 입력해주세요."></td>
 </tr>
 <tr>
-<th><span>비밀번호 확인</span></th>
+<th><span>비밀번호확인</span></th>
 <td><input  type="password" class="input-field" placeholder="비밀번호를 확인하세요"></td>
 </tr>
 <tr class="email">
@@ -73,17 +73,19 @@
 </table>
 <div class="exform_txt"><span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
 </div>
-<input type="submit" value="REGISTER">
+<input type="submit" value="REGISTER" >
 </div>
 </form>
 </ul>
       </div>
 </div>
+<!-- 
 <div class="btn_wrap">
 <ul class="footBtwrap clearfix">
 <div class="btn_wrap">
-<a inputtype="submit" value="register">다음</a>
+<a input type="submit" value="register">다음</a>
 </div>
+ -->
 </ul>
 </div> 
 </ul>

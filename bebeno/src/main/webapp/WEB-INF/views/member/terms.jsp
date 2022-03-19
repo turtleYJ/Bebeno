@@ -24,7 +24,7 @@ function chk(){
 }
 function nochk(){
  alert("동의하지 않으면 가입하실 수 없습니다");
-location.href="../index.jsp";}
+location.href="../join.jsp";}
 </script>
 <link rel="stylesheet" href="${path}/resources/css/enroll.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/css.css" /> 
@@ -84,11 +84,9 @@ location.href="../index.jsp";}
           	</a>
             </ul>
             <div class="agree-button">
-            <button type="submit" onclick="chk()"/>&nbsp;&nbsp;&nbsp;
-            <button type="submit" value="동의하지 않습니다" onclick="nochk()"/>
             </div>
-             <input type="button" value="동의" onclick="chk()" a href="${path}/member/join"/>&nbsp;&nbsp;&nbsp;
-    		 <input type="submit" value="동의하지 않습니다" onclick="nochk()"/>
+             <input type="button" value="비동의" class="button button-large button-bg-basic mt0" onclick="nochk()"/>&nbsp;&nbsp;&nbsp;
+    	
         </form>
         </div>
 			</section> 
