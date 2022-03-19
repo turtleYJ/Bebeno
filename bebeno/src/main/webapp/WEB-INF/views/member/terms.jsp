@@ -5,8 +5,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <c:set var="path" value ="${ pageContext.request.contextPath }"/>   
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html>
 <head>
+<script type="text/javascript">
+function chk(){
+ var req = document.form.req.checked;
+ var num = 0;
+ if(req == true){
+  num = 1;
+ }
+ if(num==1){
+  document.form.submit();
+ }else{
+  alert("개인정보 약관에 동의하셔야 합니다.");
+ }
+}
+function nochk(){
+ alert("동의하지 않으면 가입하실 수 없습니다");
+location.href="../index.jsp";}
+</script>
 <link rel="stylesheet" href="${path}/resources/css/enroll.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/css.css" /> 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
@@ -19,7 +38,7 @@
 		<h2 class="wrap-tit">TERMS</h2>
 		<div class="login-box box-shadow">
 			<div class="login-note">
-<form action="" id="joinForm">
+<form action="" id="joinForm" name="form" method="post">
             <ul class="join_box">
             
                 <li class="checkBox check01">
@@ -64,6 +83,12 @@
                 <a href="${path}/member/join" class="button button-large button-bg-basic mt0">동의 
           	</a>
             </ul>
+            <div class="agree-button">
+            <button type="submit" onclick="chk()"/>&nbsp;&nbsp;&nbsp;
+            <button type="submit" value="동의하지 않습니다" onclick="nochk()"/>
+            </div>
+             <input type="button" value="동의" onclick="chk()" a href="${path}/member/join"/>&nbsp;&nbsp;&nbsp;
+    		 <input type="submit" value="동의하지 않습니다" onclick="nochk()"/>
         </form>
         </div>
 			</section> 

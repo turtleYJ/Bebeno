@@ -1,6 +1,7 @@
 package com.bebeno.mvc.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.service.MemberService;
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.payment.model.service.CartService;
+import com.bebeno.mvc.payment.model.vo.Cart;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -55,6 +59,21 @@ public class MemberController {
 		
 		return model;
 	}
+	
+	@RequestMapping(value="/cart", method = RequestMethod.GET)
+	public String showCart(HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		List<Cart> cartList = CartService.getCartList();
+		
+		model.addAttribute("cartList", cartList);
+		
+		
+		return "/payment/cart";
+ 
+}
+
+
 	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
@@ -98,6 +117,7 @@ public class MemberController {
 		
 		return "member/join";
 	}
+	
 	
 	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
