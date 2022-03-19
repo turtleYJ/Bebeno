@@ -21,19 +21,24 @@
 	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		
+<link rel='apple-touch-icon' href='/02_images/screen_icon_and.png' /> 
+<link rel='apple-touch-icon-precomposed' href='/02_images/screen_icon_and.png' />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
 </head>
 <body>
-<form action="regist" method="get">
 	<!-- contents 시작 -->
 	<section class='sub-contents wrap-news clear'>
 		<div class='inner'>
 			<div class='wrap-board-left'>
 				<div class="mb-filter">
 					<div class='page-top-sch'>
-						<button class='btn-sch' onclick="onSearchKeyword();">검색</button>
-						<input type='text' id='shKeyword1' name='shKeyword1' placeholder='와인 검색' maxlength='30' value='' onkeydown="onEditKeyword(event);">
+						<form action="${ path }/wineboard/wineList" method="get">
+							<input type='text' id='shKeyword1' name='shKeyword1' placeholder='와인 검색' maxlength='30' value='' onkeydown="onEditKeyword(event);">
+							<button type="summit" class='btn-sch' onclick="onSearchKeyword();">검색</button>
+						</form>
 					</div><!--.page-top-sch -->
 					<div class="r-filter">
 						<button type="button" class="btn-rmenu" id="btnRfilter" aria-label="와인 검색필터"><i class="ir icon-filter"></i></button>
@@ -194,10 +199,6 @@
 				<!--wine grape variety -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>품종</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="품종 검색" oninput="onEditFilterGrapeVariety(this);" id="inputFilterGrapeVariety">
-					</div>
 					<ul class="box-view box-view-style" id="filterGrapeVarietyMaster">
 						<li>
 							<div class="">
@@ -266,10 +267,6 @@
 				<!--wine nation -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>국가</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="국가 검색" oninput="onEditFilterNation(this);" id="inputFilterNation">
-					</div>
 					<ul class="box-view" id="filterNationMaster">
 						<li>
 							<div class="">
@@ -338,10 +335,6 @@
 				<!--wine area -->
 				<div class="wine-type wine-filter-box inline-type">
 					<h3>지역</h3>
-					<div class="page-top-sch">
-						<button class="btn-sch">검색</button>
-						<input type="text" placeholder="지역 검색" oninput="onEditFilterArea(this);" id="inputFilterArea">
-					</div>
 					<ul class="box-view box-view-style" id="filterAreaMaster">
 						<li>
 							<div class="">
@@ -1611,7 +1604,7 @@
 					m_searchOption.pageSize = 10;
 				});
 			</script>
-			</form>
+			
 		
 		    <!-- scripts  -->
 		    <script src="${ path }/js/jquery.min.js"></script>

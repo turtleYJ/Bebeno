@@ -1,6 +1,5 @@
 package com.bebeno.mvc.shop.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,11 +38,17 @@ public class ShopController {
 	public ModelAndView list(ModelAndView model, String shCate, String shRegionD1, String shKeyword) {
 		List<Shop> shopList = null;
 		
-		System.out.println(shCate + " " + shRegionD1 + " " + shKeyword);
-		
+		if(shCate == "") {
+			shCate = null;
+		} 
+		if(shRegionD1 == "") {
+			shRegionD1 = null;
+		}
+		if(shKeyword == "") {
+			shKeyword = null;
+		} 
+
 		shopList = service.getShopList(shCate, shRegionD1, shKeyword);
-		
-		System.out.println(shopList);
 		
 		model.addObject("shopList", shopList);
 		model.setViewName("shop/list");
@@ -177,9 +182,4 @@ public class ShopController {
 		return model;
 	}
 	
-	
-	@GetMapping("/moreList")
-	public String moreList() {
-		return "shop/moreList";
-	}
 }

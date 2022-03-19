@@ -4,21 +4,59 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.bebeno.mvc.payment.model.dao.paymentMapper">
+  <mapper namespace="com.bebeno.mvc.payment.model.dao.CartMapper">
+  <sql id="cartListSql">
   
-   	<select id="cartList" resultType="com.bebeno.mvc.payment.model.vo.Cart">
+  SELECT C.CART_ID,
+  		 C.WINE_BNO,
+  		 C.WINE_NAME,
+  		 C.ID,
+  		 C.WINE_PRICE,
+  		 C.AMOUNT,
+  		 C.RENAMED_FILENAME
+  FROM CART C
+  </sql>
+  
+  <resultMap type="CartList" id="cartListResultMap">
+	<id property="cart_id" column="CART_ID"></id>
+	<result property="wine_bno" column="WINE_BNO"/>
+	<result property="wineName" column="WINE_NAME"/>
+	<result property="id" column="ID"/>
+	<result property="winePrice" column="WINE_PRICE"/>
+	<result property="amount" column="AMOUNT"/>
+	<result property="cart_qty" column="CART_QTY"/>
+	<result property="renamedFileName" column="RENAMED_FILENAME"/>
+  </resultMap>
+  
+   	<select id="cartList" parameterType="String" resultMap="cartListResultMap">
    	
-		select c.cart_id, c.wine_bno, c.id, w.wine_name, w.RENAMED_FILENAME, w.wine_price 
-		from cart c left join bebeno_wineboard w on c.wine_bno = w.wine_bno
-		where c.id= #{id};
+		select c.cart_id, w.WINE_NAME, w.amount, w.WINE_PRICE, w.RENAMED_FILENAME, m.id
+		from cart c 
+		left join member m
+		 on c.id = m.id
+		left join bebeno_wineboard w
+		 on c.wine_bno = w.wine_bno
+		where c.wine_bno = w.wine_bno
  
 	</select>
 
 	<insert id="addCart" parameterType="Cart">
-	
-		insert into cart (cart_id, id, wine_bno, cart_qty)
-			   values (SEQ_CART_NO.nextval, #{id}, #{wine_bno}, #{cart_qty})
-	
+		insert into cart (
+					ID,
+					WINE_BNO,
+					CART_ID,
+					CART_QTY
+					) values (
+					#{id},
+					#{wine_bno},
+					SEQ_CART_NO.NEXTVAL,
+					#{cart_qty}
+					)
+					
+							
 	</insert>
+	
+	
+	
   </mapper>
 	

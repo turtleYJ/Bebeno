@@ -7,26 +7,27 @@ import org.springframework.stereotype.Service;
 
 import com.bebeno.mvc.payment.model.dao.CartMapper;
 import com.bebeno.mvc.payment.model.vo.Cart;
+import com.bebeno.mvc.payment.model.vo.CartList;
 
 @Service
 public class CartServiceImpl implements CartService {
 
 	@Autowired
-	public CartMapper cartmapper;
+	public CartMapper mapper;
 
-	public List<Cart> getCartList() {
+	@Override
+	public int addCart(Cart cart) throws Exception {
 		
-		return cartmapper.cartList();
+		return mapper.addCart(cart);
+		
 	}
 
 	@Override
-	public Object addCart(Cart cart) {
-		
-		return cartmapper.addCart();
-		
+	public List<CartList> cartList(String id) throws Exception {
+
+		return mapper.cartList(id);
 	}
 
-	
 
 
 

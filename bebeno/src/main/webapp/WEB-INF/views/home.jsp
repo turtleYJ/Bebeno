@@ -56,13 +56,14 @@
       <div class="site-navigation">
         <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
 
+<<<<<<< HEAD
        	<form id="logoutForm" action="${ path }/logout" method="post">
 	        <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
 	          <li class="active"><a href="">Home</a></li>
 	          <li><a href="">ABOUT</a></li>
 	          <li><a href="${path}/wineboard/wineList">WINE</a></li>
 	          <li><a href="${path}/shop/list">WINE SHOP</a></li>
-	          <li><a href="">COMMUNITY</a></li>
+	          <li><a href="${path}/wagle_board/wagle_list">COMMUNITY</a></li>
 	          <li><a href="">CART</a></li>
 	
 	          <c:if test="${ empty loginMember }">          	
@@ -80,6 +81,25 @@
 	        </ul>
        	</form>
 
+=======
+        <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
+          <li class="active"><a href="">Home</a></li>
+          <li><a href="">ABOUT</a></li>
+          <li><a href="${path}/wineboard/wineList">WINE</a></li>
+          <li><a href="${path}/shop/list">WINE SHOP</a></li>
+          <li><a href="">COMMUNITY</a></li>
+
+          <c:if test="${ empty loginMember }">          	
+          	<li><a href="${path}/member/loginform">LOGIN</a></li>
+          	<li><a href="${path}/member/terms">JOIN</a></li>          	
+          </c:if>          
+          <c:if test="${ !empty loginMember }">
+          	<li><a href="${path}/logout">LOGOUT</a></li>
+          	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
+         	<li><a href="${path}/payment/cart">CART</a></li>
+          </c:if>
+        </ul>
+>>>>>>> feature/test
         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
           <span></span>
         </a>
