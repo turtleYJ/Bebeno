@@ -2,6 +2,7 @@ package com.bebeno.mvc.mypage.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bebeno.mvc.common.util.PageInfo;
 import com.bebeno.mvc.common.util.ProfileImgSave;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.service.MyPageService;
+import com.bebeno.mvc.mypage.model.vo.Scrap;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -227,28 +230,48 @@ public class MyPageController {
 	
 	
 	@GetMapping("/scrap")
-	public String scrap() {
+	public ModelAndView scrap(
+			ModelAndView model,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "16") int count,
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		
+		int scrapListCount = 0;
+		PageInfo pageInfo = null;
+		List<Scrap> scrapList = null;
+		
+		log.info("현재 페이지 번호 : {}", page);
+		
+		log.info("로그인 아이디 : {}", loginMember.getId());
+		
+		// 회원의 id값으로 스크랩한 리스트의 개수 가져오기
+		scrapListCount = service.getScrapListCount(loginMember.getId());
+		
+		log.info("스크랩의 개수 : {}", scrapListCount);
+		
+		// PageInfo( 1. 현재 페이지, 2. 한 페이지에 보이는 페이징 수, 
+		//           3. 전체 스크랩의 개수, 4. 한 페이지에 표시될 스크랩의 리스트 수)
+//		pageInfo = new PageInfo(page, 5, scrapListCount, count);
+		
+//		scrapList = service.getScrapList(pageInfo, loginMember.getId());
 		
 		
-		return "/mypage/scrap";
+		
+//		model.addObject("pageInfo", pageInfo);
+//		model.addObject("scrapList", scrapList);
+		
+		model.setViewName("/mypage/scrap");
+		
+		return model;
 	}
 	
 	// -------------------------------------------
 	
 	
 	
+	
+	
 // ==================================================================
-	
-//	@GetMapping("/cart")
-//	public String cart() {
-//		
-//		
-//		return "/mypage/cart";
-//	}
-	
-	// -------------------------------------------
-	
-
 	
 	
 	
