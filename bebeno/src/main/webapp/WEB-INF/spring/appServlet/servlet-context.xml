@@ -38,6 +38,8 @@
 		<interceptor>
 			<!-- 인터셉터를 적용시킬 요청(컨트롤러) 선택 -->
 			<mapping path="/wagle_board/wagle_write"/>
+			<mapping path="/shop/registration"/>
+			<mapping path="/shop/update"/>
 			
 			<!--
 			와일드카드 /*, /**의 차이점

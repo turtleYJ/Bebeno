@@ -20,4 +20,8 @@ public interface ShopMapper {
 	void savefile(ContentFiles file);
 
 	List<ContentFiles> selectfilesByNo(int no);
+
+	void fileDeleteByStoreNo(int no);
+
+	int updateShop(Shop shop);
 }

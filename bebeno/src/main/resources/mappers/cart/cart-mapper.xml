@@ -29,7 +29,7 @@
   </resultMap>
   
    	<select id="cartList" parameterType="String" resultMap="cartListResultMap">
-   	
+
 		select c.cart_id, w.WINE_NAME, w.amount, w.WINE_PRICE, w.RENAMED_FILENAME, m.id
 		from cart c 
 		left join member m

@@ -27,7 +27,7 @@ public class ShopServiceimpl implements ShopService {
 		int result = 0;
 		
 		if(shop.getNo() != 0) {
-//			result = mapper.updateBoard(shop);
+			result = mapper.updateShop(shop);
 		} else {
 			result = mapper.insertShop(shop);
 		}
@@ -53,6 +53,12 @@ public class ShopServiceimpl implements ShopService {
 	public List<ContentFiles> findfilesByNo(int no) {
 		
 		return mapper.selectfilesByNo(no);
+	}
+
+	@Override
+	public void fileDeleteByStoreNo(int no) {
+		
+		mapper.fileDeleteByStoreNo(no);
 	}
 
 }

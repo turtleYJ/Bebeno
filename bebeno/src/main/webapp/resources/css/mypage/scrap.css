@@ -20,6 +20,7 @@
 }
 .list-nav{
     list-style: none;
+    margin-bottom: 40px;
 }
 .list-nav>li{
     display: inline-block;
@@ -70,9 +71,9 @@
 }
 
 .mypage-input-box {
-    max-width: 780px;
+    max-width: 1080px;
     margin: auto;
-    padding: 60px 60px 60px 61px;
+    padding: 25px 30px 25px; /* 위, 왼쪽/오른쪽, 아래 */
     border-radius: 10px;
     box-shadow: 2.4px 6.6px 10px 0 rgb(0 0 0 / 10%);
     border: solid 1px rgba(0, 0, 0, 0.1);
@@ -81,80 +82,51 @@
 
 /* ======================================================= */
 
-.scrap-list {
-    margin-top: 50px;
-}
-.scrap-list h3 {
-    position: relative;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    padding-left: 20px;
-}
-.scrap-list h3::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    background: #ea570f;
-    border-radius: 50%;
-    transform: translateY(-50%);
+
+
+/* ======================================================= */
+
+.scraps {
+	display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
 }
 
-.scrap-list ul {
-    display: flex;
-    flex-wrap: wrap;
+.scrap {
+	overflow: hidden;
+    box-shadow: -1px 3px 8px -1px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    position: relative;
+	cursor: pointer;
 }
-.scrap-list ul li {
-list-style: none;
-width: calc(100% / 4 - 10px);
-margin-bottom: 20px;
+
+.scrap img {
+	max-width: 100%;
+	display: block;
+	border-radius: 4px 4px 0 0;
 }
-.scrap-list ul li:nth-child(5) {
-    margin-left: 0;
+
+/* 
+	overflow:hidden : 넓이를 넘어서는 내용에 대해서는 보이지 않게 처리함
+	text-overflow:ellipsis : 글자가 넓이를 넘을 경우 생략부호를 표시함
+	white-space : 공백을 어떻게 처리할지 정의
+		- nowrap : 연속된 공백은 하나의 공백으로 채워짐, 가로로 긴 줄에서도 줄바꿈을 하지 않고 박스에서 벗어나 표시
+		- normal : 연속된 공백은 하나의 공백으로 채워짐, 자동으로 줄 바꿈
+		- pre	 : 연속된 공백을 그대로 표시, 가로로 긴 줄에서도 줄바꿈을 하지 않고 박스에서 벗어나 표시
+		...
+ */
+.scrap-title {
+	width: 100%;
+    /* color: var(--main-color); */
+    padding: 15px 10px 10px; /* 위, 오른쪽/왼쪽, 아래 */
+    border-radius: 0 0 4px 4px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-.scrap-list ul li + li {
-    margin-left: 13px;
-}
-.scrap-list ul li a {
-display: block;
-width: 100%;
-height: 100%;
-}
-.scrap-list ul li .img-thumb {
-position: relative;
-width: 100%;
-height: 150px;
-border: 1px solid #ddd;
-box-sizing: border-box;
-overflow: hidden;
-}
-.scrap-list ul li .img-thumb img {
-width: 100%;
-height: 100%;
-}
-.scrap-list ul li strong {
-width: 95%;
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
-letter-spacing: -1px;
--webkit-line-clamp: 1;
--webkit-box-orient: vertical;
-font-size: 16px;
-font-weight: 500;
-}
-.scrap-list ul li p {
-font-size: 12px;
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
-letter-spacing: -1px;
--webkit-line-clamp: 2;
--webkit-box-orient: vertical;
-}
+
 
 /* ======================================================= */
 

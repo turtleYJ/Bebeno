@@ -17,4 +17,5 @@ public interface ShopService {
 
 	List<ContentFiles> findfilesByNo(int no);
 
+	void fileDeleteByStoreNo(int no);
 }
