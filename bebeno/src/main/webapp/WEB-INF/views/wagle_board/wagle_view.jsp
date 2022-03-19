@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상세페이지</title>
 
-    <link rel="stylesheet" href="%{ path }/resources/css_wagle/wagle_view.css">
+    <link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_view.css">
     
     <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 
@@ -23,9 +23,6 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 <body>
-    <header>
-
-    </header>
     <section class="wagle_nav">
         <div class="wagle_buttons">
             <ul class="wagle_btn">
@@ -46,7 +43,7 @@
         <div id="wagle_img_box">
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
-                <c:forEach var="imageFileName" items="${ map.fileList}"  >
+                <c:forEach var="imageFileName" items="${ map.fileList }"  >
                     <img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }">
                     <br><br><br>
                 </c:forEach>
@@ -95,7 +92,8 @@
         <th class="th_btn_box" colspan="2">
             <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
             <button class="th_btn" type="button" id="btnDelete">삭제</button>
-            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/list}')|" value="목록으로">
+            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
+            <button class="th_btn" type="button" th:onclick="">스크랩</button>
         </th>
         </table>
     </section>
@@ -148,5 +146,5 @@
                 });
             }); 
     </script>
-    <script src="./wagle_view.js"></script>
+    <script src="${ path }/resources/js/wagle_view.js"></script>
 </html>

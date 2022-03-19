@@ -15,9 +15,9 @@
                     <c:forEach var="wagle" items="${ wagleList }">
 	                    <div class="wagle_item">
 	                        <div class="wagle_item_contents">
-	                            <a href="a">
+	                            <a href="${ path }/wagle_board/wagle_view?no=${ wagle.no }">
 	                                <span>
-	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/wineimg/${ wagle.renamedFileName }" alt="">
+	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/img/${ wagle.renamedFileName }" alt="">
 	                                </span>
 	                                <p><strong>${ wagle.nicname }</strong></p>
 	                                <p><strong>${ wagle.title }</strong></p>

@@ -61,7 +61,7 @@
           <li><a href="">ABOUT</a></li>
           <li><a href="${path}/wineboard/wineList">WINE</a></li>
           <li><a href="${path}/shop/list">WINE SHOP</a></li>
-          <li><a href="">COMMUNITY</a></li>
+          <li><a href="${path}/wagle_board/wagle_list">COMMUNITY</a></li>
 
           <c:if test="${ empty loginMember }">          	
           	<li><a href="${path}/member/loginform">LOGIN</a></li>
