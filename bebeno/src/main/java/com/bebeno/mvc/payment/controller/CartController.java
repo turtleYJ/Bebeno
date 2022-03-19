@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.payment.model.service.CartService;
 import com.bebeno.mvc.payment.model.vo.Cart;
 import com.bebeno.mvc.payment.model.vo.CartList;
+import com.bebeno.mvc.payment.model.vo.Order;
 
 
 @Controller
@@ -26,18 +28,6 @@ public class CartController {
 	
 	@Autowired
 	private CartService service;
-	
-//	@GetMapping("/cart")
-//	public String list(Model model) 
-//		
-//		List<CartList> list = service.list();
-//		
-//		System.out.println(list);
-//		
-//		model.addAttribute("list", list);
-//		
-//		return "/payment/cart";
-//	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/wineView/addCart", method = RequestMethod.POST)
@@ -76,9 +66,11 @@ public class CartController {
 		return "/payment/orderPage";
 		
 	}
+	
+	
 }
-  
-  
+
+
   
   
   

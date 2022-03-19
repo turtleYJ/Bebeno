@@ -29,6 +29,18 @@
 		       R_PROFILEIMGNAME
 		FROM MEMBER
 	</sql>
+	
+	<sql id="selectScrapSql">
+		SELECT
+		    S.SCRAP_NO,
+		    M.ID,
+		    WB.WAGLE_NO, WB.WAGLE_TITLE, WB.RENAMED_FILENAME
+		FROM SCRAP S
+		LEFT JOIN MEMBER M
+		    ON S.ID = M.ID
+		LEFT JOIN WAGLE_BOARD WB
+		    ON S.WAGLE_NO = WB.WAGLE_NO
+	</sql>
 
 
 	<!-- 
@@ -60,6 +72,16 @@
 		<result property="profileImgNameR" column="R_PROFILEIMGNAME"/>
 	</resultMap>
 	
+	<resultMap type="Scrap" id="scrapResultMap">
+		<!-- id : 테이블에서 기본 키를 의미 -->
+		<id property="scrapNo" column="SCRAP_NO"/>
+		<!-- result : 테이블에서 일반 컬럼들을 의미 -->
+		<result property="id" column="ID"/>
+		<result property="wagleBoardNo" column="WAGLE_NO"/>
+		<result property="wagleBoardTitle" column="WAGLE_TITLE"/>
+		<result property="WagleBoardRNameFile" column="RENAMED_FILENAME"/>
+	</resultMap>
+	
 	<!--  					 
   		SELECT 구문
   		
@@ -81,9 +103,9 @@
   		외부에서 매개변수로 받는 값이 있으면 해당하는 매개변수의 타입을 지정해야 한다.(parameterType="string") 
   		외부에서 매개변수로 받은 값은 #{변수명} 으로 설정해서 값을 가져와야 한다.
   	 -->
-	<select id="getMemberById" parameterType="string" resultMap="memberResultMap">
+	<select id="getMemberByNick" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql" />
-		WHERE ID = #{id} AND STATUS = 'Y'
+		WHERE NICKNAME = #{nickname} AND STATUS = 'Y'
 	</select>
 	
 	<!-- 
@@ -93,51 +115,6 @@
   			- keyColumn : 실제 PK에 해당하는 DB의 컬럼을 지정하는 속성
   			- keyProperty : PK값이 담길 파라미터 객체(member)의 필드명을 지정하는 속성
   	 -->
-	<insert id="insertMember" parameterType="Member"
-			useGeneratedKeys="true" keyColumn="NO" keyProperty="no">
-		INSERT INTO MEMBER (
-			NO, 
-	       	ID, 
-	       	NICKNAME,
-	       	PASSWORD, 
-	       	ROLE,
-	       	NAME, 
-	       	PHONE, 
-       		EMAIL, 
-	       	ADDRESS, 
-	       	BIRTH, 
-	       	STATUS, 
-	       	ENROLL_DATE,
-	       	MODIFY_DATE
-		) VALUES (
-			SEQ_UNO.NEXTVAL,
-			#{id},
-			#{nickname},
-			#{password},
-			DEFAULT,
-			#{name},
-			#{phone},
-			#{email},
-			#{address},
-			#{birth},
-			DEFAULT,
-			DEFAULT,
-			DEFAULT
-		)
-	</insert>
-	
-	<update id="updateMember" parameterType="Member">
-		UPDATE MEMBER 
-		SET 
-			NAME = #{name},
-			NICKNAME = #{nickname},
-			PHONE = #{phone},
-			EMAIL = #{email},
-			ADDRESS = #{address},
-			BIRTH = #{birth},
-			MODIFY_DATE = SYSDATE 
-		WHERE NO = #{no}
-	</update>
 	
 	<update id="insertProfileImgName" parameterType="Member">
 		UPDATE MEMBER 
@@ -163,4 +140,34 @@
 			STATUS = 'N'
 		WHERE ID = #{id}
 	</delete>
+	
+	<!-- =========================== 스크랩 관련 mapper =========================== -->
+	
+	<!-- 특정회원의 id값으로 스크랩한 리스트의 개수 구하기 -->
+	<select id="getScrapCount" parameterType="string" resultType="_int">
+		SELECT
+		    COUNT(*)
+		FROM SCRAP S
+		LEFT JOIN MEMBER M
+		    ON S.ID = M.ID
+		LEFT JOIN WAGLE_BOARD WB
+		    ON S.WAGLE_NO = WB.WAGLE_NO
+		WHERE S.ID = #{id}
+	</select>
+	
+	<select id="scrapPaging" parameterType="string" resultMap="scrapResultMap">
+		<!-- <include refid="selectScrapSql"></include> -->
+		SELECT
+		    S.SCRAP_NO,
+		    M.ID,
+		    WB.WAGLE_NO, WB.WAGLE_TITLE, WB.RENAMED_FILENAME
+		FROM SCRAP S
+		LEFT JOIN MEMBER M
+		    ON S.ID = M.ID
+		LEFT JOIN WAGLE_BOARD WB
+		    ON S.WAGLE_NO = WB.WAGLE_NO
+		WHERE ID = #{id}
+		ORDER BY S.SCRAP_NO DESC
+	</select>
+	
 </mapper>

@@ -158,10 +158,11 @@
 			// 1) 비밀번호 길이 제한(8 ~ 30) <------------------- 테스트를 위해 주석처리
 		/* 
 			if(newPwd.length < 8 || newPwd.length > 30) {
-				alert("새 비밀번호는 8~30자로 입력해 주세요")
+		*/
+			if(newPwd.length < 1 || newPwd.length > 30) {
+				alert("새 비밀번호는 1~30자로 입력해 주세요")
 				return false;
 			}
-		*/
 					
 			// 2) 새 비밀번호와 확인 비밀번호가 불일치인 경우 다시 돌아옴 
 			if(newPwd != newPwdConfirm) {

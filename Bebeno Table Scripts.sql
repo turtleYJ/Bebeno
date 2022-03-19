@@ -2,19 +2,52 @@
 --CREATE USER BEBENO IDENTIFIED BY BEBENO;
 --GRANT RESOURCE, CONNECT TO BEBENO;
 
---DROP TABLE WAGLE_BOARD;
---DROP TABLE CART;
---DROP TABLE MEMBER;
---DROP TABLE BBN_STORE;
---DROP TABLE STORE_FILE;
---DROP TABLE WAGLE_BOARD_REPLY;
---DROP TABLE WAGLE_FILE;
---DROP SEQUENCE SEQ_UNO;
---DROP SEQUENCE SEQ_STORE_NO;
---DROP SEQUENCE SEQ_S_FILE_NO;
---DROP SEQUENCE SEQ_WAGLE_BOARD_NO;
---DROP SEQUENCE SEQ_WAGLE_REPLY_NO;
---DROP SEQUENCE SEQ_W_FILE_NO;
+-- ================================================
+
+-- BEBENO_WINEBOARD, MEMBER 테이블을 참조하므로 선행삭제 필요
+DROP TABLE CART;
+DROP SEQUENCE SEQ_CART_NO;
+
+-- ================================================
+
+-- MEMBER, WAGLE_BOARD 테이블을 참조하므로 선행삭제 필요
+DROP TABLE SCRAP;
+DROP SEQUENCE SEQ_SCRAP_NO;
+
+-- ================================================
+
+-- MEMBER, WAGLE_BOARD 테이블을 참조하므로 선행삭제 필요
+DROP TABLE WAGLE_BOARD_REPLY;
+DROP SEQUENCE SEQ_WAGLE_REPLY_NO;
+
+-- WAGLE_BOARD 테이블을 참조하므로 선행삭제 필요
+DROP TABLE WAGLE_FILE;
+DROP SEQUENCE SEQ_W_FILE_NO;
+
+-- BBN_STORE, BEBENO_WINEBOARD, MEMBER테이블을 참조하므로 선행삭제 필요
+DROP TABLE WAGLE_BOARD;
+DROP SEQUENCE SEQ_WAGLE_BOARD_NO;
+
+-- ================================================
+
+-- BBN_STORE를 참조하고 있기 때문에 먼저 삭제해야 함
+DROP TABLE STORE_FILE;
+DROP SEQUENCE SEQ_S_FILE_NO;
+
+DROP TABLE BBN_STORE;
+DROP SEQUENCE SEQ_STORE_NO;
+
+-- ================================================
+
+DROP TABLE MEMBER;
+DROP SEQUENCE SEQ_UNO;
+
+-- ================================================
+
+DROP TABLE BEBENO_WINEBOARD;
+DROP SEQUENCE SEQ_WINE_NO;
+
+-- ================================================
 
 ------------------------------------------------
 -------------- BBN_STORE 관련 테이블 ------------
@@ -194,7 +227,8 @@ CREATE TABLE BEBENO_WINEBOARD (
 	READCOUNT NUMBER DEFAULT 0, 
     STATUS VARCHAR2(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
     CREATE_DATE DATE DEFAULT SYSDATE,
-    MODIFY_DATE DATE DEFAULT SYSDATE 
+    MODIFY_DATE DATE DEFAULT SYSDATE
+--  ,  AMOUNT NUMBER                                                   -- 임시로 추가
 );
 
 -- WINEBOARD 테이블 COMMENT 추가
@@ -216,9 +250,13 @@ COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_INFO IS '상세정보';
 COMMENT ON COLUMN BEBENO_WINEBOARD.READCOUNT IS '조회수';
 COMMENT ON COLUMN BEBENO_WINEBOARD.STATUS IS '상태값(Y/N)';
 COMMENT ON COLUMN BEBENO_WINEBOARD.CREATE_DATE IS '게시글올린날짜';
-COMMENT ON COLUMN BEBENO_WINEBOARD.MODIFY_DATE IS '게시글수정날짜';
+COMMENT ON COLUMN BEBENO_WINEBOARD.MODIFY_DATE IS '게시글수정날짜'; 
+--COMMENT ON COLUMN BEBENO_WINEBOARD.amount IS '와인수량'; -- 컬럼 없음
 
 CREATE SEQUENCE SEQ_WINE_NO;
+
+
+insert into bebeno_wineboard values(seq_wine_no.nextval,01,'지로 리보 Giro Ribot,Giro Ribot', 'Cava Ab Origine Brut Reserva','스파클링','스페인','페네데스','59000원','1','1','1','1','1','1','1',DEFAULT,DEFAULT,DEFAULT,DEFAULT);
 
 ---------------------------------------------------------------------------
 -------------- WAGLE_BOARD 관련 테이블 ------------
@@ -326,42 +364,9 @@ COMMENT ON COLUMN WAGLE_FILE.W_NO IS '와글고유번호';
 
 COMMIT;                                      
 
-
--- WINEBOARD 테이블 COMMENT 추가
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_BNO IS '게시물번호';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_CODE IS '와인코드';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_NAME IS '와인명';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_ENG IS '영문명';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_TYPE IS '종류';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_MF IS '제조국';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_NATIONAL IS '지역';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_PRICE IS '가격';
-COMMENT ON COLUMN BEBENO_WINEBOARD.ORIGINAL_FILENAME IS '첨부파일원래이름';
-COMMENT ON COLUMN BEBENO_WINEBOARD.RENAMED_FILENAME IS '첨부파일변경이름';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_SL IS '당도';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_AC IS '산도';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_BODY IS '바디';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_TN IS '타닌';
-COMMENT ON COLUMN BEBENO_WINEBOARD.WINE_INFO IS '상세정보';
-COMMENT ON COLUMN BEBENO_WINEBOARD.READCOUNT IS '조회수';
-COMMENT ON COLUMN BEBENO_WINEBOARD.STATUS IS '상태값(Y/N)';
-COMMENT ON COLUMN BEBENO_WINEBOARD.CREATE_DATE IS '게시글올린날짜';
-COMMENT ON COLUMN BEBENO_WINEBOARD.MODIFY_DATE IS '게시글수정날짜';
-COMMENT ON COLUMN BEBENO_WINEBOARD.amount IS '와인수량';
-
-CREATE SEQUENCE SEQ_WINE_NO;
-
-insert into bebeno_wineboard values(seq_wine_no.nextval,01,'지로 리보 Giro Ribot,Giro Ribot', 'Cava Ab Origine Brut Reserva','스파클링','스페인','페네데스','59000원','1','1','1','1','1','1','1',DEFAULT,DEFAULT,DEFAULT,DEFAULT);
-commit;
-
--- 명령어 시퀀스 조회/삭제
-
-select * from user_sequences;
-
-commit;
-
-
--- CART TABLE CREATE -- 
+------------------------------------------------
+----------------- CART 관련 테이블 ---------------
+------------------------------------------------
 CREATE TABLE CART( 
     ID VARCHAR2(30),
     WINE_BNO NUMBER,
@@ -383,4 +388,32 @@ CREATE SEQUENCE SEQ_CART_NO;
 -- member, wineboard 테이블 조인 -- 
  ALTER TABLE CART ADD CONSTRAINT cart_fk_WINE_BNO FOREIGN KEY (WINE_BNO) REFERENCES bebeno_wineboard(WINE_BNO);
  ALTER TABLE CART ADD CONSTRAINT CART_FK_ID FOREIGN KEY (ID) REFERENCES MEMBER(ID); 
+ 
+ 
+------------------------------------------------
+---------------- SCRAP 관련 테이블 ---------------
+------------------------------------------------
+
+CREATE TABLE SCRAP (
+    SCRAP_NO NUMBER PRIMARY KEY,                -- 스크랩 식별자
+    ID VARCHAR2(30), 			                -- 스크랩 한 유저의 식별자
+    WAGLE_NO NUMBER,			                -- 스크랩 대상 게시물 식별자
+
+    CONSTRAINT FK_MEMBER_ID FOREIGN KEY(ID) 
+        REFERENCES MEMBER(ID),
+    CONSTRAINT FK_WB_NO FOREIGN KEY(WAGLE_NO) 
+        REFERENCES WAGLE_BOARD(WAGLE_NO)
+);
+
+CREATE SEQUENCE SEQ_SCRAP_NO;
+
+COMMENT ON COLUMN SCRAP.SCRAP_NO IS '스크랩 번호';
+COMMENT ON COLUMN SCRAP.ID IS '스크랩 한 회원아이디';
+COMMENT ON COLUMN SCRAP.WAGLE_NO IS '스크랩 한 게시글번호';
+
+INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, 'admin', 1); -- 테스트용 
+
+COMMIT;
+
+
 
