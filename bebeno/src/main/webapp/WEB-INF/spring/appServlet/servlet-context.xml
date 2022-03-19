@@ -29,4 +29,40 @@
 	<context:component-scan base-package="com.bebeno.mvc" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+	<!-- 
+		인터셉터 설정
+		  - 인터셉터가 웹 관련 설정이기 때문에 root-context.xml이 아닌 servlet-context.xml에 작성한다.	
+	-->	
+	<interceptors>
+		<interceptor>
+			<!-- 인터셉터를 적용시킬 요청(컨트롤러) 선택 -->
+			<mapping path="/wagle_board/wagle_write"/>
+			
+			<!--
+			와일드카드 /*, /**의 차이점
+			
+			/member/*
+			  - /member/insert (O)
+			  - /member/update (O)
+			  - /member/insert/10 (X)
+			  - /member/update/user (X)
+			
+			/member/**
+			  - /member/insert (O)
+			  - /member/update (O)
+			  - /member/insert/10 (O)
+			  - /member/update/user (O)			
+			-->
+			
+			
+			<!-- 인터셉터를 제외시킬 요청(컨트롤러) 선택 
+			<exclude-mapping path="/member/enroll"/>
+			<exclude-mapping path="/member/idCheck"/>
+			-->
+		
+			<!-- 인터셉터 등록 -->
+			<beans:bean id="loginCheckInterceptor" class="com.bebeno.mvc.common.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

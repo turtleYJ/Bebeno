@@ -68,11 +68,12 @@
           	<li><a href="${path}/member/terms">JOIN</a></li>          	
           </c:if>          
           <c:if test="${ !empty loginMember }">
-          	<li><a href="${path}/logout">LOGOUT</a></li>
           	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
          	<li><a href="${path}/payment/cart">CART</a></li>
+          	<li><a href="${path}/logout">LOGOUT</a></li>
           </c:if>
         </ul>
+
         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
           <span></span>
         </a>

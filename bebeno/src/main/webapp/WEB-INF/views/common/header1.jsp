@@ -41,7 +41,11 @@
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
+<<<<<<< HEAD
+	
+=======
 		
+>>>>>>> feature/test
 <title>header</title>
 
 </head>

@@ -124,7 +124,10 @@
                                         <label class="hidden" style="display: none;">닉네임</label>
                                         <input type="text" class="" id="nickname" name="nickname" 
                                         placeholder="닉네임" value="${ loginMember.nickname }">
+                                        <!-- 
                                         <button type="button" class="button">중복확인</button>
+                                         -->
+                                        <input type="button" id="checkDuplicate" value="중복검사">
                                     </p>
                                     <input type="hidden" id="nickname_origin" name="nickname_origin" value="회원 닉네임">
                                 </div>
@@ -150,7 +153,7 @@
                 </table>
 
                 <div class="save-update-button">
-                    <button type="submit" class="button">정보 수정</button>
+                    <button type="submit" class="button" id="submitBtn" disabled="disabled" >정보 수정</button>
                 </div>
             </div>
         </div>
@@ -251,6 +254,44 @@
 	// 이벤트를 바인딩해서 input에 파일이 올라올때 (input에 change를 트리거할때) 위의 함수를 this context로 실행합니다.
 	$("#profileImgUpdate").change(function(){
 	   readURL(this);
+	});
+	
+	
+	// 닉네임 중복 확인
+	$(document).ready(() => {
+		
+		$("#checkDuplicate").on("click", () => {
+			
+			let nickname = $("#nickname").val().trim();
+			
+			$.ajax({
+				
+				type: "post",
+				url: "${ pageContext.request.contextPath }/mypage/nickCheck",
+				dataType: "json",
+				
+				data: {
+					nickname	
+				},
+				
+				success: (data) => {
+					console.log(data)
+					
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 닉네임 입니다.");
+					} else {
+						alert("사용 가능한 닉네임 입니다.");
+						$("#submitBtn").attr("disabled", false);
+					}
+					
+				},
+				
+				error: (error) => {
+					console.log(error);
+				}				
+			});
+		});		
 	});
 
 </script>

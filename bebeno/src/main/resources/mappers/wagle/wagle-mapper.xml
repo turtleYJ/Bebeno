@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.bebeno.mvc.wagle.model.dao.WagleBoardMapper">
+	<sql id="WagleListSql">
+		SELECT  W.WAGLE_NO, 
+				W.WRITER_NO,
+				M.NICKNAME,				
+		        W.WINE_NO,
+		        W.SHOP_NO, 
+		        W.WAGLE_TITLE, 
+		        W.WALGE_CONTENT, 
+		        W.ORIGINAL_FILENAME, 
+		        W.RENAMED_FILENAME, 
+		        W.READCOUNT,
+		        W.STATUS,
+		        W.CREATE_DATE,
+		        W.MODIFY_DATE,
+				W.CATEGORY
+		FROM WAGLE_BOARD W
+		JOIN MEMBER M ON (W.WRITER_NO = M.NO)
+		WHERE W.STATUS = 'Y' 
+	</sql>
+	
+	<resultMap type="Wagle" id="wagleListResultMap">
+		<id property="no" column="WAGLE_NO"/>
+		<result property="nicname" column="NICKNAME"/>
+		<result property="wine_no" column="WINE_NO"/>
+		<result property="shop_no" column="SHOP_NO"/>
+		<result property="title" column="WAGLE_TITLE"/>
+		<result property="content" column="WALGE_CONTENT"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>
+		<result property="readcount" column="READCOUNT"/>
+		<result property="status" column="STATUS"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="category" column="CATEGORY"/>
+	</resultMap>
+	
+	<select id="getWagleList" resultMap="wagleListResultMap">
+		<include refid="WagleListSql"/>
+		ORDER BY W.WAGLE_NO DESC	
+	</select>
+</mapper>
