@@ -261,6 +261,8 @@ public class MyPageController {
 		
 		// 2. 스크랩을 취소 했을 때 -> 데이터 delete
 		
+		
+		
 //		model.addObject("pageInfo", pageInfo);
 //		model.addObject("scrapList", scrapList);
 		
