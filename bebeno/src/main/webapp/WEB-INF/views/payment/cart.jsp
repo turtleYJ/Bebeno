@@ -37,7 +37,6 @@
             </li>
         </ul>
     </div>
- <c:forEach var="list" items="${cartList}">
     <div class="container">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
@@ -62,7 +61,8 @@
                         <div class="split"></div>
                     </div>
 
-                    <div class="row data">
+					 <c:forEach var="list" items="${cartList}">
+                 	   <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
    
@@ -91,7 +91,7 @@
                             <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
                         </div>
                     </div>
-    
+      			</c:forEach>
                 <div class="right-align basketrowcmd">
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
@@ -103,13 +103,12 @@
                 <div id="goorder" class="">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <button class="btn btn-default">주문하기</button>
+                        <a href="${path}/payment/orderPage"><button class="btn btn-default">주문하기</button></a>
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
 	    </div>
-	   </div>
-    </c:forEach>  
+	   </div>  
  
 </section>
 

@@ -32,7 +32,7 @@
         </div>
         <div class="clear">
             <div class="wine-top-left">
-                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">>
+                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper" >
 						<c:if test="${ !empty wineboard.renamedFileName }">
                         <div class='swiper-slide'><img id="image" src="${path}/resources/upload/wineimg/${wineboard.renamedFileName}" width="400px" height="550px"/></div>
