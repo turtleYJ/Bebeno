@@ -4,23 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<% 
-	pageContext.setAttribute("br", "<br/>");
-	pageContext.setAttribute("cn", "\n"); 
-%>
-
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Bebeno_shop_view</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssyooil/shop_view.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link>
-</head>
-<body>
+	<jsp:include page="/WEB-INF/views/common/header_yooil.jsp" />
+
 	<div class="wrap-board container">
         <div class="board-view"><!-- 상세보기 -->
             <div class="detail-header">

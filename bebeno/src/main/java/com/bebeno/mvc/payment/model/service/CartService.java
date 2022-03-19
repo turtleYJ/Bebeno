@@ -3,15 +3,14 @@ package com.bebeno.mvc.payment.model.service;
 import java.util.List;
 
 import com.bebeno.mvc.payment.model.vo.Cart;
+import com.bebeno.mvc.payment.model.vo.CartList;
 
 public interface CartService {
 
-	static List<Cart> getCartList() {
-		
-		return null;
-	}
+	public int addCart(Cart cart) throws Exception;
 
-	Object addCart(Cart cart);
+	public List<CartList> cartList(String id) throws Exception;
 
 
+	
 }

@@ -11,7 +11,7 @@ import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 public interface WineBoardMapper {
 
 	// 게시글 목록조회 
-	List<WineBoard> wineBoardList();
+	List<WineBoard> wineBoardList(@Param("shKeyword1") String shKeyword1);
 
 	// 게시글 수정
 	int updateWineBoard(WineBoard wineboard);

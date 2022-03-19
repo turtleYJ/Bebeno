@@ -11,7 +11,7 @@ public interface WineBoardService {
 
 	int save(WineBoard wineboard);
 
-	List<WineBoard> wineBoardList();
+	List<WineBoard> wineBoardList(String shKeyword1);
 
 	WineBoard findBoardByNo(Integer wineBno);
 

@@ -6,33 +6,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>shop_list</title>
-	<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
-	<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
-	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
-	<style type="text/css">
-		.js-load {
-	    	display: none;
-		}
-		.js-load.active {
-		    display: block;
-		}
-		.is_comp.js-load:after {
-		    display: none;
-		}
-		.btn-wrap, .lists, .main {
-		    display: block;
-		}		
-		.btn-wrap {
-		    text-align: center;
-		}
-	</style>
-</head>
-<body>
+	<jsp:include page="/WEB-INF/views/common/header_yooil.jsp" />
 	
 	<div class="container">
 		<div class="board-top mb-nl">
@@ -64,9 +38,6 @@
 						<option value="경상북도">경상북도</option>
 						<option value="경상남도">경상남도</option>
 						<option value="제주">제주특별자치도</option>
-					</select>
-					<select class="cate-filter" id="shRegionD2" name="shRegioD2">
-						<option value="">전체 시군구</option>
 					</select>
 		
 					<div class='page-top-sch'>
@@ -147,7 +118,7 @@
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
-	          								<textarea type="text" name="Content" class="form-control" maxlength="2048" style="height: 180px;">
+	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;">
 	          								</textarea>
 										</div>
       							    </div>
@@ -175,113 +146,49 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- 새로운 디자인의 검색 
-				<form class="page-top-sch form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0 ">검색</button>
-				</form>
-				-->
-				
-				<!-- <table class="search-tb">
-					<tr>
-						<td>
-							<input type="text" placeholder="Search" class="search">
-						</td>
-						<td>
-							<a href="#"><img src="./baseline_search_black_24dp.png" alt="">
-							</a>
-						</td>
-					</tr>
-				</table> -->
+				</div>				
 			</div><!--.board-top-sch -->
-		</div>	
-		
-		<!-- 
-		<li>
-			<div class="thumb"><a href="javascript:goStoreView(36002)" class="btnView"><img src="https://wine21.speedgabia.com/COMPANY_MST/TITLE/0036002.jpg" alt="봉쥬르와인샵"></a></div>
-			<div class="txt-area">
-				<div class="cnt-header">
-					<h3><a href="javascript:goStoreView(36002)" class="btnView">봉쥬르와인샵 &nbsp; <span class="name-en">Bonjour Wineshop</span></a>&nbsp;
-																<span class="name-en">(50)</span>
-															</h3>
-				</div>
-				<div class="txt"><a href="javascript:goStoreView(36002)" class="btnView line02"></a></div>
-				<div class="write-info">
-					<em class="board-badge badge-white">와인샵</em>
-					<span class="store-addr">서울 마포구</span><span class="store-tel">02-2135-2913</span>
-																<span class="store-link"><a href="http://www.instagram.com/bonjour_wine" target="_blank">www.instagram.com/bonjour_wine</a></span>
-													</div>
-			</div>
-		</li>
-		-->
-
+		</div>
+	
 		<div id="js-load" class="main shop-list">
-			<ul class="lists">
-				<c:forEach var="store" items="${ shopList }">
-					<li class="lists__item js-load">
-						<div class="img-thumb" >
-							<a href="${ path }/shop/view?no=${ store.no }">
-								<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
-							</a>
-						</div>
-						<div class="txt-area">
-				            <div class="cnt-header">
-				                <h3><a href="${ path }/shop/view?no=${ store.no }" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
-				            </div>
-				            <div class="txt">
-				                <a href="${ path }/shop/view?no=${ store.no }" class="btnView line02">
-				                    ${ store.content }
-				                </a>
-				            </div>
-				            <div class="write-info">
-				                <em class="board-badge badge-white">${ store.type }</em>
-				                <span class="store-addr">${ store.address }</span>
-				                <span class="store-tel">${ store.phone }</span> 
-				            </div>
-			        	</div>
-					</li>
-					<hr>
-				</c:forEach>
-			</ul>
-			<!--  
-			<a href="">
-				<div class="img-thumb">
-				<img src="${ path }${ spot.imgPath }${ spot.no }.png" alt="">
-				</div>
-			</a>
-			<hr>
-			<a href="">
-				<div class="img-thumb">
-				<img src="${ path }${ spot.imgPath }${ spot.no }.png" alt="">
-				</div>
-			</a>
-			<hr>
-			<a href="">
-				<div class="img-thumb">
-				<img src="${ path }${ spot.imgPath }${ spot.no }.png" alt="">
-				</div>
-			</a>
-			<hr>
-			-->
-		</div>
-		<!--  
-		<div class="pagination-box">
-			<button id="storeListMoreBtn" class='button button-large button-white-gray'>
-				더보기
-			</button>
-		</div>
-		-->
-		<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
-		
-	</div>	
+				<ul class="lists" >
+					<c:forEach var="store" items="${ shopList }">
+						<li class="lists__item js-load" style="border-bottom: 1px solid #D3D3D3">
+							<div class="img-thumb" >
+								<a href="${ path }/shop/view?no=${ store.no }">
+									<img src="${ path }/resources/upload/shop/${ store.renamedFileName }" alt="" class="img-thumbnail">
+								</a>
+							</div>
+							<div class="txt-area">
+					            <div class="cnt-header">
+					                <h3><a href="${ path }/shop/view?no=${ store.no }" class="btnView">${ store.korBname } &nbsp; <span class="name-en">${ store.engBname }</span></a>&nbsp;<span class="name-en"></span></h3>
+					            </div>
+					            <div class="txt">
+					                <a href="${ path }/shop/view?no=${ store.no }" class="btnView line02">
+					                    ${ store.content }
+					                </a>
+					            </div>
+					            <div class="write-info">
+					                <em class="board-badge badge-white">${ store.type }</em>
+					                <span class="store-addr">${ store.address }</span>
+					                <span class="store-tel">${ store.phone }</span> 
+					            </div>
+				        	</div>
+						</li>
+					</c:forEach>
+				</ul>
+				
+			</div>
+			
+			<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+	
+		</div>	<!-- .container -->
 	<!-- jquery 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/jquery-3.6.0.js"></script>	
 	<!-- 파퍼 자바스크립트 추가하기 -->
 	<script src="${path}/resources/js/pooper.js"></script>
 	<!-- 부트스트랩 자바스크립트 추가하기 -->
-	<script src="${path}/resources/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<!-- 다음(카카오) 주소찾기 API -->
 	
 </body>
@@ -335,6 +242,7 @@
 	    $(shops_list + ":lt(" + shops_total_cnt + ")").addClass("active");
 	}
 	
+
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

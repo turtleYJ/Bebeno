@@ -1,24 +1,77 @@
 @charset "UTF-8";
-
-@charset "UTF-8";
 .only-xs { display: none; }
+
+@media only screen and (max-width: 1560px) { .quick-newsletter { opacity: .5; -webkit-transform: translate(200px, 0); transform: translate(200px, 0); }
+  .newsletter-mb { display: block; position: absolute; right: 15px; bottom: 77px; z-index: 5; -webkit-transition: .8s; transition: .8s; }
+  .main-filter-layer { padding: 0 10px; } }
 
 @media only screen and (min-width: 1281px) { /*body:before{content:'1281px 이상'}*/ }
 
+@media only screen and (max-width: 1450px) { .head-banner { padding: 0 50px 0 10px; }
+  .head-pop .close { right: 10px; } }
+
+@media only screen and (max-width: 1400px) { .main-top-banner .button-next, .main-news-banner .button-next { right: 0; }
+  .main-top-banner .button-prev, .main-news-banner .button-prev { left: 0; } }
 
 @media only screen and (max-width: 1300px) { .top-total-sch.main-sch-section { right: 100px; }
+  .header-side.header-side-after { width: 56px; -webkit-transition: width 0.3s; transition: width 0.3s; }
   .inner { -webkit-transition: padding 0.1s; transition: padding 0.1s; }
+  .main-padding { padding-left: 10px; padding-right: 10px; -webkit-transition: padding 0.1s; transition: padding 0.1s; }
+  .main-padding .inner { padding: 0; }
   .wrap-board-left { padding-left: 10px; }
-
+  .footer-side { right: 10px; }
+  .info-variety .wine-components li { margin-right: 30px; }
+  .info-variety .wine-components .wine-c-txt { margin-right: 6px; }
+  .info-variety .wine-components .filter-grade a + a { margin-left: 4px; }
+  .hidden-mx1300 { display: none; } }
 
 @media only screen and (max-width: 1280px) { .foot-sitemap { padding: 40px 20px; }
   /* 좌우여백 */
   .nav .gnb { left: 240px; right: 240px; font-size: 16px; }
   .util a { font-size: 16px; }
   .all-menu-box { right: 8%; }
-
-  
-
+  /* 메인 뉴스 */
+  .main-news ul.main-news-list { width: calc(100% - 295px - 3%); }
+  .main-news ul.main-news-list li { width: calc((100% - 4%) / 3); }
+  .main-news ul.main-news-list li + li { margin-left: 2%; }
+  .main-news ul.main-news-list li:nth-child(n+4) { width: calc((100% - 6%) / 4); margin-top: 30px; }
+  /* 메인 이벤트 */
+  .main-event-item { width: calc((100% - 8%) / 5); margin: 0 0 2% 2%; }
+  .search-result-item .main-event .main-event-item:nth-child(5n+1) { margin-left: 2%; }
+  .search-result-item .main-event .main-event-item:nth-child(3n+1) { margin-left: 0; }
+  .main-event-item a + a { padding: 5%; }
+  .page-top-banner { margin-bottom: 20px; }
+  .page-top-banner img { width: 100%; }
+  .board-view { margin: 30px 0 0; }
+  .wrap-board-left { width: 66%; padding: 20px 20px 60px 10px; }
+  .wrap-board-right { overflow: hidden; padding: 20px 10px 20px 20px; }
+  .wrap-board-right h3 { padding-top: 0; }
+  .wrap-board-right .wine-filter-box h3 { padding-top: 20px; }
+  .pagination-box { margin-top: 30px; }
+  .sch-wine-side { width: 34%; max-width: 419px; padding: 0 20px 14px !important; }
+  /* 게시판(와인21 기자단) */
+  .board-list-report ul { overflow: hidden; padding-top: 40px; }
+  .board-list-report ul li.no-list { float: none; width: 100%; margin: -40px 0 0; }
+  .board-list-report ul li { float: left; width: calc((100% - 30px) / 2); margin: 0 0 0 30px; padding-bottom: 40px; }
+  .board-list-report ul li:nth-child(3n+1) { margin-left: 30px; }
+  .board-list-report ul li:nth-child(2n+1) { margin-left: 0; }
+  .report-name .profile-img { width: 60px; height: 60px; margin: 0 15px 0 0; vertical-align: top; }
+  .report-name p { padding: 5px 0 0; }
+  /* 게시판(뉴스) */
+  .board-list li { overflow: hidden; padding: 15px 0; }
+  .board-list li .thumb { width: 34%; max-width: 120px; margin-right: 12px; }
+  .board-list li .thumb img { height: auto; }
+  .board-list li .txt-area h3 { padding-bottom: 5px; }
+  .board-list li .txt-area .txt { padding-bottom: 5px; font-weight: 400; }
+  .board-list li .txt-area .wine-name-en { height: 27px; padding-top: 4px; color: #999; font-weight: 400; }
+  .board-list li .txt-area .write-info { font-size: 13px; }
+  .board-list li .txt-area .write-info .board-badge { display: inline-block; margin: -2px 4px 0 0; padding: 0 5px 1px; border-radius: 2px; vertical-align: middle; /* font-size:11px;line-height:14px; */ }
+  .board-list.board-list-wine li .thumb { width: 34%; max-width: 120px; margin-right: 12px; }
+  .wrap-mypage .board-list.board-list-wine li .thumb .thumb-img { width: 100%; }
+  ul.recruit-list li { padding: 15px 0 15px 20px; }
+  .recruit-list li .thumb { float: none; max-width: none; }
+  .board-list-job.board-list li .thumb { padding: 0; }
+  .board-list-job.board-list .recruit-list li .thumb a { display: inline; padding: 0 0 5px; }
   /* 와인 상세 */
   .wine-top-right-inner { min-height: auto; }
   .wine-top-right-inner .score { position: relative; width: 100%; height: auto; min-height: auto; margin: 20px 0 0; }
@@ -37,12 +90,44 @@
   .wine-top-right-inner .score dl.mt20 { margin-top: 0 !important; }
   .btn-wine-wish { float: right; max-width: 248px; } }
 
+@media only screen and (min-width: 1025px) and (max-width: 1260px) { .gnb { left: 26%; } }
+
+@media only screen and (min-width: 1025px) { br.m, .pc-hidden, .pagination-box-m, .m-block { display: none; }
+  .header { position: relative; min-height: 80px; }
+  .gnb { position: absolute; top: 0; left: 280px; z-index: 9; }
+  .gnb > li { float: left; padding: 0 30px 26px; }
+  .gnb > li:first-child { padding-left: 0; }
+  .gnb > li:last-child { padding-right: 0; }
+  .gnb > li:hover > a .over-text { display: block; color: #c70039; }
+  .gnb > li:hover > a .basic-text { opacity: 0; }
+  /* 검색 헤더*/
+  .header-wrap-search .main-sch-section { position: absolute; top: 0; left: 230px; padding: 0; z-index: 9; }
+  .header-wrap-search .main-sch-section .input-box { width: 500px; height: 40px; margin: auto; padding: 0 20px 0 24px; border-radius: 99px; -webkit-box-shadow: none; box-shadow: none; border: solid 1px #c70039; background: #fff; }
+  .header-wrap-search .main-sch-section .input-box input[type=text] { width: calc(100% - 40px); height: 38px; }
+  .header-wrap-search .main-sch-section .btn-search { width: 34px; height: 38px; background-size: 24px; }
+  .sch-menu ul { margin: 40px 0 -27px; }
+  .sch-menu li { display: inline-block; }
+  .sch-menu li a { display: block; margin: 0; padding: 10px 14px; color: #262626; font-size: 18px; font-weight: bold; }
+  .sch-menu li + li { margin-left: 70px; }
+  .sch-menu li a.sch-on { color: #c70039; border-bottom: 3px solid #c70039; }
+  .sch-wine-side { position: absolute; right: 0; bottom: 0; width: 459px; padding: 0 39px 14px; color: #262626; font-size: 18px; font-weight: bold; }
+  .sch-wine-side a { position: absolute; top: 6px; right: 0; color: #666; font-size: 14px; font-weight: 300; }
+  .sch-wine-side .icon-filter { width: 16px; height: 17px; margin: -3px 9px 0 0; background: url() 50% no-repeat; }
+  .sch-wine-side .a_menu { display: none; }
+  .sch-wine-side .icon-reset { margin-right: 5px; }
+  .sch-wine-side.sch-wine-side-top { position: relative; width: 100%; margin-bottom: 15px; padding: 0 0 14px !important; border-bottom: 2px solid #e6e6e6; }
+  .main-recommend-wine .swiper-slide { height: 530px !important; }
+  .wrap-mypage .board-top .btn-filter { display: none; }
+  /* 나의 셀러만 적용 */
+  .mb-rmenu-head { display: none; }
+  .wrap-menu-right .aside-filter-btn, .r-filter { display: none; }
+  .hidden-1024 { display: initial; } }
 
 @media only screen and (max-width: 1200px) { .gnb { left: 22%; }
   .gnb > li { padding: 0 16px 26px; }
   .header-wrap-search .main-sch-section .input-box.pg-search { width: 400px; }
   .wine-top-right .wine-components::after { content: ''; clear: right; display: block; }
-  .wine-top-right .wine-components ul {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;float: right;width: calc(100% - 380px);margin-bottom: 5px;}
+  .wine-top-right .wine-components ul { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; float: right; width: calc(100% - 380px); margin-bottom: 5px; }
   .wine-top-right .wine-components li { width: calc(50% - 3px); margin-bottom: 10px; }
   .wine-top-right .wine-components li + li { margin-left: 0; }
   .wine-top-right .wine-components li:nth-child(1) { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
@@ -50,9 +135,71 @@
   .wine-top-right .wine-components li:nth-child(3) { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; }
   .wine-top-right .wine-components li:nth-child(4) { -webkit-box-ordinal-group: 5; -ms-flex-order: 4; order: 4; } }
 
-  
-
-  
+@media only screen and (max-width: 1024px) { .m-hidden, .pagination-box-pc { display: none; }
+  .m-block, br.m { display: block; }
+  /* 모바일 GNB */
+  .header { padding: 20px 0 0; }
+  .header nav { overflow: visible; margin-top: 20px; -webkit-overflow-scrolling: touch; }
+  .header .gnb { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; z-index: 2; width: 100%; left: 0; right: 0; text-align: center; -ms-overflow-style: none; }
+  .header .gnb > li { display: inline-block; -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; padding: 10px 15px; }
+  .header .gnb > li > a { font-size: 15px; }
+  .header .gnb > li > a:active { color: #c70039; }
+  .header .gnb > li:first-child { padding-left: 0; }
+  .header .gnb::-webkit-scrollbar { display: none; }
+  .header::after { margin-top: 0; }
+  .logo img { width: 30%; max-width: 170px; height: auto; }
+  .head-pop { display: none; }
+  .deps-02 { position: absolute; left: 0; right: 0; bottom: -49px; width: auto; margin-top: 10px; }
+  .deps-02 ul { display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; overflow-x: auto; }
+  .deps-02 ul li { -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 0; -ms-flex-positive: 0; flex-grow: 0; }
+  .ir.menu { width: 18px; height: 18px; margin-right: 4px; background: url("/02_images/ico-filter.png") 50%/100% no-repeat; }
+  .header.fixed .sch-wine-side .a_menu button { color: #fff; }
+  .header.fixed .sch-wine-side .ir.menu { background: url("/02_images/ico-filter-light.png") 50%/100% no-repeat; }
+  .header-side { float: left; /* 로그인 후 상단 마이정보 하단 0 */ }
+  .header-side.header-side-before li .button { padding: 0 10px; line-height: 26px; }
+  .header-side.header-side-after { position: relative; }
+  .header-side.header-side-after p { padding-bottom: 0px; }
+  .header-side.header-side-after p .ir.icon-view { right: 5px; }
+  .all-menu-box { top: 0; }
+  .all-menu-box li { height: auto; }
+  .all-menu-box li i.ir { display: none; }
+  /* 검색 헤더 */
+  .main-sch-section { padding: 40px 0 20px; }
+  .main-sch-section .input-box { width: 80%; }
+  .header-wrap-search .main-sch-section .input-box { width: 100%; height: 40px; padding: 0 20px 0 24px; border-radius: 99px; -webkit-box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); border: solid 1px #c70039; background: #fff; }
+  .header-wrap-search .main-sch-section .input-box.pg-search { width: 100%; }
+  .header-wrap-search .main-sch-section .input-box input[type=text] { width: calc(100% - 40px); height: 38px; }
+  .header-wrap-search .main-sch-section .btn-search { width: 34px; height: 38px; background-size: 24px; }
+  .top-total-sch.main-sch-section { top: -6px; }
+  .top-total-sch.main-sch-section .input-box { height: 34px; }
+  .top-total-sch.main-sch-section .input-box input[type='text'] { height: 32px; }
+  .top-total-sch.main-sch-section .btn-search { width: 28px; height: 32px; }
+  .sch-menu ul { margin: 0; }
+  .sch-menu li { display: inline-block; width: calc(20% - 4px); }
+  .sch-menu li a { display: block; margin: 0; padding: 10px 5px; color: #262626; font-size: 15px; font-weight: bold; text-align: center; }
+  .sch-menu li + li { margin-left: 0; }
+  .sch-menu li a.sch-on { color: #c70039; border-bottom: 2px solid #c70039; }
+  .main-padding { padding-top: 50px; padding-bottom: 50px; }
+  .main-tit { font-size: 27px; }
+  .main-tit .tit_more { width: 50px; font-size: 12px; background-size: 100%; }
+  .page-top-sch { margin-bottom: 20px; }
+  .quick-newsletter { display: none; }
+  /* 메인 추천와인 */
+  .main-recommend-wine.main-padding { padding: 80px 0; }
+  .main-recommend-wine .button-next, .main-recommend-wine .button-prev { display: none; }
+  /* 메인 뉴스 */
+  .main-news .ico-badge { padding: 5px 10px; font-size: 12px; }
+  .main-news ul.main-news-list { width: calc(100% - 26% - 3%); }
+  .main-news-tit { margin-top: 10px; font-size: 16px; }
+  .main-news-banner { width: 26%; }
+  .main-news-banner .button-next, .main-news-banner .button-prev { display: none; }
+  .main-shop-list .ico-badge { padding: 5px 10px; font-size: 13px; }
+  .main-event-item p span { padding: 2px 5px; font-size: 12px; }
+  .main-event-item img { width: 100%; height: auto; max-height: 176px; -o-object-fit: cover; object-fit: cover; -o-object-position: top; object-position: top; }
+  .sub-contents select { font-size: 14px; }
+  .about-tit { margin-bottom: 15px; font-size: 4.5vw; font-weight: 400; }
+  .about-txt { font-size: 14px; line-height: 1.8; }
+  .tbl-tit { margin-bottom: 8px; font-size: 18px; }
   /* 전체검색 우측메뉴 */
   .wrap-board-right { display: block; position: fixed; top: 0; right: -100%; bottom: 0; padding: 0 10px 20px; background: #fff; width: 95%; z-index: 999; overflow-y: scroll; }
   .wrap-board-right h3 { padding: 20px 0 10px; font-size: 15px; }
@@ -65,21 +212,169 @@
   .wrap-board-right .filter-grade-box .filter-grade a + a { margin-left: 2px; }
   .sch-wine-side { position: fixed; width: 100%; top: 0; left: 0; right: 0; z-index: 1000; overflow: hidden; padding: 6px 15px !important; max-width: none; background-color: #fff; border-bottom: 1px solid #ccc; }
   .sch-wine-side a { float: left; margin-right: 20px; }
-  
+  .sch-wine-side span { display: none; }
+  .sch-wine-side .a_menu { float: right; }
+  .sch-wine-side .a_menu button { padding: 0 10px; line-height: 26px; border: none; border-radius: 4px; }
+  .sch-wine-side .a_menu .menub { display: none; }
+  /* 우측 메뉴 */
+  .btn-rmenu { width: 34px; height: 34px; }
+  .btn-rmenu .fas { font-size: 26px; color: #999; }
+  .mb-filter { position: relative; }
+  .mb-filter .page-top-sch { width: calc(100% - 40px); }
+  .r-filter { position: absolute; top: 0; right: 0; }
+  .r-filter .icon-filter { display: inline-block; width: 22px; height: 22px; margin: -2px 0 0 0; background: url("/02_images/ico-filter-m.png") 50% no-repeat; background-size: 100%; }
+  .r-filter .btn-rmenu { height: 36px; }
+  .wrap-board-right.wrap-menu-right { display: none; right: 0; width: 100%; height: 100%; padding: 40px 15px; overflow: auto; background-color: #fff; }
+  .wrap-board-right.wrap-menu-right.only-here { padding: 45px 15px 70px; }
+  .wrap-board-right.wrap-menu-right.menu-open { display: block; }
+  .wrap-board-right.wrap-menu-right .board-banner-ad { display: none; }
+  .mb-rmenu-head { display: block; position: fixed; z-index: 999; width: 100%; top: 0; left: 0; padding: 10px 10px 10px 15px; border-bottom: 1px solid #ccc; background-color: #fff; }
+  .mb-rmenu-head span { float: left; }
+  .wing-total-sch.main-sch-section { padding: 0 0 10px; }
+  .wing-total-sch .btn-clear { margin-right: 0; }
+  .board-wing { margin-bottom: 15px; }
+  .wing-popular-sch .ranking-list li:last-child { margin-bottom: 0; }
+  .board-banner-ad, .mb-footer-ad { text-align: center; }
+  .board-banner-ad img, .mb-footer-ad img { max-width: 280px; }
+  .aside-filter-btn { position: fixed !important; width: 100%; bottom: 0; left: 0; z-index: 130; padding: 10px; background-color: #fff; }
+  .aside-filter-btn .button-wine { width: 100%; min-height: 48px; }
+  /* 게시판(뉴스) */
+  .wrap-board-left { float: none; width: auto; padding: 20px 0 60px 0; -webkit-transition: padding 0.1s; transition: padding 0.1s; }
+  .wrap-board-left:after { display: none; }
+  .wrap-board-right { overflow: hidden; padding: 10px 0 40px; background: none; }
+  .tit-area h1 { font-size: 22px; }
+  .board-writer.dictionary { padding: 0 0 15px; }
+  .detail-header .tit-area h1 { font-size: 18px; font-weight: 400; line-height: 1.3; }
+  .detail-header .report-name { padding-bottom: 0; }
+  .detail-header .report-name + .report-total { top: auto; bottom: 10px; }
+  .network-area { bottom: 10px; }
+  .btnContShare-layer { left: auto; right: 0; }
+  /* 게시판(뉴스) 상세 */
+  .detail-event-place th { width: 130px; padding: 10px; border-bottom: 1px solid #e6e6e6; }
+  .detail-event-place td { padding: 10px; border-bottom: 1px solid #e6e6e6; }
+  .detail-event-place .icoNote.ml20 { padding-left: 25px; margin-left: 0 !important; }
+  /* 게시판(뉴스) 상세 - 글view */
+  .detail-area { border-bottom: 2px solid #e6e6e6; }
+  .detail-area.dictionary .dic-in { margin-right: 15px; }
+  .detail-txt { padding: 30px 10px; font-size: 16px; letter-spacing: 0; }
+  .detail-txt img { height: auto !important; }
+  .board-tag { padding: 15px 10px; border-top: 1px dashed #e6e6e6; }
+  .board-tag a { display: inline-block; margin-right: 20px; color: #999; line-height: 1.2; }
+  .board-copy { padding: 24px 0 0; color: #737373; }
+  .board-list-report .report-txt a { height: 9.6em; -webkit-line-clamp: 6; }
+  .info-variety .wine-components li { margin-right: 15px; }
+  .info-variety .wine-components .wine-c-txt { margin-right: 6px; }
+  .info-variety .wine-components .filter-grade a + a { margin-left: 2px; }
+  /* 회사소개 */
+  .wrap-company { padding: 60px 0; }
+  .wrap-company .my-tab { margin-bottom: 40px; }
+  .cmp-cont .cmp-col1, .cmp-cont .cmp-col2 { padding: 18px 20px; word-break: keep-all; }
+  .cmp-cont.cmp-business .cmp-col1, .cmp-cont.cmp-business .cmp-col2, .cmp-cont.cmp-svc .cmp-col1, .cmp-cont.cmp-svc .cmp-col2 { padding: 40px 20px; }
+  .cmp-contact { float: none; width: auto; text-align: center; }
+  .cmp-contact .contact > span:last-child { margin-right: 0; }
+  .cmp-download { float: none; margin: 30px auto 0; }
+  /* 마이페이지 */
+  .wrap-mypage { padding: 60px 0; }
+  .wrap-mypage .wrap-board-left { padding: 40px 0 0; }
+  .wrap-mypage .board-top .btn-filter { position: absolute; bottom: 17px; right: 125px; }
+  .wrap-mypage.my-place .board-top .btn-filter { bottom: 18px; right: 220px; }
+  .my-tab { position: relative; margin: auto; margin-top: 0; padding: 0; }
+  .my-tab li { font-size: 14px; }
+  .my-tab li a { display: block; padding: 10px 5px; }
+  .my-tab li + li { margin-left: 0; }
+  .my-tab li.active { border-top: 0; border-bottom: 0; }
+  .my-tab li.active a { color: #c70039; }
+  .list-m-nav { display: none; position: absolute; top: 55px; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-top-width: 0; z-index: 350; }
+  .list-m-nav li { display: block; font-size: 15px; }
+  .list-m-nav li a { display: block; padding: 10px; }
+  .list-m-nav li a:hover { background: #eee; }
+  a.btn-m-nav { position: relative; padding: 0 30px 0 30px; color: #c70039; font-size: 17px; font-weight: 500; line-height: 54px; }
+  .btn-m-nav:after { content: ''; display: inline-block; position: absolute; top: 50%; right: 10px; width: 0; height: 0; border-top: 7px solid #c70039; border-left: 5px solid transparent; border-right: 5px solid transparent; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); -webkit-transition: all .10s; transition: all .10s; }
+  .btn-m-nav.active:after { border-top: none; border-bottom: 7px solid #c70039; }
+  .my_seller_emp { padding: 40px 0; color: #262626; font-size: 14px; }
+  .my_seller_emp .fs22 { font-size: 18px; font-weight: 500; }
+  .seller_emp:before { width: 140px; height: 50px; }
+  .tasting_emp:before { width: 57px; height: 70px; }
+  .event_emp:before { width: 60px; height: 60px; }
+  .job_emp:before { width: 60px; height: 73px; }
+  .notice-list { padding: 20px; }
+  .notice-list > div { padding-left: 34px; }
+  .notice-list p { margin-left: 5px; font-size: 15px; }
+  .notice-list .ico-badge { padding: 1px 5px; font-size: 12px; }
+  .board-list ul li.notice-list { padding: 10px 20px; background-color: #fafafa; }
+  .notice-list-box ol { margin: 10px 0 0 0; font-size: 14px; }
+  .eventState { position: relative; top: auto; bottom: 0; right: auto; width: auto; margin: 0 0 10px; text-align: right; color: #999; font-size: 12px; }
+  .eventState strong { display: inline-block; margin-right: 5px; padding: 0 10px; font-size: 14px; }
+  .eventState strong.ing { color: #c70039; }
+  .eventState strong.waiting { color: #404040; }
+  .eventState strong.non { color: #999; }
+  .eventState strong.completed { color: #ccc; }
+  .mypage-event .txt-area { position: relative; }
+  .detail-area-write .board-list.board-list-wine li { width: 100%; }
+  .detail-area-write .input-box-cell select.cate-700 { width: 100%; }
+  .my-box-shadow { padding: 20px; }
+  .my-box-shadow-inner2 h4 { float: none !important; }
+  .my-box-job > div { width: 100%; height: auto; }
+  .my-box-job > div + div { width: 100%; border-left: 0; }
+  .input-box.chk-bx.fr { float: none !important; margin: 20px 0 0; text-align: right; }
+  .tbl-my-mod td { padding: 8px 20px 8px 10px; }
+  .wrap-mypage-withdrawal h3 { padding-bottom: 20px; }
+  .btn-preview { display: none; position: absolute; left: 0; right: auto; top: 50%; width: 100%; margin-top: -15px; font-size: 16px; color: #999999; text-align: center; line-height: normal; }
+  .board-list.mypage-news li { position: relative; padding-right: 0; }
+  .m-right { float: right; }
+  /* 팝업  */
+  .pop-basic .pop-body { padding: 20px; }
+  .pop-basic-wine-chk .chk-bx { padding: 0 0 0 30px; }
+  .pop-basic.pop-wine-sch .pop-body { height: 70vh; }
+  .pop-basic.pop-wine-sch .board-list-wine { border: none; }
+  .pop-wine-sch .product-list-inner { height: 100%; }
+  .pop-wine-sch .board-list-wine { max-height: calc(100% - 100px); }
+  .pop-wine-place .pop-body { height: 70vh; }
+  .pop-wine-place .board-list-wine { max-height: calc(100% - 100px); }
+  .pop-wine-place .btn-filter { display: block; }
+  /* 팝업 > 와인검색, 회사검색 */
+  /* .pop-basic-wine,	.pop-basic-company{position:absolute;left:20px;right:20px;top:50px;width:auto;transform:translateX(0);z-index:991} */
+  .pop-basic-wine, .pop-basic-company { width: calc(100% - 20px); margin: 0 10px; left: 0; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); }
+  .pop-basic-wine .input-box, .pop-basic-company .input-box { width: 100%; }
+  .pop-basic-wine .input-search, .pop-basic-company .input-search { margin: 0; width: calc(100% - 84px); }
+  .pop-basic-company .company-badge { margin-bottom: 5px; }
+  .pop-basic-company .board-list-company li { padding: 10px 20px 10px 30px; }
+  .pop-basic-company .board-list-company li p { display: block; }
+  .pop-basic-company .board-list-company li .chk-bx.abs { top: 7px; }
+  .pop-basic-company .pagination-box .button.button-large { width: calc(100% - 40px); }
+  .pop-basic-wine .board-list-wine li { padding: 10px 10px 10px 30px; }
+  .pop-basic-wine .board-list-wine li .chk-bx.abs { top: 7px; }
+  .pop-basic-wine .pagination-box .button.button-large { width: calc(100% - 40px); }
+  .pop-place-list { height: calc(100% - 72px); }
+  .pop-place-list .pop-place-list-left { width: 100%; padding-right: 0; }
+  .pop-place-list .pop-basic-wine-chk { padding-top: 15px; }
+  /* 와인 */
+  .wine-list > a { position: relative; /*float:none;width:100%;*/ margin-bottom: 10px; padding: 20px; }
+  .wine-list .prd-tit { font-size: 16px; }
+  .wine-list .prd-img { margin: 10px 0; }
+  .wine-list .prd-img img { height: 100px; }
+  .wrap-tbl-board { padding: 60px 0; }
+  .tbl-list-notice { table-layout: fixed; }
+  .tbl-list-notice td { word-break: break-all; }
+  .tbl-list-notice col:nth-child(1) { width: 12%; }
+  .tbl-list-notice col:nth-child(2) { width: 56%; }
+  .tbl-list-notice col:nth-child(3) { width: 20%; }
+  .tbl-list-notice col:nth-child(4) { width: 12%; }
+  .tbl-list-notice .text-ellipsis1 { width: 100%; }
   /* 와인 상세 */
   .wrap-wine .board-top .tit_more { bottom: 10px; }
   .wrap-wine-view .wine-detail-tit { margin-bottom: 60px; font-size: 24px; }
   .wrap-wine-view .page-top-banner { padding: 10px; }
   .wrap-wine-view .wine-top-left { float: none; width: 380px; margin: auto; }
   .wrap-wine-view .wine-top-right { overflow: hidden; margin: 40px 0; }
-  .wrap-wine-view .wine-top-right .bagde-box {margin-bottom: 24px;}
+  .wrap-wine-view .wine-top-right .bagde-box { margin-bottom: 24px; }
   .wrap-wine-view .wine-name { font-size: 22px; }
   .wrap-wine-view .wine-name-en { padding-top: 10px; font-size: 16px; line-height: 1.13; }
   .bagde-box .bagde-item { margin-right: 5px; padding: 2px 10px; font-size: 13px; }
-  .bagde-box > p {margin-left: 5px;font-size: 14px;}
+  .bagde-box > p { margin-left: 5px; font-size: 14px; }
   .btn-list-top { text-align: right; font-size: 15px; }
   /* 와인명 */
-  .wine-top-right .wine-price {/* margin: 15px 0 5px; */font-size: 16px;}
+  .wine-top-right .wine-price { margin: 15px 0 5px; font-size: 16px; }
   .wine-top-right .wine-price > strong { font-size: 18px; }
   .wine-top-right .wine-price .wine-price-none { font-size: 18px; }
   .wine-top-right .wine-price .wine-price-none::after { display: none; }
@@ -89,7 +384,62 @@
   .wine-top-right .wine-components li { width: calc((100% - 4px) / 2); }
   .wine-top-right .wine-components li > div { margin-right: 17px; }
   .wine-top-right .wine-components li > .filter-grade { display: inline-block; margin-right: 0; }
+  /* 와인매칭음식 */
+  .view-wine-matching { width: 100%; }
+  /* 와인상세 팝업 */
+  .pop-wine-view { /*width:90% !important;*/ width: 90%; }
+  .pop-score { padding: 15px 0 0; text-align: center; }
+  .pop-score::after { content: ''; display: block; clear: both; }
+  .pop-score .cate-filter { width: 100%; margin: 10px 0 0; }
+  .pop-score .my-box-pp { float: left; width: 58px; height: 58px; margin: auto; }
+  .pop-score .my-box-pp img { width: 100%; height: 100%; }
+  .pop-score .my-rating { float: left; margin: 10px 0 0 10px; }
+  .filter-grade-score-txt { float: left; margin: 12px 0 4px 18px; padding: 0; min-width: 30px; text-align: left; font-size: 22px; line-height: 1; }
+  .filter-grade-score.filter-grade-score-small { padding-top: 0; margin: 8px 0 0 10px; vertical-align: middle; }
+  .filter-grade-score.filter-grade-score-small a { display: inline-block; width: 20px; height: 20px; }
+  .filter-grade-score.filter-grade-score-small a + a { margin-left: 1px; }
+  .wine-memo-box { padding: 20px 0; }
+  .wine-memo-box textarea { height: 100px; }
+  .filter-grade-score-box > div { width: calc((100% - 4px) / 2); padding: 0; font-size: 14px; }
+  .filter-grade-score-box > div span { padding-right: 10px; }
+  .filter-grade-taste a { width: 18px; height: 18px; }
+  .vintage-item { padding: 6px 10px; }
+  .vintage-item > div p { margin-right: 15px; }
+  .view-tab { display: table; width: 100%; margin-top: 30px; }
+  .view-tab li { float: none; display: table-cell; width: auto; font-size: 14px; }
+  .view-tab li:nth-child(n+2) { border-left: 0; }
+  .view-tab li a { padding: 10px 2px; }
+  .view-tab-inner { padding: 10px 0; }
+  .view-tab-inner .wine-d-box-info-list { padding: 10px; }
+  .view-tab-inner .wine-d-box-info-list dl dt { width: 120px; font-size: 14px; }
+  .view-tab-inner .wine-d-box-info-list dl dd { font-size: 14px; }
+  .view-tab-inner .board-list-wine ul li { float: none; width: 100%; }
+  .view-tab-inner .board-list ul li + li { border-top: 1px solid #ebebeb; }
+  .makers-item .makers-item-pp { overflow: hidden; float: none; width: 100%; }
+  .makers-item .makers-item-pp dl { margin-top: 10px; }
+  .makers-item .makers-item-pp dl dt { font-size: 16px; }
+  .makers-item-tt { margin-top: 20px; }
+  .makers-item-tit { color: #404040; font-size: 18px; }
+  .vintage-box { margin: 40px 0; padding: 0 0 20px; }
+  /* 와인상세 지도 */
+  .ir.ico-shop, .ir.ico-restaurant, .ir.ico-none { width: 25px; height: 25px; }
+  .inner-store-select { padding-bottom: 20px; text-align: center; border-bottom: 1px solid #ebebeb; }
+  .inner-store-select select { width: 40%; height: 40px; background-color: #f2f2f2; }
+  .inner-store-select-box { float: none; margin-right: 0; }
+  .inner-store-map { display: none; }
+  .store-map { margin: 40px 0 0 100px; }
+  .inner-store-list > div:first-child { padding-top: 15px; }
+  .inner-store-list > div .ir { margin: 0 10px; }
+  .inner-store-list > div p.name { width: 50%; padding-left: 5px; }
+  .inner-store-list > div p.info { width: calc(100% - 50% - 120px); padding-left: 5px; }
+  .show-md { display: none; }
+  .hidden-1024 { display: none; } }
 
+@media only screen and (min-width: 769px) { .only-mb, .mb-dot { display: none; }
+  .mb-footer-ad { display: none; }
+  .show-xs { display: none; }
+  .hide-xs { display: block; }
+  li.hide-xs { display: list-item; }
   /* 와인상세 */
   .wine-matching { position: relative; overflow: hidden; margin-top: 20px; padding-left: 140px; text-align: center; border: solid 3px #e6e6e6; background-color: #fff; border-radius: 10px; word-break: keep-all; }
   .wine-matching .wine-matching-subj { position: absolute; width: 140px; height: 100%; top: 0; left: 0; bottom: 0; background-color: #fafafa; }
@@ -99,6 +449,190 @@
   .wine-matching .wine-matching-list li + li { margin-left: 35px; }
   .wine-matching .wine-matching-list em { display: inline-block; width: 75px; height: 75px; margin: 0 0 9px; padding: 19px 18px; border-radius: 50%; background-color: #f4f4f4; background-size: 50px !important; } }
 
+@media screen and (max-width: 992px) { .pop-score .cate-filter { width: calc(100% - 340px); max-width: 100%; } }
+
+@media only screen and (max-width: 768px) { /* 메인 */
+  .show-sm, .hide-xs, .all-menu-box { display: none; }
+  .main-top-banner img.show-sm { display: none; }
+  .main-top-banner { text-align: center; }
+  .main-top-banner img.show-xs { display: inline; max-width: 375px; width: 100%; height: auto; -o-object-fit: cover; object-fit: cover; }
+  .inner { padding: 0 15px; }
+  .header { position: relative; padding: 15px 0 0; z-index: 5; }
+  .header nav { margin-top: 4px; }
+  .header .gnb > li { padding: 10px 12px; }
+  .deps-02 { width: 100%; }
+  .header-util { top: -6px; }
+  .header-side.header-side-after { width: 133px; }
+  .header-side.header-side-after p img { width: 28px; height: 28px; }
+  .header-side.header-side-after p .ir.icon-view { width: 10px; height: 6px; }
+  .header-wrap-search .main-sch-section { padding-bottom: 2px; }
+  .header-wrap-search .main-sch-section .input-box { height: 36px; }
+  .header-wrap-search .main-sch-section .btn-search { width: 30px; height: 34px; background-size: 20px; }
+  .header-wrap-search .main-sch-section .input-box input[type=text] { width: calc(100% - 30px); height: 34px; }
+  .top-total-sch.main-sch-section { position: static; width: auto; }
+  .sch-menu li a { padding: 10px 4px; }
+  .main-sch-recommended { width: auto; max-width: 100%; padding: 0; margin: 20px 20px 0; }
+  .main-sch-recommended .swiper-container { margin: 0; }
+  .main-sch-recommended .button-control { display: none; }
+  .main-top-banner { margin-top: 0; margin-bottom: 15px; padding: 0; }
+  .main-top-banner .button-control { display: none; }
+  .main-news-banner { float: none; width: auto; border-color: transparent; margin: 0; }
+  .main-news-banner li { text-align: center; }
+  .main-news-banner .button-control { display: none; }
+  .taste-rating { margin-left: 5px; width: calc((12px * 5) + 40px); height: 13px; background-size: 90px; }
+  .taste-rating em { height: 13px; background-size: 90px; }
+  .taste-rating.taste-rating-1 em { width: 12px; }
+  .taste-rating.taste-rating-2 em { width: calc((12px * 2) + 10px); }
+  .taste-rating.taste-rating-3 em { width: calc((12px * 3) + 20px); }
+  .taste-rating.taste-rating-4 em { width: calc((12px * 4) + 30px); }
+  .taste-rating.taste-rating-5 em { width: calc((12px * 5) + 40px); }
+  /* 메인 뉴스 */
+  .main-news { padding-top: 20px; padding-bottom: 20px; }
+  .main-news .inner { margin-left: -1%; margin-right: -1%; }
+  .main-news ul.main-news-list { float: none; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0 0 15px; padding: 0; /* init */ /* init */ }
+  .main-news ul.main-news-list img { width: 100%; }
+  .main-news ul.main-news-list li + li { margin-left: 0; }
+  .main-news ul.main-news-list li { width: calc(100% / 2); margin: 0 0 15px; padding: 0 1% 0; }
+  .main-news ul.main-news-list li:nth-child(n+4) { width: calc(100% / 2); margin-top: 0; }
+  .main-news ul.main-news-list li:nth-child(8), .main-news ul.main-news-list li:nth-child(9), .main-news ul.main-news-list li:nth-child(10) { display: list-item; }
+  .main-news li.news-top { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
+  .main-news-list { margin-bottom: 30px; }
+  .main-tit { font-size: 26px; }
+  .main-tit .tit_more { bottom: 2px; }
+  .main-padding { padding-top: 20px; padding-bottom: 20px; }
+  .main-sch-section { padding: 16px 10px 5px; }
+  .main-sch-section .input-box { display: inline-block; width: calc(100% - 48px - 9px); margin-right: 5px; padding: 0 14px 0 16px; }
+  .main-sch-section .icon-filter { width: 22px; height: 22px; margin: -2px 0 0 0; background: url("/02_images/ico-filter-m.png") 50% no-repeat; background-size: 100%; }
+  .top-total-sch.main-sch-section { padding: 16px 10px 5px; }
+  .main-contents .main-sch-section { padding: 20px 10px; }
+  .main-contents .main-sch-section .input-box input[type=text] { width: calc(100% - 48px); }
+  .main-contents .main-tit { margin-bottom: 20px; }
+  .btn-sch-filter { width: 48px; height: 48px; text-align: center; -webkit-box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); }
+  .main-filter-layer { display: none; }
+  .recommend-inner .swiper-wrapper { height: auto; }
+  .recommend-inner .swiper-container { padding: 0 15px; }
+  .main-recommend-wine.main-padding { padding: 20px 0 15px; }
+  .main-recommend-wine .tit_more { right: 15px; }
+  .main-recommend-wine .swiper-wrapper { height: auto !important; }
+  .main-recommend-wine .swiper-slide { height: auto; display: block; }
+  .main-recommend-wine .swiper-slide.swiper-slide-prev .prd-tit, .main-recommend-wine .swiper-slide.swiper-slide-next .prd-tit, .main-recommend-wine .swiper-slide.swiper-slide-active .prd-tit { font-size: 20px; }
+  .main-recommend-wine .swiper-slide.swiper-slide-prev .prd-name, .main-recommend-wine .swiper-slide.swiper-slide-next .prd-name, .main-recommend-wine .swiper-slide.swiper-slide-active .prd-name { font-size: 17px; }
+  .main-recommend-wine .swiper-slide.swiper-slide-prev .prd-img img, .main-recommend-wine .swiper-slide.swiper-slide-next .prd-img img, .main-recommend-wine .swiper-slide.swiper-slide-active .prd-img img { height: 270px; }
+  .main-recommend-wine .prd-name { padding: 0 15px; }
+  .main-recommend-wine .swiper-slide > div { padding: 0 10px 20px; margin-bottom: 20px; top: 0; -webkit-transform: translateY(0); transform: translateY(0); }
+  .main-recommend-wine .swiper-slide.swiper-slide-active > div { padding: 0 10px 20px; }
+  .main-recommend-wine .ico-badge { width: 70px; height: 64px; font-size: 15px; left: calc(100% - 70px - 15px); }
+  .main-recommend-wine .swiper-slide > div .ico-badge { padding: 11px 4px; }
+  .main-recommend-wine .swiper-pagination { display: block; }
+  .main-recommend-wine .swiper-pagination-bullet-active { background-color: #c70039; }
+  .main-recommend-wine .button-control { display: none; }
+  .main-recommend-wine .button-prev, .main-recommend-wine .button-next { position: absolute; width: 48px; height: 48px; border-radius: 50%; -webkit-box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); box-shadow: 2.4px 6.6px 10px 0 rgba(0, 0, 0, 0.1); top: 50%; z-index: 20; text-indent: -9999em; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .main-recommend-wine .button-prev:focus, .main-recommend-wine .button-next:focus { outline: none; }
+  .main-recommend-wine .button-prev { left: 1px; background: #fff url("/02_images/btn-slider-prev.png") 50% no-repeat; }
+  .main-recommend-wine .button-next { right: 1px; background: #fff url("/02_images/btn-slider-next.png") 50% no-repeat; }
+  .main-recommend-wine .prd-img { margin: 13px 0; }
+  .main-event-item { width: calc((100% - 2%) / 2); margin: 0 0 2% 2%; }
+  .main-event-item:nth-child(5n+1) { margin-left: 2%; }
+  .main-event-item:nth-child(2n+1) { margin-left: 0; }
+  .main-event-item img { width: 100%; }
+  .search-result-item .main-event .main-event-item { float: left; width: calc((100% - 2%) / 2); }
+  .search-result-item .main-event .main-event-item:nth-child(5n+1) { margin-left: 2%; }
+  .search-result-item .main-event .main-event-item:nth-child(3n+1) { margin-left: 2%; }
+  .search-result-item .main-event .main-event-item:nth-child(odd) { margin-left: 0; }
+  .main-event .button-center { padding-top: 15px; }
+  .main-shop.main-padding { padding-bottom: 0; }
+  .main-shop .main-news { padding: 0; }
+  .main-shop .main-news-tit { margin: 5px 0 15px 0; }
+  .main-shop-list li { width: calc((100% - 20px) / 2); margin-right: 20px; }
+  .main-shop-list li:nth-child(2n) { margin-right: 0; }
+  .main-notice h2 { padding: 0 10px 0 0; border-left: none; }
+  .main-notice p { width: auto; }
+  .main-notice p a { padding-left: 10px; }
+  .main-notice-all { display: none; }
+  .notice-ticker { width: calc(100% - 80px); word-break: break-all; }
+  .pop-newsletter { width: calc(100% - 20px); margin: 0 10px; left: 0; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); }
+  .pop-newsletter .pop-body > div { padding-top: 15px; }
+  .pop-newsletter .pop-body .chk-bx.fl { float: none; }
+  .aside-filter-layer { display: none; position: absolute; top: 0; left: 0; right: 0; background-color: #fff; height: 100%; z-index: 999; }
+  .aside-filter-layer .pop-close-btn { position: static; width: auto; height: 24px; padding-right: 5px; text-indent: 0; background-image: none; color: #262626; line-height: 1; }
+  .aside-filter-layer .main-sch-total { padding: 0; text-align: left; color: #262626; }
+  .aside-filter-warp { position: relative; padding: 0 15px 10px; }
+  .aside-filter { padding-bottom: 47px; }
+  .aside-filter-head { padding: 10px 10px 10px 15px; margin-bottom: 20px; border-bottom: 1px solid #ccc; }
+  .aside-filter-head * { vertical-align: middle; }
+  .aside-filter-head::after { content: ""; display: block; clear: both; }
+  .aside-filter-head .btn-init { float: right; color: #808080; }
+  .aside-filter-head .btn-init:focus { outline: none; border-bottom: 1px dotted #c70039; }
+  .aside-filter .filter-item { float: none; width: auto; text-align: left; }
+  .aside-filter .filter-item > p { padding: 0 0 0 4px; height: auto; background-color: transparent; }
+  .aside-filter .filter-item > p span { width: auto; height: auto; margin: 0; font-size: 20px; font-weight: 800; color: #262626; background-image: none; }
+  .aside-filter .filter-item:nth-child(1) > p, .aside-filter .filter-item:nth-child(5) > p { border-radius: 0; }
+  .aside-filter .filter-item ul { height: auto; padding: 0 0 30px; }
+  .aside-filter .filter-item ul.box-view .ico-more { display: none; }
+  .aside-filter .filter-item + .filter-item ul { border-left-width: 0; }
+  .aside-filter .filter-item li { display: inline-block; text-align: center; margin-top: 10px; }
+  .aside-filter .filter-item:nth-child(5) li { display: list-item; text-align: left; padding: 0 0 0 4px; line-height: 28px; }
+  .aside-filter .filter-item li div input[type=checkbox] + label { margin: 0 2px; min-width: auto; padding: 4px 14px; border: 1px solid #ccc; border-radius: 50px; }
+  .aside-filter .filter-item li div input[type=checkbox]:checked + label { border-color: #c70039; }
+  .aside-filter .filter-item .filter-grade { display: inline-block; margin-left: 16px; vertical-align: middle; }
+  .aside-filter .filter-item .ft-16 { padding-left: 3px; }
+  .aside-filter .filter-grade a { width: 30px; height: 30px; }
+  .aside-filter .filter-grade a + a { margin-left: 8px; }
+  .aside-filter .filter-item-collect { position: static; width: auto; padding: 0; }
+  .wrap-login { padding: 40px 10px; }
+  .login-box { padding: 20px; max-width: 100%; }
+  .board-writer .date { font-size: 14px; }
+  .login-box-link p a + a:before, .board-writer .date + .date:before, .wing-recommend-wine-item dl dd span + span:before { content: ''; display: inline-block; width: 1px; height: 10px; margin: 0 10px; background: #ebebeb; }
+  .footer { font-size: 14px; text-align: center; }
+  .footer-addr span { display: inline-block; }
+  .footer-info { padding-right: 0; font-size: 12px; }
+  .footer-info span { padding-right: 10px; }
+  .footer-side { position: relative; right: 0; margin-bottom: 20px; }
+  .footer-side .sns-link { display: inline-block; }
+  .copyright { font-size: 12px; }
+  .info-tel { padding: 20px 0 0; }
+  .info-tel:before { display: none; }
+  .info-tel .tel { padding-top: 10px; font-size: 24px; }
+  .info-tel .tel:before { display: inline-block; content: ''; margin: -4px 5px 0 0; width: 24px; height: 24px; border-radius: 50%; background: url("/02_images/ico-tel.png") 50% no-repeat; background-size: 100%; vertical-align: middle; }
+  .info-tel .tel * { color: #fff; }
+  .mb-footer-ad { max-width: calc(100% - 30px); margin: 0 15px 30px; }
+  .mb-footer-ad img { max-width: 100%; width: 400px; }
+  .wrap-board-left { padding: 15px 0 30px 0; }
+  .page-top-banner { margin-bottom: 20px; }
+  .page-top-sch { margin-bottom: 20px; border: 1px solid #ddd; }
+  .wrap-tit { margin-bottom: 20px; font-size: 24px; }
+  .board-top { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+  .board-top.mt50 { margin-top: 30px !important; }
+  .board-top.pb25 { padding-bottom: 13px !important; }
+  .cate-tit, .cate-tit-total { font-size: 16px; }
+  .board-top-sch { position: inherit; margin-top: 0; right: 0; top: 0; }
+  .board-top-sch .cate-filter { float: none; width: auto; margin-right: 0; }
+  .board-top-sch .wrap-filter { clear: both; display: block; }
+  .board-top-sch .wrap-filter::after { content: ''; display: block; clear: both; }
+  .board-top-sch .btn-recruit { float: right; width: 50%; max-width: 120px; margin-bottom: 5px; }
+  .board-top-sch.board-top-dv04 .cate-filter { width: calc((100% - 20px) / 3); }
+  .board-top-sch.board-top-dv04 .cate-filter:nth-child(3) { margin: 0; }
+  .board-top-sch.board-top-dv04 .page-top-sch { float: left; width: 100%; margin-top: 10px; }
+  .board-writer { padding: 0 0 15px; }
+  .board-writer.event { padding: 0 0 5px; }
+  .board-related-list { margin-top: 30px; }
+  .board-view { margin: 20px 0 0; }
+  .board-copy { padding-top: 6px; }
+  .login-sns-box ul li { width: 40px; height: 40px; margin: 0 5px; }
+  .login-sns-box ul li a { height: 40px; }
+  .tit-area h1 { margin: 6px 0 10px; line-height: 1.3; font-size: 18px; }
+  .tit-area h1 span.name-en { font-size: 18px; }
+  .detail-txt { padding: 10px 5px 20px; }
+  .pagination-box { margin-top: 15px; }
+  .pagination-box .button.button-small { width: 40%; line-height: 40px; }
+  .pagination-box.mb-2btn .button.button-small { width: auto; }
+  .pagination-box .button.button-large { width: 100%; margin: 0; font-size: 16px; line-height: 44px; }
+  .pagination-box.half .button.button-large { width: calc((100% - 8px) / 2); }
+  .pagination-box::after { content: ''; display: block; clear: both; }
+  .header .btn-sch-filter { position: absolute; top: -4px; right: 10px; border: none; }
+  .sch-wine-side .ir.icon-reset { display: none; }
+  .sch-wine-side a { margin-right: 0; }
+  .wrap-wine .cate-tit { font-size: 20px; }
   /* 와인 */
   .wine-list.wine-month > a:nth-child(4) { display: block; }
   .wine-list > a { width: calc((100% - 14px) / 2); }
@@ -106,7 +640,352 @@
   .wine-list > a:nth-child(3n+1) { margin-left: 14px; }
   .wine-list > a:nth-child(2n+1) { margin-left: 0; }
   .board-list .write-info span + span:before { height: 12px; margin: -2px 6px 0 5px; }
- 
+  /* 뉴스 목록 */
+  .txt.news { display: none; }
+  /* 와인21 기자단 */
+  .board-list-report ul li { float: none; width: auto; margin: 0; padding-bottom: 30px; }
+  .board-list-report ul li:nth-child(3n+1) { margin-left: 0; }
+  .board-list-report .report-txt { margin-top: 15px; }
+  .board-list-report .report-txt a { height: auto; max-height: 6.4em; -webkit-line-clamp: 4; }
+  .detail-event-place.mb-tb-4col tr { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-line-pack: stretch; align-content: stretch; }
+  .detail-event-place.mb-tb-4col th { width: 60px; padding: 5px; }
+  .detail-event-place.mb-tb-4col td { padding: 5px; }
+  .detail-event-place.mb-tb-4col td:nth-child(2) { width: calc(50% - 40px); }
+  .detail-event-place.mb-tb-4col td:nth-child(4) { width: calc(50% - 80px); }
+  .detail-event-place.mb-tb-4col tr:first-child { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .detail-event-place.mb-tb-4col tr:first-child td { width: calc(100% - 60px); }
+  .wine-info .price { clear: both; font-size: 14px; }
+  .wine-info .price::after { content: ''; display: block; clear: both; }
+  .wine-info .score-num { clear: both; display: inline-block; width: 50px; margin-top: 5px; }
+  .wine-info .score-star { display: inline-block; margin-top: 5px; }
+  .wine-info .score-star * { vertical-align: -2px; }
+  .board-list .write-info span + .score-star::before, .board-list .write-info span + .score-num::before { display: none; }
+  /* 검색 결과 */
+  .search-box { max-width: 100%; padding: 20px; }
+  .search-result-txt { font-size: 20px; }
+  .search-result-item .pagination-box { margin: 5px 0 15px 0; }
+  .search-result-item .main-event { padding: 15px 0 0; }
+  .search-result-item .main-event .inner { margin: 0 -15px; }
+  .search-result-item .main-event-item > a { height: 180px; }
+  .search-result-item .board-list-wine li .txt-area { padding-right: 0; }
+  ul.recruit-list li { padding: 15px 0; }
+  .board-list-job .write-date { padding: 0 0 0 15px; }
+  .board-list-job .txt-area .cnt-header, .board-list-job .txt-area .write-info { width: calc(100% - 82px); }
+  .board-list-job.board-list li .thumb { float: none; padding: 0; text-align: left; }
+  .board-list-job.board-list li .thumb a { width: auto; height: auto; padding: 0 0 10px; text-align: left; }
+  .btn-recuit-add { position: static; float: right; max-width: 100px; margin-top: 15px; }
+  .wrap-news .detail-event-place.recruit-view th, .wrap-news .detail-event-place.recruit-view td { display: table-cell; width: auto; word-break: keep-all; }
+  .recruit-contact select, .recruit-contact input[type=text], .recruit-contact input[type=number] { width: 32%; }
+  .recruit-btns { text-align: center; }
+  .recruit-btns::after { content: ''; display: block; clear: both; }
+  .recruit-btns .button.button-large { margin-right: 2px; margin-left: 2px; width: 30%; }
+  .recruit-btns .button-bg-basic { border: 1px solid #c70039; }
+  .login-note { margin-bottom: 20px; }
+  .my_seller_emp, .wrap-board-wide { padding-top: 30px; }
+  .wrap-mypage { padding: 40px 10px; }
+  .wrap-mypage .inner { margin: 0 -15px; }
+  .wrap-mypage .inner.gap10 { margin: 0 -10px; }
+  .wrap-mypage .wrap-board-left { padding: 20px 0; }
+  .wrap-mypage .notice-list { padding: 10px 5px; }
+  .wrap-mypage.my-place .board-top .btn-filter { bottom: 55px; right: 0; }
+  .notice-list-box + .pb40 { padding-bottom: 20px !important; }
+  .my-place .bdb { border: none; }
+  .eventState { margin-bottom: 5px; }
+  .my-box-shadow-inner2 { margin-top: 15px; padding-top: 20px; }
+  .my-box-shadow-inner2 .icoNote { padding-left: 22px; }
+  .my-box-shadow-inner2 .icoNote::before { width: 16px; height: 16px; margin: 3px 6px 0 0; }
+  .my-box-shadow-inner2 + .pagination-box::after { content: ''; display: block; clear: both; }
+  .my-box-shadow-inner2 + .pagination-box .button { float: right; width: calc(50% - 5px); border: 1px solid #c70039; }
+  .my-box-shadow-inner2 + .pagination-box .button:first-child { margin-left: 5px; }
+  .my-box-shadow-inner2 + .pagination-box .button:last-child { margin-right: 5px; }
+  .my-box-shadow { padding: 15px; }
+  .tbl-my-mod th { margin: 2px 0 5px; padding: 0; }
+  .tbl-my-mod td.input-item { margin: 0; }
+  .tbl-my-mod .icoNote { padding-left: 22px; }
+  .tbl-my-mod .icoNote::before { width: 16px; height: 16px; margin: 3px 6px 0 0; }
+  .filebox label { height: 40px; line-height: 38px; }
+  .pop-long { height: 100vh; height: calc(var(--vh, 1vh) * 100); }
+  .pop-long .pop-body { height: calc(var(--vh, 1vh) * 100 - 62px - 73px); overflow-y: auto; }
+  .cnt-header .winery { margin-bottom: 0px; }
+  .cnt-header .winery > a { display: inline-block; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+  .cnt-header .winery a { font-weight: 400; }
+  .wine-name-kor { width: 100%; text-overflow: ellipsis; overflow: hidden; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-height: 2.6em; line-height: 1.3; white-space: normal; }
+  .wrap-mypage .cnt-header .winery { width: calc(100% - 60px); }
+  .board-list.board-list-wine li .txt-area { padding-right: 0; }
+  .tasting-note-grade.filter-grade-box li { float: none; width: 100%; }
+  .tasting-note-grade li:nth-child(1) { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
+  .tasting-note-grade li:nth-child(2) { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; }
+  .tasting-note-grade li:nth-child(3) { -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; }
+  .tasting-note-grade li:nth-child(4) { -webkit-box-ordinal-group: 5; -ms-flex-order: 4; order: 4; }
+  .mod-textarea-ok { float: right; margin-left: 5px; }
+  .wrap-mypage-withdrawal-box > div { padding-left: 40px; }
+  .wrap-mypage-withdrawal-box > div + div { margin-top: 20px; }
+  .wrap-mypage-withdrawal-box em { top: 0; font-size: 40px; }
+  .wrap-news .detail-event-place th, .wrap-news .detail-event-place td { display: block; width: 100%; text-align: left; padding: 5px 10px; }
+  .wrap-news .detail-event-place td { border-right: 1px solid #e6e6e6; }
+  .detail-area.event .detail-event-place th, .detail-area.event .detail-event-place td { display: table-cell; }
+  .detail-area.event .detail-event-place th { width: 60px; text-align: center; }
+  .detail-area.event .detail-event-place td { width: calc(100% - 60px); }
+  .event-detail .thumb { width: 40%; height: auto; margin-right: 15px; }
+  .event-detail .thumb img { height: auto; }
+  .event-name { line-height: 1.4; }
+  .event-select { margin: 15px 0; }
+  .event-memo { padding: 15px; }
+  .event-check { padding: 20px 15px 15px; }
+  .event-form { margin-top: 15px; padding: 5px 0 10px; overflow-x: scroll; }
+  .event-form table th, .event-form table td { display: block; }
+  .event-form table th { padding: 6px 4px 0; font-weight: 500; }
+  .event-form table tr + tr th { padding: 10px 4px 0; }
+  .event-form table td { padding: 6px 4px; }
+  .event-form input[type='text'] { min-width: auto; width: calc(100% - 4px); }
+  .event-form select { height: 40px; border-color: #ccc; }
+  .event-form + .login-agree-box { margin-top: 15px; }
+  .event-tel select { width: 30%; }
+  .event-alert { margin-top: 20px; padding: 10px 14px; }
+  .event-alert .icoNote { margin-top: 0 !important; }
+  .wrap-board-right .wine-type li input[type=checkbox] + label { padding: 2px 15px; }
+  /* 마이페이지 와인게시판 */
+  .detail-area-write .detail-event-place th, .detail-area-write .detail-event-place td { display: block; width: 100%; text-align: left; }
+  .detail-area-write .detail-event-place td { border-right: 1px solid #e6e6e6; }
+  .detail-area-write .input-box-cell .w50 { width: 100%; }
+  .detail-area-write select + select { margin-top: 10px; }
+  .detail-area-write .detail-recruit .tb-recruit > tbody > tr > th, .detail-area-write .detail-recruit .tb-recruit > tbody > tr > td { display: block; width: 100%; text-align: left; padding: 5px 10px; }
+  .detail-area-write .detail-recruit .tb-recruit > tbody > tr > td { border-right: 1px solid #e6e6e6; }
+  .detail-recruit select + select { margin-top: 0; }
+  .detail-recruit .tb-recruit > tbody > tr .icoNote.ml20 { padding-left: 25px; margin-left: 0 !important; }
+  .icoNote { margin: 8px 0 0 !important; font-size: 13px; }
+  .tbl-my-mod td .button, .input-box-cell button { height: 40px; }
+  .tbl-my-mod td select { height: 40px; padding: 0 10px; }
+  .graph-box { margin: 0; }
+  .graph-box-inner { width: 100%; }
+  .gtit { margin: 40px 0 20px; }
+  .graph-chart { width: 100%; }
+  .board-list.board-list-wine li .thumb { max-width: 90px; }
+  .board-list li .txt-area .wine-name-en { width: auto; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+  .board-list .wine-tooltip li button.wine-tooltip-btn { width: 55px; }
+  .cnt-header > h3 > a { line-height: 1.5; }
+  .board-list-wine .cnt-header > h3 > a { line-height: 1.3; }
+  .txt.event .evt-info { line-height: 1.5; }
+  .txt.event .evt-info + .evt-info { margin: 4px 0; }
+  .btnZipSearch { margin-top: 10px; }
+  .c-member .my-box-shadow .text-center { text-align: left !important; }
+  .c-member .my-mod-tab { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; overflow-x: auto; }
+  .c-member .my-mod-tab li { -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-flex: 0; -ms-flex-positive: 0; flex-grow: 0; }
+  .tbl-contract { display: -webkit-box; display: -ms-flexbox; display: flex; }
+  .tbl-contract thead { width: 110px; }
+  .tbl-contract tbody { width: calc(100% - 110px); }
+  .tbl-contract tr { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .tbl-contract td { width: 100%; }
+  .tbl-contract th:nth-child(1), .tbl-contract td:nth-child(1) { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
+  .tbl-contract th:nth-child(2), .tbl-contract td:nth-child(2) { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; }
+  .tbl-contract th:nth-child(3), .tbl-contract td:nth-child(3) { -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; }
+  .tbl-contract th:nth-child(4), .tbl-contract td:nth-child(4) { -webkit-box-ordinal-group: 5; -ms-flex-order: 4; order: 4; }
+  .tbl-contract th:nth-child(5), .tbl-contract td:nth-child(5) { -webkit-box-ordinal-group: 6; -ms-flex-order: 5; order: 5; }
+  .my-box-pp-company-img { float: none; margin: 0; }
+  .rel-product .btn-del { position: static; text-align: right; }
+  .board-list-company .btn-del { position: absolute; top: 30px; bottom: auto; }
+  .notice-list-box { margin: 20px 0 0; padding: 10px; }
+  .notice-list-box li { padding-left: 40px; }
+  .txt-area .cnt-header > h3 .board-badge { font-size: 12px; }
+  .wine-tooltip { width: auto; top: 185px; left: auto; }
+  .wine-tooltip li { display: inline-block; margin-right: 5px; }
+  .wine-tooltip > li:first-child { display: none; }
+  .wine-tooltip + div { padding-bottom: 34px; }
+  .wine-make-edit textarea { padding: 10px; resize: vertical; }
+  .wine-make-list { padding: 0 15px; }
+  .toggle-wine-info { margin-top: 15px; padding: 5px 6px 10px; }
+  .toggle-wine-info h3 { float: none !important; padding: 0 0 5px 2px; }
+  .toggle-wine-info .board-top-sch .cate-filter { width: calc(100% - 90px); margin: 0 3px 0 0; }
+  .toggle-wine-info input.price-cell { width: calc(100% - 80px); height: 32px; padding: 0 10px 0 37px; border: 1px solid #e6e6e6; border-radius: 4px; background-color: #fff; vertical-align: middle; background: #fff url("/02_images/ico-won.png") 10px 50%/15px no-repeat; }
+  .toggle-wine-info .wine-price-list { padding: 0; }
+  .wine-price-detail { float: left; font-size: 16px; }
+  .wine-price-detail p { display: inline-block; margin-right: 20px; vertical-align: top; }
+  .wine-price-detail p:nth-child(1), .wine-price-detail p:nth-child(2) { width: auto; }
+  .detail-event-place .fd-addr, .detail-recruit .fd-addr { margin-top: 0; height: 80px; }
+  .detail-event-place .fd-addr .input-inner-btn, .detail-recruit .fd-addr .input-inner-btn { top: auto; bottom: 0; }
+  .date-picker-box.dp-col2 input[type=text] { width: calc(50% - 20px); }
+  .tb-my-api { /* 체크박스 */ /* 와이너리 */ /* 와인명 */ /* 종류 */ /* 체크박스 */ /* 와이너리 */ /* 와인명 */ /* 종류 */ }
+  .tb-my-api table { display: block; }
+  .tb-my-api thead, .tb-my-api tbody { display: block; width: 100%; }
+  .tb-my-api thead tr { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 100%; }
+  .tb-my-api tbody tr { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 100%; }
+  .tb-my-api th:nth-child(1) { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; -webkit-box-flex: 0; -ms-flex-positive: 0; flex-grow: 0; }
+  .tb-my-api th:nth-child(2) { -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; }
+  .tb-my-api th:nth-child(3) { -webkit-box-ordinal-group: 5; -ms-flex-order: 4; order: 4; width: 100%; }
+  .tb-my-api th:nth-child(4) { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; -webkit-box-flex: 0; -ms-flex-positive: 0; flex-grow: 0; }
+  .tb-my-api td:nth-child(1) { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
+  .tb-my-api td:nth-child(2) { -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; -ms-flex-preferred-size: calc(100% - 44px - 100px); flex-basis: calc(100% - 44px - 100px); }
+  .tb-my-api td:nth-child(3) { -webkit-box-ordinal-group: 5; -ms-flex-order: 4; order: 4; width: 100%; border-left: none; border-bottom: 1px solid #999; }
+  .tb-my-api td:nth-child(4) { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; }
+  .pg-my-api .board-top-sch { margin-top: 5px; }
+  .pg-my-api .board-top-sch .input-box { text-align: right; }
+  .pg-my-api .input-box label { vertical-align: top; }
+  .pop-wine-sch .product-list-inner .winery { margin-bottom: 4px; width: auto; line-height: 1.3; font-size: 14px; }
+  .pop-wine-sch .input-search { width: 100%; }
+  .pop-wine-sch .input-box input[type=text] { padding: 0 75px 0 10px; }
+  .pop-wine-sch .input-box.rel .button { right: 0; }
+  .pop-wine-place .input-box input[type=text] { padding: 0 75px 0 10px; }
+  .pop-wine-place .input-box.rel .button { right: 0; }
+  .seller-sch-wine { padding-bottom: 20px; }
+  /* 팝업 */
+  .pop-basic .pop-tit { padding: 15px; font-size: 18px; }
+  .pop-basic .pop-close-btn, .pop-basic .close-button-x { top: 16px; }
+  .pop-basic .pop-body, .pop-basic.pop-basic-wine .pop-body { padding: 10px; }
+  .pop-basic-company .input-box.mt10 { margin-top: 0 !important; }
+  .pop-basic-company input[type=text] { padding-right: 86px; }
+  .pop-basic-company .pagination-box .button.button-large { width: calc(100% - $btnHeight); }
+  .pop-basic-company .pop-open-btn-company { top: 2px; right: 2px; height: 36px; line-height: calc($btnHeight - 2px); }
+  .pop-mynote .pop-body, .pop-myreport .pop-body, .pop-vprice .pop-body, .pop-specialist .pop-body, .pop-event-02 .pop-body { max-height: calc(100vh - 200px); }
+  .pop-mynote .pop-foot, .pop-myreport .pop-foot, .pop-vprice .pop-foot, .pop-specialist .pop-foot, .pop-event-02 .pop-foot { padding: 10px 20px; text-align: right; }
+  .pop-mynote .wine-name, .pop-myreport .wine-name, .pop-vprice .wine-name, .pop-specialist .wine-name, .pop-event-02 .wine-name { font-size: 18px; }
+  .pop-mynote .wine-name-en, .pop-myreport .wine-name-en, .pop-vprice .wine-name-en, .pop-specialist .wine-name-en, .pop-event-02 .wine-name-en { font-size: 14px; }
+  .search-company .company-detail.dib { display: block !important; }
+  .search-company .company-detail p:nth-child(1), .search-company .company-detail p:nth-child(2) { width: auto; }
+  .search-company .company-detail p:nth-child(3) { padding-right: 0; }
+  /* b2b */
+  .traders-view .page-top-banner { margin: 0 0 10px; }
+  .traders-view .board-view { margin: 0; }
+  .traders-view .detail-header .tit-area { padding-top: 20px; }
+  .traders-winery .board-top.mb-nl .cate-tit { margin-bottom: 0; }
+  .pg-traders-list .board-top-sch .page-top-sch { width: 100%; }
+  .wrap-tbl-board { padding: 40px 0; min-height: auto; }
+  .wrap-tbl-board .board-top-sch.board-top-dv04 .page-top-sch { margin-top: 0; }
+  .tbl-list-notice { table-layout: auto; }
+  .tbl-list-notice col:nth-child(1), .tbl-list-notice col:nth-child(2), .tbl-list-notice col:nth-child(3), .tbl-list-notice col:nth-child(4) { width: auto; }
+  .tbl-list-notice thead { display: none; }
+  .tbl-list-notice tr::after { content: ''; display: block; clear: both; }
+  .tbl-list-notice td { display: block; padding: 10px; text-align: left; }
+  .tbl-list-notice td:nth-child(1) { float: left; width: 50px; text-align: center; border-bottom: none; }
+  .tbl-list-notice td:nth-child(2) { float: left; width: calc(100% - 50px); border-bottom: none; }
+  .tbl-list-notice td:nth-child(3), .tbl-list-notice td:nth-child(4) { float: left; width: 50%; padding-top: 0; font-size: 13px; border-bottom: 1px solid #a2a2a2; color: #999; }
+  .tbl-list-notice td:nth-child(4) { text-align: right; }
+  .tbl-list-notice td:nth-child(4)::before { display: inline; content: '조회수'; margin-right: 5px; }
+  .tbl-list-notice .text-ellipsis1 { display: block; white-space: normal; word-break: break-all; }
+  .tbl-list-notice .noti-line td { border-bottom-color: #c70039; }
+  .tbl-wrap .tbl-list-notice tbody td { height: auto; border-left: none; }
+  .tbl-pagination-box { margin-top: 20px; }
+  .wrap-company { padding: 30px 10px; }
+  .wrap-company .inner { padding: 0 10px; line-height: 1.5; }
+  .wrap-company .wrap-tit { display: none; }
+  .wrap-company .my-tab { margin-bottom: 30px; }
+  .tab_company { margin: 0 auto 20px; }
+  .cmp-page-desc1, .cmp-page-desc2 { text-align: left; }
+  .cmp-page-desc1 br, .cmp-page-desc2 br { display: none; }
+  .cmp-page-desc1.bigft24 { font-size: 20px; }
+  .cmp-page-desc2 { margin: 15px 0; font-size: 16px; }
+  .cmp-cont .cmp-row, .cmp-cont .cmp-col1, .cmp-cont .cmp-col2 { display: block; width: auto; }
+  .cmp-cont .cmp-col1 { min-height: auto; padding: 8px 15px; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6; }
+  .cmp-cont .cmp-col2 { padding: 10px 15px 15px; }
+  .cmp-cont.cmp-business .cmp-col1 { min-height: auto; padding: 8px 15px; }
+  .cmp-cont.cmp-business .cmp-col2 { padding: 10px 15px 30px; }
+  .cmp-cont.cmp-svc .cmp-col1 { min-height: auto; padding: 10px 10px 5px; background-color: transparent; border: none; }
+  .cmp-cont.cmp-svc .cmp-col2 { padding: 5px 10px 15px; }
+  .mb-dot { margin-right: 6px; }
+  .cmp-tit1 { font-size: 20px; }
+  .cmp_introduce .cmp-tit1, .cmp_history .cmp-tit1 { padding: 40px 0 20px; }
+  .cmp_history .cmp-cont .cmp-col1, .cmp_history .cmp-cont .cmp-col2 { width: auto; }
+  .cmp_history .cmp-cont .cmp-col1 { padding: 10px; font-weight: 400; font-size: 28px; border: none; background-color: transparent; text-align: left; }
+  .cmp_history .cmp-cont .cmp-col2 { padding: 0 10px 15px; }
+  .cmp_history .cmp-cont .cmp-col2 li { margin-bottom: 13px; line-height: 1.5; }
+  .cmp_history .cmp-cont .cmp-col2 ul ul li { padding-left: 10px; list-style-type: '-'; }
+  .cmp_history .cmp-cont + .txtSt1 { padding-top: 20px; }
+  .cmp_svc .cmp-page-desc2 { margin: 20px 0; }
+  .cmp_svc .cmp-tit1 { padding: 30px 0 20px 0; text-align: left; }
+  .cmp_svc .txtSt1 { text-align: left; line-height: 1.4; }
+  .cmp_svc .cmp-row + .txtSt1 { margin-top: 20px; }
+  .cmp_svc .cmp-info { margin: 15px 0 20px; }
+  .cmp_svc .cmp-info .contact { text-align: left; }
+  .cmp-info { margin-top: 20px; text-align: left; }
+  .cmp-cont.cmp-business .cmp-col1 .ft-red-main, .cmp-cont.cmp-svc .cmp-col1 .ft-red-main { font-size: 16px; }
+  .cmp-contact { text-align: left; }
+  .cmp-contact .contact > span { width: 205px; margin: 5px 0; }
+  .cmp_terms h4, .cmp_privacy h4 { font-size: 18px; font-weight: normal; line-height: 1.56; letter-spacing: -0.54px; color: #262626; margin: 15px 0 8px 0; }
+  .note-view-head, .note-view-text { padding: 10px; }
+  .note-view-file { padding: 5px 0 10px; border-top: none; line-height: 34px; }
+  .note-view-file p { float: none; border-radius: 20px; border: 1px solid #ccc; background-color: transparent; }
+  .note-view-file ul { width: auto; }
+  .note-view-file li { padding-left: 0; margin-right: 12px; }
+  .wrap-wine-view .page-top-banner { margin-bottom: 10px; }
+  .wrap-wine-view .page-top-banner img { height: auto; }
+  .wrap-wine-view .wine-detail-tit { margin-bottom: 40px; font-size: 22px; }
+  .wrap-wine-view .wine-top-left { max-width: 100%; }
+  .wrap-wine-view .wine-top-left .gallery-top { max-width: 100%; height: auto; padding: 15px 10px 35px; }
+  .wrap-wine-view .wine-top-left .gallery-thumbs { max-width: 100%; padding: 0 20px; }
+  .wrap-wine-view .wine-top-right { margin: 30px 0; }
+  .wrap-wine-view .wine-top-right .bagde-box { margin-bottom: 15px; }
+  .wrap-wine-view .wine-top-right .bagde-box > p.dib { margin: 5px 0; display: block !important; }
+  .wrap-wine-view .wine-top-right .bagde-box > p.dib + [class|=material] { padding: 0; }
+  .wrap-wine-view .wine-top-right .wine-price a { margin-top: 5px; }
+  .wrap-wine-view .wine-top-right .wine-price-etc { margin-bottom: 20px; }
+  .wrap-wine-view .wine-top-right .wine-components li + li { margin-left: 0; }
+  .wrap-wine-view .wine-name { line-height: 1.2; }
+  .wrap-wine-view .wine-name-en { padding-top: 6px; line-height: 1.3; }
+  .wine-top-right-inner .score > div { min-height: auto; }
+  .view-wine-matching { margin-top: 0; }
+  .makersnote-list .board-top.pt50 { padding-top: 15px !important; }
+  .makers-item-txt { margin-bottom: 10px; line-height: 1.8; }
+  .wine-top-right-side li:nth-child(3) { display: none; }
+  .wine-detail { padding: 50px 20px; }
+  .wine-detail .wine-name { font-size: 24px; line-height: 1.2; }
+  .wine-detail .wine-name-en { padding-top: 5px; font-size: 20px; line-height: 1.2; }
+  .wine-detail .wine-detail-img { height: auto; }
+  .wine-detail .wine-detail-img .wine-type em { width: 50px; height: 50px; background-size: 30%; }
+  .wine-detail .wine-detail-img .wine-type span { font-size: 18px; }
+  .wine-detail .wine-detail-img img { max-height: 400px; }
+  h2.wine-detail-tit { font-size: 24px; }
+  h2.wine-detail-tit:before, h2.wine-detail-tit:after { font-size: 30px; }
+  h2.wine-detail-tit:before { margin-left: -10px; top: 0; }
+  h2.wine-detail-tit:after { margin-left: 4px; bottom: -15px; }
+  .wine-no-img { width: auto; height: 400px; }
+  .pop-wine-04 .wine-name { font-size: 18px; }
+  .pop-wine-04 .wine-name-en { font-size: 14px; }
+  .vintage-price-table { margin: 15px 0; }
+  .vintage-price-table th { font-size: px; }
+  .vintage-price-table td { font-size: px; }
+  /* 와인상세 > 구성요소 */
+  .wine-c-txt { font-size: 16px; }
+  .wine-detail .wine-components ul li { float: none; width: auto; }
+  .wine-detail .wine-components ul li:nth-child(even) { float: none; }
+  .wine-matching .wine-matching-list { overflow: hidden; padding: 20px 10px; }
+  .wine-matching .wine-matching-list li { width: calc((100% - 24px) / 4); font-size: 14px; }
+  .wine-matching .wine-matching-list li + li { margin-left: 5px; }
+  .wine-matching .wine-matching-list em { width: 50px; height: 50px; background-size: 70%; }
+  .wine-d-box .wine-d-box-info-list { padding: 20px 0; }
+  .wine-d-box .wine-d-box-info-list dl dt { float: none; }
+  .wine-d-box .wine-d-box-info-list dl dt:before { display: none; }
+  .wine-d-box .wine-d-box-info-txt, .wine-d-box .wine-d-box-info-mov { padding: 20px 0 0; }
+  .wine-d-box .wine-d-box-info-mov iframe { height: 60vw; }
+  .wine-d-box .wine-d-box-area { padding: 20px 0 0; }
+  .wine-d-box .wine-d-box-area.pt0 { padding-top: 30px !important; }
+  .wine-d-box .wine-d-box-area .wine-name { font-size: 18px; }
+  .wine-d-box .wine-d-box-area .wine-name-en { display: block; font-size: 15px; }
+  .wine-d-box .wine-d-box-area .wine-area { font-size: 14px; }
+  .wine-d-box .wine-d-box-area dl { font-size: 13px; }
+  .wine-d-box .wine-d-box-area dl dt { padding: 10px; }
+  .wine-d-box .wine-d-box-area dl dd { padding: 10px; }
+  .my-mod-tab li a { margin: 0; }
+  .my-box-job h5 { padding: 10px; }
+  .my-box-job > div { width: 100%; height: auto; }
+  .my-box-job > div + div { width: 100%; border-left: 0; }
+  .my-box-job > div ul { overflow: hidden; padding: 0 10px; }
+  .my-box-job > div ul li { float: none; width: 100%; margin: 8px 0; }
+  .my-box-shadow-inner2 h4 { float: none !important; }
+  .input-box.chk-bx.fr { float: none !important; margin: 15px 0 0; text-align: right; }
+  .tbl-my-mod th { display: block; width: 100%; }
+  .tbl-my-mod td { display: block; padding: 0 0 10px; }
+  .tbl-my-mod td.input-item { height: auto; line-height: normal; }
+  /* 와인 상세 > 판매처 */
+  /* 와인 상세 지도 */
+  .inner-store-list > div { position: relative; padding-left: 50px; }
+  .inner-store-list > div .ir { position: absolute; left: 15px; top: 20px; margin: 0 10px 0 0; }
+  .inner-store-list > div p.name { width: 100%; }
+  .inner-store-list > div p.info { width: 100%; font-size: 14px; }
+  .inner-store-list > div span.addr { display: inline-block; width: auto; padding-right: 20px; }
+  /* 와인 상세 > 테이스팅 */
+  .vintage-box { margin: 0 0 10px; padding: 0 0 10px; }
+  .vintage-list li { font-size: 14px; }
+  #tasting .ft-22 { font-size: 18px; }
+  .makers-item { padding: 15px 0 0; }
   /* 와인 상세 > 관련와인 */
   .view-tab-inner .board-top.pt50 { padding-top: 15px !important; }
   .view-tab-inner .board-top .line-point { padding: 20px 10px 13px; font-size: 16px; }
@@ -121,30 +1000,30 @@
   .cate-filter.m100 { width: 100%; }
   .pagination-num { margin-top: 20px; }
   .btn-col-3 > a, .pagination-box.btn-col-3 .button.button-large { width: 28%; }
- 
-@media only screen and (max-width: 1280px)
-.board-list li .txt-area .write-info {
-    font-size: 13px;
-}
-  
-@media only screen and (max-width: 1280px)
-.board-list.board-list-wine li .thumb {
-    width: 34%;
-    max-width: 120px;
-    margin-right: 12px;
-}
+  /* 인쇄 버튼 관련 */
+  .btnContPreView, .network-area > ul > li > a.btnContPreView { display: none; }
+  .network-area { top: 0; }
+  /* common */
+  .btn-round { border: 1px solid #c70039; border-radius: 50%; }
+  .only-mb { display: initial; }
+  .ft-16 { font-size: 16px; }
+  .mb-nl { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; -webkit-box-align: stretch; -ms-flex-align: stretch; align-items: stretch; }
+  /* mobile newline */
+  .fr-box.fr-basic .fr-element { min-height: 300px !important; }
+  .board-top.mb-nl .cate-tit { margin-bottom: 10px; }
+  .board-top.mb-nl .board-top-sch { /* 정보 - 샵&레스토랑 */ }
+  .board-top.mb-nl .board-top-sch::after { content: ''; display: block; clear: both; }
+  .board-top.mb-nl .board-top-sch .cate-filter { float: left; width: 40%; }
+  .board-top.mb-nl .board-top-sch .cate-filter:nth-child(2) { width: 60%; }
+  .board-top.mb-nl .board-top-sch .cate-filter + .page-top-sch { float: left; width: 60%; }
+  .pop-score .cate-filter { width: 100%; }
+  .pg-my-api .board-top { display: block; } }
 
-@media only screen and (max-width: 1280px)
-.board-list li .thumb {
-    width: 34%;
-    max-width: 120px;
-    margin-right: 12px;
-}  
-  
-  
 @media only screen and (max-width: 375px) { .only-xs { display: initial; }
   .info-variety .wine-components li:nth-child(2) { margin-right: 0; } }
 
+/* 인쇄 */
+@page { margin: 20mm 10mm; }
 
 @media print { * { -webkit-print-color-adjust: exact !important; /*Chrome, Safari */ color-adjust: exact !important; /*Firefox*/ }
   html, body { padding: 0; margin: 0; }

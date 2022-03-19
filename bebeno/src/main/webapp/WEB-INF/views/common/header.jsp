@@ -32,11 +32,11 @@
                     <ul id="menubar">
                         <li id="inlinemenu"><a href="">ABOUT</a></li>
                         <li id="inlinemenu"><a href="${path}/wineboard/wineList">WINE</a></li>
-                        <li id="inlinemenu"><a href="${path}/shop/list">WINE SHOP</a></li>
-                        <li id="inlinemenu"><a href="">COMMUNITY</a></li>
-                        <li id="inlinemenu"><a href="${path}/member/loginform">login</a></li>
+<li id="inlinemenu"><a href="${ path }/shop/list">WINE SHOP</a></li>
+                        <li id="inlinemenu"><a href="${ path }/wagle_board/wagle_list">COMMUNITY</a></li>
+                        <li id="inlinemenu"><a href="${ path }/member/enroll">login</a></li>
                         <li id="inlinemenu"><a href="${path}/member/terms">join</a></li>
-                    </ul>
+</ul>
                 <!-- Nav 영역 -->
                 <nav>
                     <ul>
@@ -51,7 +51,7 @@
             <nav id="menu">
                 <h2>Menu</h2>
                 <ul>
-                    <li><a href="">HOME</a></li>
+                    <li><a href="${path}/">HOME</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                     <li><a href="${ path }/mypage/profile">MYPAGE</a></li>

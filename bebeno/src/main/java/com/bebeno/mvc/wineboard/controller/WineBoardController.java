@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,16 +35,19 @@ public class WineBoardController {
 	@Autowired
 	private ResourceLoader resourceLoader;
 
-	@RequestMapping("/wineList")
-	public String wineBoardList(Model model) {
-		List<WineBoard> list = wineboardservice.wineBoardList();
+	// 게시물 리스트 페이지 
+	@RequestMapping(value = "/wineList", method = RequestMethod.GET)
+	public String wineBoardList(Model model, String shKeyword1) {
+		List<WineBoard> list = wineboardservice.wineBoardList(shKeyword1);
+		
+		System.out.println(shKeyword1);
 		
 		model.addAttribute("list", list);
 	
 		return "wineboard/wineList";
 	}
 	
-
+	// 상세페이지 
 	@GetMapping("/wineView")
 	public ModelAndView wineview(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
 		
@@ -57,18 +59,7 @@ public class WineBoardController {
 		return model;
 	}
 	
-	
-//	@GetMapping("/wineUpdate")
-//	public ModelAndView wineBoardUpdate(ModelAndView model, @RequestParam(value = "wineBno", required = false) Integer wineBno) {
-//		
-//		WineBoard wineboard = wineboardservice.findBoardByNo(wineBno);
-//		
-//				  model.addObject("wineboard", wineboard);
-//				  model.setViewName("wineboard/wineUpdate");
-//		
-//				  return model;	
-//	}
-	
+	// 업데이트페이지 이동 
 	@RequestMapping(value="/wineUpdate", method = RequestMethod.GET)
 	public String getupdate(Integer wineBno, Model model) throws Exception {
 			WineBoard data = wineboardservice.findBoardByNo(wineBno);
@@ -77,6 +68,7 @@ public class WineBoardController {
 		return "/wineboard/wineUpdate";
 	}
 	
+	// 게시물 업데이트 
 	@PostMapping("/wineUpdate")
 	public ModelAndView wineBoardUpdate(ModelAndView model, @ModelAttribute WineBoard wineboard) {
 		
@@ -90,11 +82,14 @@ public class WineBoardController {
 			model.addObject("msg", "게시글 수정을 실패하였습니다.");
 			model.addObject("location", "/wineboard/wineUpdate?wineBno=" + wineboard.getWineBno());
 		}
-	  return model;
+		
+		model.setViewName("common/msg");
+	  
+		return model;
 		
 	}
 	
-
+	// 게시물 삭제
 	@GetMapping("/delete")
 	public ModelAndView delete(ModelAndView model, 
 							@RequestParam(value = "wineBno", required = false) Integer wineBno) {
@@ -124,6 +119,7 @@ public class WineBoardController {
 		return "/wineboard/wineWrite";
 	}
 	
+	// 게시글 등록
 	@PostMapping("/wineWrite")
 	public ModelAndView write(ModelAndView model, HttpServletRequest request,
 			@ModelAttribute WineBoard wineboard, @RequestParam("upfile") MultipartFile upfile) {
@@ -168,10 +164,6 @@ public class WineBoardController {
 	}
 		
 	
-//	@GetMapping("/delete")
-//	public ModelAndView delete(ModelAndView model,  @RequestParam(value = "wineBno", required = false) Integer wineBno) {
-//		
-//	}
 }
 
 
