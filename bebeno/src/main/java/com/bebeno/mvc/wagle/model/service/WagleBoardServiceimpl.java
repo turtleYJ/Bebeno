@@ -23,6 +23,12 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		
 		return mapper.getWagleList();
 	}
+	
+	@Override
+	public List<Wagle> getWagleListByCategory(String category) {
+		
+		return mapper.getWagleListByCategory(category);
+	}
 
 	@Override
 	public Wagle findBoardByNo(int no) {
@@ -83,4 +89,6 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 
 		mapper.
 	}
+
+	
 }

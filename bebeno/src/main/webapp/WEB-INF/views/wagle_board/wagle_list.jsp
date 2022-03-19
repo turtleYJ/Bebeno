@@ -17,7 +17,7 @@
 	                        <div class="wagle_item_contents">
 	                            <a href="${ path }/wagle_board/wagle_view?no=${ wagle.no }">
 	                                <span>
-	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/img/${ wagle.renamedFileName }" alt="">
+	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/wagle/${ wagle.renamedFileName }" alt="">
 	                                </span>
 	                                <p><strong>${ wagle.nicname }</strong></p>
 	                                <p><strong>${ wagle.title }</strong></p>
@@ -26,105 +26,6 @@
 	                        </div>
 	                    </div>
                     </c:forEach>
-                    
-                    <!-- 이 뒤에는 그냥 남겨뒀습니다. -->
-                    
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle2.png" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기ㅑㅐㅈ뎌개ㅑㅂㄷ개ㅑㅓㅈ배겆ㄱ</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="${ path }/resources/image/wagle3.jpeg" alt="">
-                                </span>
-                                <p><strong>${ wagle.nicname }</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/3.jpg" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/4.jpeg" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/5.png" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/2.jpg" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <strong>글제목</strong>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/5.png" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="wagle_item">
-                        <div class="wagle_item_contents">
-                            <a href="a">
-                                <span>
-                                    <img class="wagle_thumb_img" src="./img/1.jpg" alt="">
-                                </span>
-                                <p><strong>닉네임</strong></p>
-                                <p><strong>글제목 미리보기 테스트입니다 ㅁㄴ아ㅓ린아ㅓㄹ</strong></p>
-                                <p>글내용 미리보기</p>
-                            </a>
-                        </div>
-                    </div>
                 </div>
         </div>
     </section>

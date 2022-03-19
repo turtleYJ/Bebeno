@@ -20,4 +20,6 @@ public interface WagleBoardService {
 
 	void fileSave(ContentFiles files);
 
+	List<Wagle> getWagleListByCategory(String category);
+
 }
