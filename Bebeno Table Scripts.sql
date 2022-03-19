@@ -222,7 +222,7 @@ CREATE TABLE BEBENO_WINEBOARD (
     STATUS VARCHAR2(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
     CREATE_DATE DATE DEFAULT SYSDATE,
     MODIFY_DATE DATE DEFAULT SYSDATE
---    AMOUNT NUMBER                                                   -- 임시로 추가
+--  ,  AMOUNT NUMBER                                                   -- 임시로 추가
 );
 
 -- WINEBOARD 테이블 COMMENT 추가
