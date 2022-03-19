@@ -1,13 +1,17 @@
 package com.bebeno.mvc.mypage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,10 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bebeno.mvc.common.util.PageInfo;
 import com.bebeno.mvc.common.util.ProfileImgSave;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.mypage.model.service.MyPageService;
-import com.bebeno.mvc.mypage.model.vo.MyPage;
+import com.bebeno.mvc.mypage.model.vo.Scrap;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +44,22 @@ public class MyPageController {
 	// 로컬저장소 경로 설정 관련 코드 - 파일 업로드 시 사용
 	@Autowired
 	private ResourceLoader resourceLoader;
+	
+// ==================================================================
+
+	// profile.jsp에서 ajax스크립트를 사용한 닉네임 중복검사 메소드
+	@PostMapping("/nickCheck")
+	public ResponseEntity<Map<String, Boolean>> nickCheck(
+			@RequestParam("nickname") String nickname) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("입력받은 닉네임 : {}", nickname);
+		
+		map.put("duplicate", service.nickCheck(nickname));
+		
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}	
 	
 // ==================================================================
 	
@@ -209,24 +230,58 @@ public class MyPageController {
 	
 	
 	@GetMapping("/scrap")
-	public String scrap() {
+	public ModelAndView scrap(
+			ModelAndView model,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "16") int count,
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		
+		int scrapListCount = 0;
+		PageInfo pageInfo = null;
+		List<Scrap> scrapList = null;
+		
+		log.info("현재 페이지 번호 : {}", page);
+		
+		log.info("로그인 아이디 : {}", loginMember.getId());
+		
+		// 회원의 id값으로 스크랩한 리스트의 개수 가져오기
+		scrapListCount = service.getScrapListCount(loginMember.getId());
+		
+		log.info("스크랩의 개수 : {}", scrapListCount);
+		
+		// PageInfo( 1. 현재 페이지, 2. 한 페이지에 보이는 페이징 수, 
+		//           3. 전체 스크랩의 개수, 4. 한 페이지에 표시될 스크랩의 리스트 수)
+//		pageInfo = new PageInfo(page, 5, scrapListCount, count);
+		
+//		scrapList = service.getScrapList(pageInfo, loginMember.getId());
 		
 		
-		return "/mypage/scrap";
+		// 1. 스크랩을 했을 때 -> 데이터 insert
+		
+		
+		// 2. 스크랩을 취소 했을 때 -> 데이터 delete
+		
+		
+		
+//		model.addObject("pageInfo", pageInfo);
+//		model.addObject("scrapList", scrapList);
+		
+		model.setViewName("/mypage/scrap");
+		
+		return model;
 	}
 	
 	// -------------------------------------------
 	
 	
 	
+	
+	
 // ==================================================================
 	
-//	@GetMapping("/cart")
-//	public String cart() {
-//		
-//		
-//		return "/mypage/cart";
-//	}
 	
-	// -------------------------------------------
+	
+	
+	
+	
 }

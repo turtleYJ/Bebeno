@@ -32,7 +32,7 @@
         </div>
         <div class="clear">
             <div class="wine-top-left">
-                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">>
+                <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper" >
 						<c:if test="${ !empty wineboard.renamedFileName }">
                         <div class='swiper-slide'><img id="image" src="${path}/resources/upload/wineimg/${wineboard.renamedFileName}" width="400px" height="550px"/></div>
@@ -57,16 +57,18 @@
                         <strong>${wineboard.winePrice}</strong>      
                     </p>
                     <p>
-                                            <label>수량</label>
                         <select name="amount">
-                        	<c:forEach begin="1" end="5" var="i">
-                        		<option class="numBox" value="${i}">${i}</option>
-                        	</c:forEach>
+                        	<option value="" selected>수량 선택</option>
+                        	<option value="1">1</option>
+                        	<option value="2">2</option>
+                        	<option value="3">3</option>
+                        	<option value="4">4</option>
+                        	<option value="5">5</option>
                         </select>&nbsp;개   
                         <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
                         <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2">구매하기</button> 
                     </p> 
-                    <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.</p>
+                    <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.  와인은 최대 5개까지 구매 가능합니다.</p>
 
                     <div class="wine-components">
                         <ul>
@@ -181,7 +183,7 @@
 				                    	   cart_qty : cartqty
 				                       };
 				                     $.ajax({
-				                         url : "/wineView/addCart",
+				                         url : "${path}/wineView/addCart",
 				                         type : "post",
 				                         data : data,
 				                         success : function(result){

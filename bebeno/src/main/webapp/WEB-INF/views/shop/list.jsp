@@ -47,7 +47,7 @@
 					
 					
 	               <c:if test="${ loginMember.role eq 'ROLE_MANAGER' }">
-						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
+						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal" style="padding-bottom: 4px; padding-top: 4px;">등록하기</a>
 	               </c:if>
 				
 				</form>
@@ -79,7 +79,7 @@
             								<label>가게 주소</label>
           								</div>
           								<div class="form-group col-sm-3">
-            								<input id="member_post" type="text" class="form-control" maxlength="20" placeholder="우편번호" readonly onclick="findAddr()">
+            								<input id="member_post" type="number" name="zipCode" class="form-control" maxlength="20" placeholder="우편번호" readonly onclick="findAddr()">
           								</div>
           								<div class="form-group col-sm-9">
 											<input id="member_addr" type="text"  name="address1" class="form-control col-lg-8" maxlength="20" placeholder="주소" readonly> <br>
@@ -118,14 +118,13 @@
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
-	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;">
-	          								</textarea>
+	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
 										</div>
       							    </div>
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>상세 정보</label>
-	          								<textarea type="text" name="Content2" class="form-control" maxlength="2048" style="height: 180px;">
+	          								<textarea type="text" name="content2" class="form-control" maxlength="2048" style="height: 180px;">
 [와인문의]	          								
 	          								
 [이메일]
@@ -170,7 +169,7 @@
 					            </div>
 					            <div class="write-info">
 					                <em class="board-badge badge-white">${ store.type }</em>
-					                <span class="store-addr">${ store.address }</span>
+					                <span class="store-addr">${ store.address1 } ${ store.address2 }</span>
 					                <span class="store-tel">${ store.phone }</span> 
 					            </div>
 				        	</div>

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<c:set var="path" value="${ pageContext.request.contextPath }"/>
+<c:set var="path" value ="${ pageContext.request.contextPath }"/> 
 
 <!DOCTYPE html>
 <html>
@@ -21,12 +21,12 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
- 
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.3.min.js" type="application/javascript"></script>
+
 </head>
 <body>
 	<div class="container">
-			<form action="${path}/payment/orderPage" method="post">
+			
 		<c:set value="${productInfo}" var="dto"/>
 		<c:set value="2500" var="del_fee"/>
 		<div class="row no-gutters qnas" style="text-align: center;">
@@ -118,67 +118,49 @@
 				</label>
 			</div>
 			<div>
-				<a href="javascript:iamport"><button class="btn btn-default cal-btn" type="submit">결제하기</button></a>
-				<a href="${path}/mypage/cart"><button class="btn btn-default back_btn">돌아가기</button></a>
+				<button type="button" class="btn btn-primary" id="btn-kakaopay">결제하기</button>				
+				<a href="${path}/payment/cart"><button class="btn btn-default back_btn">돌아가기</button></a>
 			</div>
 		</div>
-		</form>
 	</div>
 	
 	<script>
+	BootPay.request({
+		price: '100', 
+		application_id: "6235ab1c2701800021f67e68",
+		name: '블링블링 마스카라', //결제창에서 보여질 이름
+		pg: 'inicis',
+		method: 'kakao', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+		show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
+		items: [
+			{
+				item_name: '나는 아이템', //상품명
+				qty: 1, //수량
+				price: 1000, //상품 단가
+			}
+		],
+		user_info: {
+			username: '사용자 이름',
+			email: '사용자 이메일',
+			phone: '010-1234-4567'
+		},
+		order_id: '고유order_id_1234', 
+	}).error(function (data) {
+		
+		console.log(data);
+	}).cancel(function (data) {
+		
+		console.log(data);
+	}).close(function (data) {
+	    
+	    console.log(data);
+	}).done(function (data) {
 	
-	function iamport(){
-		//가맹점 식별코드
-		IMP.init('imp30146952');
-		IMP.request_pay({
-		    pg : 'kcp',
-		    pay_method : 'card',
-		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : '상품1' , //결제창에서 보여질 이름
-		    amount : 100, //실제 결제되는 가격
-		    buyer_email : 'iamport@siot.do',
-		    buyer_name : '구매자이름',
-		    buyer_tel : '010-1234-5678',
-		    buyer_addr : '서울 강남구 도곡동',
-		    buyer_postcode : '123-456'
-		}, function(rsp) {
-			console.log(rsp);
-			// 결제 검증
-			$.ajax({
-        		type: "POST",
-        		url : "/music/verifyIamport/" + rsp.imp_uid
-        	}).done(function(data){
-        		console.log(data);
-        		//가격 비교한 후 로직 실행 (서버 검증)
-        		if(rsp.paid_amount == data.response.amount){
-        			$("input[name=user_no]").val('${userInfo.no}');
-        			$.ajax({
-        				type: "POST",
-        				data : {
-        					ticket_type : ticket_type,
-        					time : time,
-        					no : no
-        				},
-        				url : "/music/pay/payment.do",
-    	   				success:function(res){
-    	   					if(res.trim() =='true'){
-    	   						alert('결제가 성공하였습니다.');
-    	   						location.href='/music/pay/view.do';
-    	   					}else{
-    	   						alert('결제가 실패하였습니다.'); 
-    	   					}
-    	   				}
-        			})
-        		}else{
-        			alert('결제 오류.');
-        		}
-        	});
-        	
-    });
-	
-};
-
+		console.log(data);
+	});
 	
 	</script>
+   
+     
 </body>
 </html>

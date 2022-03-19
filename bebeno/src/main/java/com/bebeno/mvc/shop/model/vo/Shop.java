@@ -18,7 +18,11 @@ public class Shop {
 	
 	private String engBname;
 	
-	private String address;
+	private int zipCode;
+	
+	private String address1;
+	
+	private String address2;
 	
 	private String phone;
 	
