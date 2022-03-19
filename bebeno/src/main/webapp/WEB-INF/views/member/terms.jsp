@@ -31,10 +31,9 @@ location.href="../join.jsp";}
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css" />
 	<title>Home</title>
 	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
-<<<<<<< HEAD
+
 <script src="${ path }/js/checkBox.js"></script>
-=======
->>>>>>> main
+
 </head>
 <body>
 <section class="sub-contents wrap-login">
