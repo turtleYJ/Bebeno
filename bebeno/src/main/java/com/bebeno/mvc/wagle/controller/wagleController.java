@@ -16,8 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bebeno.mvc.common.util.FileProcess;
 import com.bebeno.mvc.common.util.FileUtil;
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.service.WagleBoardService;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
@@ -61,7 +63,7 @@ public class wagleController {
 			
 			System.out.println(board);
 			System.out.println(board.getContent());
-			
+		
 			return model;
 	}
 	
@@ -74,10 +76,11 @@ public class wagleController {
 	@PostMapping("/wagle_write")
 	public ModelAndView write(ModelAndView model,
 			@ModelAttribute Wagle wagleboard,
+			@ModelAttribute ContentFiles files,
 			@RequestParam("upfiles") MultipartFile upfiles,
 			MultipartHttpServletRequest Request,
 			@SessionAttribute(name = "loginMember") Member loginMember) {
-		
+
 		List<MultipartFile> fileList = Request.getFiles("upfiles");
 		int result = 0;
 
@@ -105,7 +108,33 @@ public class wagleController {
 		}
 		
 		wagleboard.setNo(result);
-//		result = WagleBoardService.save(wagleboard);
+		
+		System.out.println(wagleboard);
+		
+		result = service.save(wagleboard);
+		
+//		for (MultipartFile mf : fileList) {
+//			 if(mf != null && !mf.isEmpty()) {
+//					// 파일을 저장하는 로직 작성
+//					String location = null;
+//					String renamedFileName = null;
+////					String location = request.getSession().getServletContext().getRealPath("resources/upload/shop");
+//
+//					try {
+//						location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
+//						renamedFileName = FileProcess.save(mf, location);
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//					
+//					if(renamedFileName != null) {
+//						files.setNo(wagleboard.getNo());
+//						files.setFile_originalFileName(mf.getOriginalFilename());
+//						files.setFile_renamedFileName(renamedFileName);
+//					}
+//					
+//					service.fileSave(files);
+//			 }
 		
 		
 		if(result > 0) {

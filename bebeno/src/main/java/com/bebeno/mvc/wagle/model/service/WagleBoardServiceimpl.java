@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.dao.WagleBoardMapper;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
@@ -39,26 +40,26 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 	@Transactional
 	public int save(Wagle wagleboard) {
 		
-//		Integer result = 0;
-//		
-//		if(wagleboard.getNo() != 0) {
-//			result = WagleBoardMapper.updateWagleBoard(wagleboard);
-//		}else {
-//			result = WagleBoardMapper.insertWagleBoard(wagleboard);
-//		}
-//		return result;
+		Integer result = 0;
+		
+		if(wagleboard.getNo() != 0) {
+			result = WagleBoardMapper.updateWagleBoard(wagleboard);
+		}else {
+			result = WagleBoardMapper.insertWagleBoard(wagleboard);
+		}
+		return result;
 	}
 
 	@Transactional
 	public Wagle update(long no, String title, String writer, String content) {
-//		Wagle board = null;
+		Wagle board = null;
 //		Optional<Wagle> optional = repository.findById(no);
 //		
 //		if(optional.isPresent()) {
 //			board = optional.get();
 //			board.update(title, writer, content);
 //		}
-//		
+		
 		return board;
 	}
 	
@@ -66,9 +67,20 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 	public Wagle delete(long no) {
 //		
 //		repository.deleteById(no);
-		
+//		
 		return repository.findById(no).orElse(null);
 	}
 
+	@Override
+	public List<WagleFile> findfilesByNo(int no) {
+		
+		return mapper.selectfilesByNo(no);
+	}
 
+	@Override
+	@Transactional
+	public void fileSave(ContentFiles files) {
+
+		mapper.
+	}
 }

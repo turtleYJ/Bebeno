@@ -18,6 +18,8 @@ public interface WagleBoardMapper {
 
 	int updateWagleBoard(Wagle wagleboard);
 
+	int insertWagleBoard(Wagle wagleboard);
+
 	
 	
 

@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상세페이지</title>
 
-    <link rel="stylesheet" href="%{ path }/resources/css_wagle/wagle_view.css">
+    <link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_view.css">
     
     <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 
@@ -23,9 +23,6 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 <body>
-    <header>
-
-    </header>
     <section class="wagle_nav">
         <div class="wagle_buttons">
             <ul class="wagle_btn">
@@ -149,5 +146,5 @@
                 });
             }); 
     </script>
-    <script src="${ path }/wagle_view.js"></script>
+    <script src="${ path }/resources/js/wagle_view.js"></script>
 </html>
