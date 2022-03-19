@@ -77,8 +77,11 @@ public class ShopController {
 	public ModelAndView registration(
 			ModelAndView model, 
 			@SessionAttribute(name = "loginMember") Member loginMember,
-			@ModelAttribute Shop shop, @ModelAttribute ContentFiles file,@RequestParam("upfileFront") MultipartFile upfileFront, int zipCode, MultipartHttpServletRequest mtfRequest
+			@ModelAttribute Shop shop, @ModelAttribute ContentFiles file,@RequestParam("upfileFront") MultipartFile upfileFront, MultipartHttpServletRequest mtfRequest
 			) {
+		
+		// MultipartHttpServletRequest 인터페이스
+		// MultipartHttpServletRequest의 getFiles메소드를 통해 파일들을 List형태로 받을 수 있다.
 		List<MultipartFile> fileList = mtfRequest.getFiles("upfileContent");
 		int result = 0;
 
@@ -107,40 +110,15 @@ public class ShopController {
 			}
 		}
 		
-////		 1. 파일을 업로드 했는지 확인 후 파일을 저장(File객체에 저장)
-//		if(upfileContent != null && !upfileContent.isEmpty()) {
-//			ContentFiles files = new ContentFiles();
-//			// 파일을 저장하는 로직 작성
-//			String location = null;
-//			String renamedFileName = null;
-////			String location = request.getSession().getServletContext().getRealPath("resources/upload/shop");
-//
-//			try {
-//				location = resourceLoader.getResource("resources/upload/shop").getFile().getPath();
-//				renamedFileName = FileProcess.save(upfileContent, location);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			if(renamedFileName != null) {
-//				files.setShopNo(shop.getNo());
-//				files.setFile_originalFileName(upfileContent.getOriginalFilename());
-//				files.setFile_renamedFileName(renamedFileName);
-//			}
-//			
-//			log.info("file : {}", files);
-//		}
-		
-		 
-		
 		// 2. 작성한 게시글 데이터를 데이터 베이스에 저장
 		shop.setWriterNo(loginMember.getNo());
 		
-		System.out.println(zipCode);
 		System.out.println(shop);
 		
 		result = service.save(shop);
 		
+		
+		// 멀티플 파일들을 업로드하고 ContentFiles vo에 저장
 		for (MultipartFile mf : fileList) {
 			 if(mf != null && !mf.isEmpty()) {
 					// 파일을 저장하는 로직 작성
@@ -185,9 +163,6 @@ public class ShopController {
 		
 		Shop shop = service.findShopByNo(no);
 		
-		System.out.println(loginMember);
-		System.out.println(shop);
-		
 		if(shop.getType() == "와인샵") {
 			shop.setType("wineshop");
 		} else if (shop.getType() == "레스토랑") {
@@ -209,27 +184,36 @@ public class ShopController {
 	@PostMapping("/update")
 	public ModelAndView update(ModelAndView model, 
 			@SessionAttribute("loginMember") Member loginMember,
-			@ModelAttribute Shop shop, @RequestParam("upfile") MultipartFile upfile) {
+			@ModelAttribute Shop shop, @ModelAttribute ContentFiles file,@RequestParam("upfileFront") MultipartFile upfileFront, MultipartHttpServletRequest mtfRequest
+			) {
+		List<MultipartFile> newfileList = mtfRequest.getFiles("upfileContent");		
+		List<ContentFiles> exfileList = service.findfilesByNo(shop.getNo());	
 		
-		int result;
+		log.info("newfileList : {}", newfileList.toString());
+		log.info("newfileList.size : {}", newfileList.size());
 		
+		shop.setFiles(exfileList);
+		
+		int result = 0;
+		
+		// 로그인 이용자와 게시물 작성자가 동일하면 특정 location에 기존 파일을 제거하고 파일을 추가하는 로직
 		if (loginMember.getNo() == shop.getWriterNo()) {
-			if(upfile != null && !upfile.isEmpty()) {
+			if(upfileFront != null && !upfileFront.isEmpty()) {
 				String renamedFileName = null;
 				String location = null;
 				
 				try {
-					location = resourceLoader.getResource("resources/upload/board").getFile().getPath();
+					location = resourceLoader.getResource("resources/upload/shop").getFile().getPath();
 					
 					if(shop.getRenamedFileName() != null) {
 						// 이전에 업로드된 첨부파일 삭제
 						FileProcess.delete(location + "/" + shop.getRenamedFileName());
 					}
 					
-					renamedFileName = FileProcess.save(upfile, location);
+					renamedFileName = FileProcess.save(upfileFront, location);
 					
 					if(renamedFileName != null) {
-						shop.setOriginalFileName(upfile.getOriginalFilename());
+						shop.setOriginalFileName(upfileFront.getOriginalFilename());
 						shop.setRenamedFileName(renamedFileName);
 					}
 				} catch (IOException e) {
@@ -239,16 +223,61 @@ public class ShopController {
 			
 			result = service.save(shop);
 			
+			// 새로 들어온 다중파일 리스트들이 존재하면 다음 로직을 실행한다.
+			if(newfileList.get(0).getSize() != 0) {
+				String location = null;
+				String renamedFileName = null;
+				
+				try {
+					location = resourceLoader.getResource("resources/upload/shop").getFile().getPath();
+					
+					
+					// 기존의 ContentFiles객체의 파일들을 지우고 db상에서도 delete하는 로직
+					
+					for(int i = 0; i < shop.getFiles().size(); i++) {
+						FileProcess.delete(location + "/" + shop.getFiles().get(i).getFile_renamedFileName());
+					}
+					service.fileDeleteByStoreNo(shop.getNo());
+					
+					for(MultipartFile mf : newfileList) {
+						// 파일을 특정 location에 리네임파일네임으로 저장하는 로직
+						renamedFileName = FileProcess.save(mf, location);
+						
+						// 파일이 리네임파일네임으로 저장 됐다면 file객체에 담아서 save하는 로직
+						if(renamedFileName != null) {
+							file.setShopNo(shop.getNo());
+							file.setFile_originalFileName(mf.getOriginalFilename());
+							file.setFile_renamedFileName(renamedFileName);
+						}
+						
+						service.fileSave(file);
+					}
+					
+					
+					
+					
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+					
+			}
+			
+			
+			//////////////////////
+			
 			if(result > 0) {
 				model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
-				model.addObject("location", "/board/view?no=" + shop.getNo());
+				model.addObject("location", "/shop/view?no=" + shop.getNo());
 			} else {
 				model.addObject("msg", "게시글 수정을 실패하였습니다.");
-				model.addObject("location", "/board/update?no=" + shop.getNo());
+				model.addObject("location", "/shop/update?no=" + shop.getNo());
 			}
 		} else {
 			model.addObject("msg", "잘못된 접근입니다.");
-			model.addObject("location", "/board/list");
+			model.addObject("location", "/shop/list");
 		}
 		
 		model.setViewName("common/msg");

@@ -118,14 +118,13 @@
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>내용</label>
-	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;">
-	          								</textarea>
+	          								<textarea type="text" id="content" name="content" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
 										</div>
       							    </div>
       							    <div class="form-row">
       							    	<div class="form-group">
 	          								<label>상세 정보</label>
-	          								<textarea type="text" name="Content2" class="form-control" maxlength="2048" style="height: 180px;">
+	          								<textarea type="text" name="content2" class="form-control" maxlength="2048" style="height: 180px;">
 [와인문의]	          								
 	          								
 [이메일]

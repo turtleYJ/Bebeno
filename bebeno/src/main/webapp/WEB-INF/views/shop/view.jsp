@@ -75,36 +75,9 @@
 		        	</c:forEach>		
     
                     <p><br></p>
-                    <p><strong>[와인문의]</strong></p>
-                    <p>전화번호 ) 031. 908. 9632</p>
-                    <p>카카오채팅 ) http://pf.kakao.com/_DsRUT/chat</p>
-                    <p>&nbsp;</p>
-                    <p><strong>[이메일]</strong></p>
-                    <p><a href="mailto:kil@lbwine.com">kil@lbwine.com</a></p>
-                    <p>&nbsp;</p>
-                    <p><strong>[영업일시]</strong></p>
-                    <p>월~금 / 08:30 ~18:00</p><p>토, 일, 공휴일 휴무</p>
-                    <p>&nbsp;</p>
-                    <p><strong>[주소]</strong></p>
-                    <p>경기도 고양시 일산동구 장항로 165</p>
-                    <p>(1층, 장항동)</p><p>&nbsp;</p>
-                    <p><strong>[오시는 길]</strong></p>
-                    <p>1. 3호선 백석역 도보 20분</p>
-                    <p>2. 069 마을버스 → SK 주유소 하차 (도보 5분)</p>
-                    <p>&nbsp;</p>
-                    <p>*주차 가능*</p>							
-                    <p></p>
-                    <br>
-                    <p>
-                    </p>
-                    <p>Fantastic collaboration of meticulous wine information and reasonable price!</p>
-                    <p><br></p>
-                    <p>Ilsan Wine Mecca, which is directly operated by a wine importer and sells high-quality wines at very reasonable prices!</p>
-                    <p><br></p>
-                    <p>We have a wide variety of wines, including first-class wines from Bordeaux, France, organic wines, and value-for-money wines.</p>
-                    <p>We recommend a different concept wine every week, and you can purchase it at a special price of CAVE.</p>
-                    <p><br></p>
-                    <p>CAVE prepares not only wine but also the container in consideration of the environment. Come and visit CAVE and meet our honest wines!<br><br></p>
+                    
+                    <p>${ fn:replace(shop.content2, cn, br)}</p>
+                    
                     <p></p>
                 </div><!--.detail-txt -->
             </div><!--.detail-area -->

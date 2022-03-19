@@ -21,6 +21,9 @@
                 <div class="board_write">
                 	<div class="update_body">
       							<form action="${ pageContext.request.contextPath }/shop/update" method="post" enctype="multipart/form-data">
+      								<input type="hidden" name="no" value="${ shop.no }">
+      								<input type="hidden" name="writerNo" value="${ shop.writerNo }">
+      							
         							<div class="form-row " style="padding-top: 20px">
           								<div class="form-group col-sm-6">
             								<label>한글상호</label>
@@ -89,8 +92,8 @@
 										</div>
       							    </div>
 									<div class="bt_wrap">
-										<button type="submit" onclick="Location.href='${ path }/shop/update]'" class="btn btn-primary">수정하기</button>
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">목록으로</button>
+										<button type="submit" onclick="location.href='${ path }/shop/update'" class="btn btn-primary">수정하기</button>
+										<button type="button" onclick="location.href='${ path }/shop/list'" class="btn btn-secondary">목록으로</button>
 									</div>
 								</form>
 							</div>

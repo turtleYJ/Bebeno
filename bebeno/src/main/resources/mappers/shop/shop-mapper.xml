@@ -98,6 +98,7 @@
 			STORE_TYPE,
 			STORE_STATUS,
 			STORE_CONTENT,
+			STORE_CONTENT2,
 			ORIGINAL_FILENAME,
 			RENAMED_FILENAME,
 			ENROLL_DATE,
@@ -115,6 +116,7 @@
 			#{type},
 			DEFAULT,
 			#{content},
+			#{content2},
 			#{originalFileName},
 			#{renamedFileName},
 			DEFAULT,
@@ -136,4 +138,51 @@
 			#{file_renamedFileName}
 		)
 	</insert>
+	
+	<update id="updateShop" parameterType="Shop">
+       	UPDATE BBN_STORE
+       	<trim prefix="SET" suffixOverrides=",">
+    	    <if test="korBname != null">
+		 		STORE_KORNAME = #{korBname},
+	 		</if>
+    	    <if test="engBname != null">
+		 		STORE_ENGNAME = #{engBname},
+	 		</if>
+    	    <if test="zipCode != null">
+		 		STORE_ZIPCODE = #{zipCode},
+	 		</if>
+    	    <if test="address1 != null">
+		 		STORE_ADDRESS1 = #{address1},
+	 		</if>
+    	    <if test="address2 != null">
+		 		STORE_ADDRESS2 = #{address2},
+	 		</if>
+	 		<if test="phone != null">
+		 		STORE_PHONE = #{phone},
+	 		</if>
+	 		<if test="type != null">
+		 		STORE_TYPE = #{type},
+	 		</if>
+	 		<if test="content != null">
+		 		STORE_CONTENT = #{content},
+	 		</if>
+	 		<if test="content2 != null">
+		 		STORE_CONTENT2 = #{content2},
+	 		</if>
+	 		<if test="originalFileName != null">
+		 		ORIGINAL_FILENAME = #{originalFileName},
+	 		</if>
+	 		<if test="renamedFileName != null">
+		 		RENAMED_FILENAME = #{renamedFileName},
+	 		</if>
+		 	MODIFY_DATE = SYSDATE 
+       	</trim>
+	 	WHERE 
+	 		STORE_NO = #{no}
+	</update>
+	
+	<delete id="fileDeleteByStoreNo">
+		DELETE FROM STORE_FILE
+		WHERE STORE_NO = #{no}
+	</delete>
 </mapper>
