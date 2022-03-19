@@ -37,7 +37,7 @@ public class CartController {
 		cart.setId(member.getId());
 		
 		
-		map.put("result", service.addCart(cart)) ;
+		map.put("result", service.addCart(cart));
 
 		System.out.println(cart);
 		
@@ -58,15 +58,6 @@ public class CartController {
 		
 		model.addAttribute("cartList", cartList);
 	}
-	
-
-	@GetMapping("/payment/orderPage")
-	public String orderPage() {
-		
-		return "/payment/orderPage";
-		
-	}
-	
 	
 }
 
