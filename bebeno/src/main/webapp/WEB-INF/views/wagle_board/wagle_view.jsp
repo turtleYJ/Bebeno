@@ -57,10 +57,6 @@
         </div>
         <div class="writer_info">
         
-        	<!-- 
-        		ajax사용을 위하여 wagle게시글 번호(no) 값 hidden으로 작성 
-            <input type="hidden" name="no" id="wagleNo" value="${wagleboard.no}">
-        	-->
             <div class="member_profile_img" th:src="${ member.profile_pic }">
                 <!-- 작성목록 -->
                 <a href="">
@@ -97,6 +93,7 @@
 	            <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
 	            <button class="th_btn" type="button" id="btnDelete">삭제</button>
 	            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
+	            <!-- 스크랩 post로 전송하는 form -->
 	            <form action="${ path }/mypage/scrap" method="post" >
 	            	<input type="hidden" name="wagleNo" id="wagleNo" value="${wagleboard.no}">
 		            <button class="th_btn" type="submit" id="scrapBtn" th:onclick="">스크랩</button>
@@ -154,39 +151,6 @@
             }
         });
 	});
-        
-    /* 
-    	스크랩 관련 ajax -- 스크랩 DB저장 방법 1(저장은 되나 응답 설정이 어려워 중지) 
-	
-    $(document).ready(() => {
-    		
-		$("#scrapBtn").on("click", () => {
-	    			
-			let wagleNo = $("#wagleNo").val().trim();
-		    			
-		    $.ajax({
-		    				
-		    	type: "post",
-		    	url: "${ pageContext.request.contextPath }/mypage/scrap",
-		    	dataType: "json",
-		    				
-		    	data: {
-		    		wagleNo	
-		    	},
-		    				
-		    	success: (data) => {
-		    		console.log(data)
-		    		alert("스크랩이 되었습니다")
-		    	},
-		    				
-		    	error: (error) => {
-		    		console.log(error);
-		    	}				
-		    });
-    	});		
-    });
-    
-    */
 </script>
 <script src="${ path }/resources/js/wagle_view.js"></script>
 </html>

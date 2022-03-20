@@ -80,7 +80,7 @@
 		<result property="wagleBoardNo" column="WAGLE_NO"/>
 		<result property="wagleWriterNo" column="WRITER_NO"/>
 		<result property="wagleBoardTitle" column="WAGLE_TITLE"/>
-		<result property="WagleBoardRNameFile" column="RENAMED_FILENAME"/>
+		<result property="wagleBoardRNameFile" column="RENAMED_FILENAME"/>
 	</resultMap>
 	
 	<!--  					 
@@ -178,6 +178,27 @@
 		WHERE WAGLE_NO = #{no}
 	</select>
 	
+	<select id="getScrapWBNoByNo" parameterType="_int" resultType="_integer">
+		SELECT WAGLE_NO
+		FROM SCRAP
+		WHERE WAGLE_NO = #{wagleBoardNo}	
+	</select>
+	
+	<!-- 스크랩 리스트 만들기 관련 매퍼 -->
+	<select id="scrapList" parameterType="map" resultMap="scrapResultMap">
+		SELECT
+		    S.SCRAP_NO,
+		    M.ID,
+		    WB.WAGLE_NO, WB.WRITER_NO, WB.WAGLE_TITLE, WB.RENAMED_FILENAME
+		FROM SCRAP S
+		LEFT JOIN MEMBER M
+		    ON S.ID = M.ID
+		LEFT JOIN WAGLE_BOARD WB
+		    ON S.WAGLE_NO = WB.WAGLE_NO
+		WHERE M.ID = #{id}
+		ORDER BY S.SCRAP_NO DESC
+	</select>
+	
 	<insert id="insertScrap" parameterType="Scrap" 
 			useGeneratedKeys="true" keyColumn="SCRAP_NO" keyProperty="scrapNo">
 		INSERT INTO SCRAP (
@@ -191,4 +212,8 @@
 		)		
 	</insert>
 	
+	<delete id="scrapDelete" parameterType="_int">
+		DELETE FROM SCRAP
+		WHERE WAGLE_NO = #{wagleBoardNo}
+	</delete>
 </mapper>

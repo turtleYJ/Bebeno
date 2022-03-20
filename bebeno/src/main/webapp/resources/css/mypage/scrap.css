@@ -93,12 +93,26 @@
     grid-row-gap: 20px;
 }
 
+/* 스크랩 된 게시글 삭제(마이페이지_스크랩) */
+.deleteScrapBtn {	
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 15px;
+    right: 1px;	
+}
+
+.delScrapBtn {
+	font-size: 12px;
+    color: #fff;
+}
+
 .scrap {
 	overflow: hidden;
     box-shadow: -1px 3px 8px -1px rgb(0 0 0 / 10%);
     border-radius: 4px;
     position: relative;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .scrap img {

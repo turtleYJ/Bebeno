@@ -38,8 +38,12 @@ public interface MyPageMapper {
 	// 스크랩 DB에 저장
 	int insertScrap(Scrap scrapVo);
 
+	Integer getScrapWBNoByNo(int wagleBoardNo);
 
+	// 스크랩한 게시글 리스트 가져오기
+	List<Scrap> scrapList(@Param("id") String id);
 
-	// 스크랩 페이징 관련 매퍼
-//	List<Scrap> scrapPaging(RowBounds rowBounds, @Param("id") String id);
+	// 스크랩 게시글 삭제 
+	int scrapDelete(@Param("wagleBoardNo") int wagleBoardNo);
+
 }

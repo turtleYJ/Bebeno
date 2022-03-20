@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -234,25 +235,23 @@ public class MyPageController {
 			ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember) {
 		
-		List<Scrap> scrapList = null;
 		
 		log.info("로그인 아이디 : {}", loginMember.getId());
 		
+		List<Scrap> scrapList = service.scrapList(loginMember.getId());
+		
+		log.info("{}", scrapList.toString());		
+		
+		
 		// 회원의 id값으로 스크랩한 리스트의 개수 가져오기
-		
-		
-
-		
+				
 		
 		// 1. 스크랩을 했을 때 -> 데이터 insert
 		
 		
 		// 2. 스크랩을 취소 했을 때 -> 데이터 delete
 		
-		
-		
-//		model.addObject("pageInfo", pageInfo);
-//		model.addObject("scrapList", scrapList);
+		model.addObject("scrapList", scrapList);
 		
 		model.setViewName("/mypage/scrap");
 		
@@ -271,24 +270,28 @@ public class MyPageController {
 		
 		int result = 0;
 		
-		// 게시판 번호로 조회해 오기
+		// 1. 게시판 번호로 조회해 scrapVo에 주입
 		Scrap scrapVo = service.getWagleBoardByNo(no);
-		// 로그인 회원의 id값을 scrapVo에 주입
+		// 2. 로그인 회원의 id값을 scrapVo에 주입
 		scrapVo.setId(loginMember.getId());
 		
 		log.info("{}", scrapVo.toString());
 		
+	// ---------------------------------------------------------------
+		
 		// DB(Scrap테이블)에 저장
+		// scrapVo에는 id, wagleBoardNo, wagleWriterNo, 
+		//            wagleBoardTitle, wagleBoardRNameFile 값이 들어있음
 		result = service.saveScrap(scrapVo);
 		
 		// 
 		
 		if(result > 0) {
 			model.addObject("msg", "스크랩이 되었습니다.");
-			model.addObject("location", "/mypage/scrap");
+			model.addObject("location", "/wagle_board/wagle_view?no=" + scrapVo.getWagleBoardNo());
 			model.setViewName("common/msg");
 		} else {
-			model.addObject("msg", "스크랩을 실패하였습니다.");
+			model.addObject("msg", "이미 스크랩 된 게시글입니다.");
 			model.addObject("location", "/mypage/scrap");
 			model.setViewName("common/msg");
 		}
@@ -296,7 +299,31 @@ public class MyPageController {
 		return model;
 	}
 	
+	// -------------------------------------------
 	
+	@PostMapping("/scrapDelete")
+	public ModelAndView scrapDelete(
+			ModelAndView model,
+			@RequestParam("wagleBoardNo") int wagleBoardNo) {
+		
+		int result = 0;
+		
+		log.info("지우고자 하는 scrap 게시글의 번호 : {}", wagleBoardNo);
+		
+		result = service.scrapDelete(wagleBoardNo);
+		
+		if(result > 0) {
+			model.addObject("msg", "스크랩이 삭제되었습니다.");
+			model.addObject("location", "/mypage/scrap");
+			model.setViewName("common/msg");
+		} else {
+			model.addObject("msg", "오류 발생");
+			model.addObject("location", "/mypage/scrap");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
 	
 	
 // ==================================================================

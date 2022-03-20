@@ -39,23 +39,35 @@
 
 <!-- ================================================================================================ -->
 
-    <form id="update-profile">
-
         <div class="mypage-input-box">
             
             <div class="scraps">
-                <!-- 
-                    <c:forEach var="scrap" items="${ scrapList }" begin="0" end="3">
-                        
-                        <div class="scrap">
-		            		<a href="${ pageContext.request.contextPath }/spot/spotDetail?no=${ spot.no }">
-		            			<img src="${ pageContext.request.contextPath }${ spot.imgPath }${ spot.no }.png" alt="스크랩이미지">
-		            		</a>
-		            		<div class="scrap-title">${ spot.content }</div>
-		            	</div>
-                        
-                    </c:forEach> 
-                -->
+
+				<c:forEach var="scrap" items="${ scrapList }">
+					
+					<div class="scrap">
+						<!-- 스크랩한 게시글을 삭제하기 위한 form -->
+						<form action="${ path }/mypage/scrapDelete" method="post">
+							<div class="deleteScrapBtn">
+								<input type="hidden" name="wagleBoardNo" id="wagleBoardNo" 
+										value="${scrap.wagleBoardNo}">
+		                    	<button type="submit" class="delScrapBtn" id="delScrapBtn">삭제</button>
+		                	</div>
+						</form>
+		            	<a href="${ path }/wagle_board/wagle_view?no=${ scrap.wagleBoardNo }">
+		            	    <!-- 
+		            	    	a태그는 인라인 요소로 안에 블록 요소인 div태그를 쓰는 것을 권장하지 않는다.
+		            	    	대신 section태그를 쓸 수 있다. 
+		            	    -->
+			            		<img src="${ path }/resources/upload/wagle/${ scrap.wagleBoardRNameFile }" alt="스크랩이미지">
+				            	<div class="scrap-title">${ scrap.wagleBoardTitle }</div>
+		            	</a>
+		            	
+		        	</div>
+				</c:forEach>
+
+
+         <!-- ================================== 테스트용 ================================== -->   	
                 
                 <c:forEach begin="0" end="3">
                         
@@ -67,6 +79,8 @@
 	            	</div>
                        
                 </c:forEach>  
+            	
+         <!-- ================================== 테스트용 ================================== -->   	
             	
             	<div class="scrap">
             		<a>
@@ -102,38 +116,47 @@
             	
             </div>
             
-           	<div id="pageBar">
-				<!-- 맨 처음으로 -->
-				<button onclick="location.href='${ path }/board/list?page=1'">&lt;&lt;</button>
-			
-				<!-- 이전 페이지로 -->
-				<button onclick="location.href='${ path }/board/list?page=${ pageInfo.prevPage }'">&lt;</button>
-			
-				<!--  10개 페이지 목록 -->
-				<c:forEach begin="${ pageInfo.startPage }" end="${ pageInfo.endPage }" varStatus="status">
-				
-					<c:if test="${ status.current == pageInfo.currentPage }">
-						<button disabled>${ status.current }</button>				
-					</c:if>
-					
-					<c:if test="${ status.current != pageInfo.currentPage }">
-						<button onclick="location.href='${ path }/board/list?page=${ status.current }&count=${ pageInfo.listLimit }'">${ status.current }</button>				
-					</c:if>		
-					
-				</c:forEach>
-				
-			
-				<!-- 다음 페이지로 -->
-				<button onclick="location.href='${ path }/board/list?page=${ pageInfo.nextPage }'">&gt;</button>
-			
-				<!-- 맨 끝으로 -->
-				<button onclick="location.href='${ path }/board/list?page=${ pageInfo.maxPage }'">&gt;&gt;</button>
-			</div>
-            
         </div>
 
-    </form>
 </section>
+
+<script>
+
+	/* $(document).ready(() => {
+		
+		$("#delScrapBtn").on("click", () => {
+			
+			let wagleBoardNo = $("#wagleBoardNo").val().trim();
+			
+			$.ajax({
+				
+				type: "post",
+				url: "${ pageContext.request.contextPath }/mypage/scrapDelete",
+				dataType: "json",
+				
+				data: {
+					wagleBoardNo	
+				},
+				
+				success: (result) => {
+					console.log(result)
+					
+					if(result > 0) {
+						alert("스크랩이 삭제되었습니다.");
+					} else {
+						alert("오류 발생");
+					}
+					
+				},
+				
+				error: (error) => {
+					console.log(error);
+				}				
+			});
+		}); */		
+	});
+
+</script>
 
 </body>
 </html>
