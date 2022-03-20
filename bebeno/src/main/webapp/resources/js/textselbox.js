@@ -71,20 +71,7 @@ function uncomma(str) {
 	return str.replace(/[^\d]+/g, '');
 }
 
-// input 태그에 '원' 붙이는 함수 
-$(document).on("focusout", "input:text[koreanCurrency]", function()	{
-	$(this).val( $(this).val().replace(",","") );
-	$(this).val( $(this).val().replace(/[^-\.0-9]/gi,"") );
-	$(this).val( $(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") );
-	if($(this).val() != '' ) {
-		$(this).val( $(this).val()+'원');
-	}		
-});
 
-// 입력창에서 떼면 보여지게 해주는 함수  
-$(document).on("focus", "input:text[koreanCurrency]", function()	{	
-	$(this).val( $(this).val().replace("원", ""));
-});
 
 
 

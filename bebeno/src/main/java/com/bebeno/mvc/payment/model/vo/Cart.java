@@ -21,6 +21,8 @@ public class Cart {
 	
 	private String id;
 	
+	private String amount;
+	
 	private Date addDate;
 	
 	private String renamedFileName;

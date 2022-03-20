@@ -10,7 +10,7 @@ import oracle.sql.DATE;
 @NoArgsConstructor
 public class Order {
 	   
-	private String orderId;
+	private int orderId;
 	
 	private String id;
 	

@@ -55,7 +55,27 @@
 					
 							
 	</insert>
+
+		<insert id="addOrder" parameterType="Cart">
+		insert into cart (
+					ID,
+					WINE_BNO,
+					CART_ID,
+					CART_QTY,
+					AMOUNT
+					) values (
+					#{id},
+					#{wine_bno},
+					SEQ_CART_NO.NEXTVAL,
+					#{cart_qty},
+					#{amount}
+					)
+									
+	</insert>
 	
+	<delete id="removeCart">
+	   DELETE FROM CART WHERE ID=#{id} AND WINE_BNO=#{wine_bno}
+	</delete>
 	
 	
   </mapper>

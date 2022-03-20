@@ -54,11 +54,10 @@
                         <dd class="wine-name-en">${wineboard.wineEng}</dd>
                     </dl>
                     <p class="wine-price">
-                        <strong>${wineboard.winePrice}</strong>      
+                        <strong>${wineboard.winePrice} 원</strong>      
                     </p>
                     <p>
                         <select name="amount">
-                        	<option value="" selected>수량 선택</option>
                         	<option value="1">1</option>
                         	<option value="2">2</option>
                         	<option value="3">3</option>
@@ -152,6 +151,7 @@
 				                      success : function(result){
 				                       alert("카트 담기 성공");
 				                       $(".numBox").val("1");
+				                       location.replace("${path}/payment/cart");
 				                      },
 				                      error : function(){
 				                       alert("카트 담기 실패");
@@ -183,15 +183,16 @@
 				                    	   cart_qty : cartqty
 				                       };
 				                     $.ajax({
-				                         url : "${path}/wineView/addCart",
+				                         url : "${path}/cart/addOrder",
 				                         type : "post",
 				                         data : data,
 				                         success : function(result){
-				                         
+				                        alert("결제페이지로 이동합니다.");
 				                          $(".numBox").val("1");
+				                          location.replace("${path}/payment/orderPage");
 				                         },
 					                      error : function(){
-						                  alert("카트 담기 실패");
+						                  alert("통신실패.. ");
 						                  console.log(wineBno);
 						                  console.log(cartqty);
 						                  console.log(renamedFileName);
