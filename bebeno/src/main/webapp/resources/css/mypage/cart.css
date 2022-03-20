@@ -67,7 +67,7 @@
         float: left;
     }
     .basketdiv .row > .subdiv:nth-child(1) {
-        width: 50%;
+        width: 100%;
     }
     .basketdiv .row > .subdiv:nth-child(2) {
         width: 40%;

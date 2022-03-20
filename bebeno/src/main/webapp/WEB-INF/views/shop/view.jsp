@@ -128,7 +128,7 @@
 		
 		// 버튼을 누르면
         // transform: translate(-100vw)
-
+		// 슬라이드 기능 구현
         document.querySelector('.버튼1').addEventListener('click', function() {
             document.querySelector('.img_container').style.transform = 'translate(0vw)';
         })

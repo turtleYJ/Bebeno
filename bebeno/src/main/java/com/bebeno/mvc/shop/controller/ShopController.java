@@ -322,7 +322,21 @@ public class ShopController {
 	public ModelAndView findWine(ModelAndView model, String wineKind, String nation, String wineKeyword) {
 		List<WineBoard> wineList = null;
 		
+		if(wineKind == "") {
+			wineKind = null;
+		} 
+		if(nation == "") {
+			nation = null;
+		}
+		if(wineKeyword == "") {
+			wineKeyword = null;
+		} 
+		
 		wineList = wineService.findWineListOnShop(wineKind, nation, wineKeyword);
+		
+		log.info("wineKind Name : {}", wineKind);
+		log.info("nation Name : {}", nation);
+		log.info("wineKeyword Name : {}", wineKeyword);
 		
 		model.addObject("wineList", wineList);
 		model.setViewName("shop/wineSearch");

@@ -176,22 +176,56 @@
 	</select>
 	
 	<select id="findWineListOnShop" parameterType="map" resultMap="wineBoardListResultMap">
-	<include refid="wineBoardListSql"></include>	
-	<choose>
-		<when test="wineKind != null">
-			OR W.WINE_TYPE LIKE '%' || #{shKeyword1} || '%'
-		</when>
-		<when test="nation != null">
-			OR W.WINE_MF LIKE '%' || #{shKeyword1} || '%'
-		</when>
-		<when test="wineKeyword != null">
-			AND W.WINE_NAME LIKE '%' || #{shKeyword1} || '%'
-			OR W.WINE_ENG LIKE '%' || #{shKeyword1} || '%'
-			OR W.WINE_TYPE LIKE '%' || #{shKeyword1} || '%'
-			OR W.WINE_MF LIKE '%' || #{shKeyword1} || '%'
-		</when>
-	</choose>
-	
+	SELECT  WINE_BNO,
+			WINE_CODE,
+			WINE_NAME,
+			WINE_ENG,
+			WINE_TYPE,
+			WINE_MF,
+			WINE_NATIONAL,
+            WINE_PRICE,
+			ORIGINAL_FILENAME,
+			RENAMED_FILENAME,
+			WINE_SL,
+			WINE_AC,
+			WINE_BODY,
+			WINE_TN,
+			WINE_INFO,
+			READCOUNT,
+			AMOUNT,
+			CREATE_DATE,	
+			MODIFY_DATE
+	FROM (SELECT  W.WINE_BNO,
+			W.WINE_CODE,
+			W.WINE_NAME,
+			W.WINE_ENG,
+			W.WINE_TYPE,
+			W.WINE_MF,
+			W.WINE_NATIONAL,
+			W.WINE_PRICE,
+			W.ORIGINAL_FILENAME,
+			W.RENAMED_FILENAME,
+			W.WINE_SL,
+			W.WINE_AC,
+			W.WINE_BODY,
+			W.WINE_TN,
+			W.WINE_INFO,
+			W.READCOUNT,
+			W.AMOUNT,
+			W.CREATE_DATE,	
+			W.MODIFY_DATE
+	FROM BEBENO_WINEBOARD W
+	WHERE W.STATUS = 'Y'
+		<if test="wineKind != null">
+			AND W.WINE_TYPE = #{wineKind}
+		</if>
+		<if test="nation != null">
+			AND W.WINE_MF = #{nation}
+		</if>)
+		<if test="wineKeyword != null">
+			WHERE WINE_NAME LIKE '%' || #{wineKeyword} || '%'
+			OR WINE_ENG LIKE '%' || #{wineKeyword} || '%'
+		</if>	
 	ORDER BY WINE_BNO DESC
 	</select>
  	

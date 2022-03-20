@@ -36,7 +36,6 @@ public class CartController {
 		Member member = (Member)session.getAttribute("loginMember");
 		cart.setId(member.getId());
 		
-		
 		map.put("result", service.addCart(cart)) ;
 
 		System.out.println(cart);
