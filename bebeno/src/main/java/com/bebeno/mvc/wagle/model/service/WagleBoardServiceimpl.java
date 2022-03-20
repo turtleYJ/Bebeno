@@ -1,14 +1,18 @@
 package com.bebeno.mvc.wagle.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.dao.WagleBoardMapper;
+import com.bebeno.mvc.wagle.model.vo.Reply;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
 
@@ -83,4 +87,18 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 
 		mapper.
 	}
+
+		@Override
+		@Transactional
+		public int saveReply(Member member, Reply reply) {
+			
+			Map<Object, Object> map = new HashMap<Object, Object>();
+			
+			map.put("WagleNo", reply.getWagleNo());
+			map.put("writerNo", member.getNo());
+			map.put("writerId", member.getId());
+			
+			return mapper.insertReply(map);
+		}
+
 }

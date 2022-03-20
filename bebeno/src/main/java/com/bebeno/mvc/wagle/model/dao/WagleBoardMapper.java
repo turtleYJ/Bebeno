@@ -1,9 +1,11 @@
 package com.bebeno.mvc.wagle.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.bebeno.mvc.wagle.model.vo.Reply;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
 
@@ -19,8 +21,15 @@ public interface WagleBoardMapper {
 	int updateWagleBoard(Wagle wagleboard);
 
 	int insertWagleBoard(Wagle wagleboard);
-
 	
+	int insertReply(Map<Object, Object> map);
 	
+	int deleteReply(int no);
 
+	int updateReply(Map<Object, Object> map);
+
+	int getReplyCount(int no);
+	
+	Reply selectReplyByNo(int no);
+	
 }

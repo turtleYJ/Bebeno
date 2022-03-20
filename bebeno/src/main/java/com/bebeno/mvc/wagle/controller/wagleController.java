@@ -21,6 +21,7 @@ import com.bebeno.mvc.common.util.FileUtil;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.service.WagleBoardService;
+import com.bebeno.mvc.wagle.model.vo.Reply;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
 import com.bebeno.mvc.wineboard.model.vo.WineBoard;
@@ -197,4 +198,33 @@ public class wagleController {
 		
 		return model;
 	}
+	
+	@RequestMapping("/reply")
+	public ModelAndView writeReply(ModelAndView model, @ModelAttribute Wagle wagleboard, @SessionAttribute("loginMember") Member member, Reply reply) {
+		
+		int result = 0;
+
+		reply.setWagleNo(wagleboard.getNo());
+		reply.setWriterNo(member.getNo());
+		reply.setWriterId(member.getId());
+		
+		int boardNo = reply.getWagleNo();
+
+		result = service.saveReply(member, reply);
+		
+		if(result > 0) {
+			model.addObject("msg", "댓글 등록 완료!");
+			model.addObject("location", "/board/view?no=" + boardNo);
+		} else {
+			model.addObject("msg", "댓글 등록 실패!");
+			model.addObject("location", "/board/view?no=" + boardNo);	
+			
+		}
+		
+		model.setViewName("/common/msg");
+		
+		return model;
+	}
+	
+
 }
