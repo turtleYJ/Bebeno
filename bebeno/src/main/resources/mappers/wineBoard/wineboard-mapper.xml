@@ -174,6 +174,26 @@
 	
 	ORDER BY WINE_BNO DESC
 	</select>
+	
+	<select id="findWineListOnShop" parameterType="map" resultMap="wineBoardListResultMap">
+	<include refid="wineBoardListSql"></include>	
+	<choose>
+		<when test="wineKind != null">
+			OR W.WINE_TYPE LIKE '%' || #{shKeyword1} || '%'
+		</when>
+		<when test="nation != null">
+			OR W.WINE_MF LIKE '%' || #{shKeyword1} || '%'
+		</when>
+		<when test="wineKeyword != null">
+			AND W.WINE_NAME LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_ENG LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_TYPE LIKE '%' || #{shKeyword1} || '%'
+			OR W.WINE_MF LIKE '%' || #{shKeyword1} || '%'
+		</when>
+	</choose>
+	
+	ORDER BY WINE_BNO DESC
+	</select>
  	
  	
  	<select id="findAll" parameterType="map" resultMap="wineBoardListResultMap">

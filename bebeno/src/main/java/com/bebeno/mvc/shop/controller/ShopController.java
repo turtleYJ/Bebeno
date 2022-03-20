@@ -21,6 +21,8 @@ import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.service.ShopService;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.wineboard.model.service.WineBoardService;
+import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopController {
 	@Autowired
 	private ShopService service;
+	
+	@Autowired
+	private WineBoardService wineService;
 	
 	@Autowired
 	private ResourceLoader resourceLoader;
@@ -309,6 +314,18 @@ public class ShopController {
 		}
 		
 		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	@GetMapping("/findWine")
+	public ModelAndView findWine(ModelAndView model, String wineKind, String nation, String wineKeyword) {
+		List<WineBoard> wineList = null;
+		
+		wineList = wineService.findWineListOnShop(wineKind, nation, wineKeyword);
+		
+		model.addObject("wineList", wineList);
+		model.setViewName("shop/wineSearch");
 		
 		return model;
 	}
