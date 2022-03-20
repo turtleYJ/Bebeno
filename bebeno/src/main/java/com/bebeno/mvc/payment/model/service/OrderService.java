@@ -7,8 +7,10 @@ import com.bebeno.mvc.payment.model.vo.OrderList;
 
 public interface OrderService {
 
-	public int addOrder(Order order);
+	public int orderResult(Order order);
+
+	public List<OrderList> getPaymentList(String id);
+
 	
-	public List<OrderList> orderList(String id);
 
 }

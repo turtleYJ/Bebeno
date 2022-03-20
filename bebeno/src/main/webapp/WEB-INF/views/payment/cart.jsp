@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
-
 </head>
 <body>
 
@@ -103,7 +102,7 @@
                 <div id="goorder" class="">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <button class="btn btn-default order_btn">주문하기</button>
+                        <button type="button" class="btn btn-default order_btn">주문하기</button>
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
@@ -123,20 +122,20 @@
 		// orderlist 담기 
         $(".order_btn").click(function(){
               
-              var cartId= ${list.cart_id};
+              var wineBno=${list.wineBno};
               var wineName = $("#wineName").val();
               var cartqty = $(".numBox").val();
               var renamedFileName= $("#image").attr("src");
              
-           if(cartId == 1){
-        	   cartId=1;
+           if(wineBno == 1){
+        	   wineBno=1;
            }else{
-        	   cartId=${list.cart_id};
+        	   wineBno=${list.wineBno};
            }
            
-             console.log(cartId);
+             console.log(wineBno);
               var data = {
-            	cartId : cart_id,
+            	wine_bno : wineBno,
             	cart_qty : cartqty
 
                 };
@@ -149,7 +148,7 @@
                   },
                   error : function(){
                    alert("실패");
-                   console.log(cartId);
+                   console.log(wineBno);
                    console.log(wineName);
                    console.log(cartqty);
                    console.log(renamedFileName);
@@ -157,6 +156,8 @@
                  });
               
                 });
+	
+  
 	</script>
 
 

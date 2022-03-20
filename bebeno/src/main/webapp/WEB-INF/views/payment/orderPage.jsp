@@ -21,8 +21,9 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.3.min.js" type="application/javascript"></script>
-
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -118,47 +119,57 @@
 				</label>
 			</div>
 			<div>
-				<button type="button" class="btn btn-primary" id="btn-kakaopay">결제하기</button>				
+				<button type="button" class="btn btn-primary" id="btn-kakaopay" onclick="requestPay()">결제하기</button>				
 				<a href="${path}/payment/cart"><button class="btn btn-default back_btn">돌아가기</button></a>
 			</div>
 		</div>
 	</div>
 	
 	<script>
-	BootPay.request({
-		price: '100', 
-		application_id: "6235ab1c2701800021f67e68",
-		name: '블링블링 마스카라', //결제창에서 보여질 이름
-		pg: 'inicis',
-		method: 'kakao', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
-		show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
-		items: [
-			{
-				item_name: '나는 아이템', //상품명
-				qty: 1, //수량
-				price: 1000, //상품 단가
-			}
-		],
-		user_info: {
-			username: '사용자 이름',
-			email: '사용자 이메일',
-			phone: '010-1234-4567'
-		},
-		order_id: '고유order_id_1234', 
-	}).error(function (data) {
-		
-		console.log(data);
-	}).cancel(function (data) {
-		
-		console.log(data);
-	}).close(function (data) {
-	    
-	    console.log(data);
-	}).done(function (data) {
 	
-		console.log(data);
-	});
+	// import 결제 api 
 	
+    IMP.init('imp93088520');
+
+    function requestPay() {
+      // IMP.request_pay(param, callback) 결제창 호출
+      IMP.request_pay({ // param
+          pg: "html5_inicis",
+          pay_method: "card",
+          order_id: "${orderList.orderId}",
+          name: "${orderList.name}",
+          amount: "${orderList.winePrice}",
+          buyer_name: "bebeno",
+          buyer_email: "bebeno@bebeno.com",
+          buyer_tel: "010-4242-4242",
+      }, function (rsp) { // callback
+          if (rsp.success) {
+             	console.log("ajax 이전");
+             	$.ajax({
+	        		url: "${path}/payment/orderResult",
+	        		type: "post",
+     		    beforeSend : function(xhr) {
+     		    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+     		    },
+	        		data: {
+	        			wine_bno : ${orderList.wineBno},
+	        			wine_name : '${orderList.wineName}',
+	        			wine_price : '${orderList.winePrice}',
+	        			order_id : '${orderList.orderID}'
+	        		},
+	        		dataType: "text",
+	        		success: function(){
+			        	alert("결제가 완료되었습니다.");
+			        	location.href = "${path}/payment/orderResult";
+	        		}
+	        	});
+	        	console.log("ajax 이후");
+	        } else { // 실패시 실행문
+	        	alert("결제가 취소되었습니다.");
+	    		location.href = "${path}/payment/cart";
+	        }
+	    });
+	}
 	</script>
    
      

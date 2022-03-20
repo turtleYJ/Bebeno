@@ -1,19 +1,19 @@
 package com.bebeno.mvc.payment.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.payment.model.service.CartService;
 import com.bebeno.mvc.payment.model.service.OrderService;
 import com.bebeno.mvc.payment.model.vo.Order;
 import com.bebeno.mvc.payment.model.vo.OrderList;
@@ -22,34 +22,78 @@ import com.bebeno.mvc.payment.model.vo.OrderList;
 public class OrderController {
 
 	@Autowired
-	private OrderService service;
+	private OrderService orderservice;
 	
+	@Autowired
+	private CartService cartservice;
+	
+	
+	@GetMapping("/payment/orderPage") 
+	public String orderPage(HttpSession session, Model model) {
+		
+		Member member = (Member)session.getAttribute("loginMember");
+		String id = member.getId();
+	
+		List<OrderList> orderList = orderservice.getPaymentList(id);
+		
+		model.addAttribute("orderList", orderList);
+		
+	
+		return "/payment/orderPage";
+		
+	}
 	
 	@ResponseBody
-	@RequestMapping(value="/cart/addOrder", method = RequestMethod.POST)
-	public Map<String, Integer> addOrder (Order order, HttpSession session) {
-		Map<String, Integer> map = new HashMap<>();
+	@PostMapping("/payment/orderResult")
+	public String orderResult(Order order, @RequestParam("wineBno") int wineBno, HttpSession session) throws Exception {
+		
 		Member member = (Member)session.getAttribute("loginMember");
 		order.setId(member.getId());
 		
-		map.put("result", service.addOrder(order));
+		orderservice.orderResult(order);
+		cartservice.removeCart(member, wineBno);
 		
-		System.out.println(order);
-		
-		return map;
-				
+
+		return "/payment/orderResult";
 	}
 	
-	@RequestMapping(value ="/payment/orderPage", method = RequestMethod.GET)
-	public void getOrderList (HttpSession session, Model model) {
-		
-		Member member = (Member)session.getAttribute("loginMember");
-		
-		System.out.println(member);
-		String id = member.getId();
-		
-		List<OrderList> orderList = service.orderList(id);
-		
-		model.addAttribute("orderList", orderList);
-	}
+//	@GetMapping("/mypage/profile")
+//	public String myOrderList(Principal principal, Model model) {
+//		String id = principal.getName();
+//		
+//		List<Order> paymentList = orderservice.getPaymentList(id);
+//		
+//		model.addAttribute("id", id);
+//		model.addAttribute("paymentList",paymentList);
+//		
+//		return "/mypage/profile";
+//		
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
 }
