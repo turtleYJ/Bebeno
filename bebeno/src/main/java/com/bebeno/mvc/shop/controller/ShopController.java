@@ -285,4 +285,32 @@ public class ShopController {
 		return model;
 	}
 	
+	@GetMapping("/delete")
+	public ModelAndView delete(ModelAndView model,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("no")int no) {
+		
+		int result = 0;
+		Shop shop = service.findShopByNo(no);
+		
+		if(shop.getWriterNo() == loginMember.getNo()) {
+			result = service.delete(shop.getNo());
+			
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+				model.addObject("location", "/shop/list");
+			} else {
+				model.addObject("msg", "게시글 삭제를 실패하였습니다.");
+				model.addObject("location", "/shop/view?no=" + shop.getNo());
+			}
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/shop/list");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
 }

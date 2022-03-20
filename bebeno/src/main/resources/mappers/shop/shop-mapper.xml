@@ -181,6 +181,15 @@
 	 		STORE_NO = #{no}
 	</update>
 	
+	<delete id="deleteShopByNo" parameterType="_int">
+		UPDATE BBN_STORE
+		SET
+			STORE_STATUS = 'N'
+		WHERE 
+			STORE_NO = #{no}
+	</delete>
+	
+	
 	<delete id="fileDeleteByStoreNo">
 		DELETE FROM STORE_FILE
 		WHERE STORE_NO = #{no}
