@@ -110,7 +110,7 @@
                                 </div>
 								<div class="wineviewright">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <input type="button" class="button btn_list_del" id="btnDelete" value="삭제"/>
+                                    <a class="button btn_list_del" id="btnDelete" href="${path}/wineboard/delete?wineBno=${wineboard.wineBno}">삭제</a>
                                 </div>
                             </div>
                     </section>
