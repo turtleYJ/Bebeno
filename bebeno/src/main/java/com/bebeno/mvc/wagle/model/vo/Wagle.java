@@ -1,5 +1,6 @@
 package com.bebeno.mvc.wagle.model.vo;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -12,11 +13,13 @@ import lombok.NoArgsConstructor;
 public class Wagle {
 	private int no;
 	
+	private int writerNo;
+	
 	private String nicname;
 	
-	private String wine_no;
+	private int wine_no;
 	
-	private String shop_no;
+	private int shop_no;
 	
 	private String title;
 	
@@ -26,7 +29,9 @@ public class Wagle {
 	
 	private String renamedFileName;
 	
-	private String readcount;
+	private int readcount;
+	
+	private int scrapcount;
 	
 	private String status;
 	
@@ -34,9 +39,9 @@ public class Wagle {
 	
 	private List<Reply> replies;
 
-	private String createDate;
+	private Date createDate;
 	
-	private String modifyDate;
+	private Date modifyDate;
 	
 	private String category;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.shop.model.vo.WineListsOnShop;
 
 public interface ShopService {
 
@@ -18,4 +19,9 @@ public interface ShopService {
 	List<ContentFiles> findfilesByNo(int no);
 
 	void fileDeleteByStoreNo(int no);
+
+	int delete(int no);
+
+	void saveWinesOnShop(WineListsOnShop wineListsOnShop);
+
 }

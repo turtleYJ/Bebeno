@@ -50,6 +50,10 @@
 
 <title>header</title>
 
+<style type="text/css">
+	
+</style>
+
 </head>
 <body>
 	<div class="site-mobile-menu site-navbar-target">
@@ -63,9 +67,23 @@
 
 
   <nav class="site-nav">
-        <div class="container">
+        <div class="container headerbar" style="padding-top: 20px;">
           <div class="site-navigation">
-            <a href="${path}" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+            <a href="${path}/" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+            
+            <c:if test="${ empty loginMember }">
+	            <div class="loginbar">
+			  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
+			  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+	            </div>
+            </c:if>
+            
+            <c:if test="${ !empty loginMember }">
+	            <div class="loginbar">
+			  		<a href="${path}/mypage/profile" class="btnA button1">MYPAGE</a>
+			  		<a href="${path}/logout" class="btnA button2">LOGOUT</a>
+	            </div>
+            </c:if>
     
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
               <li class="active"><a href="${path}/">Home</a></li>

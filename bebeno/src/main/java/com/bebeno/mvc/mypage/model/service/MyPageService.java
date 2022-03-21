@@ -22,9 +22,6 @@ public interface MyPageService {
 
 // ===============================================	
 	
-	// 게시판 번호로 저장할 게시판 정보 가져오기
-	Scrap getWagleBoardByNo(int no);
-	
 	// 스크랩 세이브
 	int saveScrap(Scrap scrapVo);
 
@@ -33,9 +30,6 @@ public interface MyPageService {
 
 	// 스크랩 게시글 삭제
 	int scrapDelete(int wagleBoardNo);
-
-
-
 	
 	// 스크랩 페이징 정보
 //	List<Scrap> getScrapList(PageInfo pageInfo, String id);

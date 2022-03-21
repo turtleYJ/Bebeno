@@ -176,30 +176,26 @@
 								</tr>
 							</thead>
 							<tbody style="text-align: left;">
-<%-- 								<c:choose>
-									<c:when test="${orderList == null}"> --%>
+							<c:choose>
+									<c:when test="${paymentList == null}">
 										<tr style="text-align: center;"><td colspan="8"><h3>주문 내역이 없습니다.</h3></td></tr>
-<%-- 									</c:when>
+ 									</c:when>
 									<c:otherwise>
-										<c:forEach items="${orderList}" var="dto "> --%>
+										<c:forEach items="${paymentList}" var="list">
 											<tr>
-												<td style="text-align: center;"><img alt="thumbnail"
-													src="/resources/upload${dto.fullname}" width="40%"> <input
-													type="hidden" value="${dto.productId}" name="productId"
-													id="productId"></td>
-												<td>${dto.productName}<br>${dto.productInfo}</td>
+												<td style="text-align: center;">
+											<c:if test="${ !empty list.renamedFileName }">
+												<img id="image" alt="thumbnail"
+													src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="40%"></c:if>
+											    <input type="hidden" value="${list.wineBno}" name="wineBno" id="wineBno"></td>
+												<td>${list.wineName}<br></td>
 												<td><fmt:formatNumber type="number"
-														value="${dto.price}" />&nbsp;원</td>
-												<td>${dto.order_Qty}</td>
-												<td>${dto.selected_Opt}</td>
+														value="${list.winePrice}" />&nbsp;원</td>
+												<td>${list.amount}</td>
 												<td><fmt:formatNumber type="number"
-														value="${dto.totalAmount}" />&nbsp;원</td>
-												<td><fmt:formatDate value="${dto.billingDate}"
+														value="${list.amount}" />&nbsp;원</td>
+												<td><fmt:formatDate value="${list.orderDate}"
 														type="date" pattern="yyyy-MM-dd" /></td>
-												<%-- <td>${dto.deliver_situ == 0 ? "배송준비중" : 
-															dto.deliver_situ == 1 ? "배송중" : "배송완료"}</td> --%>
-												<%-- <c:choose>
-													<c:when test="${dto.deliver_situ != 0}"> --%>
 														<td>
 															<button class="btn btn-default disable"
 																disabled="disabled">주문취소</button>
@@ -208,20 +204,17 @@
 																disabled="disabled">주문변경</button>
 															<br>
 														</td>
-												<%-- 	</c:when> --%>
-													<%-- <c:otherwise>
+													
 														<td>
 															<button class="btn btn-default order_cancel"
 																onclick="location.href='/order/cancel/'+ ${dto.orderId}">주문취소</button>
 															<br>
 															<button class="btn btn-default">주문변경</button>
 														</td>
-													</c:otherwise> --%>
-								<%-- 				</c:choose>
 											</tr>
 										</c:forEach>
 									</c:otherwise>
-								</c:choose> --%>
+								</c:choose> 
 							</tbody>
 						</table>
 					</div>

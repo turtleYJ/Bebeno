@@ -28,18 +28,6 @@
                 <div class="board_write">
                     <div class="title">
                         <dl>
-                            <dt>게시글번호</dt>
-                            <dd><input type="text" name="wineBno"></dd>
-                        </dl>
-                    </div>
-                    <div class="title">
-                        <dl>
-                            <dt>와인코드</dt>
-                            <dd><input type="text" name="wineCode"></dd>
-                        </dl>
-                    </div>
-                    <div class="title">
-                        <dl>
                             <dt>와인명</dt>
                             <dd><input type="text" name="wineName"></dd>
                         </dl>
@@ -104,7 +92,7 @@
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" value="" required="required"></dd>
                         </dl>
                     </div>
                     <div class="title">

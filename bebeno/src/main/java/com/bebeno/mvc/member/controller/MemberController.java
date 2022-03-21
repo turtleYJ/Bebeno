@@ -1,16 +1,12 @@
 package com.bebeno.mvc.member.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.service.MemberService;
 import com.bebeno.mvc.member.model.vo.Member;
-import com.bebeno.mvc.payment.model.service.CartService;
-import com.bebeno.mvc.payment.model.vo.Cart;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,7 +53,7 @@ public class MemberController {
 		
 		return model;
 	}
-		
+
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
 	@GetMapping("/logout")
@@ -89,7 +83,7 @@ public class MemberController {
 		return "member/terms";
 	}
 	
-// =================================================
+// ======================= terms_v2 ==========================
 	
 	@GetMapping("/member/terms_v2")
 	public String enroll_test() {
@@ -98,7 +92,7 @@ public class MemberController {
 		return "member/terms_v2";
 	}
 	
-// =================================================
+// ======================= terms_v2 ==========================
 	
 	@GetMapping("/member/forgot-password")
 	public String forgot() {

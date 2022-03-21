@@ -1,5 +1,15 @@
 package com.bebeno.mvc.payment.model.service;
 
-public class OrderService {
+import java.util.List;
+
+import com.bebeno.mvc.payment.model.vo.Order;
+import com.bebeno.mvc.payment.model.vo.OrderList;
+
+public interface OrderService {
+
+	public int orderResult(Order order);
+
+	public List<OrderList> getPaymentList(String id);
+	
 
 }

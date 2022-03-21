@@ -23,6 +23,9 @@ public interface WineBoardMapper {
 	WineBoard selectWineBoardByNo(@Param("wineBno") Integer wineBno);
 
 	int deleteWineBoard();
+
+	// Shop
+	List<WineBoard> findWineListOnShop(@Param("wineKind") String wineKind, @Param("nation") String nation, @Param("wineKeyword") String wineKeyword);
 	
 	
 	

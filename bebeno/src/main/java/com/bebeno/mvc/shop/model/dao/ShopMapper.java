@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.shop.model.vo.WineListsOnShop;
 
 @Mapper
 public interface ShopMapper {
@@ -24,4 +25,8 @@ public interface ShopMapper {
 	void fileDeleteByStoreNo(int no);
 
 	int updateShop(Shop shop);
+
+	int deleteShopByNo(@Param("no") int no);
+
+	void saveWinesOnShop(@Param("wineListsOnShop") WineListsOnShop wineListsOnShop);
 }
