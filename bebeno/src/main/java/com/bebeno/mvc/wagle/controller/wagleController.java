@@ -95,7 +95,7 @@ public class wagleController {
 			MultipartHttpServletRequest Request,
 			@SessionAttribute(name = "loginMember") Member loginMember) {
 
-		List<MultipartFile> fileList = Request.getFiles("upfile");
+		List<MultipartFile> fileList = Request.getFiles("upfiles");
 		int result = 0;
 
 		// 파일을 업로드하지 않으면 "", 파일을 업로드하면 "파일명"
@@ -121,7 +121,7 @@ public class wagleController {
 			}
 		}
 		
-		wagleboard.setNo(loginMember.getNo());
+		wagleboard.setWriterNo(loginMember.getNo());
 		
 		System.out.println(wagleboard);
 		
@@ -142,10 +142,12 @@ public class wagleController {
 					}
 					
 					if(renamedFileName != null) {
-						files.setW_file_no(wagleboard.getNo());
+						files.setWagleNo(wagleboard.getNo());
 						files.setOriginalFileName(mf.getOriginalFilename());
 						files.setRenamedFileName(renamedFileName);
 					}
+					
+					System.out.println(files);
 					
 					service.fileSave(files);
 			 }

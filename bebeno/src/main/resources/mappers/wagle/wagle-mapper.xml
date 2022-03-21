@@ -11,7 +11,7 @@
 		        W.WINE_NO,
 		        W.SHOP_NO,
 		        W.WAGLE_TITLE,
-		        W.WALGE_CONTENT,
+		        W.WAGLE_CONTENT,
 		        W.ORIGINAL_FILENAME, 
 		        W.RENAMED_FILENAME, 
 		        W.READCOUNT,
@@ -31,7 +31,7 @@
 		<result property="wine_no" column="WINE_NO"/>
 		<result property="shop_no" column="SHOP_NO"/>
 		<result property="title" column="WAGLE_TITLE"/>
-		<result property="content" column="WALGE_CONTENT"/>
+		<result property="content" column="WAGLE_CONTENT"/>
 		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
 		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="readcount" column="READCOUNT"/>
@@ -43,10 +43,10 @@
 	</resultMap>
 	
 	<resultMap type="WagleFile" id="fileListResultMap">
-		<id property="file_no" column="W_FILE_NO"/>
-		<result property="W_No" column="W_NO"/>
-		<result property="file_originalFileName" column="ORIGINAL_FILENAME"/>
-		<result property="file_renamedFileName" column="RENAMED_FILENAME"/>	
+		<id property="w_file_no" column="W_FILE_NO"/>
+		<result property="wagleNo" column="W_NO"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>	
 	</resultMap>
 	
 	<resultMap type="Reply" id="wagleReplyResultMap">
@@ -119,10 +119,10 @@
        	UPDATE WAGLE_BOARD
        	<trim prefix="SET" suffixOverrides=",">
     	    <if test="title != null">
-		 		W.WAGLE_TITLE = #{title},
+		 		WAGLE_TITLE = #{title},
 	 		</if>
 	 		<if test="content != null">
-		 		W.WAGLE_CONTENT = #{content},
+		 		WAGLE_CONTENT = #{content},
 	 		</if>
 	 		<if test="originalFileName != null">
 		 		ORIGINAL_FILENAME = #{originalFileName},
@@ -133,13 +133,13 @@
 		 	MODIFY_DATE = SYSDATE 
        	</trim>
 	 	WHERE 
-	 		 W.WAGLE_NO = #{no}
+	 		 WAGLE_NO = #{no}
 	</update>
 	
 	<update id="updateStatus" parameterType="map">
 		UPDATE WAGLE_BOARD 
 		SET STATUS = #{status} 
-		WHERE W.WAGLE_NO = #{no}
+		WHERE WAGLE_NO = #{no}
 	</update>
 	
  	<delete id="deleteWagleBoard" parameterType="_int">
@@ -154,8 +154,8 @@
  		WHERE W_FILE_NO = #{file_no}
  	</delete>
  	
- 	<insert id="savefile" parameterType="ContentFiles"
-			useGeneratedKeys="true" keyProperty="file_no" keyColumn="W_FILE_NO">
+ 	<insert id="savefile" parameterType="WagleFile"
+			useGeneratedKeys="true" keyProperty="w_file_no" keyColumn="W_FILE_NO">
 		INSERT INTO WAGLE_FILE (
 			W_FILE_NO,
 			W_NO,
@@ -163,9 +163,9 @@
 			RENAMED_FILENAME
 		) VALUES (
 			SEQ_W_FILE_NO.NEXTVAL,
-			#{No},
-			#{file_originalFileName},
-			#{file_renamedFileName}
+			#{wagleNo},
+			#{originalFileName},
+			#{renamedFileName}
 		)
 	</insert>
 	
