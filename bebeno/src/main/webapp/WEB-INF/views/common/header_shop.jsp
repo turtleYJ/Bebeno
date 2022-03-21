@@ -80,8 +80,8 @@
             
             <c:if test="${ !empty loginMember }">
 	            <div class="loginbar">
-			  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
-			  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+			  		<a href="${path}/mypage/profile" class="btnA button1">MYPAGE</a>
+			  		<a href="${path}/logout" class="btnA button2">LOGOUT</a>
 	            </div>
             </c:if>
     
