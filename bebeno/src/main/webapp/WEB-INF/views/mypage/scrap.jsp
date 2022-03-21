@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/scrap.css">
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
 
 </head>
 <body>
@@ -120,8 +120,11 @@
 
 </section>
 
+<jsp:include page="/WEB-INF/views/common/footer_shop.jsp" />
+
 <script>
 
+	/* ajax 연동 실패... */
 	/* $(document).ready(() => {
 		
 		$("#delScrapBtn").on("click", () => {
