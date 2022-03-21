@@ -95,7 +95,6 @@
               <h2>Wine</h2>
               <span class="d-inline-block">Wine selling</span>
              <a href="${path}/wineboard/wineList"><img src="${path}/resources/img/wine4.jpg" alt="Image" class="img-fluid my-3 my-lg-5"></a>
-              <p class="line-top fig-2-text mb-4">textarea</p>
             </div>
           </div>
 
@@ -108,7 +107,6 @@
 
             <div  class="line me-auto mb-3 mt-3"></div>
 
-            <p class="line-top fig-2-text my-4">textarea</p>
            <a href="${path}/shop/list"><img src="${path}/resources/img/wine7.jpg" alt="Image" class="img-fluid"></a>
           </div>
         </div>
