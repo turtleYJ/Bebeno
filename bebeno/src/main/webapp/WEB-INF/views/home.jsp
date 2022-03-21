@@ -39,8 +39,9 @@
 	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
   <title>bebeno home</title>
+  
 </head>
- <div class="site-mobile-menu site-navbar-target">
+<%-- <!--  <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
       <div class="site-mobile-menu-close">
         <span class="icofont-close js-menu-toggle"></span>
@@ -48,12 +49,12 @@
     </div>
     <div class="site-mobile-menu-body"></div>
   </div>
+ -->
 
-
-  <nav class="site-nav">
+<!--   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-        <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
+        <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a> -->
 
         <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
           <li class="active"><a href="">Home</a></li>
@@ -78,7 +79,7 @@
 
     </div>
     </div>
-</nav> 
+</nav>  --%>
 
 	<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
 
