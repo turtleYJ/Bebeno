@@ -21,6 +21,8 @@ import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.service.ShopService;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.wineboard.model.service.WineBoardService;
+import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopController {
 	@Autowired
 	private ShopService service;
+	
+	@Autowired
+	private WineBoardService wineService;
 	
 	@Autowired
 	private ResourceLoader resourceLoader;
@@ -281,6 +286,60 @@ public class ShopController {
 		}
 		
 		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	@GetMapping("/delete")
+	public ModelAndView delete(ModelAndView model,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("no")int no) {
+		
+		int result = 0;
+		Shop shop = service.findShopByNo(no);
+		
+		if(shop.getWriterNo() == loginMember.getNo()) {
+			result = service.delete(shop.getNo());
+			
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+				model.addObject("location", "/shop/list");
+			} else {
+				model.addObject("msg", "게시글 삭제를 실패하였습니다.");
+				model.addObject("location", "/shop/view?no=" + shop.getNo());
+			}
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/shop/list");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	@GetMapping("/findWine")
+	public ModelAndView findWine(ModelAndView model, String wineKind, String nation, String wineKeyword) {
+		List<WineBoard> wineList = null;
+		
+		if(wineKind == "") {
+			wineKind = null;
+		} 
+		if(nation == "") {
+			nation = null;
+		}
+		if(wineKeyword == "") {
+			wineKeyword = null;
+		} 
+		
+		wineList = wineService.findWineListOnShop(wineKind, nation, wineKeyword);
+		
+		log.info("wineKind Name : {}", wineKind);
+		log.info("nation Name : {}", nation);
+		log.info("wineKeyword Name : {}", wineKeyword);
+		
+		model.addObject("wineList", wineList);
+		model.setViewName("shop/wineSearch");
 		
 		return model;
 	}

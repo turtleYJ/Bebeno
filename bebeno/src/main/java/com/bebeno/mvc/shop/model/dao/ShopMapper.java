@@ -24,4 +24,6 @@ public interface ShopMapper {
 	void fileDeleteByStoreNo(int no);
 
 	int updateShop(Shop shop);
+
+	int deleteShopByNo(@Param("no") int no);
 }
