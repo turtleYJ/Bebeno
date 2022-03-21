@@ -68,7 +68,6 @@
           <c:if test="${ !empty loginMember }">
           	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
          	<li><a href="${path}/payment/cart">CART</a></li>
-         	<li><a href="${path}/payment/orderPage">ORDER</a></li>
           	<li><a href="${path}/logout">LOGOUT</a></li>
           </c:if>
         </ul>
