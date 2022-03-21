@@ -80,6 +80,9 @@
     </div>
 </nav> 
 
+	<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
+
+
   <div class="site-section">
     <div class="container">
       <div class="row align-items-center justify-content-around">
@@ -232,31 +235,6 @@
   </div>
 
 
-  <script src="${ path }/js/jquery-3.5.1.min.js"></script>
-  <script src="${ path }/js/jquery-migrate-3.0.0.min.js"></script>
-  <script src="${ path }/js/popper.min.js"></script>
-  <script src="${ path }/js/bootstrap.min.js"></script>
-  <script src="${ path }/js/owl.carousel.min.js"></script>
-  <script src="${ path }/js/aos.js"></script>
-  <script src="${ path }/js/imagesloaded.pkgd.js"></script>
-  <script src="${ path }/js/isotope.pkgd.min.js"></script>
-  <script src="${ path }/js/jquery.animateNumber.min.js"></script>
-  <script src="${ path }/js/jquery.stellar.min.js"></script>
-  <script src="${ path }/js/jarallax.min.js"></script>
-  <script src="${ path }/js/jarallax-element.min.js"></script>
-  <script src="${ path }/js/jquery.waypoints.min.js"></script>
-  <script src="${ path }/js/jquery.fancybox.min.js"></script>
-  
-  <script src="${ path }/js/jquery.lettering.js"></script>
-  
-  
-  <script src="${ path }/js/TweenMax.min.js"></script>
-  <script src="${ path }/js/ScrollMagic.min.js"></script>
-  <script src="${ path }/js/scrollmagic.animation.gsap.min.js"></script>
-  <script src="${ path }/js/debug.addIndicators.min.js"></script>
-  
-  
-  <script src="${ path }/js/custom.js"></script>
 
   
 </body>

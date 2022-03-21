@@ -4,20 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<c:set var="path" value ="${ pageContext.request.contextPath }"/>   
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>와인 등록 페이지</title>
- <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
-</head>
+<c:set var="path" value ="${ pageContext.request.contextPath }"/>
+ 
+ 	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+ 
 <body>
     <form action="${path}/wineboard/wineWrite" name="write" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
@@ -181,5 +171,5 @@
      }
     
     </script>    
-    </body>
-    </html>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
