@@ -6,6 +6,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
+<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 	
     <h2 class="write_h2">글 작성하기</h2>
@@ -46,7 +47,7 @@
         </tr>
     </table>
     <div class="wagle_update_button">
-        <input class="wagle_udt_btn" type="button" value="목록으로" onclick="${ path }/wagle_board/wagle_list">
+        <input class="wagle_udt_btn" type="button" value="목록으로" onclick="location.href='${ path }/wagle_board/wagle_list'">
         <input class="wagle_udt_btn" type="submit" value="등록하기" >
     </div>
     </form>
