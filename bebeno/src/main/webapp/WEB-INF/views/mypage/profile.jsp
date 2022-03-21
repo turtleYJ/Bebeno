@@ -80,13 +80,17 @@
              -->
              <c:if test="${ empty loginMember.profileImgNameO }">
             	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
-            	<label for="profileImgUpdate">이미지 업로드</label>            
-            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
+				<div class="pImgDiv">
+	            	<label for="profileImgUpdate">이미지 업로드</label>            
+	            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
+				</div>
 			</c:if>
 			<c:if test="${ !empty loginMember.profileImgNameO }">
-				<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
-            	<label for="profileImgUpdate">이미지 업로드</label>            
-            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+					<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
+				<div class="pImgDiv">
+    	        	<label for="profileImgUpdate">이미지 업로드</label>            
+        	    	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+				</div>
 			</c:if>
             <!-- 
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">
@@ -120,15 +124,12 @@
                             </th>
                             <td class="input-item">
                                 <div class="input-nickname">
-                                    <p>
+                                    <div>
                                         <label class="hidden" style="display: none;">닉네임</label>
                                         <input type="text" class="" id="nickname" name="nickname" 
                                         placeholder="닉네임" value="${ loginMember.nickname }">
-                                        <!-- 
-                                        <button type="button" class="button">중복확인</button>
-                                         -->
                                         <input type="button" id="checkDuplicate" value="중복검사">
-                                    </p>
+                                    </div>
                                     <input type="hidden" id="nickname_origin" name="nickname_origin" value="회원 닉네임">
                                 </div>
                             </td>
