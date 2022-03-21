@@ -33,11 +33,12 @@
 <tbody>
 <tr>
 <th><span>아이디</span></th>
+<p>
 <td><input type="text" name="id" id="id" class="input-field" placeholder="ID 를 입력하세요.">
-	
-  <button type="button" id="idCheckBtn">확인</button>
+<td><input type="button" name="idCheckBtn" id="idCheckBtn" value="중복검사">
                 <p class="error_id"></p>
                 </td>
+               </p>
 </tr>
 <tr>
 <th><span>닉네임</span></th>
@@ -77,7 +78,10 @@
 </table>
 <div class="exform_txt"><span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
 </div>
-<input type="submit" value="REGISTER" >
+
+<div class="save-update-button">          
+<button type="submit" id="submitBtn" class="button" style="cursor:pointer;">회원 가입</button>
+                </div>
 </div>
 </form>
 </ul>
