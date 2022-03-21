@@ -6,7 +6,6 @@
 
 	<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
 
- 
   <div class="site-section">
     <div class="container">
       <div class="row align-items-center justify-content-around">

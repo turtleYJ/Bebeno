@@ -67,7 +67,7 @@
 					</ul>
 				</div>
 				<button type="submit" class="button button-large mt0"
-							id="agreeBtn">동의</button>
+							id="agreeBtn" disabled>동의</button>
 				<input type="button" value="비동의" class="disagreeBtn" onclick="nochk()"/>&nbsp;&nbsp;&nbsp;
 			    	
 			</form>
@@ -96,6 +96,8 @@
 		}
 	});
 */
+
+
 	
 	const form = document.querySelector('#joinForm'); // 데이터를 전송하는 Form
 	const checkAll = document.querySelector('.terms_check_all input'); // 모두 동의 div의 input 태그 선택(전체 동의 체크박스)
@@ -107,7 +109,9 @@
 		privacyPolicy: false	// 두번째 필수동의 체크박스		
 	};
 	
+	/* 
 	form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막기
+	*/
 	
 	// 각각의 체크박스 상태가 변경 될 때마다 toggleCheckbox(); 메소드 실행
 	checkBoxes.forEach((item) => item.addEventListener('input', toggleCheckbox));
@@ -168,8 +172,9 @@
 			});
 		}
 		toggleSubmitButton();
-	});
-	
+	});	
+
+
 /* ================================================================ */	
 	
 	function nochk(){
