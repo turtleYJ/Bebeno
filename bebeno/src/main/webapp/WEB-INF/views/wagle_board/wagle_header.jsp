@@ -51,7 +51,9 @@
 	        <div class="wagle_my_write_box">
 	            <ul class="wagle_write">
 	                <li><a href="${ path }/wagle_board/wagle_write">글쓰기</a></li>
+	                <!--  
 	                <li><a href="${ path }/wagle_board/wagle_manage">내 글 관리</a></li>
+	                -->
 	            </ul>
 	        </div>
 	    </section>
