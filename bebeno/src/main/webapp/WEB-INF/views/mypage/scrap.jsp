@@ -28,11 +28,11 @@
             <li>
                 <a href="${ path }/mypage/profile">정보수정</a>
             </li>
-            <li>
+            <li id="mainNav">
                 <a href="${ path }/mypage/scrap">스크랩</a>
             </li>
             <li>
-                <a href="${ path }/mypage/cart">장바구니</a>
+                <a href="${ path }/payment/cart">장바구니</a>
             </li>
         </ul>
     </div>

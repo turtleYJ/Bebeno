@@ -129,3 +129,12 @@
     border: 0;
     border-radius: 4px;
 }
+
+#mainNav {
+	border-top: 1px solid #c70039;
+    border-bottom: 1px solid #c70039
+}
+
+#mainNav > a {
+	color: #c70039
+}

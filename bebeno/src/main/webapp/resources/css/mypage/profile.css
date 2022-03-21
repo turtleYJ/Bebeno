@@ -168,3 +168,19 @@
     border: 0;
     border-radius: 4px;
 }
+
+/* mainNav 카테고리 선택 별 색 주입 */
+#mainNav {
+	border-top: 1px solid #c70039;
+    border-bottom: 1px solid #c70039
+}
+#mainNav > a {
+	color: #c70039
+}
+
+#subNav {
+	
+}
+#subNav > a {
+	
+}
