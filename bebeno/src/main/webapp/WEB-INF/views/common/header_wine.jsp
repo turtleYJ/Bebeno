@@ -43,10 +43,25 @@
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
-<!-- yooil css -->
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
+
+<!-- css eunjin -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
+	<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
+	<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
+	<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header.css" />
+	
+	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
+	
+		
+<link rel='apple-touch-icon' href='/02_images/screen_icon_and.png' /> 
+<link rel='apple-touch-icon-precomposed' href='/02_images/screen_icon_and.png' />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
 
 <title>header</title>
 
@@ -71,19 +86,10 @@
           <div class="site-navigation">
             <a href="${path}/" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
             
-            <c:if test="${ empty loginMember }">
-	            <div class="loginbar">
-			  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
-			  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
-	            </div>
-            </c:if>
-            
-            <c:if test="${ !empty loginMember }">
-	            <div class="loginbar">
-			  		<a href="${path}/mypage/profile" class="btnA button1">MYPAGE</a>
-			  		<a href="${path}/logout" class="btnA button2">LOGOUT</a>
-	            </div>
-            </c:if>
+            <div class="loginbar">
+		  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
+		  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+            </div>
     
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
               <li class="active"><a href="${path}/">Home</a></li>

@@ -5,26 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <c:set var="path" value ="${ pageContext.request.contextPath }"/>   
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-  
 
-    <title>상품 상세 페이지</title>
-	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
-</head>
-<body>
+	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+
 <section class="sub-contents wrap-wine-view clear">
     <div class="inner">
         <div class="btn_list">
@@ -110,7 +93,7 @@
                                 </div>
 								<div class="wineviewright">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <input type="button" class="button btn_list_del" id="btnDelete" value="삭제"/>
+                                    <a class="button btn_list_del" id="btnDelete" href="${path}/wineboard/delete?wineBno=${wineboard.wineBno}">삭제</a>
                                 </div>
                             </div>
                     </section>
@@ -189,6 +172,5 @@
      
 
 </script>
-</body>
- </html>
-                    
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />                    

@@ -6,29 +6,9 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>와인리스트</title>
-    
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-		
-<link rel='apple-touch-icon' href='/02_images/screen_icon_and.png' /> 
-<link rel='apple-touch-icon-precomposed' href='/02_images/screen_icon_and.png' />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
-</head>
-<body>
+
+	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+
 	<!-- contents 시작 -->
 	<section class='sub-contents wrap-news clear'>
 		<div class='inner'>
@@ -1606,5 +1586,11 @@
 			<script src="${ path }/js/breakpoints.min.js"></script>
 			<script src="${ path }/js/util.js"></script>
 			<script src="${ path }/js/menubar.js"></script>
-</body>
-</html>
+
+			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+			
+			
+			
+			
+			
+			
