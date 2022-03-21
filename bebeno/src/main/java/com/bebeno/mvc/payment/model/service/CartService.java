@@ -12,7 +12,11 @@ public interface CartService {
 
 	public List<CartList> cartList(String id) throws Exception;
 
-	public int removeCart(Member member, int wineBno);
+	public int deleteCart(int cart_id);
+
+	public void deleteAllCart(String id);
+
+	
 
 
 

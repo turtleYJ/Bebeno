@@ -63,10 +63,21 @@
                         	<option value="3">3</option>
                         	<option value="4">4</option>
                         	<option value="5">5</option>
-                        </select>&nbsp;개   
+                        </select>&nbsp;개
+                        <form action="${path}/payment/orderPage" method="get">
+                       <c:forEach var="list" items="${cartList}">
+			         <div class="paymentScreenBtn">
+								<input type="hidden" name="wineBno" value="${list.wine_bno}">
+								<input type="hidden" name="wineName" value="${list.wineName}">
+								<input type="hidden" name="winePrice" value="${list.winePrice}">
+								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
+                    </div>
+                    </c:forEach>
+                        
                         <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
-                        <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2">구매하기</button> 
+                        <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2" id="paymentSubmit">구매하기</button> 
                     </p> 
+                  	 </form> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.  와인은 최대 5개까지 구매 가능합니다.</p>
 
                     <div class="wine-components">
@@ -164,42 +175,16 @@
 				                    });
 				                  
 				            //즉시구매
-				               $(".cart_btn2").click(function(){
-				            	  	 
-				            	      var wineBno=${wineboard.wineBno};
-					                  var wineName = $("#wineName").val();
-					                  var cartqty = $(".numBox").val();
-					                  var renamedFileName= $("#image").attr("src");  
-				                    
-				                  if(wineBno == 1){
-				                	  wineBno=1;
-				                  }else{
-				                	  wineBno=${wineboard.wineBno};
-				                  }
-				                  
-				                    console.log(wineBno);
-				                     var data = {
-				                    	   wine_bno : wineBno,
-				                    	   cart_qty : cartqty
-				                       };
-				                     $.ajax({
-				                         url : "${path}/cart/addOrder",
-				                         type : "post",
-				                         data : data,
-				                         success : function(result){
-				                        alert("결제페이지로 이동합니다.");
-				                          $(".numBox").val("1");
-				                          location.replace("${path}/payment/orderPage");
-				                         },
-					                      error : function(){
-						                  alert("통신실패.. ");
-						                  console.log(wineBno);
-						                  console.log(cartqty);
-						                  console.log(renamedFileName);
-						                      }
-				                        });  
-				                 
-				                       });
+				            
+		       			 let merchant = "";
+    	
+    				$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
+    				let time = new Date();
+    				merchant = String("order" + time.getTime());
+    				console.log(merchant);
+    				$(this).siblings("#merchant_uid").val(merchant);
+    				});
+	
 						  
      
 

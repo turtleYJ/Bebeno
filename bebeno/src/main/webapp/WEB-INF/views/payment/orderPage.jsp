@@ -43,21 +43,22 @@
 				</thead>
 				<tbody>
 						<tr>
-							<td><img alt="thumbnail" src="" width="50%">
-							<input type="hidden" value="" name="wineCode" id="wineCode">
+							<td><c:if test="${ !empty orderList.renamedFileName }">
+							 <img alt="thumbnail" id="image" src="${path}/resources/upload/wineimg/${orderList.renamedFileName}" width="150px" height="180px"></c:if>
+							<input value="${orderList.wineName}" name="wineName" id="wineName">
 							</td>
 							<td><br></td>
-							<td><fmt:formatNumber type="number" value=""/>&nbsp;원</td>
+							<td><input name="winePrice" value="${ orderList.winePrice }"/>&nbsp;원</td>
 							<td><select name="order_Qty" class="form-control order_Qty">
-								<c:forEach begin="1" end="" var="stock">
 									<option value=""></option>
-								</c:forEach>
 							</select>
 							</td>
 							<td>
 										<div class="form-horizontal" style="text-align: left;">
 											<select class="form-control" name="selected_Opt">
-												<option value="S">선물 포장</option>
+												<option value="" selected>옵션 선택</option>
+												<option value="S">무료 선물 포장</option>
+												<option value="S">선택 안함</option>
 											</select>
 										</div>
 									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -77,26 +78,26 @@
 				<div class="form-group">
 					<label for="inputId" class="col-sm-2 control-label">ID</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="inputId" placeholder="ID" name="userid" value="" readonly>
+						<input class="form-control" id="inputId" placeholder="ID" name="id" value="${orderList.id}" readonly>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="inputName" class="col-sm-2 control-label">Name</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="inputName" placeholder="Name" name="username" value="">
+						<input class="form-control" id="name" placeholder="Name" name="name" value="${orderList.name}">
 					</div>
 				</div>					
 				<div class="form-group">
 					<label for="inputEmail" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="">
+						<input type="email" class="form-control" id="email" placeholder="Email" name="email" value="${orderList.email}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputTel" class="col-sm-2 control-label">Tel</label>
 					<div class="col-sm-8">
-						<input type="tel" class="form-control" id="inputTel" placeholder="Tel" name="tel" value="">
+						<input type="tel" class="form-control" id="phone" placeholder="Tel" name="phone" value="${orderList.phone}">
 					</div>
 				</div>		
 			</div>
@@ -109,7 +110,7 @@
 			</div>
 			<hr>
 			<div class="row no-gutters" style="text-align: center; margin: 50px 0;">
-				<label>상품가격 :&nbsp; <span id="price"></span>&nbsp;원</label>
+				<label>상품가격 :&nbsp; <span id="price"></span>&nbsp;${ orderList.winePrice }원</label>
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</label>
 				<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>

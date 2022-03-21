@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
+  <script src="${ path }/js/jquery.min.js"></script>
+  <script src="${ path }/js/cart.js"></script>
 </head>
 <body>
 
@@ -94,17 +96,18 @@
                         </div>
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
-                            <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
+                            <div class="basketcmd">
+                            <button type="button" class="abutton" onclick="deleteCart(${list.cart_id})">삭제</button>
+							</div>
                         </div>
                     </div>  
                 <div class="right-align basketrowcmd">
-                    <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
-                    <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
+                    <button type="button" class="abutton" onclick="selectDelete()">선택상품삭제</button>
+                    <button type="button" class="abutton" onclick="deleteAll()">장바구니비우기</button>
                 </div>
         
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.cart_qty}</div>
                 <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.cart_qty * list.amount}원</div>
-      			</c:forEach>					
         
                 <div id="goorder">
                     <div class="clear"></div>
@@ -113,57 +116,17 @@
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
-							</form>
+      			</c:forEach>					
+			</form>
 	    </div>
-	   </div> 
+	  </div> 
 </section>
-
-    <script src="${ path }/js/jquery.min.js"></script>
-	<script src="${ path }/js/cart.js"></script>
 	
-	<script type="text/javascript">
+	<script>
 		$(".btn-back_to_shop").click(function() {
 			history.back();
 		});
-		
-		// orderlist 담기 
-    /*     $(".order_btn").click(function(){
-              
-              var wineBno=${list.wineBno};
-              var wineName = $("#wineName").val();
-              var cartqty = $(".numBox").val();
-              var renamedFileName= $("#image").attr("src");
-             
-           if(wineBno == 1){
-        	   wineBno=1;
-           }else{
-        	   wineBno=${list.wineBno};
-           }
-           
-             console.log(wineBno);
-              var data = {
-            	wine_bno : wineBno,
-            	cart_qty : cartqty
-
-                };
-              $.ajax({
-                  url : "${path}/cart/addOrder",
-                  type : "post",
-                  data : data,
-                  success : function(result){
-                   alert("성공");
-                  },
-                  error : function(){
-                   alert("실패");
-                   console.log(wineBno);
-                   console.log(wineName);
-                   console.log(cartqty);
-                   console.log(renamedFileName);
-                  }
-                 });
-              
-                }); */
-		
+				
         let merchant = "";
     	
     	$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
@@ -173,6 +136,41 @@
     		$(this).siblings("#orderId").val(merchant);
     	});
 	
+    	/* selectbox 상품개별삭제 */
+		function selectDelete() {
+			 var url = "${cart}/payment/cart/selectDelete";
+			 var selectedArr = new Array();
+			 var cart_id = document.getElementsByName("cart_id"); //
+			 console.dir(selectedArr);
+			console.dir(cart_id);
+			console.dir(cart_id.value);
+			  for (var i = 0; i < cart_id.length; i++) {
+			   if (cart_id[i].checked == true) {
+				   selectedArr.push(cart_id[i].value);
+				   console.dir(selectedArr);
+			   }
+			  }
+			
+			 if (selectedArr.length == 0) {
+				 alert("삭제하실 항목을 적어도 하나는 체크해 주세요.");
+			 } else {
+			  	$.ajax({
+			  		url : url,
+			  		type : 'POST',
+			  		traditional : true,
+			  		data : {
+			  			selectedArr : selectedArr
+			  		},
+			  		success : function(jdata){
+			  			if(jdata = 1){
+			  				location.replace("${path}/payment/cart")
+			  			}else{
+			  				alert("삭제 실패");
+			  			}
+			  		}
+			  	});
+			 }
+			}
   
 	</script>
 

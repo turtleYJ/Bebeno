@@ -1,7 +1,5 @@
 package com.bebeno.mvc.payment.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,16 +45,11 @@ public class OrderController {
 	
 	@ResponseBody
 	@PostMapping("/payment/orderResult")
-	public String orderResult(Order order, @SessionAttribute(name="loginMember") Member loginMember ,@RequestParam("wineBno") int wineBno, HttpSession session) throws Exception {
-		
-//  	Member member = (Member)session.getAttribute("loginMember");
-//  	order.setId(member.getId());
-	
-		
+	public String orderResult(Order order, @SessionAttribute(name="loginMember") Member loginMember ,
+						@RequestParam("wineBno") int wineBno, HttpSession session) throws Exception {
+			
 		orderservice.orderResult(order);
-//		cartservice.removeCart(member, wineBno);
 		
-
 		return "/payment/orderResult";
 	}
 	

@@ -3,6 +3,8 @@
 --GRANT RESOURCE, CONNECT TO BEBENO;
 
 -- ================================================
+drop table bbn_order;
+DROP SEQUENCE SEQ_ORDER_ID;
 
 -- BEBENO_WINEBOARD, MEMBER 테이블을 참조하므로 선행삭제 필요
 DROP TABLE CART;
@@ -444,5 +446,5 @@ CREATE SEQUENCE SEQ_ORDER_ID;
 
 insert into bbn_order (order_id, id, wine_bno, cart_id, order_date ) values (SEQ_ORDER_ID.nextval,'eunjin', 61, 61, default); -- test용 
 
-DROP TABLE BBN_ORDER;
+
 
