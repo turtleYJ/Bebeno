@@ -88,7 +88,7 @@
                     </p>                        
                 </div>
                 <div class="save-update-button">          
-                    <button type="submit" id="updatePwdBtn" class="button" style='cursor:pointer;'>정보 수정</button>
+                    <button type="submit" id="updatePwdBtn" class="button" disabled="disabled">정보 수정</button>
                 </div>
             </div>
         </div>
@@ -130,10 +130,19 @@
 		if(newPwd != "" && newPwdConfirm != "") {
 			if(newPwd == newPwdConfirm) {
 				sameCheck.innerHTML="새 비밀번호와 일치합니다."
-				sameCheck.style.color="blue"				
+				sameCheck.style.color="blue"
+				
+				$("#updatePwdBtn").attr("disabled", false);
+				$("#updatePwdBtn").css('background-color', '#c70039');
+				$("#updatePwdBtn").css('color', 'white');
+				$("#updatePwdBtn").css('cursor', 'pointer');
 			} else {
 				sameCheck.innerHTML="새 비밀번호와 일치하지 않습니다."
 				sameCheck.style.color="red"
+				$("#updatePwdBtn").attr("disabled", true);
+				$("#updatePwdBtn").css('background-color', '#efefef');
+				$("#updatePwdBtn").css('color', 'gray');
+				$("#updatePwdBtn").css('cursor', 'default');
 			}
 		}
 		

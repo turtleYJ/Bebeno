@@ -236,3 +236,11 @@
     width: 40px;
     font-size: 1em;
 }
+
+#mainNav {
+	border-top: 1px solid #c70039;
+    border-bottom: 1px solid #c70039
+}
+#mainNav > a {
+	color: #c70039
+}

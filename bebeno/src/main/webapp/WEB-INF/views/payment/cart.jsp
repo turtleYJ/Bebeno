@@ -35,7 +35,7 @@
             <li>
                 <a href="${ path }/mypage/scrap">스크랩</a>
             </li>
-            <li>
+            <li id="mainNav">
                 <a href="${ path }/mypage/cart">장바구니</a>
             </li>
         </ul>

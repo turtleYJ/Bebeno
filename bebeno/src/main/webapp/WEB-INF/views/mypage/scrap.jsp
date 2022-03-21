@@ -51,7 +51,8 @@
 							<div class="deleteScrapBtn">
 								<input type="hidden" name="wagleBoardNo" id="wagleBoardNo" 
 										value="${scrap.wagleBoardNo}">
-		                    	<button type="submit" class="delScrapBtn" id="delScrapBtn">삭제</button>
+		                    	<button type="submit" class="delScrapBtn" id="delScrapBtn" 
+		                    			style="border:none; background:none;">삭제</button>
 		                	</div>
 						</form>
 		            	<a href="${ path }/wagle_board/wagle_view?no=${ scrap.wagleBoardNo }">
@@ -59,63 +60,13 @@
 		            	    	a태그는 인라인 요소로 안에 블록 요소인 div태그를 쓰는 것을 권장하지 않는다.
 		            	    	대신 section태그를 쓸 수 있다. 
 		            	    -->
-			            		<img src="${ path }/resources/upload/wagle/${ scrap.wagleBoardRNameFile }" alt="스크랩이미지">
+			            		<img src="${ path }/resources/upload/wagle/${ scrap.wagleBoardRNameFile }" alt="스크랩이미지"
+			            				style="width:100%;height:80%;">
 				            	<div class="scrap-title">${ scrap.wagleBoardTitle }</div>
 		            	</a>
 		            	
 		        	</div>
-				</c:forEach>
-
-
-         <!-- ================================== 테스트용 ================================== -->   	
-                
-                <c:forEach begin="0" end="3">
-                        
-                	<div class="scrap">
-	            		<a href="">
-	            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-	            		</a>
-	            		<div class="scrap-title">게시판 스크랩 제목 forEach</div>
-	            	</div>
-                       
-                </c:forEach>  
-            	
-         <!-- ================================== 테스트용 ================================== -->   	
-            	
-            	<div class="scrap">
-            		<a>
-            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-            		</a>
-            		<div class="scrap-title">게시판 스크랩 제목 1</div>
-            	</div>
-            	<div class="scrap">
-            		<a>
-            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-            		</a>
-            		<div class="scrap-title">게시판 스크랩 제목 2</div>
-            	</div>
-            	<div class="scrap">
-            		<a>
-            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-            		</a>
-            		<div class="scrap-title">게시판 스크랩 제목 3</div>
-            	</div>
-            	<div class="scrap">
-            		<a>
-            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-            		</a>
-            		<div class="scrap-title">게시판 스크랩 제목 4</div>
-            	</div>
-            	
-            	<div class="scrap">
-            		<a>
-            			<img src="../resources/image/city1.PNG" alt="스크랩이미지">
-            		</a>
-            		<div class="scrap-title">게시판 스크랩 제목 5</div>
-            	</div>            	
-            	
-            </div>
-            
+				</c:forEach>            
         </div>
 
 </section>
@@ -156,8 +107,9 @@
 					console.log(error);
 				}				
 			});
-		}); */		
+		}); 
 	});
+		*/		
 
 </script>
 

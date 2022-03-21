@@ -109,14 +109,14 @@
 }
 
 
-.save-update-button button {
-    width: 240px;
+#updatePwdBtn {
+  	width: 240px;
     font-size: 18px;
     font-weight: 500;
     line-height: 50px;
-    color: #fff;
-    background: #c70039;
-    border: 0;
+    color: gray;
+    background-color: #efefef;
+    border: 1px;
     border-radius: 4px;
 }
 
@@ -124,7 +124,15 @@
 	border-top: 1px solid #c70039;
     border-bottom: 1px solid #c70039
 }
-
 #mainNav > a {
 	color: #c70039
+}
+
+#subNav {
+	border: 0;
+	border-radius: 4px;
+	background: #c70039;
+}
+#subNav > a {
+	color: white;
 }
