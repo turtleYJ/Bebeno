@@ -82,10 +82,6 @@
 </nav> 
 
   <div class="site-section">
-  	<ul>
-  		<li><a href="">LOGIN</a></li>
-  		<li><a href="">JOIN</a></li>		
-  	</ul>
     <div class="container">
       <div class="row align-items-center justify-content-around">
 

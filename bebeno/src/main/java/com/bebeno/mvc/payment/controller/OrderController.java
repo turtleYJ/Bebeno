@@ -32,10 +32,12 @@ public class OrderController {
 	
 	@GetMapping("/payment/orderPage") 
 	public String orderPage(OrderList orderList, String merchant_uid, @SessionAttribute(name="loginMember") Member loginMember, HttpSession session, Model model) {
-				
+		
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("merchant_uid", merchant_uid);
+		model.addAttribute("loginMember", loginMember);		
 		
+		System.out.println(loginMember);
 		System.out.println(orderList.getWineName());
 		System.out.println(orderList.getWinePrice());
 		

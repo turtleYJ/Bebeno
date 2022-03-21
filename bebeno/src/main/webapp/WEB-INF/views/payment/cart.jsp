@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
+
+	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
 </head>
@@ -42,7 +44,6 @@
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
                     <div class="row head">
-
                         <div class="subdiv">
                             <div class="check">선택</div>
                             <div class="img">이미지</div>
@@ -72,7 +73,7 @@
                     </div>
                  	   <div class="row data">
                         <div class="subdiv">
-                            <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
+                            <div class="check"><input type="checkbox" name="cart_id" value="${list.cart_id}" checked="checked">&nbsp;</div>
    
                             <div class="img image"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
 
@@ -100,7 +101,7 @@
                             <button type="button" class="abutton" onclick="deleteCart(${list.cart_id})">삭제</button>
 							</div>
                         </div>
-                    </div>  
+                    </div>                      
                 <div class="right-align basketrowcmd">
                     <button type="button" class="abutton" onclick="selectDelete()">선택상품삭제</button>
                     <button type="button" class="abutton" onclick="deleteAll()">장바구니비우기</button>
@@ -135,10 +136,60 @@
     		console.log(merchant);
     		$(this).siblings("#orderId").val(merchant);
     	});
+    	
+    	
+    	// checkbox 설정 
+		$(".chk_all").click(function(){
+			var chk = $(".chk_all").prop("checked");
+			if(chk) {
+				$("input:checkbox[name='cart_id']").prop("checked", true);
+			} else {
+				$("input:checkbox[name='cart_id']").prop("checked", false);
+			}
+			calAmount();
+		});
+
+		$("input:checkbox[name='cart_id']").click(function(){
+			$(".chk_all").prop("checked", false);
+			calAmount();
+		});
+
+
+			//상품 삭제 버튼
+			deleteCart = (cart_id) => {
+				fetch("${path}/payment/cart/delete/" + cart_id , {
+					method : "GET"
+				})
+				.then(response => {
+					if(response.ok){
+						alert("삭제하였습니다.");
+						location.reload();
+					} else {
+						alert("장바구니에 해당 상품이 존재하지 않습니다.");
+						location.reload();
+					}
+				})
+			} 
+
+			//모두 삭제
+			deleteAll = () => {
+				fetch("${path}/payment/cart/selectDelete/" , {
+					method : "GET"
+				})
+				.then(response => {
+					if(response.ok){
+						alert("삭제하였습니다.");
+						location.reload();
+					} else {
+						location.reload();
+					}
+				})
+			}
+
 	
     	/* selectbox 상품개별삭제 */
 		function selectDelete() {
-			 var url = "${cart}/payment/cart/selectDelete";
+			 var url = "${path}/payment/cart/selectDelete";
 			 var selectedArr = new Array();
 			 var cart_id = document.getElementsByName("cart_id"); //
 			 console.dir(selectedArr);
@@ -171,7 +222,9 @@
 			  	});
 			 }
 			}
-  
+    	
+    	
+	
 	</script>
 
 
