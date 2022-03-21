@@ -30,7 +30,7 @@
             </c:if>
      <div class="login-box-link clear">
     <a class="medium" href="${ path }/member/findId">Find ID</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="medium" href="${ path }/member/terms">Create an Account!</a>
+    <a class="medium" href="${ path }/member/terms_v2">Create an Account!</a>
 
     </div>
 	

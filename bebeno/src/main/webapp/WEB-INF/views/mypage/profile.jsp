@@ -38,14 +38,14 @@
 
     <div class="my-tab">
         <ul class="list-nav">
-            <li>
+            <li id="mainNav">
                 <a href="${ path }/mypage/profile">정보수정</a>
             </li>
             <li>
                 <a href="${ path }/mypage/scrap">스크랩</a>
             </li>
             <li>
-                <a href="${ path }/mypage/cart">장바구니</a>
+                <a href="${ path }/payment/cart">장바구니</a>
             </li>
         </ul>
     </div>
@@ -53,7 +53,7 @@
     <div class="inner-list">
         <div class="wrab-board-wide">
             <ul class="inner-list-nav">
-                <li>
+                <li id="subNav" >
                     <a href="${ path }/mypage/profile">프로필</a>
                 </li>
                 <li>
@@ -207,8 +207,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
-        
+			</div>        
 
     </form>
 </section>
@@ -239,6 +238,19 @@
 	   readURL(this);
 	});
 	
+	
+	// 프로필 파일 이미지가 변경되었을 때 버튼활성화 및 css 변경
+	$("#profileImgUpdate").change(function(){
+		   btnOn(this);
+		});
+	
+	function btnOn(input) {
+		
+		$("#submitBtn").attr("disabled", false);
+		$("#submitBtn").css('background-color', '#c70039');
+		$("#submitBtn").css('color', 'white');
+	}
+	
 /* ------------------------------------------------------------------------------------------------------------- */
 	
 	// 닉네임 중복 확인
@@ -267,6 +279,8 @@
 					} else {
 						alert("사용 가능한 닉네임 입니다.");
 						$("#submitBtn").attr("disabled", false);
+						$("#submitBtn").css('background-color', '#c70039');
+						$("#submitBtn").css('color', 'white');
 					}
 					
 				},
@@ -276,7 +290,8 @@
 				}				
 			});
 		});		
-	});
+		
+	});	
 
 </script>
 
