@@ -22,11 +22,18 @@ public interface MyPageService {
 
 // ===============================================	
 	
-	// 스크랩 리스트의 개수
-	int getScrapListCount(String id);
+	// 스크랩 세이브
+	int saveScrap(Scrap scrapVo);
+
+	//
+	List<Scrap> scrapList(String id);
+
+	// 스크랩 게시글 삭제
+	int scrapDelete(int wagleBoardNo);
 	
 	// 스크랩 페이징 정보
 //	List<Scrap> getScrapList(PageInfo pageInfo, String id);
+
 
 
 

@@ -88,13 +88,57 @@ public class MyPageServiceImpl implements MyPageService {
 	
 // ==================================================================
 
-	// 스크랩한 리스트의 개수
+	// 게시판 번호로 저장할 게시판 정보 가져오기
 	@Override
-	public int getScrapListCount(String id) {
+	public Scrap getWagleBoardByNo(int no) {
 		
-		
-		return mapper.getScrapCount(id);
+		return mapper.getWagleBoardByNo(no);
 	}
+
+	// 스크랩 세이브 
+	@Override
+	public int saveScrap(Scrap scrapVo) {
+		
+		int result = 0;
+		
+		log.info("스크랩 DB에 게시글 번호가 등록 되어있는 지 조회 : {}", getScrapWBNoByNo(scrapVo.getWagleBoardNo()));
+	
+		// DB에 스크랩할 게시판 번호가 없을 때 => 저장 
+		if(getScrapWBNoByNo(scrapVo.getWagleBoardNo()) == null) {
+			result = mapper.insertScrap(scrapVo);
+		} else {				
+			// 스크랩할 게시판 번호가 스크랩 DB에 이미 존재할 때(이미 스크랩 된 상태)
+			// => 이미 스크랩이 되어있습니다.
+			result = 0;
+		}	
+		
+		
+		return result;
+	}
+
+	// 스크랩 DB에 게시판 번호가 있는지 조회(null값을 받이 위해 int => integer로 바꿈)
+	private Integer getScrapWBNoByNo(Integer wagleBoardNo) {
+
+		return mapper.getScrapWBNoByNo(wagleBoardNo);
+	}
+
+	// 스크랩한 게시글 리스트 가져오기
+	@Override
+	public List<Scrap> scrapList(String id) {
+		
+		return mapper.scrapList(id);
+	}
+
+	// 스크랩 게시글 삭제 
+	@Override
+	public int scrapDelete(int wagleBoardNo) {
+		
+		
+		return mapper.scrapDelete(wagleBoardNo);
+	}
+
+
+
 	
   // -----------------------------------------------------------
 	

@@ -15,8 +15,10 @@ public class Scrap {
 
 	private int wagleBoardNo;	
 	
+	private int wagleWriterNo; // = 회원 번호(member.no)
+	
 	private String wagleBoardTitle;
 	
-	private String WagleBoardRNameFile;
+	private String wagleBoardRNameFile;
 	
 }

@@ -60,5 +60,4 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		
 	}
 
-
 }

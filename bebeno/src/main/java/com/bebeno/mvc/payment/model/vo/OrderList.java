@@ -10,11 +10,15 @@ import oracle.sql.DATE;
 @NoArgsConstructor
 public class OrderList {
 
+	private String merchant_uid;
+	
 	private String orderId;
 	
 	private String id;
 	
 	private int cart_id;
+	
+	private int wineBno;
 	
 	private DATE orderDate;
 	

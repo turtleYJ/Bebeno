@@ -59,7 +59,6 @@ public class MemberController {
 	}
 
 
-//
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public ResponseEntity<Map<String, Boolean>> idCheck1(
@@ -102,6 +101,17 @@ public class MemberController {
 		
 		return "member/terms";
 	}
+	
+// ======================= terms_v2 ==========================
+	
+	@GetMapping("/member/terms_v2")
+	public String enroll_test() {
+		log.info("회원 약관 페이지 요청 테스트");
+		
+		return "member/terms_v2";
+	}
+	
+// ======================= terms_v2 ==========================
 	
 	@GetMapping("/member/forgot-password")
 	public String forgot() {

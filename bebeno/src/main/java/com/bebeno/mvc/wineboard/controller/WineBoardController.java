@@ -118,7 +118,7 @@ public class WineBoardController {
 	
 		return "/wineboard/wineWrite";
 	}
-	
+		
 	// 게시글 등록
 	@PostMapping("/wineWrite")
 	public ModelAndView write(ModelAndView model, HttpServletRequest request,

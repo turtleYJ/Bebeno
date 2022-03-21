@@ -14,18 +14,19 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	public OrderMapper mapper;
-	
+
 	@Override
-	public int addOrder(Order order) {
+	public int orderResult(Order order) {
 		
-		return mapper.addOrder(order);
-	
+		return mapper.paymentInsert(order);
 	}
 
 	@Override
-	public List<OrderList> orderList(String id) {
+	public List<OrderList> getPaymentList(String id) {
+		 
+		List<OrderList> paymentList = mapper.paymentSelect(id);
 		
-		return mapper.orderList(id);
-	}
+		return paymentList;
+}
 
 }

@@ -34,7 +34,7 @@
   	<result property="renamedFileName" column="RENAMED_FILENAME"/>
   </resultMap>
   
-  <select id="orderList" parameterType="String" resultMap="orderListResultMap">
+  <select id="paymentSelect" parameterType="map" resultMap="orderListResultMap">
   	SELECT 
   		  O.ORDER_ID, 
   		  C.CART_ID, 
@@ -43,40 +43,30 @@
   		  M.EMAIL, 
   		  M.PHONE, 
   		  W.AMOUNT, 
-  		  W.WINENAME, 
-  		  W.WINEPRICE,
+  		  W.WINE_NAME, 
+  		  W.WINE_PRICE,
   		  W.RENAMED_FILENAME
   	FROM  BBN_ORDER O
+  	LEFT JOIN BEBENO_WINEBOARD W
+  	     ON O.WINE_BNO = W.WINE_BNO
   	LEFT JOIN CART C
-  		 ON O.ORDER_ID = C.CART_ID
+  		 ON O.CART_ID = C.CART_ID
   	LEFT JOIN MEMBER M 
-  		 ON O.ORDER_ID = M.ID
+  		 ON O.ID = M.ID
   	WHERE O.CART_ID = C.CART_ID 
   </select>
   
-  <insert id="addOrder" parameterType="Order">
+  <insert id="paymentInsert" parameterType="Order">
    	INSERT INTO BBN_ORDER (
    				ORDER_ID,
+   				WINE_BNO,
    				CART_ID,
-   				ID,
-   				NAME,
-   				EMAIL,
-   				PHONE,
-   				AMOUNT,
-   				WINE_NAME,
-   				WINE_PRICE,
-   				RENAMED_FILENAME
+   				ID	        
    				) VALUES (
    				SEQ_ORDER_ID.NEXTVAL,
    				SEQ_CART_NO.NEXTVAL,
-   				#{id},
-   				#{name},
-   				#{email},
-   				#{phone},
-   				#{amount},
-   				#{wineName},
-   				#{winePrice},
-   				#{renamedFileName}
+				#{wine_bno},
+   				#{id}
    				)
   </insert>
   
