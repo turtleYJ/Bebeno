@@ -48,8 +48,8 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		return result;
 	}
 	
-	@Transactional
-	public Wagle delete(long no) {
+	@Override
+	public int delete(int no) {
 		
 		return mapper.deleteWagleBoard(no);
 	}
@@ -58,6 +58,18 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 	@Transactional
 	public void fileSave(WagleFile files) {
 		
+		mapper.savefile(files);
 	}
 
+	@Override
+	public int fileDelete(int no) {
+		
+		return mapper.deletefiles(no);
+	}
+
+	@Override
+	public List<Wagle> getWagleListByCategory(String category) {
+
+		return mapper.getWagleListByCategory(category);
+	}
 }
