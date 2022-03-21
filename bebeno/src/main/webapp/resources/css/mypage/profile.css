@@ -186,3 +186,8 @@
 #subNav > a {
 	color: white;
 }
+
+.pImgDiv {
+	text-align: center;
+	vertical-align: middle;
+}

@@ -80,13 +80,17 @@
              -->
              <c:if test="${ empty loginMember.profileImgNameO }">
             	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
-            	<label for="profileImgUpdate">이미지 업로드</label>            
-            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
+            	<div class="pImgDiv">
+	            	<label for="profileImgUpdate">이미지 업로드</label>            
+	            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
+            	</div>
 			</c:if>
 			<c:if test="${ !empty loginMember.profileImgNameO }">
 				<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
-            	<label for="profileImgUpdate">이미지 업로드</label>            
-            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+            	<div class="pImgDiv">
+	            	<label for="profileImgUpdate">이미지 업로드</label>            
+	            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+            	</div>
 			</c:if>
             <!-- 
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">

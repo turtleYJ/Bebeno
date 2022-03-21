@@ -138,28 +138,6 @@ COMMENT ON COLUMN STORE_WINES.STORE_NO IS '상점고유번호';
 
 
 ------------------------------------------------
--------------- STORE_WINES 관련 테이블 ------------
-------------------------------------------------
-CREATE TABLE STORE_WINES (
-    NO NUMBER PRIMARY KEY,
-    STORE_NO NUMBER,
-    WINE_NAME VARCHAR2(100), 
-    WINE_ENG VARCHAR2(100),
-    ORIGINAL_FILENAME VARCHAR2(100),
-	RENAMED_FILENAME VARCHAR2(100),
-    FOREIGN KEY (STORE_NO) REFERENCES BBN_STORE (STORE_NO)
-);
-
-CREATE SEQUENCE SEQ_STOREWINE_NO;
-
-COMMENT ON COLUMN STORE_WINES.NO IS '와인번호';
-COMMENT ON COLUMN STORE_WINES.STORE_NO IS '한글명';
-COMMENT ON COLUMN STORE_WINES.WINE_ENG IS '영어명';
-COMMENT ON COLUMN STORE_WINES.ORIGINAL_FILENAME IS '첨부파일원래이름';
-COMMENT ON COLUMN STORE_WINES.RENAMED_FILENAME IS '첨부파일변경이름';
-COMMENT ON COLUMN STORE_WINES.STORE_NO IS '상점고유번호';
-
-------------------------------------------------
 --------------- MEMBER 관련 테이블 ---------------
 ------------------------------------------------
 
@@ -350,10 +328,17 @@ COMMENT ON COLUMN WAGLE_BOARD.CREATE_DATE IS '게시글올린날짜';
 COMMENT ON COLUMN WAGLE_BOARD.MODIFY_DATE IS '게시글수정날짜';
 COMMENT ON COLUMN WAGLE_BOARD.CATEGORY IS '와글타입';
 
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 1',  '와인후기', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 2',  '와인후기', '원본파일명.txt', 'wagle1.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 3',  '와인후기', '원본파일명.txt', 'wagle2.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
-INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 4',  '와인후기', '원본파일명.txt', 'wagle3.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 1',  '와인후기', '원본파일명.txt', 'wagle1.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 2',  '와인후기', '원본파일명.txt', 'wagle2.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 3',  '와인후기', '원본파일명.txt', 'wagle3.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '게시글 4',  '와인후기', '원본파일명.txt', 'wagle4.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 5',  '와인후기', '원본파일명.txt', 'wagle5.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 6',  '와인후기', '원본파일명.txt', 'wagle6.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 7',  '와인후기', '원본파일명.txt', 'wagle7.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 8',  '와인후기', '원본파일명.txt', 'wagle8.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 9',  '와인후기', '원본파일명.txt', 'wagle9.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 10',  '와인후기', '원본파일명.txt', 'wagle10.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
+INSERT INTO WAGLE_BOARD VALUES(SEQ_WAGLE_BOARD_NO.NEXTVAL, 1, '', '', '타이틀 11',  '와인후기', '원본파일명.txt', 'wagle11.png', DEFAULT, DEFAULT, 'Y', SYSDATE, SYSDATE, 'wine');
 
 -- 총 게시글 갯수
 -- SELECT COUNT(*) FROM BOARD WHERE STATUS='Y'

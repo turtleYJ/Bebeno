@@ -1,5 +1,6 @@
 .wagle_nav{
     width: 100%;
+    padding-top: 20px;
     padding-bottom: 70px;
     border-bottom: 2px solid #e6e6e6;
 }
@@ -164,19 +165,26 @@ font-size: 13px;
     justify-content: left;
     margin: 30px;
     border-collapse: separate;
-    border-spacing: 0 30px;
+    border-spacing: 0 50px;
 }
 
 .wagle-info-area tbody{
 	padding: 30px;
 }
 
+.wagle_img_box .slide_img img {
+	display: inline-block;
+	width: 300px;
+}
 
 /* contents */
 .wagle-info-area th{
     padding: 10px;
 }
 
+.wagle-info-area td{
+	padding: 15px;
+}
 
 /* profile */
 .member_profile_img img{
@@ -225,7 +233,8 @@ font-size: 13px;
     cursor: pointer;
 }
 .th_btn_box {
-    padding: 30px 10px 10px 5px;
+    padding: 30px 10px 100px 5px;
+    display: flex;
 }
 
 /* comments */

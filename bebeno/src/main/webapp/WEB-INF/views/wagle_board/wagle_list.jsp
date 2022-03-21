@@ -6,6 +6,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
+	<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
 	<jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
     
     <section class="wagle_contains">
