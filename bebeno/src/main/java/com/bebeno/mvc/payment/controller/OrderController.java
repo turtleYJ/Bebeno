@@ -1,5 +1,7 @@
 package com.bebeno.mvc.payment.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,13 +52,29 @@ public class OrderController {
 	public String orderResult(Order order, @SessionAttribute(name="loginMember") Member loginMember ,
 						@RequestParam("wineBno") int wineBno, HttpSession session) throws Exception {
 			
+		
+		String id = loginMember.getId();
+		order.setId(id);
+
 		orderservice.orderResult(order);
+		System.out.println();
 		
 		return "/payment/orderResult";
 	}
 	
-	
-	
+    @GetMapping("/consumerBreakdown")
+    public String consumerBreakdown(@SessionAttribute(name="loginMember")Member loginMember, Model model) {
+		
+    	String id = loginMember.getId();
+    	
+    	List<OrderList> paymentList = orderservice.getPaymentList(id);
+    	
+    	model.addAttribute("id",id);
+    	model.addAttribute("paymentList", paymentList);
+    	
+    	return "/mypage/profile";
+    	
+    }
 	
 	
 	

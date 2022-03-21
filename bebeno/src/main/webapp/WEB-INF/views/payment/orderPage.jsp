@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Top</title>
+<title>주문하기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,15 +21,13 @@
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
   <!-- iamport.payment.js -->
+  <script type="text/javascript" src="${ path }/js/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 </head>
 <body>
 	<div class="container">
 			
-		<c:set value="${productInfo}" var="dto"/>
-		<c:set value="2500" var="del_fee"/>
 		<div class="row no-gutters qnas" style="text-align: center;">
 			<h1 class="page-header">주문하기</h1>
 			<table class="table table-hover" style="width: 70%; margin: auto; border-bottom: 1px solid #D5D5D5;">
@@ -125,7 +123,7 @@
 		</div>
 	</div>
 
-	<script>
+	<script type="text/javascript">
 	
 	// import 결제 api 
 	
