@@ -17,8 +17,8 @@
 	                        <div class="wagle_item_contents">
 	                            <a href="${ path }/wagle_board/wagle_view?no=${ wagle.no }">
 	                                <span>
-	                                    <img class="wagle_thumb_img" src="${ path }/resources/upload/wagle/${ wagle.renamedFileName }" alt="">
-	                                </span>
+										<img class="wagle_thumb_img" src="${ path }/resources/upload/wagle/${ wagle.renamedFileName }" alt="">
+									</span>
 	                                <p><strong>${ wagle.nicname }</strong></p>
 	                                <p><strong>${ wagle.title }</strong></p>
 	                                <p>${ wagle.content }</p>

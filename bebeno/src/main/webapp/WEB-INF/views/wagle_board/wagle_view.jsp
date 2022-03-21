@@ -14,7 +14,7 @@
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
                 <c:forEach var="imageFileName" items="${ map.fileList }"  >
-                    <img src="${ path }/resources/upload/img/${ wagle.renamedFileName }">
+                    <img src="${ path }/resources/upload/wagle/${ wagle.renamedFileName }">
                     <br><br><br>
                 </c:forEach>
             </div>
@@ -53,9 +53,9 @@
         </table>
         <table>
         <th class="th_btn_box" colspan="2">
-            <button class="th_btn" type="button" th:onclick="|location.href='@{/wagle_board/update(no=${wagle_board.no})}'|">수정</button>
-            <button class="th_btn" type="button" id="btnDelete">삭제</button>
-            <input class="th_btn" type="button" th:onclick="|location.replace('@{/wagle_board/wagle_list}')|" value="목록으로">
+            <button class="th_btn" type="button" onclick="location.href='${ path }/wagle_board/wagle_update?no=${ wagle.no }'">수정</button>
+            <button class="th_btn" type="button" onclick="location.href='${ path }/wagle_board/delete?no=${ wagle.no }" id="btnDelete">삭제</button>
+            <input class="th_btn" type="button" onclick="location.href='${ path }/wagle_board/wagle_list'" value="목록으로">
             <button class="th_btn" type="button" th:onclick="">스크랩</button>
         </th>
         </table>

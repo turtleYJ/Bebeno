@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bebeno.mvc.common.util.FileProcess;
 import com.bebeno.mvc.common.util.FileUtil;
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.shop.model.vo.Shop;
 import com.bebeno.mvc.wagle.model.service.WagleBoardService;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
@@ -42,19 +43,19 @@ public class wagleController {
 		wagleList =  service.getWagleList();
 		
 		System.out.println(wagleList.get(0).getCategory());
-		
+
 		model.addObject("wagleList", wagleList);
 		model.setViewName("wagle_board/wagle_list");
-		
+
 		return model;
 	}
 	
 	@GetMapping("/wagle_list_filter") 
 	public ModelAndView listFilter(ModelAndView model, @RequestParam("category") String category) {
 		List<Wagle> wagleList = null;
-		
+
 		wagleList =  service.getWagleListByCategory(category);
-		
+
 		System.out.println("category : " + category);
 		System.out.println("filter 후 : " + wagleList);
 		
@@ -164,7 +165,24 @@ public class wagleController {
 		return model;
 	}
 	
-
+	@GetMapping("/wagle_update")
+	public ModelAndView update(
+			@SessionAttribute("loginMember") Member loginMember,
+			ModelAndView model, @RequestParam("no") int no) {
+		
+		Wagle wagle = service.findBoardByNo(no);
+		
+		if (loginMember.getNo() == wagle.getWriterNo()) {			
+			model.addObject("wagle", wagle);
+			model.setViewName("/wagle_board/wagle_update");
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/wagle_board/wagle_update");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
 	
 	@PostMapping("/wagle_update")
 	public ModelAndView updateWagleBoard(ModelAndView model, 
@@ -222,7 +240,7 @@ public class wagleController {
 					for(int i = 0; i < wagle.getFiles().size(); i++) {
 						FileProcess.delete(location + "/" + wagle.getFiles().get(i).getRenamedFileName());
 					}
-					service.fileDeleteByStoreNo(wagle.getNo());
+					service.fileDelete(wagle.getNo());
 					
 					for(MultipartFile mf : newfileList) {
 						// 파일을 특정 location에 리네임파일네임으로 저장하는 로직
@@ -239,7 +257,7 @@ public class wagleController {
 					}
 
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 				
@@ -248,10 +266,10 @@ public class wagleController {
 		
 		if(wagle != null && wagle.getNo() > 0) {
 			model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
-			model.addObject("location", "/wagle_board/wagle_list");
+			model.addObject("location", "/wagle_board/wagle_view?no" + wagle.getNo());
 		} else {
 			model.addObject("msg", "게시글이 수정을 실패하였습니다.");
-			model.addObject("location", "/wagle_board/wagle_list");
+			model.addObject("location", "/wagle_board/wagle_update?no=" + wagle.getNo());
 		}
 		
 		model.setViewName("common/msg");
@@ -263,23 +281,30 @@ public class wagleController {
 	
 	@GetMapping("/delete")
 	public ModelAndView delete(ModelAndView model, 
-			@RequestParam("no") long no) {
-		Wagle board = null;
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("no") int no) {
+		int result = 0;
+		Wagle wagle = service.findBoardByNo(no);
 		
-		board = service.delete(no);
-		
-		if(board == null) {
-			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
-			model.addObject("location", "/wagle_board/wagle_list");
+
+		if(wagle.getWriterNo() == loginMember.getNo()) {
+			result = service.delete(wagle.getNo());
+			
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+				model.addObject("location", "/wagle_board/wagle_list");
+			} else {
+				model.addObject("msg", "게시글이 삭제를 실패하였습니다.");
+				model.addObject("location", "/wagle_board/wagle_view?no=" + wagle.getNo());
+			}
 		} else {
-			model.addObject("msg", "게시글이 삭제를 실패하였습니다.");
-			model.addObject("location", "/wagle_board/wagle_list");
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/shop/list");
 		}
 		
 		model.setViewName("common/msg");
 		
 		return model;
 	}
-	
 	
 }

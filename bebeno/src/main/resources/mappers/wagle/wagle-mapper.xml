@@ -11,7 +11,7 @@
 		        W.WINE_NO,
 		        W.SHOP_NO,
 		        W.WAGLE_TITLE,
-		        W.WAGLE_CONTENT,
+		        W.WALGE_CONTENT,
 		        W.ORIGINAL_FILENAME, 
 		        W.RENAMED_FILENAME, 
 		        W.READCOUNT,
@@ -31,7 +31,7 @@
 		<result property="wine_no" column="WINE_NO"/>
 		<result property="shop_no" column="SHOP_NO"/>
 		<result property="title" column="WAGLE_TITLE"/>
-		<result property="content" column="WAGLE_CONTENT"/>
+		<result property="content" column="WALGE_CONTENT"/>
 		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
 		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="readcount" column="READCOUNT"/>
@@ -119,10 +119,10 @@
        	UPDATE WAGLE_BOARD
        	<trim prefix="SET" suffixOverrides=",">
     	    <if test="title != null">
-		 		W.TITLE = #{title},
+		 		W.WAGLE_TITLE = #{title},
 	 		</if>
 	 		<if test="content != null">
-		 		W.CONTENT = #{content},
+		 		W.WAGLE_CONTENT = #{content},
 	 		</if>
 	 		<if test="originalFileName != null">
 		 		ORIGINAL_FILENAME = #{originalFileName},
@@ -133,19 +133,25 @@
 		 	MODIFY_DATE = SYSDATE 
        	</trim>
 	 	WHERE 
-	 		 WAGLE_NO = #{no}
+	 		 W.WAGLE_NO = #{no}
 	</update>
 	
 	<update id="updateStatus" parameterType="map">
 		UPDATE WAGLE_BOARD 
 		SET STATUS = #{status} 
-		WHERE  WAGLE_NO = #{no}
+		WHERE W.WAGLE_NO = #{no}
 	</update>
 	
  	<delete id="deleteWagleBoard" parameterType="_int">
  		DELETE 
  		 FROM WAGLE_BOARD
- 		WHERE  WAGLE_NO = #{no}
+ 		WHERE W.WAGLE_NO = #{no}
+ 	</delete>
+ 	
+ 	<delete id="deletefiles" parameterType="_int">
+ 		DELETE 
+ 		 FROM WAGLE_FILE
+ 		WHERE W_FILE_NO = #{file_no}
  	</delete>
  	
  	<insert id="savefile" parameterType="ContentFiles"

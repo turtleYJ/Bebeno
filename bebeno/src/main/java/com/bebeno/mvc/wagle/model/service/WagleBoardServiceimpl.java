@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.dao.WagleBoardMapper;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
@@ -50,8 +49,8 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		return result;
 	}
 	
-	@Transactional
-	public Wagle delete(long no) {
+	@Override
+	public int delete(int no) {
 		
 		return mapper.deleteWagleBoard(no);
 	}
@@ -60,6 +59,18 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 	@Transactional
 	public void fileSave(WagleFile files) {
 		
+		mapper.savefile(files);
 	}
 
+	@Override
+	public int fileDelete(int no) {
+		
+		return mapper.deletefiles(no);
+	}
+
+	@Override
+	public List<Wagle> getWagleListByCategory(String category) {
+
+		return mapper.getWagleListByCategory(category);
+	}
 }
