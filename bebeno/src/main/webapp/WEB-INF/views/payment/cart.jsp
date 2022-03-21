@@ -87,7 +87,7 @@
                             <!-- 수량 조절 -->
                             <div class="num">
                                 <div class="updown">
-                                    <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+                                    <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" style="line-height: 0;" onkeyup="javascript:basket.changePNum(1);">
                                     <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                                     <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                                 </div>
@@ -98,7 +98,7 @@
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
                             <div class="basketcmd">
-                            <button type="button" class="abutton" onclick="deleteCart(${list.cart_id})">삭제</button>
+                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.cart_id})">삭제</button>
 							</div>
                         </div>
                     </div>                      
