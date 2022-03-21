@@ -13,9 +13,9 @@
         <div id="wagle_img_box">
             <div id="test-slide" class="swiper mySwiper">
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
-                <c:forEach var="imageFileName" items="${ map.fileList }"  >
+                <c:forEach var="file" items="${ wagleboard.files }"  >
                 
-                    <img src="${ path }/resources/upload/wagle/${ wagle.renamedFileName }">
+                    <img src="${ path }/resources/upload/wagle/${ file.renamedFileName }">
 
                     <br><br><br>
                 </c:forEach>
@@ -31,30 +31,32 @@
                 <!-- 작성목록 -->
                 <a href="">
                 <!-- db연결 후 삭제 -->
-                <img src="" class="member_profile_img">
+                <img src="${ path }/" class="member_profile_img">
             </div>
-            <div class="member_nickname" th:text="${ wagle.writerno }">
+            <div class="member_nickname" th:text="${ wagleboard.writerNo }">
                 <!-- db연결 후 삭제 -->
-                <div class="member_nickname">닉네임자리</div>
+                <div class="member_nickname">${ wagleboard.nicname }</div>
             </a>
             </div>
         </div>
         <table class="wagle-info-area">
             <tr>
                 <th>제목</th>
-                <td>${ wagle.title }</td>
+                <td>${ wagleboard.title }</td>
 <%--                 <td th:text="${ wagle. }"></td> --%>
             </tr>
+            <!--  
+            -->
             <tr>
                 <th>장소</th>
-                <td>${ wagle.shop_no }</td>
+                <td>${ wagleboard.shop_no }</td>
 <%--                 <td th:text="${ wagle. }"></td> --%>
             </tr>
             <!-- <div>와인 필터</div> -->
             <tr>
                 <th>내용</th>
                 <td>
-                    ${ wagle.content }
+                    ${ wagleboard.content }
                 </td>
             </tr>    
         </table>
