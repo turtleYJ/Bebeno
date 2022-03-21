@@ -53,6 +53,7 @@ public class MemberController {
 		
 		return model;
 	}
+
 	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
