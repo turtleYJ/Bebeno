@@ -66,6 +66,7 @@
           <c:if test="${ empty loginMember }">          	
           	<li><a href="${path}/member/loginform">LOGIN</a></li>
           	<li><a href="${path}/member/terms">JOIN</a></li>          	
+          	<li><a href="${path}/member/terms_v2">JOIN_test</a></li>          	
           </c:if>          
           <c:if test="${ !empty loginMember }">
           	<li><a href="${path}/mypage/profile">MYPAGE</a></li>

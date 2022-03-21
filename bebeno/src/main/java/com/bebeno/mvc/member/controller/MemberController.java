@@ -89,6 +89,17 @@ public class MemberController {
 		return "member/terms";
 	}
 	
+// =================================================
+	
+	@GetMapping("/member/terms_v2")
+	public String enroll_test() {
+		log.info("회원 약관 페이지 요청 테스트");
+		
+		return "member/terms_v2";
+	}
+	
+// =================================================
+	
 	@GetMapping("/member/forgot-password")
 	public String forgot() {
 		log.info("회원 약관 페이지 요청");
