@@ -178,7 +178,7 @@ public class MyPageController {
 			
 			if(result > 0) {
 				model.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인 해 주세요");
-				model.addObject("location", "/mypage/profile");
+				model.addObject("location", "/logout");
 				
 				model.setViewName("common/msg");
 			} else {

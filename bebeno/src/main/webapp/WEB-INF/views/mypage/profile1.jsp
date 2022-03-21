@@ -80,17 +80,17 @@
              -->
              <c:if test="${ empty loginMember.profileImgNameO }">
             	<img src="../resources/image/profile.png" id="profileimg" alt="프로필 이미지">
-            	<div class="pImgDiv">
+				<div class="pImgDiv">
 	            	<label for="profileImgUpdate">이미지 업로드</label>            
 	            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">				
-            	</div>
+				</div>
 			</c:if>
 			<c:if test="${ !empty loginMember.profileImgNameO }">
-				<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
-            	<div class="pImgDiv">
-	            	<label for="profileImgUpdate">이미지 업로드</label>            
-	            	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
-            	</div>
+					<img src="../resources/upload/profileImg/${ loginMember.profileImgNameR }" id="profileimg" alt="프로필 이미지">
+				<div class="pImgDiv">
+    	        	<label for="profileImgUpdate">이미지 업로드</label>            
+        	    	<input type="file" id="profileImgUpdate" name="profileImgUpdate" style="display: none;">
+				</div>
 			</c:if>
             <!-- 
                 <img src="../resources/image/profile.png" id="profileimg" alt="프로필">
@@ -124,15 +124,12 @@
                             </th>
                             <td class="input-item">
                                 <div class="input-nickname">
-                                    <p>
+                                    <div>
                                         <label class="hidden" style="display: none;">닉네임</label>
                                         <input type="text" class="" id="nickname" name="nickname" 
                                         placeholder="닉네임" value="${ loginMember.nickname }">
-                                        <!-- 
-                                        <button type="button" class="button">중복확인</button>
-                                         -->
                                         <input type="button" id="checkDuplicate" value="중복검사">
-                                    </p>
+                                    </div>
                                     <input type="hidden" id="nickname_origin" name="nickname_origin" value="회원 닉네임">
                                 </div>
                             </td>
@@ -173,58 +170,45 @@
 									<th colspan="2" style="text-align: center;">상품명</th>
 									<th>가격</th>
 									<th>수량</th>
-									<th>옵션</th>
 									<th>결제금액</th>
-									<th>결제일</th>
 									<th>주문현황</th>
 								</tr>
 							</thead>
 							<tbody style="text-align: left;">
 							<c:choose>
-									<c:when test="${paymentList == null}">
+									<c:when test="${paymentList == !null}">
 										<tr style="text-align: center;"><td colspan="8"><h3>주문 내역이 없습니다.</h3></td></tr>
  									</c:when>
 									<c:otherwise>
-										<c:forEach items="${paymentList}" var="list">
 											<tr>
 												<td style="text-align: center;">
-											<c:if test="${ !empty list.renamedFileName }">
 												<img id="image" alt="thumbnail"
-													src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="40%"></c:if>
+													src="${path}/resources/upload/wineimg/20220304_025333467.png" width="100px" height="120px">
 											    <input type="hidden" value="${list.wineBno}" name="wineBno" id="wineBno"></td>
-												<td>${list.wineName}<br></td>
+												<td>테스트<br></td>
 												<td><fmt:formatNumber type="number"
-														value="${list.winePrice}" />&nbsp;원</td>
-												<td>${list.amount}</td>
+														value="1000" />&nbsp;원</td>
+												<td>1개</td>
 												<td><fmt:formatNumber type="number"
-														value="${list.amount}" />&nbsp;원</td>
-												<td><fmt:formatDate value="${list.orderDate}"
-														type="date" pattern="yyyy-MM-dd" /></td>
-														<td>
-															<button class="btn btn-default disable"
-																disabled="disabled">주문취소</button>
+														value="" />&nbsp;1000원</td>
+												<td>결제완료<td>
+													
 															<br>
-															<button class="btn btn-default disable"
-																disabled="disabled">주문변경</button>
+														
 															<br>
 														</td>
 													
 														<td>
-															<button class="btn btn-default order_cancel"
-																onclick="location.href='/order/cancel/'+ ${dto.orderId}">주문취소</button>
-															<br>
-															<button class="btn btn-default">주문변경</button>
+
 														</td>
 											</tr>
-										</c:forEach>
 									</c:otherwise>
 								</c:choose> 
 							</tbody>
 						</table>
 					</div>
 				</div>
-			</div>
-        
+			</div>        
 
     </form>
 </section>
