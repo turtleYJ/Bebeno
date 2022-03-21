@@ -291,9 +291,8 @@
 	</update>
  	
  	<delete id="deleteWineBoard" parameterType="_int">
- 		DELETE
- 		 FROM BEBENO_BOARD
- 		WHERE WINE_BNO = #{wineBno}
+ 		DELETE FROM BEBENO_WINEBOARD 
+ 	  	WHERE WINE_BNO=#{wine_bno}
  	</delete>
  </mapper>
 
