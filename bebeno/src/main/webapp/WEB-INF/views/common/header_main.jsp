@@ -42,10 +42,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
-
-<!-- yooil css -->
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
 
 <title>header</title>
@@ -71,14 +67,22 @@
           <div class="site-navigation">
             <a href="${path}/" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
             
-            <div class="loginbar">
-		  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
-		  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
-            </div>
+            <c:if test="${ empty loginMember }">
+	            <div class="loginbar">
+			  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
+			  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+	            </div>
+            </c:if>
+            
+            <c:if test="${ !empty loginMember }">
+	            <div class="loginbar">
+			  		<a href="${path}/mypage/profile" class="btnA button1">MYPAGE</a>
+			  		<a href="${path}/logout" class="btnA button2">LOGOUT</a>
+	            </div>
+            </c:if>
     
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
               <li class="active"><a href="${path}/">Home</a></li>
-              <li><a href="">ABOUT</a></li>
               <li><a href="${path}/wineboard/wineList">WINE</a></li>
               <li><a href="${path}/shop/list">WINE SHOP</a></li>
               <li><a href="${path}/wagle_board/wagle_list">COMMUNITY</a></li>
