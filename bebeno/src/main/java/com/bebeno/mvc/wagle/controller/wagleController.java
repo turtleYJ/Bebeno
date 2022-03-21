@@ -19,11 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bebeno.mvc.common.util.FileProcess;
 import com.bebeno.mvc.common.util.FileUtil;
 import com.bebeno.mvc.member.model.vo.Member;
-import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.service.WagleBoardService;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
-import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -91,65 +89,66 @@ public class wagleController {
 	@PostMapping("/wagle_write")
 	public ModelAndView write(ModelAndView model,
 			@ModelAttribute Wagle wagleboard,
-			@ModelAttribute ContentFiles files,
-			@RequestParam("upfiles") MultipartFile upfiles,
+			@ModelAttribute WagleFile files,
+			@RequestParam("upfile") MultipartFile upfile,
 			MultipartHttpServletRequest Request,
 			@SessionAttribute(name = "loginMember") Member loginMember) {
 
-		List<MultipartFile> fileList = Request.getFiles("upfiles");
+		List<MultipartFile> fileList = Request.getFiles("upfile");
 		int result = 0;
 
 		// 파일을 업로드하지 않으면 "", 파일을 업로드하면 "파일명"
-		log.info("upfiles Name : {}", upfiles.getOriginalFilename());
+		log.info("upfile Name : {}", upfile.getOriginalFilename());
 		// 파일을 업로드하지 않으면 true, 파일을 업로드하면 false 
-		log.info("upfiles is Empty : {}", upfiles.isEmpty());
+		log.info("upfile is Empty : {}", upfile.isEmpty());
 		
-		if(upfiles != null && !upfiles.isEmpty()) {
+		if(upfile != null && !upfile.isEmpty()) {
 			
 			String location = null;
 			String renamedFileName = null;
 	
 			try {
 				location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
-				renamedFileName = FileUtil.save(upfiles, location);
+				renamedFileName = FileUtil.save(upfile, location);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
 			if(renamedFileName != null) {
-				wagleboard.setOriginalFileName(upfiles.getOriginalFilename());
+				wagleboard.setOriginalFileName(upfile.getOriginalFilename());
 				wagleboard.setRenamedFileName(renamedFileName);
 			}
 		}
 		
-		wagleboard.setNo(result);
+		wagleboard.setNo(loginMember.getNo());
 		
 		System.out.println(wagleboard);
 		
 		result = service.save(wagleboard);
 		
-//		for (MultipartFile mf : fileList) {
-//			 if(mf != null && !mf.isEmpty()) {
-//					// 파일을 저장하는 로직 작성
-//					String location = null;
-//					String renamedFileName = null;
-////					String location = request.getSession().getServletContext().getRealPath("resources/upload/shop");
-//
-//					try {
-//						location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
-//						renamedFileName = FileProcess.save(mf, location);
-//					} catch (IOException e) {
-//						e.printStackTrace();
-//					}
-//					
-//					if(renamedFileName != null) {
-//						files.setNo(wagleboard.getNo());
-//						files.setFile_originalFileName(mf.getOriginalFilename());
-//						files.setFile_renamedFileName(renamedFileName);
-//					}
-//					
-//					service.fileSave(files);
-//			 }
+		// 멀티플 파일들을 업로드하고 ContentFiles vo에 저장
+		for (MultipartFile mf : fileList) {
+			 if(mf != null && !mf.isEmpty()) {
+					// 파일을 저장하는 로직 작성
+					String location = null;
+					String renamedFileName = null;
+
+					try {
+						location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
+						renamedFileName = FileProcess.save(mf, location);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					if(renamedFileName != null) {
+						files.setW_file_no(wagleboard.getNo());
+						files.setOriginalFileName(mf.getOriginalFilename());
+						files.setRenamedFileName(renamedFileName);
+					}
+					
+					service.fileSave(files);
+			 }
+       }
 		
 		
 		if(result > 0) {
@@ -164,23 +163,90 @@ public class wagleController {
 		
 		return model;
 	}
-
-	
-	
-	@GetMapping("/wagle_manage")
-	public String manage(@SessionAttribute(name = "loginMember") Member loginMember) {
-		
-		return "/wagle_board/wagle_write_manage";
-	}
 	
 
 	
 	@PostMapping("/wagle_update")
-	public ModelAndView updateWagleBoard(ModelAndView model, @ModelAttribute Wagle wagleboard) {
+	public ModelAndView updateWagleBoard(ModelAndView model, 
+			@SessionAttribute("loginMember") Member loginMember,
+			@ModelAttribute Wagle wagle, @ModelAttribute WagleFile file,@RequestParam("upfile") MultipartFile upfile, MultipartHttpServletRequest Request
+			) {
+		List<MultipartFile> newfileList = Request.getFiles("upfile");		
+		List<WagleFile> exfileList = service.findfileByNo(wagle.getNo());	
 		
-		Wagle board = WagleBoardService.save(wagleboard);
+		log.info("newfileList : {}", newfileList.toString());
+		log.info("newfileList.size : {}", newfileList.size());
 		
-		if(board != null && board.getNo() > 0) {
+		wagle.setFiles(exfileList);
+		
+		int result = 0;
+		
+		// 로그인 이용자와 게시물 작성자가 동일하면 특정 location에 기존 파일을 제거하고 파일을 추가하는 로직
+		if (loginMember.getNo() == wagle.getWriterNo()) {
+			if(upfile != null && !upfile.isEmpty()) {
+				String renamedFileName = null;
+				String location = null;
+				
+				try {
+					location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
+					
+					if(wagle.getRenamedFileName() != null) {
+						// 이전에 업로드된 첨부파일 삭제
+						FileProcess.delete(location + "/" + wagle.getRenamedFileName());
+					}
+					
+					renamedFileName = FileProcess.save(upfile, location);
+					
+					if(renamedFileName != null) {
+						wagle.setOriginalFileName(upfile.getOriginalFilename());
+						wagle.setRenamedFileName(renamedFileName);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			result = service.save(wagle);
+			
+			// 새로 들어온 다중파일 리스트들이 존재하면 다음 로직을 실행한다.
+			if(newfileList.get(0).getSize() != 0) {
+				String location = null;
+				String renamedFileName = null;
+				
+				try {
+					location = resourceLoader.getResource("resources/upload/wagle").getFile().getPath();
+					
+					
+					// 기존의 ContentFiles객체의 파일들을 지우고 db상에서도 delete하는 로직
+					
+					for(int i = 0; i < wagle.getFiles().size(); i++) {
+						FileProcess.delete(location + "/" + wagle.getFiles().get(i).getRenamedFileName());
+					}
+					service.fileDeleteByStoreNo(wagle.getNo());
+					
+					for(MultipartFile mf : newfileList) {
+						// 파일을 특정 location에 리네임파일네임으로 저장하는 로직
+						renamedFileName = FileProcess.save(mf, location);
+						
+						// 파일이 리네임파일네임으로 저장 됐다면 file객체에 담아서 save하는 로직
+						if(renamedFileName != null) {
+							file.setW_file_no(wagle.getNo());
+							file.setOriginalFileName(mf.getOriginalFilename());
+							file.setRenamedFileName(renamedFileName);
+						}
+						
+						service.fileSave(file);
+					}
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+					
+			}
+		
+		if(wagle != null && wagle.getNo() > 0) {
 			model.addObject("msg", "게시글이 정상적으로 수정되었습니다.");
 			model.addObject("location", "/wagle_board/wagle_list");
 		} else {
@@ -190,6 +256,8 @@ public class wagleController {
 		
 		model.setViewName("common/msg");
 		
+		
+		}
 		return model;
 	}
 	
@@ -198,7 +266,7 @@ public class wagleController {
 			@RequestParam("no") long no) {
 		Wagle board = null;
 		
-		board = WagleBoardService.delete(no);
+		board = service.delete(no);
 		
 		if(board == null) {
 			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
@@ -212,4 +280,6 @@ public class wagleController {
 		
 		return model;
 	}
+	
+	
 }
