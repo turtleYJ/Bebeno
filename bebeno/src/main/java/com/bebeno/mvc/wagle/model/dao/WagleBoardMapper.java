@@ -22,12 +22,9 @@ public interface WagleBoardMapper {
 	int updateWagleBoard(Wagle wagleboard);
 
 	int insertWagleBoard(Wagle wagleboard);
-<<<<<<< HEAD
-=======
 
 	List<Wagle> getWagleListByCategory(@Param("category") String category);
 
->>>>>>> main
 	
 	int insertReply(Map<Object, Object> map);
 	

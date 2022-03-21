@@ -94,22 +94,5 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		mapper.
 	}
 
-<<<<<<< HEAD
-		@Override
-		@Transactional
-		public int saveReply(Member member, Reply reply) {
-			
-			Map<Object, Object> map = new HashMap<Object, Object>();
-			
-			map.put("WagleNo", reply.getWagleNo());
-			map.put("writerNo", member.getNo());
-			map.put("writerId", member.getId());
-			
-			return mapper.insertReply(map);
-		}
-
-=======
-	
->>>>>>> main
 }
 
