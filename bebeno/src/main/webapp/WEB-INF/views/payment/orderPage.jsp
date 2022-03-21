@@ -66,7 +66,6 @@
 		</div>
 		
 		<div class="row no-gutters" style="text-align: center; margin: 80px 0;">
-		<c:set value="" var="vo"/>
 			<h1 class="page-header">주문정보 확인</h1>
 			<h4 style="color: red;">주문자 정보를 입력해주세요. </h4>
 		</div>
@@ -103,15 +102,11 @@
 		<div class="row no-gutters" style="text-align: center; margin: 80px 0;">
 			<h1 class="page-header">결제수단 확인</h1>
 			<div style="text-align: center;">
-				<input type="radio" name="cal_info" value="card"><label>&nbsp;카드 결제</label>
+				<input type="radio" name="cal_info" value="card" checked><label>&nbsp;카드 결제</label>
 			</div>
 			<hr>
 			<div class="row no-gutters" style="text-align: center; margin: 50px 0;">
-				<label>상품가격 :&nbsp; <span id="price"></span>&nbsp;${ orderList.winePrice }원</label>
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</label>
-				<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-				<label style="font-size: 1.5em;">총 결제금액 : <span id="totalprice"></span>&nbsp;원
+				<label style="font-size: 1.5em;"> 결제 금액 : <span id="totalprice"></span>&nbsp; ${ orderList.winePrice }원
 				<input type="hidden" id="amount" name="totalAmount">
 				</label>
 			</div>

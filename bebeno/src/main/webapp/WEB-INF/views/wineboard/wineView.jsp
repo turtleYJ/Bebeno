@@ -46,7 +46,7 @@
                         	<option value="3">3</option>
                         	<option value="4">4</option>
                         	<option value="5">5</option>
-                        </select>&nbsp;개
+                        </select>&nbsp;개 <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
                         <form action="${path}/payment/orderPage" method="get">
                        <c:forEach var="list" items="${cartList}">
 			         <div class="paymentScreenBtn">
@@ -56,9 +56,7 @@
 								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
                     </div>
                     </c:forEach>
-                        
-                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
-                        <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2" id="paymentSubmit">구매하기</button> 
+                        <!-- <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2" id="paymentSubmit">구매하기</button>  -->
                     </p> 
                   	 </form> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.  와인은 최대 5개까지 구매 가능합니다.</p>
@@ -92,8 +90,10 @@
                                     </div>
                                 </div>
 								<div class="wineviewright">
+								<c:if test="${loginMember.id eq 'eunjin'}">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <a class="button btn_list_del" id="btnDelete" href="${path}/wineboard/delete?wineBno=${wineboard.wineBno}">삭제</a>
+                                    <a class="button btn_list_del" id="btnDelete" onclick="deleteWrite(${wineboard.wineBno})">삭제</a>
+                                </c:if>
                                 </div>
                             </div>
                     </section>
@@ -156,18 +156,26 @@
 				                  });
 				                  
 		                    });
+						
+				          //상품 삭제 버튼
+							deleteWrite = (wineBno) => {
+								
+								fetch("${path}/wineboard/wineView/delete/" + ${wineboard.wineBno} , {
+									method : "GET"
+								})
+								.then(response => {
+									if(response.ok){
+										alert("게시글 삭제가 완료되었습니다.");
+										location.reload();
+									} else {
+										alert("삭제를 실패하였습니다.");
+										location.reload();
+									}
+								})
+							} 
 				                  
-				            //즉시구매
-				            
-		       			 let merchant = "";
-    	
-    				$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
-    				let time = new Date();
-    				merchant = String("order" + time.getTime());
-    				console.log(merchant);
-    				$(this).siblings("#merchant_uid").val(merchant);
-    				});
 	
+    				
 						  
      
 

@@ -21,11 +21,14 @@ public interface WineBoardMapper {
 
 	// 게시물 상세조회 
 	WineBoard selectWineBoardByNo(@Param("wineBno") Integer wineBno);
-
-	int deleteWineBoard();
-
+    
+	// 게시물 삭제 
+	int deleteWineBoard(int wineBno);
+	
 	// Shop
 	List<WineBoard> findWineListOnShop(@Param("wineKind") String wineKind, @Param("nation") String nation, @Param("wineKeyword") String wineKeyword);
+
+
 	
 	
 	

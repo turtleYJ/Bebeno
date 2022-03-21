@@ -25,8 +25,10 @@
 					</div>
 				</div>
 				<div class='board-top'>
-					<h2 class='cate-tit'>전체와인 <a href="${path}/wineboard/wineWrite">
-					&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>
+					<h2 class='cate-tit'>전체와인 
+					<c:if test="${loginMember.id eq 'eunjin'}">
+					<a href="${path}/wineboard/wineWrite">&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>						
+	               </c:if>
 					<span class='cate-tit-total' id="lblTotalCount"></span></h2>
 					<div class='board-top-sch'>
 					</div><!--.board-top-sch -->

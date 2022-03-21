@@ -145,8 +145,8 @@
                     </div>
                 </div>
                 <div class="bt_wrap">
-                 	<a class="on" id="register"><input type="submit" value="등록"/></a>
-                    <a href="${path}/wineboard/wineList">취소</a>
+                 	<a class="on" id="register"><button type="submit" style="color:white;">등록</button></a>
+                    <a href="${path}/wineboard/wineList"><button>취소</button></a>
     
                 </div>
             </div>

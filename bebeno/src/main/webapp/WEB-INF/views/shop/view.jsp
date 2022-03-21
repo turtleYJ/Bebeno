@@ -30,9 +30,6 @@
 	                        <tr>
 	                            <th>주소</th>
 	                            <td><a href="javascript:funMapOpen('${ shop.korBname }', '${ shop.address1 } ${ shop.address2 } ');" class="link">${ shop.address1 } ${ shop.address2 }<br></a></td>
-	                            <td rowspan="2" class="text-center">
-	                                <img src="https://wine21.speedgabia.com/COMPANY_MST/LOGO/0035582.jpg" alt="" class="img-clogo">
-	                            </td>
 	                        </tr>
 	                        <tr>
 	                            <th>전화번호</th>

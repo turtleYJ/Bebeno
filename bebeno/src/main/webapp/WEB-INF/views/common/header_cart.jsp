@@ -24,7 +24,7 @@
  --> 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min2.css" />
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.css">
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/bootstrap.min.cart.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/main/animate.min.css" />
 <link rel="stylesheet"
@@ -43,31 +43,13 @@
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
-
-<!-- css eunjin -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	
-	<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
-	
-		
-<link rel='apple-touch-icon' href='/02_images/screen_icon_and.png' /> 
-<link rel='apple-touch-icon-precomposed' href='/02_images/screen_icon_and.png' />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+<!-- yooil css -->
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
 
 <title>header</title>
 
-<style type="text/css">
-	
-</style>
 
 </head>
 <body>
