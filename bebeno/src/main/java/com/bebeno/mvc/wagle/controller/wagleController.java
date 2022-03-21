@@ -19,9 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bebeno.mvc.common.util.FileProcess;
 import com.bebeno.mvc.common.util.FileUtil;
 import com.bebeno.mvc.member.model.vo.Member;
+import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.wagle.model.service.WagleBoardService;
+import com.bebeno.mvc.wagle.model.vo.Reply;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
 import com.bebeno.mvc.wagle.model.vo.WagleFile;
+import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -280,6 +283,6 @@ public class wagleController {
 		
 		return model;
 	}
-	
-	
+
+
 }

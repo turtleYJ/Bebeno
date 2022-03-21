@@ -3,9 +3,13 @@ package com.bebeno.mvc.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,6 +58,20 @@ public class MemberController {
 		return model;
 	}
 
+
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public ResponseEntity<Map<String, Boolean>> idCheck1(
+	@RequestParam("id") String id) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", id);
+		
+		map.put("duplicate", service.isDuplicateID(id));
+
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}
 	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
@@ -84,6 +102,17 @@ public class MemberController {
 		return "member/terms";
 	}
 	
+// ======================= terms_v2 ==========================
+	
+	@GetMapping("/member/terms_v2")
+	public String enroll_test() {
+		log.info("회원 약관 페이지 요청 테스트");
+		
+		return "member/terms_v2";
+	}
+	
+// ======================= terms_v2 ==========================
+	
 	@GetMapping("/member/forgot-password")
 	public String forgot() {
 		log.info("회원 약관 페이지 요청");
@@ -98,7 +127,37 @@ public class MemberController {
 		return "member/join";
 	}
 	
+
+	// findId
+	@GetMapping("/member/findId")
+	public String findId() {
+		
+		return "member/findId";
+	}
 	
+	@PostMapping("/member/findId")
+	public ModelAndView findId(
+			ModelAndView model, @ModelAttribute Member member) {
+		
+		log.info("로그인, 이메일 : {},  {}", member.getName(), member.getEmail());
+
+		String findId =service.findId(member);
+		
+		if(findId != null) {
+			model.addObject("userID" , findId);
+			log.info("찾은 아이디");
+			System.out.println("찾은 아이디는" + findId);
+			model.addObject("msg", "찾은 아이디는 "+ findId);
+			model.addObject("location", "/member/findId");
+		}else {
+			model.addObject("msg", "존재하지 않는 아이디 입니다.");
+			model.addObject("location", "/member/findId");
+		}
+			model.setViewName("common/msg");
+		
+		return model;
+	}
+
 	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
@@ -187,7 +246,5 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	
 	
 }

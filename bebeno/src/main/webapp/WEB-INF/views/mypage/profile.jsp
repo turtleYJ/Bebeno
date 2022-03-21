@@ -26,7 +26,7 @@
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header_shop.jsp" />
 
 </head>
 
@@ -249,6 +249,7 @@
 	   readURL(this);
 	});
 	
+/* ------------------------------------------------------------------------------------------------------------- */
 	
 	// 닉네임 중복 확인
 	$(document).ready(() => {

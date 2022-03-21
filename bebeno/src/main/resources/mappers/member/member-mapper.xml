@@ -114,6 +114,16 @@
 			NO = #{no}
 	</delete>
 	
+	<!-- -->
+	<select id="findId" parameterType="Member" resultType="String">
+		SELECT ID
+		FROM MEMBER
+		WHERE STATUS ='Y' AND 
+				NAME= #{name} AND 
+	         	EMAIL= #{email}
+	</select>
+	
+	<!-- 
 	<update id="findPw" >
 	update MP_MEMBER set MEMBER_PW = #{memberPw} where MEMBER_EMAIL = #{memberEmail} and MEMBER_ID = #{memberId}
 	</update>
@@ -121,4 +131,29 @@
 	<select id="findPwCheck" resultType="int">
 	select count(*) from MP_MEMBER where MEMBER_EMAIL = #{memberEmail} and MEMBER_ID = #{memberId}
 	</select>
+	
+	<select id="findMemberByNo" parameterType="_int" resultMap="MemberResultMap">
+		<include refid="selectMemberSql"/>
+		AND NO = #{no}	
+	</select>
+	
+	<select id="findMemberById" parameterType="string" resultMap="MemberResultMap">
+		<include refid="selectMemberSql"/>
+		AND ID = #{id}	
+	</select>
+	
+	
+	<select id="selectMember" parameterType="string" resultMap="MemberResultMap">
+		<include refid="selectMemberSql"></include>
+	 	AND ID = #{id}
+	</select>
+	
+	<select id="findId" parameterType="Member" resultMap="memberResultMap"> 
+		SELECT ID
+		FROM MEMBER 
+		WHERE STATUS ='Y' AND 
+				NAME= #{name} AND 
+	         	EMAIL= #{email}
+	</select>
+	 -->
 	</mapper>

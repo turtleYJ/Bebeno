@@ -53,11 +53,32 @@
 		<id property="no" column="NO" />
 		<result property="wagleNo" column="W_NO"/>
 		<result property="writerNo" column="WRITER_NO"/>
-		<result property="wrierId" column="WRITER_ID"/>
 		<result property="content" column="CONTENT"/>
+		<result property="status" column="STATUS"/>
 		<result property="createDate"  column="CREATE_DATE"/>
 		<result property="modifyDate"  column="MODIFY_DATE"/>
 	</resultMap>
+	
+	<!-- Reply -->
+	<insert id="insertReply" parameterType="map" useGeneratedKeys="true" keyProperty="no" keyColumn="COMMENT_NO">
+		INSERT INTO WAGLE_BOARD_REPLY (
+			NO,
+			W_NO,
+			WRITER_NO,
+			CONTENT,
+			STATUS,
+			CREATE_DATE,
+			MODIFY_DATE
+		) VALUES (
+			SEQ_NO.NEXTVAL,
+			#{wagleNo},
+			#{writerNo},
+			#{content},
+			#{status},
+			SYSDATE,
+			SYSDATE
+		)
+	</insert>
 	
 	<select id="getWagleList" resultMap="wagleListResultMap">
 		<include refid="WagleListSql"/>
