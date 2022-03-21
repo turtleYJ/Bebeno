@@ -195,7 +195,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<!-- 다음(카카오) 주소찾기 API -->
 	
-</body>
 <script>
 	// 주소 찾기 API 적용(다음, 카카오)
 	function findAddr(){
@@ -253,4 +252,5 @@
 
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</body>
 </html>

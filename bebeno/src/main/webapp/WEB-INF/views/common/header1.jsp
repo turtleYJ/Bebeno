@@ -42,6 +42,10 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
 
+<!-- 로그인 / 회원가입관련 css입니다. 
+<link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
+-->
+
 <title>header</title>
 
 </head>
@@ -55,12 +59,18 @@
     <div class="site-mobile-menu-body"></div>
   </div>
 
-
   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
         <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
 
+		<!-- 로그인/회원가입 버튼적용입니다. 
+		<div class="loginbar">
+	  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
+	  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+        </div>
+		-->
+	
         <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
           <li class="active"><a href="">Home</a></li>
           <li><a href="">ABOUT</a></li>

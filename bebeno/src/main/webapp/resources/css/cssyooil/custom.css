@@ -3,6 +3,12 @@
 @import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
 
+@media screen and (max-width: 991px) { 
+  .loginbar {
+  	display: none;
+  }
+}
+
 a {
     border: 0;
     color: #262626;
@@ -26,4 +32,45 @@ a {
 }		
 .btn-wrap {
     text-align: center;
+}
+
+.loginbar {
+    position: absolute;
+    float: right;
+    left: 66%;
+    margin-top: 5px;
+    background-color: transparent;
+    
+}
+
+.btnA {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	max-width: 180px;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+}
+
+a.button1 {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+a.button1:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+a.button2 {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+a.button2:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
 }
