@@ -27,7 +27,7 @@
 	                    </div>
                     </c:forEach>
                 </div>
-        </div>
+        	</div>
     </section>
     <footer></footer>    
     <script>

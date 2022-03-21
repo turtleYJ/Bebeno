@@ -87,6 +87,7 @@
             <c:if test="${ loginMember.no eq shop.writerNo }">
 	            <button type="button" onclick="location.href='${ path }/shop/update?no=${ shop.no }'" class="button button-small button-wine">수정</button>
 	            <button type="button" onclick="location.href='${ path }/shop/delete?no=${ shop.no }'" class="button button-small button-wine">삭제</button>
+	            <button type="button" onclick="findWine()" class="button button-small button-wine">보유 와인 추가</button>
             </c:if>
         </div>
         
@@ -98,6 +99,9 @@
 			var PageUrl = "https://www.wine21.com/01_include/function/Lib_NaverMap.php?Title="+ encodeURIComponent(Tit) +"&Address="+ encodeURIComponent(Addr);
 			window.open(PageUrl, "_blank", "width=1000, height=600");
 		}
+		
+		// 와인 찾기
+		function findWine() { window.open("${ path }/shop/findWine?shopNo=${ shop.no }", "fineWine", "width=500, height=400, left=100, top=50"); }
 		
 		
 		// 버튼을 누르면

@@ -23,17 +23,7 @@ public interface WagleBoardMapper {
 
 	int insertWagleBoard(Wagle wagleboard);
 
-	List<Wagle> getWagleListByCategory(@Param("category") String category);
-
+	Wagle deleteWagleBoard(long no);
 	
-	int insertReply(Map<Object, Object> map);
-	
-	int deleteReply(int no);
-
-	int updateReply(Map<Object, Object> map);
-
-	int getReplyCount(int no);
-	
-	Reply selectReplyByNo(int no);
 	
 }
