@@ -48,7 +48,7 @@
 							<td><br></td>
 							<td><input name="winePrice" value="${ orderList.winePrice }"/>&nbsp;원</td>
 							<td><select name="order_Qty" class="form-control order_Qty">
-									<option value=""></option>
+									<option value="1" selected="">1</option>
 							</select>
 							</td>
 							<td>
@@ -59,7 +59,6 @@
 												<option value="S">선택 안함</option>
 											</select>
 										</div>
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 								</td>
 						</tr>
 				</tbody>
