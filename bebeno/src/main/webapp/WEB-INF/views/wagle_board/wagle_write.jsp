@@ -1,29 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 	
     <h2 class="write_h2">글 작성하기</h2>
-    <input type="hidden" name="no" th:value="${ wagle.no }">
+<%--     <input type="hidden" name="no" th:value="${ wagle.no }"> --%>
     <table class="tbl_wagle_board">
         <th class="th_box">닉네임</th>
             <td><input type="text" name="writer" value="${ loginMember.nickname }" style="border:none;" readonly></td>
         <tr>
+            <form action="${ path }/wagle_board/wagle_write" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="writerNo" value="${ loginMember.no }">
             <th class="th_box">카테고리</th>
             <td>
                 <strong>
                 <div class="wagle_cate_box">
-                    <input type="checkbox" class="check_cate"><span>와인</span></input>
-                    <input type="checkbox" class="check_cate"><span>바틀샵</span></label>
-                    <input type="checkbox" class="check_cate"><span>와인바</span></label>
+                    <input name="category" type="checkbox" class="check_cate" value="wine"><span>와인</span></input>
+                    <input name="category" type="checkbox" class="check_cate" value="shop"><span>바틀샵</span></label>
+                    <input name="category" type="checkbox" class="check_cate" ><span>와인바</span></label>
                 </div>
             </strong>
-            </td>
-        </tr>
-        <tr>
-            <th class="th_box">와인명</th>
-            <td>
-                <input class="search_wine"> <input type="button" value="search">
             </td>
         </tr>
         <tr>
@@ -41,7 +42,8 @@
         <tr>
             <th class="th_box">사진</th>
             <td>
-                <input type="file" name="upfiles" class="" multiple="multiple" />
+            	<label>썸네일 등록</label><p><input type="file" name="upfile" class=""/><p>
+                <label>사진 업로드</label><p><input type="file" name="upfiles" class="" multiple="multiple" />
             </td>
         </tr>
         <tr>
@@ -50,8 +52,9 @@
         </tr>
     </table>
     <div class="wagle_update_button">
-        <input class="wagle_udt_btn" type="button" value="뒤로가기">
-        <input class="wagle_udt_btn" type="submit" value="등록하기">
-    </div>    
+        <input class="wagle_udt_btn" type="button" value="목록으로" onclick="${ path }/wagle_board/wagle_list">
+        <input class="wagle_udt_btn" type="submit" value="등록하기" >
+    </div>
+    </form>
 </body>
 </html>

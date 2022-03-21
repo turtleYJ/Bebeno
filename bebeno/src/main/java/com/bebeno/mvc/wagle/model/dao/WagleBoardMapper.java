@@ -20,7 +20,9 @@ public interface WagleBoardMapper {
 
 	int insertWagleBoard(Wagle wagleboard);
 
-	
+	Wagle deleteWagleBoard(long no);
+
+
 	
 
 }

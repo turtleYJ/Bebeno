@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_list.css">
 	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_write.css">
 	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_write_manage.css">
+	<link rel="stylesheet" href="${ path }/resources/css/css_wagle/wagle_view.css">
 	
 	<!-- js 관련 -->
 	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>

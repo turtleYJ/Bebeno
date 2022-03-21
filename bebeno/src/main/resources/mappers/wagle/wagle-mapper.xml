@@ -11,11 +11,10 @@
 		        W.WINE_NO,
 		        W.SHOP_NO,
 		        W.WAGLE_TITLE,
-		        W.WALGE_CONTENT,
+		        W.WAGLE_CONTENT,
 		        W.ORIGINAL_FILENAME, 
 		        W.RENAMED_FILENAME, 
 		        W.READCOUNT,
-
 		        W.STATUS,
 		        W.CREATE_DATE,
 		        W.MODIFY_DATE,
@@ -27,15 +26,16 @@
 	
 	<resultMap type="Wagle" id="wagleListResultMap">
 		<id property="no" column="WAGLE_NO"/>
+		<result property="writerNo" column="WRITER_NO" />
 		<result property="nicname" column="NICKNAME"/>
 		<result property="wine_no" column="WINE_NO"/>
 		<result property="shop_no" column="SHOP_NO"/>
 		<result property="title" column="WAGLE_TITLE"/>
-		<result property="content" column="WALGE_CONTENT"/>
+		<result property="content" column="WAGLE_CONTENT"/>
 		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
 		<result property="renamedFileName" column="RENAMED_FILENAME"/>
 		<result property="readcount" column="READCOUNT"/>
-
+		<result property="scrapcount" column="SCRAPCOUNT"/>
 		<result property="status" column="STATUS"/>
 		<result property="createDate" column="CREATE_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
@@ -69,7 +69,6 @@
       AND W.WAGLE_NO = #{no}
    </select>
 	
-	
 	<select id="selectfilesByNo" parameterType="_int" resultMap="fileListResultMap">
 		SELECT  W_FILE_NO, 
 				W_NO,					
@@ -79,6 +78,36 @@
 		WHERE W_NO = #{no}
 	</select>
 	
+ 	<insert id="insertWagleBoard" parameterType="Wagle"
+ 		useGeneratedKeys="true" keyColumn="WAGLE_NO" keyProperty="no" >
+		INSERT INTO WAGLE_BOARD (
+			WAGLE_NO,
+			WRITER_NO,
+	        WAGLE_TITLE,
+	        WAGLE_CONTENT,
+	        ORIGINAL_FILENAME, 
+	        RENAMED_FILENAME, 
+	        READCOUNT,
+			SCRAPCOUNT,
+	        STATUS,
+	        CREATE_DATE,
+	        MODIFY_DATE,
+			CATEGORY
+		) VALUES (
+			SEQ_WAGLE_BOARD_NO.NEXTVAL,
+			#{writerNo},
+			#{title},
+			#{content},
+			#{originalFileName},
+			#{renamedFileName},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			#{category}
+		)
+	</insert>
 	
 	<update id="updateWagleBoard" parameterType="Wagle">
        	UPDATE WAGLE_BOARD
@@ -98,19 +127,19 @@
 		 	MODIFY_DATE = SYSDATE 
        	</trim>
 	 	WHERE 
-	 		NO = #{no}
+	 		 WAGLE_NO = #{no}
 	</update>
 	
 	<update id="updateStatus" parameterType="map">
 		UPDATE WAGLE_BOARD 
 		SET STATUS = #{status} 
-		WHERE NO = #{no}
+		WHERE  WAGLE_NO = #{no}
 	</update>
 	
  	<delete id="deleteWagleBoard" parameterType="_int">
  		DELETE 
  		 FROM WAGLE_BOARD
- 		WHERE W.NO = #{no}
+ 		WHERE  WAGLE_NO = #{no}
  	</delete>
  	
  	<insert id="savefile" parameterType="ContentFiles"
@@ -127,6 +156,7 @@
 			#{file_renamedFileName}
 		)
 	</insert>
+	
 	
 	
 </mapper>
