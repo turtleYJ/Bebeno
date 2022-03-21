@@ -225,6 +225,8 @@
     </form>
 </section>
 
+<jsp:include page="/WEB-INF/views/common/footer_shop.jsp" />
+
 <script type="text/javascript">
 
 // << 프로파일 이미지 업로드 시 변경된 이미지를 바로 볼 수 있도록 하는 스크립트 >>
