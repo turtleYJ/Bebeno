@@ -353,53 +353,53 @@ public class ShopController {
 		return model;
 	}
 	
-	@ResponseBody
-	@PostMapping("/saveWine")
-	public Object saveWine(
-            @RequestParam(value="wineNoList[]") List<String> wineNoList, 
-            @RequestParam(value="shopNo") String shopNo
-            ) {
-		int[] result = new int[wineNoList.size()];
-		
-		ArrayList<WineListsOnShop> wineOnShop = new ArrayList<WineListsOnShop>();
-//		WineListsOnShop[] wineOnShop = new WineListsOnShop[wineNoList.size()];
-		WineBoard[] wines = new WineBoard[wineNoList.size()];
-		
-        System.out.println("=shopNo=");
-        System.out.println(shopNo);
-        
-        System.out.println("=wine=");
-        for(int i = 0; i < wineNoList.size(); i++) {
-        	wines[i] =  wineService.findBoardByNo(Integer.parseInt(wineNoList.get(i)));
-        	
-        	wineOnShop[i].setShopNo(Integer.parseInt(shopNo));
-        	wineOnShop[i].setKorName(wines[i].getWineName());
-        	wineOnShop[i].setEngName(wines[i].getWineEng());
-        	wineOnShop[i].setFile_originalFileName(wines[i].getOriginalFileName());
-        	wineOnShop[i].setFile_renamedFileName(wines[i].getRenamedFileName());
-        	
-        	service.saveWinesOnShop(wineOnShop[i]);
-        }
-        
-//        for(String wineNo : wineNoList) {
-//            System.out.println(wineNo);
-//            WineBoard wine =  wineService.findBoardByNo(Integer.parseInt(wineNo));
-//            
-//            wineOnShop[].setShopNo(wine.getWineBno());
-//            
-//            
-//            result = service.saveWinesOnShop(Integer.parseInt(shopNo), Integer.parseInt(wineNo));
+//	@ResponseBody
+//	@PostMapping("/saveWine")
+//	public Object saveWine(
+//            @RequestParam(value="wineNoList[]") List<String> wineNoList, 
+//            @RequestParam(value="shopNo") String shopNo
+//            ) {
+//		int[] result = new int[wineNoList.size()];
+//		
+//		ArrayList<WineListsOnShop> wineOnShop = new ArrayList<WineListsOnShop>();
+////		WineListsOnShop[] wineOnShop = new WineListsOnShop[wineNoList.size()];
+//		WineBoard[] wines = new WineBoard[wineNoList.size()];
+//		
+//        System.out.println("=shopNo=");
+//        System.out.println(shopNo);
+//        
+//        System.out.println("=wine=");
+//        for(int i = 0; i < wineNoList.size(); i++) {
+//        	wines[i] =  wineService.findBoardByNo(Integer.parseInt(wineNoList.get(i)));
+//        	
+//        	wineOnShop[i].setShopNo(Integer.parseInt(shopNo));
+//        	wineOnShop[i].setKorName(wines[i].getWineName());
+//        	wineOnShop[i].setEngName(wines[i].getWineEng());
+//        	wineOnShop[i].setFile_originalFileName(wines[i].getOriginalFileName());
+//        	wineOnShop[i].setFile_renamedFileName(wines[i].getRenamedFileName());
+//        	
+//        	service.saveWinesOnShop(wineOnShop[i]);
 //        }
-        //리턴값
-        Map<String, Object> retVal = new HashMap<String, Object>();
-        
-        //성공했다고 처리
-//        retVal.put("wineLists", wineLists);
-        retVal.put("message", "등록에 성공 하였습니다.");
-        
-        return retVal;
- 
-    }
+//        
+////        for(String wineNo : wineNoList) {
+////            System.out.println(wineNo);
+////            WineBoard wine =  wineService.findBoardByNo(Integer.parseInt(wineNo));
+////            
+////            wineOnShop[].setShopNo(wine.getWineBno());
+////            
+////            
+////            result = service.saveWinesOnShop(Integer.parseInt(shopNo), Integer.parseInt(wineNo));
+////        }
+//        //리턴값
+//        Map<String, Object> retVal = new HashMap<String, Object>();
+//        
+//        //성공했다고 처리
+////        retVal.put("wineLists", wineLists);
+//        retVal.put("message", "등록에 성공 하였습니다.");
+//        
+//        return retVal;
+// 
+//    }
 	
 	
 	

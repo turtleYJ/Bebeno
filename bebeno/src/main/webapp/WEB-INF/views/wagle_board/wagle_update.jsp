@@ -61,59 +61,56 @@
     </section>
     <section class="wagle_update_box">
     <h2>글 수정하기</h2>
-        <form th:action="@{/wagle_board/update}" method="POST">
+        <form action="${ pageContext.request.contextPath }/wagle_board/wagle_update" name="wagle_update" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="no" th:value="${ wagle_board.no }">
-            <table class="tbl_wagle_board">
-                <th class="th_box">작성자</th>
-                    <td><input type="text" name="writer" th:value="${ wagle_board.writer }" readonly></td>
-                <tr>
-                    <th class="th_box">타입</th>
-                    <td>
-                        <strong>
-                        <div class="wagle_cate_box">
-                            <input type="checkbox" class="check_cate"><span>와인</span></input>
-                            <input type="checkbox" class="check_cate"><span>바틀샵</span></label>
-                            <input type="checkbox" class="check_cate"><span>와인바</span></label>
-                        </div>
-                    </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="th_box">와인명</th>
-                    <td>
-                        <input class="search_wine"> <input type="button" value="search">
-                    </td>
-                </tr>
-                <tr>
-                    <th class="th_box">장소</th>
-                    <td>
-                        <input class="search_place"> <input type="button" value="search">
-                    </td>
-                </tr>
-                <tr>
-                    <th class="th_box">제목</th>
-                    <td>
-                        <input type="text" name="title" id="title" th:value="${ wagle_board.title }">
-                    </td>
-                </tr>
-                <tr>
-                    <th class="th_box">사진변경</th>
-                    <td>
-                        <input type="file" name="upfile" id="" />
-                    </td>
-                </tr>
-                <tr>
-                    <th class="th_box">내용</th>
-                    <td><textarea name="content" cols="40" rows="15" th:text="${ board.content }"></textarea></td>
-                </tr>
-                <tr class="wagle_update_button">
-                    <th colspan="2">
-                        <input type="submit" class="wagle_udt_btn" value="수정">
-                        <input type="button" class="wagle_udt_btn" onclick="location.replace('${pageContext.request.contextPath}/wagle_board/list')" value="목록으로">
-                    </th>
-                </tr>           
-            </table>
-        </form>
+                <table class="tbl_wagle_board">
+		       <th class="th_box">닉네임</th>
+		           <td><input type="text" name="writer" value="${ loginMember.nickname }" style="border:none;" readonly></td>
+		       <tr>
+		           <form action="${ path }/wagle_board/wagle_write" method="post" enctype="multipart/form-data">
+		           <input type="hidden" name="writerNo" value="${ loginMember.no }">
+		           <th class="th_box">카테고리</th>
+		           <td>
+		               <strong>
+                <div class="wagle_cate_box">
+                    <input name="category" type="checkbox" class="check_cate" value="wine"><span>와인</span></input>
+                    <input name="category" type="checkbox" class="check_cate" value="shop"><span>바틀샵</span></label>
+                    <input name="category" type="checkbox" class="check_cate" ><span>와인바</span></label>
+                </div>
+            </strong>
+            </td>
+        </tr>
+        <tr>
+            <th class="th_box">장소</th>
+            <td>
+                <input class="search_place"> <input type="button" value="search">
+            </td>
+        </tr>
+        <tr>
+            <th class="th_box">제목</th>
+            <td>
+                <input type="text" name="title" id="title" th:value="${ wagle.title }">
+            </td>
+        </tr>
+        <tr>
+            <th class="th_box">사진</th>
+            <td>
+            	<label>썸네일 등록</label><p><input type="file" name="upfile" class=""/><p>
+                <label>사진 업로드</label><p><input type="file" name="upfiles" class="" multiple="multiple" />
+            </td>
+        </tr>
+        <tr>
+            <th class="th_box">내용</th>
+            <td><textarea name="content" cols="50" rows="15" th:text="${ wagle.content }"></textarea></td>
+        </tr>
+        <tr class="wagle_update_button">
+            <th colspan="2">
+                <input type="submit" class="wagle_udt_btn" onclick="location.href='${ path }/wagle_board/wagle_update" value="수정">
+                <input type="button" class="wagle_udt_btn" onclick="location.replace('${pageContext.request.contextPath}/wagle_board/wagle_list')" value="목록으로">
+            </th>
+        </tr>           
+    </table>
+    </form>
     </section>
 </body>
 </html>

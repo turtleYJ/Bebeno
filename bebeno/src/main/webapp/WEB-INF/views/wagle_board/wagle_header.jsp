@@ -36,7 +36,7 @@
 	            	<a type="button" href="${ path }/wagle_board/wagle_list">
 		                <li id="menu_btn">전체보기</li>
 	            	</a>
-	            	<a href="${ path }/wagle_board/wagle_list_filter?category=wine">
+					<a href="${ path }/wagle_board/wagle_list_filter?category=wine">
 		                <li id="menu_btn">wine</li>
 	            	</a>
 	            	<a href="${ path }/wagle_board/wagle_list_filter?category=shop">

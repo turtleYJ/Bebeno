@@ -18,12 +18,17 @@ public interface WagleBoardMapper {
 	Wagle selectBoardByNo(int no);
 	
 	List<WagleFile> selectfilesByNo(int no);
+	
+	void savefile(WagleFile files);
 
 	int updateWagleBoard(Wagle wagleboard);
 
 	int insertWagleBoard(Wagle wagleboard);
 
-	Wagle deleteWagleBoard(long no);
+	int deleteWagleBoard(int no);
+
+	int deletefiles(int no);
 	
-	
+	List<Wagle> getWagleListByCategory(@Param("category") String category);
+
 }

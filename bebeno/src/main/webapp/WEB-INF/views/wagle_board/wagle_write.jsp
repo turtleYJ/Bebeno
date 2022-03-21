@@ -20,17 +20,11 @@
             <td>
                 <strong>
                 <div class="wagle_cate_box">
-                    <input name="category" type="checkbox" class="check_cate" value="wine"><span>와인</span></input>
-                    <input name="category" type="checkbox" class="check_cate" value="shop"><span>바틀샵</span></label>
-                    <input name="category" type="checkbox" class="check_cate" ><span>와인바</span></label>
+                    <input name="category" type="checkbox" class="check_cate" value="wine" onclick='checkOnlyOne(this)'><span>와인</span></input>
+                    <input name="category" type="checkbox" class="check_cate" value="shop" onclick='checkOnlyOne(this)'><span>바틀샵</span></label>
+                    <input name="category" type="checkbox" class="check_cate" onclick='checkOnlyOne(this)'><span>와인바</span></label>
                 </div>
             </strong>
-            </td>
-        </tr>
-        <tr>
-            <th class="th_box">장소</th>
-            <td>
-                <input class="search_place"> <input type="button" value="search">
             </td>
         </tr>
         <tr>
@@ -56,5 +50,23 @@
         <input class="wagle_udt_btn" type="submit" value="등록하기" >
     </div>
     </form>
+    
+    <script src="${path}/resources/js/jquery-3.6.0.js"></script>
+    
+    <script type="text/javascript">
+	    function checkOnlyOne(element) {
+	    	  
+	  	  const checkboxes 
+	  	      = document.getElementsByName("category");
+	  	  
+	  	  checkboxes.forEach((cb) => {
+	  	    cb.checked = false;
+	  	  })
+	  	  
+	  	  element.checked = true;
+	  	}
+	</script>
+    
+    
 </body>
 </html>

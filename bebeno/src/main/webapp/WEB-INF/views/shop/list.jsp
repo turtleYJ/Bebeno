@@ -45,11 +45,9 @@
 						<button type="summit" class='btn-sch' >검색</button>
 					</div>
 					
-					<!-- 
 	               <c:if test="${ loginMember.role eq 'ROLE_MANAGER' }">
-	               </c:if>
-					-->
 						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal" style="padding-bottom: 4px; padding-top: 4px;">등록하기</a>
+	               </c:if>
 				
 				</form>
 				
