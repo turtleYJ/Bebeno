@@ -87,7 +87,7 @@
 					 <c:forEach var="list" items="${wineList}">
                  	 	<div class="row data">
 	                        <div class="subdiv">
-	                            <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
+	                            <div class="check"><input type="checkbox" id="wineckb" name="wineckb" value="${ list.wineBno }">&nbsp;</div>
 	   
 	                            <div class="img"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
 	
@@ -101,21 +101,13 @@
                     	
                     	</script>
       				</c:forEach>
-                <div class="right-align basketrowcmd">
-                    <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
-                    <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
-                </div>
-        
-                <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.cart_qty}</div>
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.cart_qty * list.amount}원</div>
-        
 			    </div>
    	<footer>
                 <div id="goorder" class="">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <a href="${path}/payment/orderPage"><button class="btn btn-default">주문하기</button></a>
-                        <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
+                        <button id="reqBtn1" class="btn btn-default">추가하기</button>
+                        <button id="reqBtn2" class="btn btn-default btn-back_to_shop">취소</button>
                     </div>
                 </div>
    	</footer>
@@ -142,43 +134,67 @@
 	
 	
 	
+<script src="${path}/resources/js/jquery-3.6.0.js"></script>
+<script src="${path}/resources/js/jquery.min.js"></script>
 	
 	
 <script type="text/javascript">
-	$(".cart_btn").click(function(){
-		var wineBno=${wineboard.wineBno};
-		var wineName = $("#wineName").val();
-		var cartqty = $(".numBox").val();
-		var renamedFileName= $("#image").attr("src");
-		
-		if(wineBno == 1){
-			wineBno=1;
-		} else {wineBno=${wineboard.wineBno};
-		}
-		
-		console.log(wineBno);
-		var data = {
-				wine_bno : wineBno,
-				cart_qty : cartqty
-		};
-	    $.ajax({
-	    	url : "${path}/wineView/addCart",
-	        type : "post",
-	        data : data,
-	        success : function(result){
-	        	alert("카트 담기 성공");
-	        	$(".numBox").val("1");
-	        },
-	        error : function(){
-	        	alert("로그인 후 이용해주세요.");
-	        	console.log(wineBno);
-	        	console.log(cartqty);
-	        	console.log(renamedFileName);
-	        }
-		});
-    });
-</script>
+$(document).ready(() => {
+	$("#reqBtn2").on("click", () => {
+		window.close();
+	});
 	
+	$("#reqBtn1").on("click", () => {
+		var wineArray = [];
+        
+        $('input[name="wineckb"]:checked').each(function(i){//체크된 리스트 저장
+        	wineArray.push($(this).val());
+        	console.log($(this).val());
+        });
+        
+        var objParams = {
+        		"shopNo" : ${shopNo},
+        		"wineNoList" : wineArray
+        }
+        
+        console.log(objParams)
+        
+        $.ajax({
+            url         :   "${path}/shop/saveWine",
+            dataType    :   "json",
+            contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
+            type        :   "post",
+            data        :   objParams,
+            success     :   function(retVal){
+
+                if(retVal.code == "OK") {
+                    alert(retVal.message);
+                } else {
+                    alert(retVal.message);
+                }
+            },
+            error       :   function(request, status, error){
+                console.log("등록에 실패하였습니다. 관리자에 문의하세요!");
+            }
+        });
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
+	
+
+
+
+</script>
 	
 	
 	

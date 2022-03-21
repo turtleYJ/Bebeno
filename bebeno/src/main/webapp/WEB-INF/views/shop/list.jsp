@@ -108,16 +108,12 @@
    										</div>
         							</div>
         							<div class="form-row">
-        								<div class="form-group col-sm-5">
+        								<div class="form-group col-sm-12">
         									<label>업종</label><br>
         									<input type="radio" id="rest" name="type" value="레스토랑">
 											<label for="rest">레스토랑</label>&nbsp;&nbsp;&nbsp;&nbsp;
 											<input type="radio" id="wineshop" name="type" value="와인샵">
 											<label for="wineshop">와인샵</label>
-        								</div>
-        								<div class="form-group col-sm-7"">
-        									<label>보유 와인</label><br>
-        									<input class="search_wine" onclick="findWine()"> <input type="button" value="search" onclick="findWine()">
         								</div>
         							</div>
       							    <div class="form-row">
@@ -219,9 +215,6 @@
 	        }
 	    }).open();
 	}
-	
-	// 와인 찾기
-	function findWine() { window.open("${ path }/shop/findWine", "fineWine", "width=500, height=400, left=100, top=50"); }
 	
 	const autoHyphen = (target) => {
 		target.value = target.value

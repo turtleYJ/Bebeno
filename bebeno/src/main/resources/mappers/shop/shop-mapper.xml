@@ -139,6 +139,25 @@
 		)
 	</insert>
 	
+	<insert id="saveWinesOnShop" parameterType="WineListsOnShop"
+			useGeneratedKeys="true" keyProperty="file_no" keyColumn="S_FILE_NO">
+		INSERT INTO STORE_WINES (
+			NO,
+			STORE_NO,
+			WINE_NAME,
+			WINE_ENG,
+			ORIGINAL_FILENAME,
+			RENAMED_FILENAME
+		) VALUES (
+			SEQ_STOREWINE_NO.NEXTVAL,
+			#{shopNo},
+			#{korName},
+			#{engName},
+			#{file_originalFileName},
+			#{file_renamedFileName}
+		)
+	</insert>	
+	
 	<update id="updateShop" parameterType="Shop">
        	UPDATE BBN_STORE
        	<trim prefix="SET" suffixOverrides=",">
