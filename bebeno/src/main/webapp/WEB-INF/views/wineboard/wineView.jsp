@@ -90,8 +90,10 @@
                                     </div>
                                 </div>
 								<div class="wineviewright">
+								<c:if test="${loginMember.id eq 'eunjin'}">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <a class="button btn_list_del" id="btnDelete" href="${path}/wineboard/delete?wineBno=${wineboard.wineBno}">삭제</a>
+                                    <a class="button btn_list_del" id="btnDelete" onclick="deleteWrite(${wineboard.wineBno})">삭제</a>
+                                </c:if>
                                 </div>
                             </div>
                     </section>
@@ -154,18 +156,26 @@
 				                  });
 				                  
 		                    });
+						
+				          //상품 삭제 버튼
+							deleteWrite = (wineBno) => {
+								
+								fetch("${path}/wineboard/wineView/delete/" + ${wineboard.wineBno} , {
+									method : "GET"
+								})
+								.then(response => {
+									if(response.ok){
+										alert("게시글 삭제가 완료되었습니다.");
+										location.reload();
+									} else {
+										alert("삭제를 실패하였습니다.");
+										location.reload();
+									}
+								})
+							} 
 				                  
-				            //즉시구매
-				            
-		       			 let merchant = "";
-    	
-    				$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
-    				let time = new Date();
-    				merchant = String("order" + time.getTime());
-    				console.log(merchant);
-    				$(this).siblings("#merchant_uid").val(merchant);
-    				});
 	
+    				
 						  
      
 

@@ -74,7 +74,7 @@
             <c:if test="${ empty loginMember }">
 	            <div class="loginbar">
 			  		<a href="${path}/member/loginform" class="btnA button1">LOGIN</a>
-			  		<a href="${path}/member/terms" class="btnA button2">JOIN</a>
+			  		<a href="${path}/member/terms_v2" class="btnA button2">JOIN</a>
 	            </div>
             </c:if>
             
@@ -93,7 +93,7 @@
     
               <c:if test="${ empty loginMember }">          	
                   <li><a href="${path}/member/loginform">LOGIN</a></li>
-                  <li><a href="${path}/member/terms">JOIN</a></li>          	
+                  <li><a href="${path}/member/terms_v2">JOIN</a></li>          	
               </c:if>          
               <c:if test="${ !empty loginMember }">
                   <li><a href="${path}/logout">LOGOUT</a></li>

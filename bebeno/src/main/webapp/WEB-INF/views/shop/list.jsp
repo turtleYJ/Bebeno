@@ -177,8 +177,9 @@
 				</ul>
 				
 			</div>
-			
-			<div id="js-btn-wrap" class="button button-large button-white-gray center-block"> <a href="javascript:;" class="button">더보기</a> </div>
+			<div class="shopFooter">
+				<div id="js-btn-wrap" class="button button-large button-white-gray center-block"> <a href="javascript:;" class="button">더보기</a> </div>
+			</div>
 	
 		</div>	<!-- .container -->
 	<!-- jquery 자바스크립트 추가하기 -->
@@ -244,4 +245,4 @@
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<jsp:include page="/WEB-INF/views/common/footer_shop.jsp" />
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />

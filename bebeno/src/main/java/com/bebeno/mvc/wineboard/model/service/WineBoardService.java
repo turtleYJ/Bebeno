@@ -15,10 +15,10 @@ public interface WineBoardService {
 
 	WineBoard findBoardByNo(Integer wineBno);
 
-	int delete(int wineBno);
-
 	// Shop Filter List
 	List<WineBoard> findWineListOnShop(String wineKind, String nation, String wineKeyword);
+
+	int deleteWrite(int wineBno);
 
 
 }

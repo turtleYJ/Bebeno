@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
 
-	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
+	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
 </head>
@@ -25,21 +25,7 @@
 
 <section class="mypage">
 
-    <h2 class="title-mypage">MyPage</h2>
-
-    <div class="my-tab">
-        <ul class="list-nav">
-            <li>
-                <a href="${ path }/mypage/profile">정보수정</a>
-            </li>
-            <li>
-                <a href="${ path }/mypage/scrap">스크랩</a>
-            </li>
-            <li>
-                <a href="${ path }/mypage/cart">장바구니</a>
-            </li>
-        </ul>
-    </div>
+    <h2 class="title-mypage">장바구니</h2>
     <div class="container">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
