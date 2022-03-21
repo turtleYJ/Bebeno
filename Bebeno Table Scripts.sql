@@ -138,28 +138,6 @@ COMMENT ON COLUMN STORE_WINES.STORE_NO IS '상점고유번호';
 
 
 ------------------------------------------------
--------------- STORE_WINES 관련 테이블 ------------
-------------------------------------------------
-CREATE TABLE STORE_WINES (
-    NO NUMBER PRIMARY KEY,
-    STORE_NO NUMBER,
-    WINE_NAME VARCHAR2(100), 
-    WINE_ENG VARCHAR2(100),
-    ORIGINAL_FILENAME VARCHAR2(100),
-	RENAMED_FILENAME VARCHAR2(100),
-    FOREIGN KEY (STORE_NO) REFERENCES BBN_STORE (STORE_NO)
-);
-
-CREATE SEQUENCE SEQ_STOREWINE_NO;
-
-COMMENT ON COLUMN STORE_WINES.NO IS '와인번호';
-COMMENT ON COLUMN STORE_WINES.STORE_NO IS '한글명';
-COMMENT ON COLUMN STORE_WINES.WINE_ENG IS '영어명';
-COMMENT ON COLUMN STORE_WINES.ORIGINAL_FILENAME IS '첨부파일원래이름';
-COMMENT ON COLUMN STORE_WINES.RENAMED_FILENAME IS '첨부파일변경이름';
-COMMENT ON COLUMN STORE_WINES.STORE_NO IS '상점고유번호';
-
-------------------------------------------------
 --------------- MEMBER 관련 테이블 ---------------
 ------------------------------------------------
 

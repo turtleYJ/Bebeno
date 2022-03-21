@@ -6,6 +6,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
+<jsp:include page="/WEB-INF/views/common/header1.jsp" />
 <jsp:include page="/WEB-INF/views/wagle_board/wagle_header.jsp" />
 
 <body>
@@ -15,7 +16,7 @@
                 <!-- 업로드한 파일들을 forEach문을 이용해 <img> 태그에 표시 -->
                 <c:forEach var="file" items="${ wagleboard.files }"  >
                 
-                    <img src="${ path }/resources/upload/wagle/${ file.renamedFileName }">
+                    <img class="slide_img" src="${ path }/resources/upload/wagle/${ file.renamedFileName }">
 
                     <br><br><br>
                 </c:forEach>
@@ -46,12 +47,12 @@
 <%--                 <td th:text="${ wagle. }"></td> --%>
             </tr>
             <!--  
-            -->
             <tr>
                 <th>장소</th>
                 <td>${ wagleboard.shop_no }</td>
 <%--                 <td th:text="${ wagle. }"></td> --%>
             </tr>
+            -->
             <!-- <div>와인 필터</div> -->
             <tr>
                 <th>내용</th>
@@ -73,9 +74,10 @@
         </th>
         </table>
     </section>
+    <!--
     <section class="wagle_view_reply_box">
         <div id="wagle_reply_area">
-            <!-- 댓글 -->
+            <!-- 댓글 
             <div id="comment-container">
                 <h3>댓글</h3>
                   <c:if test="${ board.replyCount != 0 }">
@@ -91,9 +93,9 @@
                     </form>
                 </div>
             </div>
+            -->
             
-            
-            
+            <!-- 
             <table id="tbl-comment">
                 <c:forEach var="reply" items="${ Reply.replies }">
                 <tr class="level1">
@@ -113,6 +115,7 @@
             </table>
         </div>
 	</section>
+	  -->
 </body>
 	
 <script>
@@ -132,5 +135,6 @@
         });
 	});
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/slick/slick.min.js"></script>
 <script src="${ path }/resources/js/wagle_view.js"></script>
 </html>
