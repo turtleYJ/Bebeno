@@ -35,7 +35,7 @@
                     <div class="title">
                         <dl>
                             <dt>와인코드</dt>
-                            <dd><input type="text" name="wineCode" value="${data.wineCode}"></dd>
+                            <dd><input type="text" name="wineCode" value="${data.wineCode}" readonly></dd>
                         </dl>
                     </div>
                     <div class="title">

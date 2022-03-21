@@ -6,29 +6,9 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>와인리스트</title>
-    
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-		
-<link rel='apple-touch-icon' href='/02_images/screen_icon_and.png' /> 
-<link rel='apple-touch-icon-precomposed' href='/02_images/screen_icon_and.png' />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
-</head>
-<body>
+
+	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+
 	<!-- contents 시작 -->
 	<section class='sub-contents wrap-news clear'>
 		<div class='inner'>
@@ -42,19 +22,13 @@
 					</div><!--.page-top-sch -->
 					<div class="r-filter">
 						<button type="button" class="btn-rmenu" id="btnRfilter" aria-label="와인 검색필터"><i class="ir icon-filter"></i></button>
-						<a href="${path}/wineboard/wineWrite">글쓰기</a>
 					</div>
 				</div>
 				<div class='board-top'>
-					<h2 class='cate-tit'>전체와인
+					<h2 class='cate-tit'>전체와인 <a href="${path}/wineboard/wineWrite">
+					&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>
 					<span class='cate-tit-total' id="lblTotalCount"></span></h2>
 					<div class='board-top-sch'>
-						<select class='cate-filter' id='shOrder1' name='shOrder1' onchange="sortWine(this)">
-							<option value='a.CREATE_DATE|DESC'  selected  >최신등록순</option>
-							<option value='PRICE|ASC'  >가격낮은순</option>
-							<option value='PRICE|DESC'  >가격높은순</option>
-							<option value='POINT2|DESC'  >평점순</option>
-						</select>
 					</div><!--.board-top-sch -->
 				</div><!--.board-top -->
 				<div class="board-list board-list-wine">
@@ -1612,5 +1586,11 @@
 			<script src="${ path }/js/breakpoints.min.js"></script>
 			<script src="${ path }/js/util.js"></script>
 			<script src="${ path }/js/menubar.js"></script>
-</body>
-</html>
+
+			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+			
+			
+			
+			
+			
+			

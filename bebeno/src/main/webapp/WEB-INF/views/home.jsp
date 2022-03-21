@@ -4,83 +4,7 @@
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="free template, bootstrap, bootstrap4" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/animate.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/owl.theme.default.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/jquery.fancybox.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/aos.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/owl.carousel.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/fonts/icomoon/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
-	
- 
-  <title>bebeno home</title>
-</head>
- <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div>
-
-
-  <nav class="site-nav">
-    <div class="container">
-      <div class="site-navigation">
-        <a href="#" class="logo float-left m-0">BeBeno <span class="text-primary">.</span></a>
-
-        <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
-          <li class="active"><a href="">Home</a></li>
-          <li><a href="">ABOUT</a></li>
-          <li><a href="${path}/wineboard/wineList">WINE</a></li>
-          <li><a href="${path}/shop/list">WINE SHOP</a></li>
-          <li><a href="${path}/wagle_board/wagle_list">COMMUNITY</a></li>
-
-          <c:if test="${ empty loginMember }">          	
-          	<li><a href="${path}/member/loginform">LOGIN</a></li>
-          	<li><a href="${path}/member/terms">JOIN</a></li>          	
-          </c:if>          
-          <c:if test="${ !empty loginMember }">
-          	<li><a href="${path}/mypage/profile">MYPAGE</a></li>
-         	<li><a href="${path}/payment/cart">CART</a></li>
-          	<li><a href="${path}/logout">LOGOUT</a></li>
-          </c:if>
-        </ul>
-
-        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
-          <span></span>
-        </a>
-
-    </div>
-    </div>
-</nav> 
+	<jsp:include page="/WEB-INF/views/common/header_main.jsp" />
 
   <div class="site-section">
     <div class="container">
@@ -216,67 +140,6 @@
 
   <div class="site-footer">
     <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-4">
-          <div class="widget">
-            <h3>About</h3>
-            <p></p>
-          </div>
-          <div class="widget">
-            <h3>Connect with us</h3>
-            <ul class="social list-unstyled">
-              <li><a href="#"><span class="icon-facebook"></span></a></li>
-              <li><a href="#"><span class="icon-twitter"></span></a></li>
-              <li><a href="#"><span class="icon-instagram"></span></a></li>
-              <li><a href="#"><span class="icon-dribbble"></span></a></li>
-              <li><a href="#"><span class="icon-linkedin"></span></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-12">
-              <div class="widget">
-                <h3>Navigations</h3>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="widget">
-                <ul class="links list-unstyled">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Work</a></li>
-                  <li><a href="#">Process</a></li>
-                  <li><a href="#">About Us</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="widget">
-                <ul class="links list-unstyled">
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Support</a></li>
-                  <li><a href="#">Privacy</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="widget">
-                <ul class="links list-unstyled">
-                  <li><a href="#">Privacy</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Process</a></li>
-                  <li><a href="#">About Us</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="row justify-content-center text-center copyright">
         <div class="col-md-8">
           <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with team bebeno by License</a>
@@ -295,31 +158,6 @@
   </div>
 
 
-  <script src="${ path }/js/jquery-3.5.1.min.js"></script>
-  <script src="${ path }/js/jquery-migrate-3.0.0.min.js"></script>
-  <script src="${ path }/js/popper.min.js"></script>
-  <script src="${ path }/js/bootstrap.min.js"></script>
-  <script src="${ path }/js/owl.carousel.min.js"></script>
-  <script src="${ path }/js/aos.js"></script>
-  <script src="${ path }/js/imagesloaded.pkgd.js"></script>
-  <script src="${ path }/js/isotope.pkgd.min.js"></script>
-  <script src="${ path }/js/jquery.animateNumber.min.js"></script>
-  <script src="${ path }/js/jquery.stellar.min.js"></script>
-  <script src="${ path }/js/jarallax.min.js"></script>
-  <script src="${ path }/js/jarallax-element.min.js"></script>
-  <script src="${ path }/js/jquery.waypoints.min.js"></script>
-  <script src="${ path }/js/jquery.fancybox.min.js"></script>
-  
-  <script src="${ path }/js/jquery.lettering.js"></script>
-  
-  
-  <script src="${ path }/js/TweenMax.min.js"></script>
-  <script src="${ path }/js/ScrollMagic.min.js"></script>
-  <script src="${ path }/js/scrollmagic.animation.gsap.min.js"></script>
-  <script src="${ path }/js/debug.addIndicators.min.js"></script>
-  
-  
-  <script src="${ path }/js/custom.js"></script>
 
   
 </body>

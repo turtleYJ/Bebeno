@@ -28,6 +28,20 @@ public class CartServiceImpl implements CartService {
 		return mapper.cartList(id);
 	}
 
+	@Override
+	public int deleteCart(int cart_id) {
+		
+		 return mapper.deleteCart(cart_id);
+		
+	}
+
+	@Override
+	public void deleteAllCart(String id) {
+		mapper.deleteAllCart(id);
+		
+	}
+
+
 
 
 

@@ -42,10 +42,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/fonts/feather/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/flaticon/font/flaticon.css" />
-
-<!-- yooil css -->
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_list.css">
-<link rel="stylesheet" href="${path}/resources/css/cssyooil/shop_view.css">
 <link rel="stylesheet" href="${path}/resources/css/cssyooil/custom.css">
 
 <title>header</title>

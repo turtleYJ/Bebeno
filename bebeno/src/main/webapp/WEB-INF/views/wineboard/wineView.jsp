@@ -5,26 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <c:set var="path" value ="${ pageContext.request.contextPath }"/>   
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/wineview.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/winecss.css" />
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-  
 
-    <title>상품 상세 페이지</title>
-	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
-</head>
-<body>
+	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+
 <section class="sub-contents wrap-wine-view clear">
     <div class="inner">
         <div class="btn_list">
@@ -54,20 +37,30 @@
                         <dd class="wine-name-en">${wineboard.wineEng}</dd>
                     </dl>
                     <p class="wine-price">
-                        <strong>${wineboard.winePrice}</strong>      
+                        <strong>${wineboard.winePrice} 원</strong>      
                     </p>
                     <p>
                         <select name="amount">
-                        	<option value="" selected>수량 선택</option>
                         	<option value="1">1</option>
                         	<option value="2">2</option>
                         	<option value="3">3</option>
                         	<option value="4">4</option>
                         	<option value="5">5</option>
-                        </select>&nbsp;개   
+                        </select>&nbsp;개
+                        <form action="${path}/payment/orderPage" method="get">
+                       <c:forEach var="list" items="${cartList}">
+			         <div class="paymentScreenBtn">
+								<input type="hidden" name="wineBno" value="${list.wine_bno}">
+								<input type="hidden" name="wineName" value="${list.wineName}">
+								<input type="hidden" name="winePrice" value="${list.winePrice}">
+								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
+                    </div>
+                    </c:forEach>
+                        
                         <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
-                        <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2">구매하기</button> 
+                        <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2" id="paymentSubmit">구매하기</button> 
                     </p> 
+                  	 </form> 
                     <p class="wine-price-etc">※ 수입사가 제공한 가격으로 판매처별로 가격이 다를 수 있습니다.  와인은 최대 5개까지 구매 가능합니다.</p>
 
                     <div class="wine-components">
@@ -100,7 +93,7 @@
                                 </div>
 								<div class="wineviewright">
                                     <a class="button btn_list_ch" href="${path}/wineboard/wineUpdate?wineBno=${wineboard.wineBno}">수정</a>
-                                    <input type="button" class="button btn_list_del" id="btnDelete" value="삭제"/>
+                                    <a class="button btn_list_del" id="btnDelete" href="${path}/wineboard/delete?wineBno=${wineboard.wineBno}">삭제</a>
                                 </div>
                             </div>
                     </section>
@@ -152,6 +145,7 @@
 				                      success : function(result){
 				                       alert("카트 담기 성공");
 				                       $(".numBox").val("1");
+				                       location.replace("${path}/payment/cart");
 				                      },
 				                      error : function(){
 				                       alert("로그인 후 이용해주세요.");
@@ -164,45 +158,19 @@
 		                    });
 				                  
 				            //즉시구매
-				               $(".cart_btn2").click(function(){
-				            	  	 
-				            	      var wineBno=${wineboard.wineBno};
-					                  var wineName = $("#wineName").val();
-					                  var cartqty = $(".numBox").val();
-					                  var renamedFileName= $("#image").attr("src");  
-				                    
-				                  if(wineBno == 1){
-				                	  wineBno=1;
-				                  }else{
-				                	  wineBno=${wineboard.wineBno};
-				                  }
-				                  
-				                    console.log(wineBno);
-				                     var data = {
-				                    	   wine_bno : wineBno,
-				                    	   cart_qty : cartqty
-				                       };
-				                     $.ajax({
-				                         url : "${path}/wineView/addCart",
-				                         type : "post",
-				                         data : data,
-				                         success : function(result){
-				                         
-				                          $(".numBox").val("1");
-				                         },
-					                      error : function(){
-						                  alert("카트 담기 실패");
-						                  console.log(wineBno);
-						                  console.log(cartqty);
-						                  console.log(renamedFileName);
-						                      }
-				                        });  
-				                 
-				                       });
+				            
+		       			 let merchant = "";
+    	
+    				$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
+    				let time = new Date();
+    				merchant = String("order" + time.getTime());
+    				console.log(merchant);
+    				$(this).siblings("#merchant_uid").val(merchant);
+    				});
+	
 						  
      
 
 </script>
-</body>
- </html>
-                    
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />                    

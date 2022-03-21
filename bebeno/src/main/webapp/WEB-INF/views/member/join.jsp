@@ -33,7 +33,12 @@
 <tbody>
 <tr>
 <th><span>아이디</span></th>
-<td><input type="text" name="id" class="input-field" placeholder="ID 를 입력하세요."></td>
+<p>
+<td><input type="text" name="id" id="id" class="input-field" placeholder="ID 를 입력하세요.">
+<td><input type="button" name="idCheckBtn" id="idCheckBtn" value="중복검사">
+                <p class="error_id"></p>
+                </td>
+               </p>
 </tr>
 <tr>
 <th><span>닉네임</span></th>
@@ -73,7 +78,10 @@
 </table>
 <div class="exform_txt"><span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
 </div>
-<input type="submit" value="REGISTER" >
+
+<div class="save-update-button">          
+<button type="submit" id="submitBtn" class="button" style="cursor:pointer;">회원 가입</button>
+                </div>
 </div>
 </form>
 </ul>
@@ -92,5 +100,38 @@
        </div>
        </div>
        </div> 
+     <!-- 스크립트 부분 -->
+	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	 
+	<script>
+	// 아이디 중복 확인
+	$(document).ready(() => {
+		$("#idCheckBtn").on("click", () => {
+			let id = $("#id").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${  pageContext.request.contextPath }/idCheck",
+				dataType: "json",
+				data: {
+					id
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 아이디 입니다.");
+					} else {
+						alert("사용 가능한 아이디 입니다.");						
+					}
+					
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});	
+	});
+</script>
 </body>
 </html>

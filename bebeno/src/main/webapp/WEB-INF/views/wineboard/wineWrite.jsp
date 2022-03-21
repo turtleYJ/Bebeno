@@ -4,20 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<c:set var="path" value ="${ pageContext.request.contextPath }"/>   
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>와인 등록 페이지</title>
- <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/css.css" /> 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css" />
-	<jsp:include page="/WEB-INF/views/common/header1.jsp" />
-</head>
+<c:set var="path" value ="${ pageContext.request.contextPath }"/>
+ 
+ 	<jsp:include page="/WEB-INF/views/common/header_wine.jsp" />
+ 
 <body>
     <form action="${path}/wineboard/wineWrite" name="write" method="post" enctype="multipart/form-data" >
         <div class="board_wrap">
@@ -26,18 +16,6 @@
             </div>
             <div class="board_write_wrap">
                 <div class="board_write">
-                    <div class="title">
-                        <dl>
-                            <dt>게시글번호</dt>
-                            <dd><input type="text" name="wineBno"></dd>
-                        </dl>
-                    </div>
-                    <div class="title">
-                        <dl>
-                            <dt>와인코드</dt>
-                            <dd><input type="text" name="wineCode"></dd>
-                        </dl>
-                    </div>
                     <div class="title">
                         <dl>
                             <dt>와인명</dt>
@@ -104,7 +82,7 @@
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" value="" required="required"></dd>
                         </dl>
                     </div>
                     <div class="title">
@@ -193,5 +171,5 @@
      }
     
     </script>    
-    </body>
-    </html>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />

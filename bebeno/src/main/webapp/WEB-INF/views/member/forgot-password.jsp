@@ -45,16 +45,17 @@
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <a href="${path}/" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
-                                        </a>
-                                    </form>
+                                    <div class="form-group">
+            						<form class="form" action="${path}/member/findId" method="post">
+						                <input type="text" name="name" id="name" placeholder="User Name">
+						                <input type="email"name="email" id="email" placeholder="E-mail">
+						                <button type="submit" id="login-button" >아이디 찾기</button>
+									           </form>
+									        </div>
+									        
+									        <div id="result_id"></div>
+									    </div>
+									</body>
                                     <hr>
                                 </div>
                             </div>
@@ -79,5 +80,38 @@
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
+
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#login-button').click(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                $.ajax({
+                    type: "POST",
+                    url: "${path}/member/findId",
+                    dataType: "json",
+                    data: {
+                        'name': name,
+                        'email': email,
+                        'csrfmiddlewaretoken': '{{csrf_token}}',
+                    },
+                    success: function (response) {
+                        $('#result_id').replaceWith(
+                            '<div id="result_id"><hr><div><span>입력된 정보로 가입된 아이디는 </span><span id="result_id">' +
+                                response.result_id +'</span><span> 입니다.</span></div><hr></div>')
+                    },
+                    error: function () {
+                        if (name == "" || email == "") {
+                            alert('이름와 이메일을 입력해주세요.');
+                        } else {
+                            alert('입력하신 정보가 일치하지 않거나 존재하지 않습니다.');
+                        }
+                    },
+                });
+            })
+        });
+    </script>
+
 
 </html>

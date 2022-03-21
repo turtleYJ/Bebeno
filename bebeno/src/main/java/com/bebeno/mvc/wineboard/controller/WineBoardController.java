@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.common.util.FileUtil;
+import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.wineboard.model.service.WineBoardService;
 import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
@@ -92,23 +94,30 @@ public class WineBoardController {
 	// 게시물 삭제
 	@GetMapping("/delete")
 	public ModelAndView delete(ModelAndView model, 
+							@SessionAttribute("loginMember") Member loginMember ,
 							@RequestParam(value = "wineBno", required = false) Integer wineBno) {
 		
 		int result = 0;
 		WineBoard board = wineboardservice.findBoardByNo(wineBno);
 		
-		result = wineboardservice.delete(board.getWineBno());
+		if(board.getWineBno() == loginMember.getNo()) {
+			result = wineboardservice.delete(board.getWineBno());
 		
-		if(result > 0) {
-			model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
-			model.addObject("location", "/wineboard/wineList");
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+				model.addObject("location", "/wineboard/wineList");
+			} else {
+				model.addObject("msg", "게시글 삭제를 실패하였습니다.");
+				model.addObject("location", "/wineboard/wineView?wineBno=" + board.getWineBno());
+			}
 		} else {
-			model.addObject("msg", "게시글 삭제를 실패하였습니다.");
-			model.addObject("location", "/wineboard/wineView?wineBno=" + board.getWineBno());
-		}
+				model.addObject("msg", "잘못된 접근입니다.");
+				model.addObject("location", "/wineboard/wineList");
+			}
+		
 			model.setViewName("common/msg");
 		
-		return model;
+			return model;
 	}
 
 	
@@ -118,7 +127,7 @@ public class WineBoardController {
 	
 		return "/wineboard/wineWrite";
 	}
-	
+		
 	// 게시글 등록
 	@PostMapping("/wineWrite")
 	public ModelAndView write(ModelAndView model, HttpServletRequest request,

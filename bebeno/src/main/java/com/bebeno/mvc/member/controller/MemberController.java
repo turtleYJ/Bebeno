@@ -3,9 +3,13 @@ package com.bebeno.mvc.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,6 +58,20 @@ public class MemberController {
 		return model;
 	}
 
+
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public ResponseEntity<Map<String, Boolean>> idCheck1(
+	@RequestParam("id") String id) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", id);
+		
+		map.put("duplicate", service.isDuplicateID(id));
+
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}
 	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
@@ -84,6 +102,17 @@ public class MemberController {
 		return "member/terms";
 	}
 	
+// ======================= terms_v2 ==========================
+	
+	@GetMapping("/member/terms_v2")
+	public String enroll_test() {
+		log.info("회원 약관 페이지 요청 테스트");
+		
+		return "member/terms_v2";
+	}
+	
+// ======================= terms_v2 ==========================
+	
 	@GetMapping("/member/forgot-password")
 	public String forgot() {
 		log.info("회원 약관 페이지 요청");
@@ -98,7 +127,37 @@ public class MemberController {
 		return "member/join";
 	}
 	
+
+	// findId
+	@GetMapping("/member/findId")
+	public String findId() {
+		
+		return "member/findId";
+	}
 	
+	@PostMapping("/member/findId")
+	public ModelAndView findId(
+			ModelAndView model, @ModelAttribute Member member) {
+		
+		log.info("로그인, 이메일 : {},  {}", member.getName(), member.getEmail());
+
+		String findId =service.findId(member);
+		
+		if(findId != null) {
+			model.addObject("userID" , findId);
+			log.info("찾은 아이디");
+			System.out.println("찾은 아이디는" + findId);
+			model.addObject("msg", "찾은 아이디는 "+ findId);
+			model.addObject("location", "/member/findId");
+		}else {
+			model.addObject("msg", "존재하지 않는 아이디 입니다.");
+			model.addObject("location", "/member/findId");
+		}
+			model.setViewName("common/msg");
+		
+		return model;
+	}
+
 	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
@@ -118,76 +177,5 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	/*
-	 * @ResponseBody
-	 *   - 일반적으로 컨트롤러 메소드의 반환형이 String일 경우 뷰의 이름을 반환한다.
-	 *   - @ResponseBody 붙은 String 반환은 해당 요청을 보낸 클라이언트에 전달할 데이터를 의미한다.
-	 *   
-	 * jackson 라이브러리
-	 *   - 자바 객체를 JSON 형태의 데이터로 변환하기 위한 라이브러리이다.(GSON, jsonSimple)
-	 *   - 스프링에서는 jackson 라이브러리를 추가하고 @ResponseBody을 사용하면 리턴되는 객체를 자동으로 JSON으로 변경해서 응답한다.
-	 *   
-	 * @RestController
-	 *   - 해당 컨트롤러의 모든 메소드에서 데이터를 반환하는 경우 사용한다. 
-	 *   - @Controller와 @ResponseBody를 합쳐놓은 역할을 수행한다.
-	 */
-	@GetMapping("/member/jsonTest")
-	@ResponseBody
-	public Object jsonTest() {
-//		Map<String, String> map = new HashMap<>();
-//		
-//		map.put("hi", "hello");
-//		
-//		return map;
-		
-		return new Member("ismoon", "1234", "문인수");
-	}
-	
-	@PostMapping("/member/idCheck")
-//	@ResponseBody
-//	@ResponseBody를 사용하지 않고 ResponseEntity를 사용하는 방법 (jackson 라이브러리 추가하고 사용하자)
-	public ResponseEntity<Map<String, Boolean>> idCheck(@RequestParam("userId") String userId) {
-		Map<String, Boolean> map = new HashMap<>();
-		
-		log.info("{}", userId);
-		
-		map.put("duplicate", service.isDuplicateID(userId));
-		
-		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
-	}
-	
-	@GetMapping("/member/myPage")
-	public String myPage() {
-		
-		return "member/myPage";
-	}
-	
-	@PostMapping("/member/update")
-	public ModelAndView update(
-			ModelAndView model,
-			@SessionAttribute(name="loginMember") Member loginMember,
-			@ModelAttribute Member member) {
-		int result = 0;
-		
-		member.setNo(loginMember.getNo());
-		
-		result = service.save(member);
-		
-		if(result > 0) {
-			model.addObject("loginMember", service.findMemberById(loginMember.getId()));
-			model.addObject("msg", "회원정보 수정을 완료했습니다.");
-			model.addObject("location", "/member/myPage");
-		} else {
-			model.addObject("msg", "회원정보 수정에 실패했습니다.");
-			model.addObject("location", "/member/myPage");
-		}
-		
-		model.setViewName("common/msg");
-		
-		return model;
-	}
-	
-	
 	
 }
