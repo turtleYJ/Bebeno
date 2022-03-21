@@ -62,4 +62,16 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		
 	}
 
+	@Override
+	public void fileDeleteByStoreNo(int no) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Wagle> getWagleListByCategory(String category) {
+		
+		return null;
+	}
+
 }
