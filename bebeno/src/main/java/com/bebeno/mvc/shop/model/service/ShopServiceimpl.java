@@ -20,6 +20,12 @@ public class ShopServiceimpl implements ShopService {
 		
 		return mapper.findAll(shCate, shRegionD1, shKeyword);
 	}
+	
+	@Override
+	public Shop findShopByNo(int no) {
+		
+		return mapper.selectShopByNo(no);
+	}
 
 	@Override
 	@Transactional
@@ -34,11 +40,10 @@ public class ShopServiceimpl implements ShopService {
 		
 		return result;
 	}
-
+	
 	@Override
-	public Shop findShopByNo(int no) {
-		
-		return mapper.selectShopByNo(no);
+	public int delete(int no) {
+		return mapper.deleteShopByNo(no);
 	}
 
 	@Override

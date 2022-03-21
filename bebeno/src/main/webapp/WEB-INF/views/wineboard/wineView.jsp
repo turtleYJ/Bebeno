@@ -154,7 +154,7 @@
 				                	wine_bno : wineBno,
 				                	cart_qty : cartqty
 
-				                    };
+				                  };
 				                  $.ajax({
 				                      url : "${path}/wineView/addCart",
 				                      type : "post",
@@ -165,14 +165,14 @@
 				                       location.replace("${path}/payment/cart");
 				                      },
 				                      error : function(){
-				                       alert("카트 담기 실패");
+				                       alert("로그인 후 이용해주세요.");
 				                       console.log(wineBno);
 				                       console.log(cartqty);
 				                       console.log(renamedFileName);
 				                      }
-				                     });
+				                  });
 				                  
-				                    });
+		                    });
 				                  
 				            //즉시구매
 				            
