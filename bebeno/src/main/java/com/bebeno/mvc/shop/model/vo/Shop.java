@@ -2,6 +2,8 @@ package com.bebeno.mvc.shop.model.vo;
 
 import java.util.List;
 
+import com.bebeno.mvc.wineboard.model.vo.WineBoard;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +43,8 @@ public class Shop {
 	private String renamedFileName;
 	
 	private List<ContentFiles> files;
+	
+	private List<WineBoard> wineLists;
 
 	private String enrollDate;
 	

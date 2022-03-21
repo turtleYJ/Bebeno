@@ -45,10 +45,11 @@
 						<button type="summit" class='btn-sch' >검색</button>
 					</div>
 					
-					
+					<!-- 
 	               <c:if test="${ loginMember.role eq 'ROLE_MANAGER' }">
-						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal" style="padding-bottom: 4px; padding-top: 4px;">등록하기</a>
 	               </c:if>
+					-->
+						<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal" style="padding-bottom: 4px; padding-top: 4px;">등록하기</a>
 				
 				</form>
 				
@@ -79,7 +80,7 @@
             								<label>가게 주소</label>
           								</div>
           								<div class="form-group col-sm-3">
-            								<input id="member_post" type="number" name="zipCode" class="form-control" maxlength="20" placeholder="우편번호" readonly onclick="findAddr()">
+            								<input id="member_post" type="number" name="zipCode" class="form-control" maxlength="20" placeholder="우편번호" value="0" readonly onclick="findAddr()">
           								</div>
           								<div class="form-group col-sm-9">
 											<input id="member_addr" type="text"  name="address1" class="form-control col-lg-8" maxlength="20" placeholder="주소" readonly> <br>
@@ -145,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div><!-- .modal fade -->
 			</div><!--.board-top-sch -->
 		</div>
 	
@@ -190,8 +191,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<!-- 다음(카카오) 주소찾기 API -->
 	
-</body>
 <script>
+	// 주소 찾기 API 적용(다음, 카카오)
 	function findAddr(){
 		new daum.Postcode({
 	        oncomplete: function(data) {
@@ -244,4 +245,5 @@
 
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-</html>
+
+<jsp:include page="/WEB-INF/views/common/footer_shop.jsp" />

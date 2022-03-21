@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.bebeno.mvc.payment.model.dao.OrderMapper">
+  <sql id="orderListSql">
+  
+  SELECT O.ORDER_ID,
+  		 O.ID,
+  		 O.CART_ID,
+  		 O.ORDER_DATE,
+  		 O.NAME,
+  		 O.EMAIL,
+  		 O.PHONE,
+  		 O.AMOUNT,
+  		 O.WINE_NAME,
+  		 O.WINE_PRICE,
+  		 O.RENAMED_FILENAME
+  FROM BBN_ORDER O
+  </sql>
+  
+  <resultMap type="OrderList" id="orderListResultMap">
+  	<id property="orderId" column="ORDER_ID"></id>
+  	<result property="id" column="ID"/>
+  	<result property="cart_id" column="CART_ID"/>
+  	<result property="name" column="NAME"/>
+  	<result property="email" column="EMAIL"/>
+  	<result property="phone" column="PHONE"/>
+  	<result property="amount" column="AMOUNT"/>
+  	<result property="wineName" column="WINE_NAME"/>
+  	<result property="winePrice" column="WINE_PRICE"/>
+  	<result property="renamedFileName" column="RENAMED_FILENAME"/>
+  </resultMap>
+  
+  <select id="orderList" parameterType="String" resultMap="orderListResultMap">
+  	SELECT 
+  		  O.ORDER_ID, 
+  		  C.CART_ID, 
+  		  M.ID, 
+  		  M.NAME, 
+  		  M.EMAIL, 
+  		  M.PHONE, 
+  		  W.AMOUNT, 
+  		  W.WINENAME, 
+  		  W.WINEPRICE,
+  		  W.RENAMED_FILENAME
+  	FROM  BBN_ORDER O
+  	LEFT JOIN CART C
+  		 ON O.ORDER_ID = C.CART_ID
+  	LEFT JOIN MEMBER M 
+  		 ON O.ORDER_ID = M.ID
+  	WHERE O.CART_ID = C.CART_ID 
+  </select>
+  
+  <insert id="addOrder" parameterType="Order">
+   	INSERT INTO BBN_ORDER (
+   				ORDER_ID,
+   				CART_ID,
+   				ID,
+   				NAME,
+   				EMAIL,
+   				PHONE,
+   				AMOUNT,
+   				WINE_NAME,
+   				WINE_PRICE,
+   				RENAMED_FILENAME
+   				) VALUES (
+   				SEQ_ORDER_ID.NEXTVAL,
+   				SEQ_CART_NO.NEXTVAL,
+   				#{id},
+   				#{name},
+   				#{email},
+   				#{phone},
+   				#{amount},
+   				#{wineName},
+   				#{winePrice},
+   				#{renamedFileName}
+   				)
+  </insert>
+  
+  </mapper>

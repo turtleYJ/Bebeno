@@ -22,4 +22,6 @@ public interface WagleBoardService {
 	void fileDeleteByStoreNo(int no);
 	
 
+	List<Wagle> getWagleListByCategory(String category);
+
 }

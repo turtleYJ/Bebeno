@@ -17,5 +17,8 @@ public interface WineBoardService {
 
 	int delete(int wineBno);
 
+	// Shop Filter List
+	List<WineBoard> findWineListOnShop(String wineKind, String nation, String wineKeyword);
+
 
 }

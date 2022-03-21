@@ -9,7 +9,7 @@ let basket = {
             item.parentElement.parentElement.parentElement.remove();
         });
         //AJAX 서버 업데이트 전송
-    
+    		
         //전송 처리 결과가 성공이면
         this.reCalc();
         this.updateUI();

@@ -64,6 +64,12 @@
 		ORDER BY W.WAGLE_NO DESC
 	</select>
 	
+	<select id="getWagleListByCategory" resultMap="wagleListResultMap">
+		<include refid="WagleListSql"/>
+		AND W.CATEGORY = #{category}
+		ORDER BY W.WAGLE_NO DESC
+	</select>
+	
 	<select id="selectBoardByNo" parameterType="_int" resultMap="wagleListResultMap">
       <include refid="WagleListSql"/>
       AND W.WAGLE_NO = #{no}

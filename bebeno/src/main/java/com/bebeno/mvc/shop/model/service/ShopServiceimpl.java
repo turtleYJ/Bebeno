@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bebeno.mvc.shop.model.dao.ShopMapper;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.shop.model.vo.WineListsOnShop;
 
 @Service
 public class ShopServiceimpl implements ShopService {
@@ -19,6 +20,12 @@ public class ShopServiceimpl implements ShopService {
 	public List<Shop> getShopList(String shCate, String shRegionD1, String shKeyword) {
 		
 		return mapper.findAll(shCate, shRegionD1, shKeyword);
+	}
+	
+	@Override
+	public Shop findShopByNo(int no) {
+		
+		return mapper.selectShopByNo(no);
 	}
 
 	@Override
@@ -34,11 +41,10 @@ public class ShopServiceimpl implements ShopService {
 		
 		return result;
 	}
-
+	
 	@Override
-	public Shop findShopByNo(int no) {
-		
-		return mapper.selectShopByNo(no);
+	public int delete(int no) {
+		return mapper.deleteShopByNo(no);
 	}
 
 	@Override
@@ -60,5 +66,13 @@ public class ShopServiceimpl implements ShopService {
 		
 		mapper.fileDeleteByStoreNo(no);
 	}
+
+	@Override
+	public void saveWinesOnShop(WineListsOnShop wineListsOnShop) {
+		mapper.saveWinesOnShop(wineListsOnShop);
+		
+	}
+
+
 
 }

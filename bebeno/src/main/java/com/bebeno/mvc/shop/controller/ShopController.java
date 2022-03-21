@@ -1,7 +1,10 @@
 package com.bebeno.mvc.shop.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -21,6 +25,9 @@ import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.service.ShopService;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;
 import com.bebeno.mvc.shop.model.vo.Shop;
+import com.bebeno.mvc.shop.model.vo.WineListsOnShop;
+import com.bebeno.mvc.wineboard.model.service.WineBoardService;
+import com.bebeno.mvc.wineboard.model.vo.WineBoard;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +37,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopController {
 	@Autowired
 	private ShopService service;
+	
+	@Autowired
+	private WineBoardService wineService;
 	
 	@Autowired
 	private ResourceLoader resourceLoader;
@@ -57,6 +67,7 @@ public class ShopController {
 	}
 	
 	@GetMapping("/view")
+	@PostMapping("/view")
 	public ModelAndView view(ModelAndView model, @RequestParam("no") int no) {	
 
 		Shop shop = service.findShopByNo(no);
@@ -69,6 +80,7 @@ public class ShopController {
 		
 		System.out.println(shop);
 		System.out.println(shop.getContent());
+		
 		
 		return model;
 	}
@@ -284,5 +296,111 @@ public class ShopController {
 		
 		return model;
 	}
+	
+	@GetMapping("/delete")
+	public ModelAndView delete(ModelAndView model,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("no")int no) {
+		
+		int result = 0;
+		Shop shop = service.findShopByNo(no);
+		
+		if(shop.getWriterNo() == loginMember.getNo()) {
+			result = service.delete(shop.getNo());
+			
+			if(result > 0) {
+				model.addObject("msg", "게시글이 정상적으로 삭제되었습니다.");
+				model.addObject("location", "/shop/list");
+			} else {
+				model.addObject("msg", "게시글 삭제를 실패하였습니다.");
+				model.addObject("location", "/shop/view?no=" + shop.getNo());
+			}
+		} else {
+			model.addObject("msg", "잘못된 접근입니다.");
+			model.addObject("location", "/shop/list");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	@GetMapping("/findWine")
+	public ModelAndView findWine(ModelAndView model, String wineKind, String nation, String wineKeyword, @RequestParam("shopNo") int shopNo) {
+		List<WineBoard> wineList = null;
+		
+		if(wineKind == "") {
+			wineKind = null;
+		} 
+		if(nation == "") {
+			nation = null;
+		}
+		if(wineKeyword == "") {
+			wineKeyword = null;
+		} 
+		
+		wineList = wineService.findWineListOnShop(wineKind, nation, wineKeyword);
+		
+		log.info("wineKind Name : {}", wineKind);
+		log.info("nation Name : {}", nation);
+		log.info("wineKeyword Name : {}", wineKeyword);
+		
+		
+		model.addObject("shopNo", shopNo);
+		model.addObject("wineList", wineList);
+		model.setViewName("shop/wineSearch");
+		
+		return model;
+	}
+	
+	@ResponseBody
+	@PostMapping("/saveWine")
+	public Object saveWine(
+            @RequestParam(value="wineNoList[]") List<String> wineNoList, 
+            @RequestParam(value="shopNo") String shopNo
+            ) {
+		int[] result = new int[wineNoList.size()];
+		
+		ArrayList<WineListsOnShop> wineOnShop = new ArrayList<WineListsOnShop>();
+//		WineListsOnShop[] wineOnShop = new WineListsOnShop[wineNoList.size()];
+		WineBoard[] wines = new WineBoard[wineNoList.size()];
+		
+        System.out.println("=shopNo=");
+        System.out.println(shopNo);
+        
+        System.out.println("=wine=");
+        for(int i = 0; i < wineNoList.size(); i++) {
+        	wines[i] =  wineService.findBoardByNo(Integer.parseInt(wineNoList.get(i)));
+        	
+        	wineOnShop[i].setShopNo(Integer.parseInt(shopNo));
+        	wineOnShop[i].setKorName(wines[i].getWineName());
+        	wineOnShop[i].setEngName(wines[i].getWineEng());
+        	wineOnShop[i].setFile_originalFileName(wines[i].getOriginalFileName());
+        	wineOnShop[i].setFile_renamedFileName(wines[i].getRenamedFileName());
+        	
+        	service.saveWinesOnShop(wineOnShop[i]);
+        }
+        
+//        for(String wineNo : wineNoList) {
+//            System.out.println(wineNo);
+//            WineBoard wine =  wineService.findBoardByNo(Integer.parseInt(wineNo));
+//            
+//            wineOnShop[].setShopNo(wine.getWineBno());
+//            
+//            
+//            result = service.saveWinesOnShop(Integer.parseInt(shopNo), Integer.parseInt(wineNo));
+//        }
+        //리턴값
+        Map<String, Object> retVal = new HashMap<String, Object>();
+        
+        //성공했다고 처리
+//        retVal.put("wineLists", wineLists);
+        retVal.put("message", "등록에 성공 하였습니다.");
+        
+        return retVal;
+ 
+    }
+	
+	
 	
 }
