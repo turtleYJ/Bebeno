@@ -16,6 +16,8 @@ public class Order {
 	
 	private int wineBno;
 	
+	private int cart_id;
+	
 	private DATE orderDate;
 	
 	private String name; // member

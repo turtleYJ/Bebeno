@@ -66,7 +66,7 @@
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
    
-                            <div class="img"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
+                            <div class="img image"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
 
                             <div class="pname">
                                 <span>${list.wineName}</span>
@@ -103,7 +103,7 @@
                 <div id="goorder" class="">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <a href="${path}/payment/orderPage"><button class="btn btn-default">주문하기</button></a>
+                        <button class="btn btn-default order_btn">주문하기</button>
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
@@ -119,6 +119,44 @@
 		$(".btn-back_to_shop").click(function() {
 			history.back();
 		});
+		
+		// orderlist 담기 
+        $(".order_btn").click(function(){
+              
+              var cartId= ${list.cart_id};
+              var wineName = $("#wineName").val();
+              var cartqty = $(".numBox").val();
+              var renamedFileName= $("#image").attr("src");
+             
+           if(cartId == 1){
+        	   cartId=1;
+           }else{
+        	   cartId=${list.cart_id};
+           }
+           
+             console.log(cartId);
+              var data = {
+            	cartId : cart_id,
+            	cart_qty : cartqty
+
+                };
+              $.ajax({
+                  url : "${path}/cart/addOrder",
+                  type : "post",
+                  data : data,
+                  success : function(result){
+                   alert("성공");
+                  },
+                  error : function(){
+                   alert("실패");
+                   console.log(cartId);
+                   console.log(wineName);
+                   console.log(cartqty);
+                   console.log(renamedFileName);
+                  }
+                 });
+              
+                });
 	</script>
 
 

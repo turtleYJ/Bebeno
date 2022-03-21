@@ -27,6 +27,12 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		
 		return mapper.getWagleList();
 	}
+	
+	@Override
+	public List<Wagle> getWagleListByCategory(String category) {
+		
+		return mapper.getWagleListByCategory(category);
+	}
 
 	@Override
 	public Wagle findBoardByNo(int no) {
@@ -88,6 +94,7 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 		mapper.
 	}
 
+<<<<<<< HEAD
 		@Override
 		@Transactional
 		public int saveReply(Member member, Reply reply) {
@@ -101,5 +108,8 @@ public class WagleBoardServiceimpl implements WagleBoardService {
 			return mapper.insertReply(map);
 		}
 
+=======
+	
+>>>>>>> main
 }
 

@@ -1,7 +1,6 @@
 package com.bebeno.mvc.member.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,10 +24,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.service.MemberService;
-import com.bebeno.mvc.member.model.service.UserMailSendService;
 import com.bebeno.mvc.member.model.vo.Member;
-import com.bebeno.mvc.payment.model.service.CartService;
-import com.bebeno.mvc.payment.model.vo.Cart;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -50,11 +50,11 @@ public class WineBoardServiceImpl implements WineBoardService {
 		return wineboardmapper.deleteWineBoard();
 	}
 
+	@Override
+	public List<WineBoard> findWineListOnShop(String wineKind, String nation, String wineKeyword) {
+		return wineboardmapper.findWineListOnShop(wineKind, nation, wineKeyword);
+	}
 
-
-
-
-	
 }
 
 

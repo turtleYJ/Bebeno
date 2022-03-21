@@ -31,5 +31,10 @@ public interface WagleBoardService {
 
 	int getReplyCount(int no);
 
+<<<<<<< HEAD
 	Reply findReplyByNo(int no);
+=======
+	List<Wagle> getWagleListByCategory(String category);
+
+>>>>>>> main
 }

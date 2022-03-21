@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.bebeno.mvc.wagle.model.vo.Reply;
 import com.bebeno.mvc.wagle.model.vo.Wagle;
@@ -21,6 +22,12 @@ public interface WagleBoardMapper {
 	int updateWagleBoard(Wagle wagleboard);
 
 	int insertWagleBoard(Wagle wagleboard);
+<<<<<<< HEAD
+=======
+
+	List<Wagle> getWagleListByCategory(@Param("category") String category);
+
+>>>>>>> main
 	
 	int insertReply(Map<Object, Object> map);
 	

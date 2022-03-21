@@ -44,7 +44,22 @@ public class wagleController {
 		
 		wagleList =  service.getWagleList();
 		
-		System.out.println(wagleList);
+		System.out.println(wagleList.get(0).getCategory());
+		
+		model.addObject("wagleList", wagleList);
+		model.setViewName("wagle_board/wagle_list");
+		
+		return model;
+	}
+	
+	@GetMapping("/wagle_list_filter") 
+	public ModelAndView listFilter(ModelAndView model, @RequestParam("category") String category) {
+		List<Wagle> wagleList = null;
+		
+		wagleList =  service.getWagleListByCategory(category);
+		
+		System.out.println("category : " + category);
+		System.out.println("filter 후 : " + wagleList);
 		
 		model.addObject("wagleList", wagleList);
 		model.setViewName("wagle_board/wagle_list");
