@@ -53,24 +53,6 @@ $("#selbox2").change(function() {
 // textarea 값 받기 
 val = $("textarea#wineinfo").val();
 
-// input 가격에 콤마적용, 숫자만 입력
-//숫자만 사용할 수 있는 함수 
-function inputNumberFormat(obj) {
- 	obj.value = comma (uncomma(obj.value));
- }
- 
- // 콤마를 붙이는 함수 
- function comma (str) {
- 	str - String(str);
- 	return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
- }
-
-// 콤마를 떼는 함수
-function uncomma(str) {
-	str = String(str);
-	return str.replace(/[^\d]+/g, '');
-}
-
 
 
 

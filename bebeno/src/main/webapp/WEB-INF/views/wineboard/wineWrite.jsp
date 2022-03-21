@@ -92,7 +92,7 @@
                     <div class="title">
                         <dl>
                             <dt>가격</dt>
-                            <dd><input type="text" maxlength="10" id="price" name="winePrice" koreanCurrency="true" value="" required="required" onkeyup="inputNumberFormat(this)"></dd>
+                            <dd><input type="text" maxlength="10" id="price" name="winePrice" value="" required="required"></dd>
                         </dl>
                     </div>
                     <div class="title">

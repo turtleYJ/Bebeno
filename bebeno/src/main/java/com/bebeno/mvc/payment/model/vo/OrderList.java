@@ -10,7 +10,9 @@ import oracle.sql.DATE;
 @NoArgsConstructor
 public class OrderList {
 
-	private int orderId;
+	private String merchant_uid;
+	
+	private String orderId;
 	
 	private String id;
 	

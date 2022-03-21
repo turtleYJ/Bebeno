@@ -60,7 +60,14 @@
                         <div class="split"></div>
                     </div>
 
+					<form action="${path}/payment/orderPage" method="get">
 					 <c:forEach var="list" items="${cartList}">
+			         <div class="paymentScreenBtn">
+								<input type="hidden" name="wineBno" value="${list.wine_bno}">
+								<input type="hidden" name="wineName" value="${list.wineName}">
+								<input type="hidden" name="winePrice" value="${list.winePrice}">
+								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
+                    </div>
                  	   <div class="row data">
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
@@ -73,7 +80,7 @@
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
-                            <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price">${list.winePrice}</div>
+                            <div class="basketprice">${list.winePrice}</div>
                             <!-- 수량 조절 -->
                             <div class="num">
                                 <div class="updown">
@@ -89,8 +96,7 @@
                         <div class="subdiv">
                             <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
                         </div>
-                    </div>
-      			</c:forEach>
+                    </div>  
                 <div class="right-align basketrowcmd">
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
                     <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
@@ -98,17 +104,18 @@
         
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.cart_qty}</div>
                 <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.cart_qty * list.amount}원</div>
+      			</c:forEach>					
         
-                <div id="goorder" class="">
+                <div id="goorder">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <button type="button" class="btn btn-default order_btn">주문하기</button>
+                        <button type="submit" class="btn btn-default order_btn" id="paymentSubmit">결제하기</button>
                         <button class="btn btn-default btn-back_to_shop">쇼핑 계속하기</button>
                     </div>
                 </div>
+							</form>
 	    </div>
-	   </div>  
- 
+	   </div> 
 </section>
 
     <script src="${ path }/js/jquery.min.js"></script>
@@ -120,7 +127,7 @@
 		});
 		
 		// orderlist 담기 
-        $(".order_btn").click(function(){
+    /*     $(".order_btn").click(function(){
               
               var wineBno=${list.wineBno};
               var wineName = $("#wineName").val();
@@ -155,7 +162,16 @@
                   }
                  });
               
-                });
+                }); */
+		
+        let merchant = "";
+    	
+    	$(".paymentScreenBtn").on("click", "#paymentSubmit", function(){
+    		let time = new Date();
+    		merchant = String("order" + time.getTime());
+    		console.log(merchant);
+    		$(this).siblings("#orderId").val(merchant);
+    	});
 	
   
 	</script>

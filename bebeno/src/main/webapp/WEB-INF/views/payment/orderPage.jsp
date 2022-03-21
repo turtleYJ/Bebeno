@@ -105,7 +105,6 @@
 		<div class="row no-gutters" style="text-align: center; margin: 80px 0;">
 			<h1 class="page-header">결제수단 확인</h1>
 			<div style="text-align: center;">
-				<label style="margin-right: 50px;"><input type="radio" name="cal_info" value="transfer">&nbsp;계좌이체</label>
 				<input type="radio" name="cal_info" value="card"><label>&nbsp;카드 결제</label>
 			</div>
 			<hr>
@@ -124,43 +123,35 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
 	
 	// import 결제 api 
 	
-    IMP.init('imp93088520');
-
+		 IMP.init('imp93088520');
     function requestPay() {
-      // IMP.request_pay(param, callback) 결제창 호출
       IMP.request_pay({ // param
           pg: "html5_inicis",
           pay_method: "card",
-          order_id: "${orderList.orderId}",
-          name: "${orderList.name}",
-          amount: "${orderList.winePrice}",
+          merchant_uid: "${merchant_uid}",
+          name: "${orderList.wineName}",
+          amount: ${orderList.winePrice},
           buyer_name: "bebeno",
           buyer_email: "bebeno@bebeno.com",
           buyer_tel: "010-4242-4242",
+	      buyer_addr: "서울특별시 강남구 사랑동",
+	      buyer_postcode: "01181"
       }, function (rsp) { // callback
           if (rsp.success) {
              	console.log("ajax 이전");
              	$.ajax({
 	        		url: "${path}/payment/orderResult",
 	        		type: "post",
-     		    beforeSend : function(xhr) {
-     		    	xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-     		    },
-	        		data: {
-	        			wine_bno : ${orderList.wineBno},
-	        			wine_name : '${orderList.wineName}',
-	        			wine_price : '${orderList.winePrice}',
-	        			order_id : '${orderList.orderID}'
-	        		},
+	        		data: data,
 	        		dataType: "text",
 	        		success: function(){
 			        	alert("결제가 완료되었습니다.");
-			        	location.href = "${path}/payment/orderResult";
+			        	/* location.href = "${path}/payment/orderResult"; */
 	        		}
 	        	});
 	        	console.log("ajax 이후");
@@ -171,6 +162,7 @@
 	    });
 	}
 	</script>
+
    
      
 </body>

@@ -21,12 +21,7 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.paymentInsert(order);
 	}
 
-	@Override
-	public List<OrderList> getPaymentList(String id) {
-		List<OrderList> paymentList = mapper.paymentSelect(id);
-		
-		return paymentList;
-	}
+
 
 
 }
