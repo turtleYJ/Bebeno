@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bebeno.mvc.member.model.service.MemberService;
+import com.bebeno.mvc.member.model.service.UserMailSendService;
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.payment.model.service.CartService;
 import com.bebeno.mvc.payment.model.vo.Cart;
@@ -59,21 +62,22 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	@RequestMapping(value="/cart", method = RequestMethod.GET)
-	public String showCart(HttpSession session, Model model) {
-		
-		String id = (String)session.getAttribute("id");
-		List<Cart> cartList = CartService.getCartList();
-		
-		model.addAttribute("cartList", cartList);
-		
-		
-		return "/payment/cart";
- 
-}
 
 
+//
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public ResponseEntity<Map<String, Boolean>> idCheck1(
+	@RequestParam("id") String id) {
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", id);
+		
+		map.put("duplicate", service.isDuplicateID(id));
+
+		return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+	}
 	
 	// 로그아웃 처리 (SessionStatus 사용)
 //	@PostMapping("/logout") -- 회원 탈퇴 시 Post쪽으로 연결시키는 법을 몰라 Get으로 변경
@@ -118,7 +122,37 @@ public class MemberController {
 		return "member/join";
 	}
 	
+
+	// findId
+	@GetMapping("/member/findId")
+	public String findId() {
+		
+		return "member/findId";
+	}
 	
+	@PostMapping("/member/findId")
+	public ModelAndView findId(
+			ModelAndView model, @ModelAttribute Member member) {
+		
+		log.info("로그인, 이메일 : {},  {}", member.getName(), member.getEmail());
+
+		String findId =service.findId(member);
+		
+		if(findId != null) {
+			model.addObject("userID" , findId);
+			log.info("찾은 아이디");
+			System.out.println("찾은 아이디는" + findId);
+			model.addObject("msg", "찾은 아이디는 "+ findId);
+			model.addObject("location", "/member/findId");
+		}else {
+			model.addObject("msg", "존재하지 않는 아이디 입니다.");
+			model.addObject("location", "/member/findId");
+		}
+			model.setViewName("common/msg");
+		
+		return model;
+	}
+
 	@PostMapping("/member/join")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
@@ -207,7 +241,5 @@ public class MemberController {
 		
 		return model;
 	}
-	
-	
 	
 }

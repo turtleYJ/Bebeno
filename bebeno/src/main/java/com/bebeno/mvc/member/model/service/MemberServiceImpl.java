@@ -50,6 +50,13 @@ public class MemberServiceImpl implements MemberService {
 				passwordEncoder.matches(password, member.getPassword()) ? member : null;
 	}
 
+
+	@Override
+	public String findId(Member member) {
+		
+		return mapper.findId(member);
+	}
+	
 	@Override
 	@Transactional
 	public int save(Member member) {

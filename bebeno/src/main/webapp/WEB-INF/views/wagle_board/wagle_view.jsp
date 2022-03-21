@@ -102,14 +102,22 @@
             <!-- 댓글 -->
             <div id="comment-container">
                 <h3>댓글</h3>
-                <div class="comment-editor">
-                    <form action="${ pageContext.request.contextPath }/wagle_board/reply" method="POST">
+                  <c:if test="${ board.replyCount != 0 }">
+			        <span>
+			        	[&nbsp;<c:out value="${ board.replyCount }" />&nbsp;]
+			        </span>
+			        </c:if>
+                <div class="comment-editor"> 
+                    <form action="${ pageContext.request.contextPath }/wagle_board/reply" method="POST" >
                         <input type="hidden" name="boardNo" value="${ wagle_board.no }">
                         <textarea name="content" id="replyContent" cols="55" rows="3"></textarea>
                         <button type="submit" id="btn-insert">등록</button>	    			
                     </form>
                 </div>
             </div>
+            
+            
+            
             <table id="tbl-comment">
                 <c:forEach var="reply" items="${ wagle_board.replies }">
                 <tr class="level1">

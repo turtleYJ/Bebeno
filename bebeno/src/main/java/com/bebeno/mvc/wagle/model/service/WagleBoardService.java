@@ -1,6 +1,7 @@
 package com.bebeno.mvc.wagle.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bebeno.mvc.member.model.vo.Member;
 import com.bebeno.mvc.shop.model.vo.ContentFiles;

@@ -200,7 +200,7 @@ public class wagleController {
 	}
 	
 	@RequestMapping("/reply")
-	public ModelAndView writeReply(ModelAndView model, @ModelAttribute Wagle wagleboard, @SessionAttribute("loginMember") Member member, Reply reply) {
+	public ModelAndView writeReply(ModelAndView model, @ModelAttribute Wagle wagleboard, @SessionAttribute(name = "loginMember") Member member, Reply reply) {
 		
 		int result = 0;
 

@@ -33,7 +33,11 @@
 <tbody>
 <tr>
 <th><span>아이디</span></th>
-<td><input type="text" name="id" class="input-field" placeholder="ID 를 입력하세요."></td>
+<td><input type="text" name="id" id="id" class="input-field" placeholder="ID 를 입력하세요.">
+	
+  <button type="button" id="idCheckBtn">확인</button>
+                <p class="error_id"></p>
+                </td>
 </tr>
 <tr>
 <th><span>닉네임</span></th>
@@ -92,5 +96,38 @@
        </div>
        </div>
        </div> 
+     <!-- 스크립트 부분 -->
+	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	 
+	<script>
+	// 아이디 중복 확인
+	$(document).ready(() => {
+		$("#idCheckBtn").on("click", () => {
+			let id = $("#id").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${  pageContext.request.contextPath }/idCheck",
+				dataType: "json",
+				data: {
+					id
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 아이디 입니다.");
+					} else {
+						alert("사용 가능한 아이디 입니다.");						
+					}
+					
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});	
+	});
+</script>
 </body>
 </html>
