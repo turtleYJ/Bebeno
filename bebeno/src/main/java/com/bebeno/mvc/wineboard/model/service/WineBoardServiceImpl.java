@@ -44,16 +44,19 @@ public class WineBoardServiceImpl implements WineBoardService {
 		return wineboardmapper.selectWineBoardByNo(wineBno);
 	}
 
-	@Override
-	public int delete(int wineBno) {
-		
-		return wineboardmapper.deleteWineBoard();
-	}
+	
 
 	@Override
 	public List<WineBoard> findWineListOnShop(String wineKind, String nation, String wineKeyword) {
 		return wineboardmapper.findWineListOnShop(wineKind, nation, wineKeyword);
 	}
+
+	@Override
+	public int deleteWrite(int wineBno) {
+		
+		return wineboardmapper.deleteWineBoard(wineBno);
+	}
+
 
 }
 

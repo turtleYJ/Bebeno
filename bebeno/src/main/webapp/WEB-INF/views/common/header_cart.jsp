@@ -50,12 +50,6 @@
 
 <title>header</title>
 
-<style type="text/css">
-	legend {
-    flex-wrap: wrap;
-    }
-	
-</style>
 
 </head>
 <body>
