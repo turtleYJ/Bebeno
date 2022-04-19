@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
@@ -57,7 +58,7 @@
             <tr>
                 <th>내용</th>
                 <td>
-                    ${ wagleboard.content }
+					${fn:replace( wagleboard.content, replaceChar, "<br/>")}
                 </td>
             </tr>    
         </table>
