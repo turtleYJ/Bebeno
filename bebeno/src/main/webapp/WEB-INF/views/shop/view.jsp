@@ -97,7 +97,7 @@
 			window.open(PageUrl, "_blank", "width=1000, height=600");
 		}
 		
-		// 와인 찾기
+		// 와인 찾기(팝업생성)
 		function findWine() { window.open("${ path }/shop/findWine?shopNo=${ shop.no }", "fineWine", "width=500, height=400, left=100, top=50"); }
 		
 		
