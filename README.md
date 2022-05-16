@@ -1,3 +1,2 @@
 # FinalProject
-KH_FinalProject
-ㅇㄹㄹㅇ
+KH_FinalProjec
