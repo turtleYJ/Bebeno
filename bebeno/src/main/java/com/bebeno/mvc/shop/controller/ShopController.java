@@ -33,8 +33,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+// ShopController에 있는 모든 Mapping 어노테이션의 앞에 "/shop"을 붙여준다.
 @RequestMapping("/shop")
 public class ShopController {
+	// Spring Framework의 @Autowired어노테이션을 통한 의존성주입(DI)
 	@Autowired
 	private ShopService service;
 	
@@ -48,6 +50,8 @@ public class ShopController {
 	public ModelAndView list(ModelAndView model, String shCate, String shRegionD1, String shKeyword) {
 		List<Shop> shopList = null;
 		
+		// 검색기능 구현
+		// 아무 문자열도 입력하지 않았을 때 null로 DB에 넘겨준다.
 		if(shCate == "") {
 			shCate = null;
 		} 
@@ -58,9 +62,13 @@ public class ShopController {
 			shKeyword = null;
 		} 
 
+		// Service객체로 인자들을 넘겨주어 각 인자, 즉 조건에 맞는 ShopList를 가져온다.
 		shopList = service.getShopList(shCate, shRegionD1, shKeyword);
 		
+		// ModelAndView객체를 통해 list.jsp파일에 shopList를 넘겨준다.
 		model.addObject("shopList", shopList);
+		
+		// ModelAndView객체를 통해 "shop/list"로 매핑하게 한다.
 		model.setViewName("shop/list");
 		
 		return model;
